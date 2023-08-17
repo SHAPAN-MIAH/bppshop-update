@@ -1,0 +1,96 @@
+.shipping_Add_content {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.shipping_Add_header {
+    font-weight: 600;
+    font-size: 20px;
+    color: rgb(29, 25, 25);
+}
+
+.shipping_Add_line {
+    height: 1px;
+    margin: 50px 0px;
+    padding: 0px;
+}
+
+.shipping_address_input_container {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.shipping_address_input {
+    width: 100%;
+    padding: 8px 10px;
+    outline: none;
+    border: 1px solid rgb(201, 201, 244);
+    border-radius: 5px;
+}
+
+.shipping_add_close_btn {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: end;
+    align-items: baseline;
+}
+
+.shipping_close_btn, .shipping_save_btn {
+    margin: 5px;
+    padding: 7px 40px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+}
+
+.shipping_close_btn {
+    background: #4d4d4d;
+    padding: 8px 40px;
+}
+
+.shipping_save_btn {
+    background: #56b122;
+}
+.submitFailedBtn{
+    border: none;
+    outline: none;
+    background: #413d3a93;
+    color: #ffffff;
+    text-align: center;
+    padding: 7px;
+    border-radius: 5px;
+    margin: 0px 0px 0px 20px;
+}
+@media screen and (max-width: 768px) {
+    .shipping_address_input_container {
+        margin-top: 20px;
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 20px;
+    }
+
+    .shipping_add_close_btn {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: left;
+        /* align-items: center; */
+    }
+    .shipping_close_btn{
+        margin-right: 12px !important;
+    }
+    .submitFailedBtn{
+        border: none;
+        outline: none;
+        background: #413d3a93;
+        color: #ffffff;
+        text-align: center;
+        padding: 7px;
+        border-radius: 5px;
+        margin: 10px 0px 0px 0px;
+    }
+}

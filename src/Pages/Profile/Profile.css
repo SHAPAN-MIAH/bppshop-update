@@ -1,0 +1,60 @@
+.profile_container {
+    min-height: 40vh;
+}
+.profile_left_container{
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+    padding: 20px 20px 20px 20px;
+    border-radius: 8px;
+}
+.profile_right_container {
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+    padding: 10px 20px 20px 20px;
+    border-radius: 8px;
+}
+.sidebar_left {
+    border-bottom: 1px solid #FFDEDE;
+    padding: 5px 0px;
+}
+.profile_left_container a {
+    text-decoration: none;
+    font-size: 18px;
+    color: #3a3a3a;
+    font-weight: bold;
+    padding: 10px 0px;
+}
+.profile_left_container a p {
+    margin-top: 10px;
+}
+.profile_left_container a:hover {
+    color: #EF8341;
+}
+/* ----profile left----- */
+.profile_img_section {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.profile_img {
+    border-radius: 50px;
+    width: 50px;
+    height: 50px;
+    border: 1px solid rgb(209, 209, 247);
+    margin: 10px;
+}
+.profile_name {
+    font-size: 20px;
+    line-height: 20px;
+    font-weight: bold;
+}
+.change_profile_header {
+    cursor: pointer;
+    color: #EF8341;
+}
+.change_profile_ratio {
+    color: red;
+    font-size: 10px;
+}
+.hidden_input_file {
+    visibility: hidden;
+}

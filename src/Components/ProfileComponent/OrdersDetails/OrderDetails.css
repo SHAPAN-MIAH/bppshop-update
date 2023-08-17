@@ -1,0 +1,76 @@
+.order_table_head {
+  background: #ef8341;
+  color: white;
+}
+.OrderListBackBtn{
+  border: 1px solid gainsboro;
+}
+.order_table_tr {
+  background: #ef8341;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+}
+
+.order_detail_card {
+  height: auto;
+  border: 1px solid rgb(235, 235, 235);
+  border-radius: 7px;
+  font-family: "Kanit", sans-serif;
+  /* box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; */
+  overflow: hidden;
+  transition: all 0.3s;
+}
+
+.order_table_info_div {
+  margin: 0px 10px;
+}
+.order_table_td {
+  display: flex;
+  align-items: center;
+}
+
+.order_detail_list {
+  border: 1px solid #ececfb;
+}
+.order_detail_list td {
+  font-size: 15px;
+}
+
+.for-tab-img img {
+  width: 95px;
+  cursor: pointer;
+}
+
+.for-glaxy-name {
+  text-align: center;
+  cursor: pointer;
+}
+.add_review_btn {
+  background: #ef8341;
+  border: none;
+  padding: 2px 15px;
+  color: white;
+  border-radius: 3px;
+  font-size: 14px;
+}
+.add_review_btn:hover {
+  background: #5c5c5c;
+}
+
+
+.track_order_btn {
+  text-align: end;
+  /* margin-top: 20px; */
+}
+.track_order_btn button {
+  background: #ef8341;
+  color: white;
+  text-align: center;
+  padding: 10px 80px;
+  border-radius: 5px;
+  border: none;
+}
+.track_order_btn button:hover {
+  background: #e66f26;
+}

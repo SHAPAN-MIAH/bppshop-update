@@ -1,0 +1,66 @@
+.comments_rating_container h2{
+  margin-bottom: 30px;
+  font-size: 25px;
+  font-weight: 500;
+}
+.add_review_product_detail{
+  display: flex;
+  margin-bottom: 30px;
+}
+.commentSubmitBtn{
+  border: none;
+  background: #F79426;
+  color: #fff;
+  font-size: 15px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+.commentSubmitBtn:hover{
+  background: #585858;
+}
+
+.review-cart{
+  /* margin-top: 50px; */
+}
+.user-qa-header p{
+ /* margin-right: 30px; */
+}
+.rating {
+  margin-top: 40px;
+  border: none;
+  float: left;
+}
+.jCxQnf {
+  display: inline-block;
+  padding: 0px !important;
+}
+.rating > label {
+  color: #90A0A3;
+  float: right;
+}
+
+.rating > label:before {
+  margin: 5px;
+  font-size: 2em;
+  font-family: FontAwesome;
+  content: "\f005";
+  display: inline-block;
+}
+
+.rating > input {
+  display: none;
+}
+
+.rating > input:checked ~ label,
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+  color: #F79426;
+}
+
+.rating > input:checked + label:hover,
+.rating > input:checked ~ label:hover,
+.rating > label:hover ~ input:checked ~ label,
+.rating > input:checked ~ label:hover ~ label {
+  color: #FECE31;
+}

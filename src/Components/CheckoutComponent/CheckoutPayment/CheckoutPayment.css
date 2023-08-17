@@ -1,0 +1,128 @@
+.payment_method_container h3{
+ font-weight: 700;
+ font-size: 20px;
+}
+.payment-way-container {
+  margin: 20px 0px 0px 0px;
+}
+.payment-way {
+  margin: 20px 0px 0px 0px;
+}
+.cashOnDeliVery,
+.mobile_payment,
+.bank_payment,
+.agent_Wallet_payment {
+  text-align: left;
+}
+.cashOnDeliVery:hover label,
+.mobile_payment:hover label,
+.bank_payment:hover label,
+.agent_Wallet_payment:hover label{
+  color: #e66f26;
+}
+
+.cashOnDeliVery label,
+.mobile_payment label,
+.bank_payment label,
+.agent_Wallet_payment label {
+  margin: 10px;
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.cashOnDelivery_content {
+  display: none;
+  /* overflow: hidden; */
+}
+.COD_Btn {
+  background: rgb(255, 255, 255);
+  width: auto;
+  text-align: center;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  border: 1px solid gainsboro;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px,
+    rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+  margin-bottom: 20px;
+  margin-left: 25px;
+}
+.COD_Btn img {
+  width: 70px;
+}
+
+.payment-option-way,
+.bankPayment-option-way {
+  display: none;
+}
+.payment-option,
+.bankPayment-option {
+  display: flex;
+  margin-bottom: 20px;
+  margin-left: 25px;
+}
+.payment-option-way img,
+.bankPayment-option-way img {
+  border: 1px solid gainsboro;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px,
+    rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+  padding: 7px 15px;
+  margin: 0px 12px 0px 0px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.payment_bottom_Btn {
+  margin: 30px 0px 0px 0px;
+  display: flex;
+}
+.back_to_shipping {
+  background: rgb(151, 151, 151);
+  color: white;
+  padding: 10px 30px;
+  border-radius: 5px;
+  border: none;
+}
+.back_to_shipping:hover {
+  background: rgb(105, 105, 105);
+}
+
+#cashOnDeliveryNextBtn {
+  width: 198px;
+  background: #ef8341;
+  color: white;
+  padding: 10px 20px;
+  margin-left: 20px;
+  border-radius: 5px;
+  border: none;
+  /* display: none; */
+}
+#cashOnDeliveryNextBtn:hover {
+  background: #e66f26;
+}
+.paymentErrorMessage{
+  color: red;
+}
+.proccedordergif-container{
+  display: none;
+}
+
+@media screen and (max-width:768px) {
+  .payment_bottom_Btn {
+    margin: 30px 0px 0px 0px;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
+  #cashOnDeliveryNextBtn {
+    width: 198px;
+    background: #ef8341;
+    color: white;
+    padding: 10px 0px;
+    margin: 10px 0px 0px 0px;
+  }
+}
+/* @media screen and (max-width:450px) {
+  #cashOnDeliveryNextBtn {
+    margin-left: 5px;
+  }
+} */

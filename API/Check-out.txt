@@ -1,0 +1,15 @@
+Checkout
+-----------------------------------
+
+URL: https://bppshop.com.bd/api/v1/cart/checkout
+Method: Post
+{
+   address_id: id,
+}
+
+
+Response:
+{
+    "status": "success",
+    "message": "Order placed successfully"
+}

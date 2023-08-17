@@ -1,0 +1,349 @@
+.footer_container_section {
+  background: gainsboro;
+  padding: 40px 0px;
+  margin-top: 50px;
+  font-family: "Kanit", sans-serif;
+}
+
+.footer-content {
+  width: 67%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 20px;
+}
+.footer_logo img{
+  width: 150px;
+}
+.footer-content h5{
+  font-size: 17px;
+  color: #ef8341;
+  margin: 0px 0px 15px 0px;
+}
+.footer-content ul{
+  padding-left: 0px !important;
+  
+}
+.footer-content ul li{
+  list-style: none;
+  color: #464646;
+  font-size: 15px;
+  cursor: pointer;
+}
+.footer-content ul li:hover{
+  color: #ef8341;
+}
+
+.brand_address_container .logo img {
+  width: 50%;
+}
+
+.address p{
+  font-size: 15px;
+}
+
+.downloadApp_content {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 20px;
+}
+.downloadApp_content button {
+  width: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: left;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  font-size: 14px;
+  font-family: "Space Grotesk", sans-serif;
+  background: #494949;
+  color: #ffffff;
+  padding: 2px 10px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+.downloadApp_content button:hover {
+  background: #555555;
+  color: #ffffff;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+.downloadApp_content button h6{
+  font-size: 14px;
+}
+.downloadApp_content button img{
+  margin-right: 10px;
+  margin-top: -5px;
+}
+
+/* .appleIcon{
+  -webkit-filter: grayscale(0.9) invert(1);
+  filter: grayscale(0.9) invert(1);
+} */
+
+.newsletter_container{
+  margin-top: 30px;
+}
+.newsletter_container h6{
+  color: #ef8341;
+}
+.newsletter_container input{
+  border: none;
+  outline: none;
+  padding: 10px 35px 10px 15px;
+  font-size: 15px;
+}
+.newsletter_container button{
+  border: none;
+  outline: none;
+  padding: 10px 20px;
+  font-size: 15px;
+  color: #ffffff;
+  background: #ef8341;
+}
+.newsletter_container button:hover{
+  background: #0c9ed8;
+}
+
+.get_in_touch_container {
+  margin-top: 20px;
+  color: #414141;
+  font-family: "DM Sans", sans-serif;
+}
+.get_in_touch_container h5{
+  color: #ef8341;
+  font-family: "Kanit", sans-serif;
+}
+
+.contact_content{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.contact_content i{
+  font-size: 17px;
+  color: #ef8341;
+  background: #ffffff;
+  padding: 6px 9px;
+  border-radius: 50px;
+}
+.social_content{
+  margin: 25px 0px;
+  text-align: end;
+}
+.social_content i{
+  font-size: 24px;
+  margin: 7px;
+  color: #ef8341;
+  background: #ffffff;
+  padding: 2px 8px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.social_content i:hover{
+  color: #0c9ed8;
+}
+
+
+/* -----------Bottom Footer Style--------- */
+.bottom_footer_container_section {
+  background: #363636;
+}
+.bottom_footer_content {
+  width: 65%;
+  margin: auto;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap-reverse;
+  padding: 20px 0px;
+}
+.bottom_footer_left {
+  cursor: pointer;
+  padding-bottom: 10px;
+}
+.bottom_footer_right {
+  display: flex;
+}
+.bottom_term_text {
+  margin-right: 15px;
+  cursor: pointer;
+}
+
+.bottom_privacy_text {
+  cursor: pointer;
+}
+
+
+@media screen and (max-width: 1600px) {
+  .footer-content {
+    width: 80%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+  }
+}
+@media screen and (max-width: 1500px) {
+  .footer-content {
+    width: 82%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .footer-content {
+    width: 90%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+  }
+
+  .contact_content i{
+    font-size: 14px;
+    color: #ef8341;
+    background: #ffffff;
+    padding: 3px 5px;
+    border-radius: 50px;
+  }
+  .contact_content {
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 1350px) {
+  .footer-content {
+    width: 92%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+  }
+
+  .contact_content i{
+    font-size: 14px;
+    color: #ef8341;
+    background: #ffffff;
+    padding: 3px 5px;
+    border-radius: 50px;
+  }
+  .contact_content {
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 1300px) {
+  .footer-content {
+    width: 95%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+  }
+}
+@media screen and (max-width: 1200px) {
+  .footer-content {
+    /* width: 78%; */
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+  }
+
+  .contact_content i{
+    font-size: 14px;
+    color: #ef8341;
+    background: #ffffff;
+    padding: 3px 5px;
+    border-radius: 50px;
+  }
+  .contact_content {
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 992px) {
+  .footer-content {
+    /* width: 90%; */
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 20px;
+  }
+
+  .contact_content i{
+    font-size: 14px;
+    color: #ef8341;
+    background: #ffffff;
+    padding: 3px 5px;
+    border-radius: 50px;
+  }
+  .contact_content {
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .footer-content {
+    padding: 20px 10px;
+    width: 100%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 20px;
+  }
+
+  .contact_content i{
+    font-size: 14px;
+    color: #ef8341;
+    background: #ffffff;
+    padding: 3px 5px;
+    border-radius: 50px;
+  }
+  .contact_content {
+    font-size: 14px;
+  }
+
+  .downloadApp_content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: left;
+    gap: 20px;
+  }
+  .downloadApp_content button {
+    width: auto;
+    display: flex;
+    justify-content: space-between;
+  }
+  .downloadApp_content button h6{
+    font-size: 12px;
+  }
+  .newsletter_container input{
+    padding: 10px 0px 10px 10px;
+    font-size: 14px;
+  }
+  .newsletter_container button{
+    padding: 10px 15px;
+    font-size: 14px;
+  }
+
+  .social_content{
+    text-align: left;
+  }
+
+  .bottom_footer_content {
+    width: 90%;
+    margin: auto;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap-reverse;
+    padding: 20px 0px 80px 0px;
+  }
+}

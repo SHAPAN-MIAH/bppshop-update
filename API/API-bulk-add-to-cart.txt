@@ -1,0 +1,102 @@
+Add to Cart Bulk
+-----------------------------
+URL: https://bppshop.com.bd/api/v1/cart/add-bulk
+Method: POST
+Request:
+[
+    {
+        "id": "7160",
+        "color": "#9966CC",
+        "choice_19": "100",
+        "quantity": 1
+    },
+    {
+        "id": "7144",
+        "choice_19": "100",
+        "quantity": 1
+    }
+]
+
+Response:
+{
+  "cart": [
+    {
+      "product_id": "7160",
+      "status": "success",
+      "message": "Successfully added!",
+      "data": {
+        "color": "#9966CC",
+        "product_id": 7160,
+        "product_type": "physical",
+        "choices": "{\"choice_19\":\"100\"}",
+        "variations": "{\"color\":\"Amethyst\",\"gm\":\"100\"}",
+        "variant": "Amethyst-100",
+        "cart_group_id": "321-6VjhB-1675359853",
+        "customer_id": 321,
+        "quantity": 1,
+        "price": 130,
+        "tax": 0,
+        "slug": "black-kismiss-dry-gikgr0",
+        "name": "Black Kismiss Dry",
+        "discount": 0,
+        "thumbnail": "2023-01-15-63c3a9e73389d.png",
+        "seller_id": 1,
+        "seller_is": "admin",
+        "shipping_cost": 0,
+        "shop_info": "BPP Shop",
+        "shipping_type": "order_wise",
+        "updated_at": "2023-02-02T17:44:13.000000Z",
+        "created_at": "2023-02-02T17:44:13.000000Z",
+        "id": 1363
+      }
+    },
+    {
+      "product_id": "7144",
+      "status": "success",
+      "message": "Successfully added!",
+      "data": {
+        "color": null,
+        "product_id": 7144,
+        "product_type": "physical",
+        "choices": "{\"choice_19\":\"100\"}",
+        "variations": "{\"gm\":\"100\"}",
+        "variant": "100",
+        "cart_group_id": "321-6VjhB-1675359853",
+        "customer_id": 321,
+        "quantity": 1,
+        "price": 190,
+        "tax": 0,
+        "slug": "sakura-plum-0Mtcyx",
+        "name": "Sakura Plum",
+        "discount": 0,
+        "thumbnail": "2023-01-15-63c38e9c8ae6a.png",
+        "seller_id": 1,
+        "seller_is": "admin",
+        "shipping_cost": 0,
+        "shop_info": "BPP Shop",
+        "shipping_type": "order_wise",
+        "updated_at": "2023-02-02T17:44:13.000000Z",
+        "created_at": "2023-02-02T17:44:13.000000Z",
+        "id": 1364
+      }
+    }
+  ]
+}
+
+Failed Response
+{
+    "cart": [
+        {
+            "product_id": "7160",
+            "status": "failed",
+            "message": "Already added!",
+            "data": []
+        },
+        {
+            "product_id": "7144",
+            "status": "failed",
+            "message": "Already added!",
+            "data": []
+        }
+    ]
+}

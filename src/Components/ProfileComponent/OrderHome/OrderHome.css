@@ -1,0 +1,104 @@
+.order_table_head {
+  background: #6b6b6b;
+  color: white;
+}
+.order_table_head tr td {
+  text-align: center;
+  font-weight: bold;
+}
+.order_table_body tr td {
+  text-align: center;
+  padding: 15px 0px;
+}
+.order_status {
+  background: #f34770;
+  padding: 1px 6px;
+  border: none;
+  border-radius: 3px;
+  color: white;
+  font-size: 14px;
+}
+.my_order_view_btn {
+  background: green;
+}
+.my_order_view_btn:hover {
+  background: rgb(0, 175, 0);
+}
+.my_order_cancel_btn {
+  background: red;
+}
+.my_order_canceled_btn{
+  background: rgb(90, 90, 90);
+  padding: 4px 8px;
+  color: white;
+  margin: 0px 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: default;
+}
+.my_order_cancel_btn:hover {
+  background: rgb(192, 0, 0);
+}
+.my_order_view_btn,
+.my_order_cancel_btn {
+  padding: 4px 8px;
+  color: white;
+  margin: 0px 5px;
+  border: none;
+  border-radius: 5px;
+}
+.blank_order {
+  margin: 60px 0px;
+}
+.blank_order h5 {
+  color: red;
+  text-align: center;
+}
+
+.order_table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.order_table td,
+.order_table th {
+  text-align: center;
+  padding: 7px;
+}
+
+
+.order_table tr:nth-child(even) {
+  background-color: #2bbefd11;
+}
+
+/* responsive css */
+@media screen and (max-width: 768px) {
+  .order_table thead {
+    display: none;
+  }
+  .order_table tbody,
+  .order_table tr,
+  .order_table td {
+    display: block;
+    width: 100%;
+  }
+  .order_table tr {
+    margin-bottom: 20px;
+  }
+  .order_table td {
+    text-align: right !important;
+    padding-left: 50%;
+    font-size: 14px;
+    position: relative;
+    padding-right: 10px !important;
+  }
+  .order_table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 0;
+    width: 50%;
+    padding-left: 10px;
+    text-align: left;
+    font-weight: 600;
+  }
+}

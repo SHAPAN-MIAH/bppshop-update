@@ -1,0 +1,666 @@
+{
+	"info": {
+		"_postman_id": "d4bc75a3-b3e9-47d1-afe5-8c9c079d41d9",
+		"name": "BPPSHOP_USER_2023",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "LOGIN",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/api/v1/auth/login?phone=01766609988&password=123456789",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"login"
+					],
+					"query": [
+						{
+							"key": "phone",
+							"value": "01766609988"
+						},
+						{
+							"key": "password",
+							"value": "123456789"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FORGET_PASSWORD",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/api/v1/auth/forgot?phone=01722945055",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"forgot"
+					],
+					"query": [
+						{
+							"key": "phone",
+							"value": "01722945055"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET_PROFILE_DETAILS",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/api/v1/customer/profile",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"customer",
+						"profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE_PROFILE_DETAILS",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/api/v1/customer/update-profile?name=Gunjon Roy&email=gunjon@gmail.com&password=123456789&con_password=123456789",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"customer",
+						"update-profile"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Gunjon Roy"
+						},
+						{
+							"key": "email",
+							"value": "gunjon@gmail.com"
+						},
+						{
+							"key": "password",
+							"value": "123456789"
+						},
+						{
+							"key": "con_password",
+							"value": "123456789"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET_ORDER_LIST",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/api/v1/customer/order/list",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"customer",
+						"order",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET_ORDER_DETAILS",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/api/v1/customer/order/details/100410",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"customer",
+						"order",
+						"details",
+						"100410"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CATEGORIES",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/api/v1/categories",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CATEGORY_WISE_PRODUCT",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/api/v1/categories/products/253",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"categories",
+						"products",
+						"253"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PRODUCT_DETAILS",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/api/v1/products/details/7160",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"products",
+						"details",
+						"7160"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET_VARIANT_PRICE",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/api/v1/products/variant_price?product_id=7160&color=%239966CC&choice=200&quantity=1",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"products",
+						"variant_price"
+					],
+					"query": [
+						{
+							"key": "product_id",
+							"value": "7160"
+						},
+						{
+							"key": "color",
+							"value": "%239966CC"
+						},
+						{
+							"key": "choice",
+							"value": "200"
+						},
+						{
+							"key": "quantity",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET_CART_DATA",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/api/v1/cart",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"cart"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ADD_TO_CART",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/api/v1/cart/add?id=7161&color=%239966CC&choice_19=100&quantity=1",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"cart",
+						"add"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "7161"
+						},
+						{
+							"key": "color",
+							"value": "#9966CC"
+						},
+						{
+							"key": "choice_19",
+							"value": "100"
+						},
+						{
+							"key": "quantity",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE_CART",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/api/v1/cart/update?key=1365&quantity=6",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"cart",
+						"update"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "1365"
+						},
+						{
+							"key": "quantity",
+							"value": "6"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "REMOVE_CART",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/api/v1/cart/remove?key=1524",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"cart",
+						"remove"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "1524"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ADD_TO_CART_BULK",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"id\": \"7161\",\n        \"color\": \"#9966CC\",\n        \"choice\": \"100\",\n        \"quantity\": 1\n    },\n    {\n        \"id\": \"7144\",\n        \"choice_19\": \"100\",\n        \"quantity\": 1\n    },\n    {\n        \"id\": \"7160\",\n        \"color\": \"#9966CC\",\n        \"choice_19\": \"100\",\n        \"quantity\": 1\n    }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/api/v1/cart/add-bulk",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"cart",
+						"add-bulk"
+					],
+					"query": [
+						{
+							"key": "bdfb",
+							"value": "[\n    {\n        \"id\": \"7160\",\n        \"color\": \"#9966CC\",\n        \"choice_19\": \"100\",\n        \"quantity\": 1\n    },\n    {\n        \"id\": \"7144\",\n        \"choice_19\": \"100\",\n        \"quantity\": 1\n    }\n]",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ADD_DELIVERY_CHARGE",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/api/v1/cart/delivery-charge?district_id=3",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"cart",
+						"delivery-charge"
+					],
+					"query": [
+						{
+							"key": "district_id",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DISTRICTS",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/api/v1/location/districts",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"location",
+						"districts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "THANA",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/api/v1/location/thanas/1",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"location",
+						"thanas",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AREAS",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/api/v1/location/areas/1",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"location",
+						"areas",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET_SHIPPING_ADDRESS",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/api/v1/shipping-address",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"shipping-address"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ADD_SHIPPING_ADDRESS",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/api/v1/shipping-address/add?contact_person_name=Rashed&address=address&district_id=1&upazila_id=1&area_id=1&phone=01766609988",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"shipping-address",
+						"add"
+					],
+					"query": [
+						{
+							"key": "contact_person_name",
+							"value": "Rashed"
+						},
+						{
+							"key": "address",
+							"value": "address"
+						},
+						{
+							"key": "district_id",
+							"value": "1"
+						},
+						{
+							"key": "upazila_id",
+							"value": "1"
+						},
+						{
+							"key": "area_id",
+							"value": "1"
+						},
+						{
+							"key": "phone",
+							"value": "01766609988"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SET_DEFAULT",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/api/v1/shipping-address/set-default?address_id=609",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"shipping-address",
+						"set-default"
+					],
+					"query": [
+						{
+							"key": "address_id",
+							"value": "609"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CHECKOUT",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "LOGOUT",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYTBmNWExYmVkM2YwNGRmMzgyMWE2NWM1Y2QyNzUwZjRlYTlkNjg1ZTQxYjhlOTQyMzQzYTIxNjcxMTM5M2U2ZDYxMWU2Y2VlOGZmN2Y1NzQiLCJpYXQiOjE2NzcxMzk5NjQuNDU4MjE1LCJuYmYiOjE2NzcxMzk5NjQuNDU4MjE4LCJleHAiOjE3MDg2NzU5NjQuNDQ1NDk3LCJzdWIiOiIyNjgiLCJzY29wZXMiOltdfQ.ttICrZmOu0SjsLWl3sMtz3RVXGxxrP1F-SVwQpgY1G_H8v--XGeqN3Z-hxnvz2VrNYZ3ZhnkW5bXN1H6W8UkwdLkcFrgTGxx_u_fKL2I8953SnDa9NWSQJHuF4fwwZx_oKsR6cmm7Vxj4lOVTEyRLtRCg9NWGPQJAh_FDTUsoIm2Cd4ARZHxVkDGTyv5v35dFUWeSWLJ8_AoYQzviGMIjuktZt_8YBpnd9bPSEaNpRz-JULl0PpY6MgiT6EFpcFaVxxeMhWkkfly567CaTBpt2RKpPhj2HN0ZOz4zyQxDLPsKWdpd8x694bFHj0TPzH0Du1sjzIxYBXYm6yIIjQ93x_hZbbU6rJ40wA_oYtejlTkGZfM4UzOnO4TDbLcu200GZKO1THVWAwsWX-uVzARsm0moHNT4D4PNOTX4xOz-ve4Govr29-0LrifG87t8BazTnBpFfh6RfxlLxX0gjeD7VzXv5ShuRrlJcQXxrNS74NidfWr2C9flTD0TUZGOhB97l4N4qXXzSSiMgCdDkQcsBgq5wMYrrLeBDO4Y-M5TVv6nZDLHm0T7sJvP3J6ProwJl4k-SpPYGsbq4h_ECd2ujBu6ibkvMA50LorfG_WwaLXxhSDKAyK0r7hGq57vK1AfD0HREan016WemA4qXfTLx7nS_oyv31GwFXrGSbGEXA",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "BASE_URL",
+			"value": "https://livetest.bppshop.com.bd",
+			"type": "default",
+			"disabled": true
+		},
+		{
+			"key": "TOKEN",
+			"value": "",
+			"type": "default",
+			"disabled": true
+		},
+		{
+			"key": "BASE_URL",
+			"value": "https://backend.bppshop.com.bd",
+			"type": "default"
+		}
+	]
+}

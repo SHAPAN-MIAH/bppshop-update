@@ -1,0 +1,77 @@
+Location
+-----------------------------------
+District
+--------------
+URL: https://bppshop.com.bd/api/v1/location/districts
+Method: GET
+Response:
+{
+    "status": "success",
+    "message": "List of districts",
+    "data": [
+        {
+            "id": "1",
+            "name": "Bagerhat "
+        },
+        {
+            "id": "2",
+            "name": "Bandarban"
+        },
+        {
+            "id": "3",
+            "name": "Barguna"
+        },
+        {
+            "id": "4",
+            "name": "Barisal"
+        },
+	}]
+}
+
+Thana
+----------------
+URL: https://bppshop.com.bd/api/v1/location/thanas/1
+Method: GET
+Response:
+{
+    "status": "success",
+    "message": "List of districts",
+    "data": [
+        {
+            "id": "61",
+            "name": "Mongla"
+        },
+        {
+            "id": "62",
+            "name": "Chitalmari "
+        },
+        {
+            "id": "63",
+            "name": "Sharankhola"
+        }
+	}]
+}
+
+Area
+----------------
+URL: https://bppshop.com.bd/api/v1/location/areas/1
+Method: GET
+Response:
+{
+    "status": "success",
+    "message": "List of areas",
+    "data": [
+        {
+            "id": "1",
+            "name": "Azimpur"
+        },
+        {
+            "id": "2",
+            "name": "Kashmiri Tola"
+        },
+        {
+            "id": "3",
+            "name": "Notan Polton Line"
+        }
+    ]
+}

@@ -1,0 +1,81 @@
+.all-seller-store-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 20px;
+}
+
+.all-seller-store-container::-webkit-scrollbar {
+  display: none;
+}
+.all-seller-store-container {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.seller-store-content {
+  width: 100%;
+  height: 180px;
+  border: 1px solid gainsboro;
+  border-radius: 5px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.seller-store-banner,
+.seller-store-banner img {
+  width: 100%;
+  height: 100%;
+}
+
+.seller-store-profile-container {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  height: 100px;
+  background: rgba(10, 10, 10, 0.63);
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
+  text-align: center;
+}
+
+.seller-profile-image {
+  width: 70px;
+  height: 70px;
+  border-radius: 50px;
+  border: 2px solid gainsboro;
+  background: #fff;
+  overflow: hidden;
+  margin-top: -40px;
+  display: flex !important;
+  text-align: center;
+  justify-content: center !important;
+  margin-left: 35%;
+  /* align-items: center; */
+}
+.seller-profile-image img {
+  width: 100%;
+  height: 100%;
+}
+.sellerName{
+  margin-top: 10px;
+}
+
+
+@media screen and (max-width: 768px) {
+  .all-seller-store-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .all-seller-store-container {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 20px;
+  }
+}

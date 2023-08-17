@@ -1,0 +1,66 @@
+.agent_payment_container h3{
+  font-weight: 700;
+ font-size: 24px;
+}
+.agent_wallet_info_content{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin-top: 20px;
+}
+.agent_wallet_info{
+  border: 1px solid gainsboro;
+  border-right: none;
+  padding:  20px;
+}
+.agent_wallet_info h5{
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+.agent_wallet_info small{
+  font-weight: 500;
+  font-size: 15px;
+}
+.agent_wallet_balance{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align:  center;
+  color: rgb(56, 56, 56);
+  border: 1px solid gainsboro;
+  padding: 30px 20px;
+}
+.agent_wallet_balance h3{
+  /* width: 50%; */
+  font-size: 20px;
+  text-align: center;
+}
+.agent_wallet_balance h2{
+  font-size: 30px;
+  font-weight: 600;
+}
+.ConfirmBtn{
+  border: none;
+  background: #EF8341;
+  color: #ffff;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin-left: 20px;
+}
+.ConfirmBtn:hover{
+  background: #e66f26;
+}
+.agentPaymentErrorMessage{
+  color: red;
+}
+@media screen and (max-width: 768px) {
+  .agent_wallet_info_content{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    margin-top: 20px;
+  }
+  .agent_wallet_info{
+    border: 1px solid gainsboro;
+    border-bottom: none;
+    padding:  20px;
+  }
+}

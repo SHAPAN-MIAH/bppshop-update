@@ -1,0 +1,58 @@
+.signup_card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+  border: none;
+  overflow: hidden;
+}
+.signup_card_body {
+  padding: 40px;
+}
+.signup_card_footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  color: #333333;
+  font-size: 16px;
+  text-align: center;
+  padding: 15px 50px;
+  border-radius: 5px;
+}
+.sign_up_btn button {
+  color: white;
+  background: #ef8341;
+  padding: 10px 50px;
+  border-radius: 5px;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s;
+}
+.sign_up_btn button:hover {
+  background: #666666;
+}
+.sign_in_path a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #ef8341;
+}
+
+.SignUpModal_container {
+  display: none;
+}
+@media screen and (max-width: 768px) {
+  .signup_card_body {
+    padding: 40px 20px;
+  }
+
+  .signup_card_footer {
+    padding: 15px 30px;
+  }
+}

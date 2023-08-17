@@ -1,0 +1,22 @@
+.App {
+  /* font-family: "Abel", sans-serif; */
+  /* font-family: "Comfortaa", cursive; */
+  /* font-family: "DM Sans", sans-serif; */
+  /* font-family: "Exo 2", sans-serif; */
+  /* font-family: "Kanit", sans-serif; */
+  font-family: "Montserrat", sans-serif;
+  /* font-family: "Prompt", sans-serif; */
+  /* font-family: "Rajdhani", sans-serif; */
+  /* font-family: "Roboto", sans-serif; */
+  /* font-family: "Rubik", sans-serif; */
+  /* font-family: "Signika Negative", sans-serif; */
+  /* font-family: "Space Grotesk", sans-serif; */
+  /* font-family: "Varela Round", sans-serif; */
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}

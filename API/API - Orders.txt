@@ -1,0 +1,257 @@
+Get Order List
+-----------------------------
+URL: https://bppshop.com.bd/api/v1/customer/order/list
+Method: GET
+
+Response:
+{
+    "status": "success",
+    "message": "list of customer' orders",
+    "data": [
+        {
+            "id": 100410,
+            "customer_id": 321,
+            "customer_type": "customer",
+            "payment_status": "unpaid",
+            "order_status": "pending",
+            "payment_method": "cash_on_delivery",
+            "transaction_ref": "",
+            "order_amount": 130,
+            "shipping_address": 306,
+            "created_at": "2023-01-17T17:18:27.000000Z",
+            "updated_at": "2023-01-17T17:18:27.000000Z",
+            "discount_amount": 0,
+            "discount_type": null,
+            "coupon_code": "0",
+            "shipping_method_id": 0,
+            "shipping_cost": 120,
+            "order_group_id": "9591-sfr9W-1673975907",
+            "verification_code": "751717",
+            "seller_id": 1,
+            "seller_is": "admin",
+            "shipping_address_data": {
+                "id": 306,
+                "customer_id": 321,
+                "contact_person_name": "Rashed",
+                "address_type": "home",
+                "address": "46 Kalabagan 1st lane",
+                "city": "Dhaka",
+                "thana": "Azimpur",
+                "zip": "Azimpur",
+                "phone": "01722945055",
+                "district_id": 1,
+                "upazila_id": 1,
+                "area_id": 1,
+                "created_at": "2023-01-17T17:08:53.000000Z",
+                "updated_at": "2023-01-17T17:08:53.000000Z",
+                "state": null,
+                "country": null,
+                "latitude": null,
+                "longitude": null,
+                "is_billing": 1
+            },
+            "delivery_man_id": null,
+            "order_note": null,
+            "billing_address": 306,
+            "billing_address_data": {
+                "id": 306,
+                "customer_id": 321,
+                "contact_person_name": "Rashed",
+                "address_type": "home",
+                "address": "46 Kalabagan 1st lane",
+                "city": "Dhaka",
+                "thana": "Azimpur",
+                "zip": "Azimpur",
+                "phone": "01722945055",
+                "district_id": 1,
+                "upazila_id": 1,
+                "area_id": 1,
+                "created_at": "2023-01-17T17:08:53.000000Z",
+                "updated_at": "2023-01-17T17:08:53.000000Z",
+                "state": null,
+                "country": null,
+                "latitude": null,
+                "longitude": null,
+                "is_billing": 1
+            },
+            "order_type": "default_type",
+            "extra_discount": 0,
+            "extra_discount_type": null,
+            "checked": 0,
+            "shipping_type": "order_wise",
+            "delivery_type": null,
+            "delivery_service_name": null,
+            "third_party_delivery_tracking_id": null,
+            "delivery_man": null
+        }
+    ]
+}
+
+
+Get Order Details
+-----------------------------
+URL: https://bppshop.com.bd/api/v1/customer/order/details/100410
+Method: GET,
+Response:
+{
+    "status": "success",
+    "message": "Order details data",
+    "data": [
+        {
+            "id": 629,
+            "order_id":100410,
+            "product_id": 7160,
+            "seller_id": 1,
+            "digital_file_after_sell": null,
+            "product_details": {
+                "id": 7160,
+                "added_by": "admin",
+                "user_id": 6,
+                "name": "Black Kismiss Dry",
+                "slug": "black-kismiss-dry-gikgr0",
+                "product_type": "physical",
+                "category_ids": [
+                    {
+                        "id": "61",
+                        "position": 1
+                    },
+                    {
+                        "id": "63",
+                        "position": 2
+                    },
+                    {
+                        "id": "111",
+                        "position": 3
+                    }
+                ],
+                "brand_id": 82,
+                "unit": "gms",
+                "min_qty": 1,
+                "refundable": 1,
+                "digital_product_type": null,
+                "digital_file_ready": null,
+                "images": [
+                    "2023-01-15-63c3a9e724fed.png"
+                ],
+                "thumbnail": "2023-01-15-63c3a9e73389d.png",
+                "featured": null,
+                "flash_deal": null,
+                "video_provider": "youtube",
+                "video_url": null,
+                "colors": [
+                    {
+                        "name": "Amethyst",
+                        "code": "#9966CC"
+                    },
+                    {
+                        "name": "DarkBlue",
+                        "code": "#00008B"
+                    }
+                ],
+                "variant_product": 0,
+                "attributes": [
+                    19
+                ],
+                "choice_options": [
+                    {
+                        "name": "choice_19",
+                        "title": "gm",
+                        "options": [
+                            "100",
+                            "200"
+                        ]
+                    }
+                ],
+                "variation": [
+                    {
+                        "type": "Amethyst-100",
+                        "price": 130,
+                        "sku": "BKD-Amethyst-100",
+                        "qty": 1
+                    },
+                    {
+                        "type": "Amethyst-200",
+                        "price": 130,
+                        "sku": "BKD-Amethyst-200",
+                        "qty": 1
+                    },
+                    {
+                        "type": "DarkBlue-100",
+                        "price": 130,
+                        "sku": "BKD-DarkBlue-100",
+                        "qty": 1
+                    },
+                    {
+                        "type": "DarkBlue-200",
+                        "price": 130,
+                        "sku": "BKD-DarkBlue-200",
+                        "qty": 1
+                    }
+                ],
+                "published": 0,
+                "unit_price": 130,
+                "purchase_price": 52,
+                "tax": 0,
+                "tax_type": "percent",
+                "discount": 0,
+                "discount_type": "flat",
+                "current_stock": 4,
+                "minimum_order_qty": 1,
+                "details": "<ul>\r\n\t<li>Product Name : Black Kismiss Dry&nbsp;</li>\r\n\t<li>Weight : 100 gm</li>\r\n\t<li>Quality : Good</li>\r\n</ul>",
+                "free_shipping": 0,
+                "attachment": null,
+                "created_at": "2023-01-15T07:23:19.000000Z",
+                "updated_at": "2023-01-16T12:35:31.000000Z",
+                "status": 1,
+                "featured_status": 1,
+                "meta_title": "Black Kismiss Dry",
+                "meta_description": "Product Name : Black Kismiss Dry \r\nWeight : 100 gm\r\nQuality : Good",
+                "meta_image": "2023-01-15-63c3a9e733a7e.png",
+                "request_status": 1,
+                "denied_note": null,
+                "shipping_cost": 0,
+                "multiply_qty": 0,
+                "temp_shipping_cost": null,
+                "is_shipping_cost_updated": null,
+                "code": "169447",
+                "reviews_count": 0,
+                "translations": [],
+                "reviews": []
+            },
+            "qty": 1,
+            "price": 130,
+            "tax": 0,
+            "discount": 0,
+            "delivery_status": "pending",
+            "payment_status": "unpaid",
+            "created_at": "2023-01-17T17:18:27.000000Z",
+            "updated_at": "2023-01-17T17:18:27.000000Z",
+            "shipping_method_id": null,
+            "variant": "Amethyst-100",
+            "variation": {
+                "color": "Amethyst",
+                "gm": "100"
+            },
+            "discount_type": "discount_on_product",
+            "is_stock_decreased": 1,
+            "refund_request": 0
+        }
+    ]
+}
+
+
+Add to Cart
+--------------------
+URL: https://bppshop.com.bd/api/v1/cart/delivery-charge
+Method: POST
+Request:
+{
+    "district_id": "3"
+}
+
+Response:
+{
+    "status": "success",
+    "message": "delivery charge",
+    "delivery_charge": 120
+}

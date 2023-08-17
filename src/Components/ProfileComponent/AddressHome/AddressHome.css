@@ -1,0 +1,66 @@
+.add_new_address_btn {
+    background: #ef8341;
+    border: none;
+    padding: 6px 10px;
+    color: white;
+    border-radius: 5px;
+}
+
+.address_card_container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+    font-family: "Montserrat", sans-serif;
+}
+
+.address_card {
+    border: 1px solid #c9bdbd;
+    border-radius: 7px;
+    /* font-family: "Kanit", sans-serif; */
+    background: #fdffff;
+}
+
+.address_card_header {
+    padding: .5rem ;
+    border-bottom: 1px solid rgba(0, 0, 0, .125);
+    display: flex;
+    justify-content: space-between;
+}
+
+.address_card_header_pin, .address_card_header_edit, .address_card_header_delete {
+    font-size: 20px;
+    color: #ef8341;
+}
+
+.home_shipping_address_title {
+    font-size: 15px;
+    font-weight: 600;
+    color: #383838;
+    margin-left: 10px;
+}
+
+.address_card_body {
+    padding: 10px;
+}
+
+.address_card_body p {
+    margin-bottom: 0px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.address_card_body span {
+    font-weight: 600;
+    margin-right: 10px;
+}
+
+
+
+@media screen and (max-width: 768px) {
+    .address_card_container {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 10px;
+    }
+    
+  }

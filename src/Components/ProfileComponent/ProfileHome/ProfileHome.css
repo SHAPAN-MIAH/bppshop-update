@@ -1,0 +1,42 @@
+.account_info_header {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.custom-control-input {
+    display: none;
+}
+
+.profile_form_btn_section {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 20px;
+}
+
+.profile_update_btn {
+    background: #ef8341;
+    border: none;
+    padding: 10px 50px ;
+    border-radius: 5px;
+    color: white;
+}
+.profile_update_btn:hover {
+    background: #e66f26;
+}
+.input_field {
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #e3c2af;
+    appearance: none;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    outline: none;
+}

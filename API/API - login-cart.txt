@@ -1,0 +1,157 @@
+Login
+-----------------------------
+URL: https://bppshop.com.bd/api/v1/auth/login
+Method: POST
+Request:
+{
+    "phone": "01722945055",
+    "password": "123456789"
+}
+
+Response:
+{
+    "status": "success",
+    "message": "You have logged in successfully",
+    "is_verified": 1,
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMWM3MmUxYWI3NjYxNzhmZWE2NjI3NDVjMWRmMWM5OGU2MmI1MWQzZjUxZDQ1NjFiMjdmZDdmZjJlYjhhODcwMDNiYzAyYjdiNDQwMTMzYzMiLCJpYXQiOjE2NzM4OTE0NjcuMDIzMjA2LCJuYmYiOjE2NzM4OTE0NjcuMDIzMjA4LCJleHAiOjE3MDU0Mjc0NjcuMDE4MDE0LCJzdWIiOiIzMjEiLCJzY29wZXMiOltdfQ.jyDODh9wWXkuH0bgnG0e_AMwQL6_ifNGhVQTZTcVx-GJK7BJEgTHE5Did46vrJh8VxzbCEz3pX7Qg_YD8HqdAWYLgi91F0BrIlJgRb4OR0XQpu8P4klVW91U5QWr_-z_9v6ll3ZcggdddPDJ0GJ3fWpz_-m9p6alQeDC1nimS8AhFKemcxRlOMB12HDBuXO1YPuIvD7CbkUvnbrPUllG76RcarvRlK6v_ZDT1iUnOyMbQeA2Nw7X4kzRQwZzmyuIvRaN47uxmu5-x8tHiTBD4e6PYAqX0GCp9bmPHh5wKr9jX_xmkiQIUKV195QMwAN5pj6pQhp86Ve-NwY2zQyk3QIZ7xuosRWgWkhl5PoOX9Lj48FdCaU1uUbmxPCwWFtOPRnnF0z-t9n0F5tQXL9yONMxA2BevCNCtszK7gAg924NXl6UZeashB_GUtGi6m4wjMpb66UgZ5YD_VMuHAPCww2eapfF_DOhqcrKfZXQbkF1y4O_J4NWGM4Cfa6vERGr5ONXC0GqE9RWuiPJvxHRTu_rGPZv_ZZRkCTrhPxFbECUSBCy0mTAmKJi4sc_Hs9dTrpXU9ZUs16H3rIXcw2y96iRBSlgNJ-UkVFskaI4DHkmNZsoTRB9-5JWGXda9u8Ri2cnBaomvoSmtlSE-FYYLFY88AoiIqk5szZ_jf_OpUs",
+    "data": {
+        "id": 321,
+        "name": "Mamun Rashed",
+        "f_name": null,
+        "l_name": null,
+        "phone": "01722945055",
+        "image": "def.png",
+        "email": null,
+        "email_verified_at": null,
+        "created_at": "2023-01-15T17:42:33.000000Z",
+        "updated_at": "2023-01-15T17:51:45.000000Z",
+        "street_address": null,
+        "country": null,
+        "city": null,
+        "zip": null,
+        "house_no": null,
+        "apartment_no": null,
+        "cm_firebase_token": null,
+        "is_active": 1,
+        "payment_card_last_four": null,
+        "payment_card_brand": null,
+        "payment_card_fawry_token": null,
+        "login_medium": null,
+        "social_id": null,
+        "is_phone_verified": 1,
+        "temporary_token": null,
+        "is_email_verified": 0,
+        "wallet_balance": null,
+        "loyalty_point": null,
+        "agent_id": null
+    }
+}
+
+
+Get Cart Data
+-----------------------------
+URL: https://bppshop.com.bd/api/v1/cart
+Method: GET,
+Response:
+{
+    "status": "success",
+    "message": "cart",
+    "data": [
+        {
+            "id": 840,
+            "customer_id": "321",
+            "cart_group_id": "321-iBznh-1673890021",
+            "product_id": "7160",
+            "product_type": "physical",
+            "digital_product_type": "",
+            "color": "#9966CC",
+            "choices": {
+                "choice_19": "100"
+            },
+            "variations": {
+                "color": "Amethyst",
+                "gm": "100"
+            },
+            "variant": "Amethyst-100",
+            "quantity": 1,
+            "price": 130,
+            "tax": 0,
+            "discount": 0,
+            "slug": "black-kismiss-dry-gikgr0",
+            "name": "Black Kismiss Dry",
+            "thumbnail": "2023-01-15-63c3a9e73389d.png",
+            "seller_id": 1,
+            "seller_is": "admin",
+            "created_at": "2023-01-16T17:27:01.000000Z",
+            "updated_at": "2023-01-16T17:27:01.000000Z",
+            "shop_info": "BPP Shop",
+            "shipping_cost": 0,
+            "shipping_type": "order_wise",
+            "product": {
+                "id": 7160,
+                "name": "Black Kismiss Dry",
+                "slug": "black-kismiss-dry-gikgr0",
+                "current_stock": 4,
+                "minimum_order_qty": "1",
+                "reviews_count": "0",
+                "total_current_stock": 1,
+                "translations": [],
+                "reviews": []
+            }
+        }
+    ]
+}
+
+
+Add to Cart
+--------------------
+URL: https://bppshop.com.bd/api/v1/cart/add
+Method: POST
+Request:
+{
+    "id": "7160",
+    "color": "#9966CC",
+    "choice_19": "100",
+    "quantity": 1
+}
+
+Response:
+{
+    "status": "failed",
+    "message": "Already added!",
+    "data": []
+}
+
+Update Cart
+----------------
+URL: https://bppshop.com.bd/api/v1/cart/update
+Method: POST
+Request:
+{
+    "key": "840",
+    "quantity": "2"
+}
+Response:
+{
+    "status": "failed",
+    "message": "Sorry stock is limited",
+    "data": {
+        "status": 0,
+        "qty": 1,
+        "message": "Sorry stock is limited"
+    }
+}
+
+Remove Cart
+----------------------
+URL: https://bppshop.com.bd/api/v1/cart/remove
+Method: POST
+Request:
+{
+    "key": "840"
+}
+Response:
+{
+    "status": "success",
+    "message": "Removed from cart"
+}

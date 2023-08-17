@@ -1,0 +1,23 @@
+.pageNotFoundContainer{
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: gray;
+}
+.pageNotFoundContainer h1{
+  font-size: 100px;
+}
+.pageNotFoundContainer button{
+  border: none;
+  border-radius: 30px;
+  background: #16a0da;
+  color: #fff;
+  padding: 10px 30px;
+  margin-top: 20px;
+  transition: all .3s;
+}
+.pageNotFoundContainer button:hover{
+  background: #faa223;
+}

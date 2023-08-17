@@ -1,0 +1,53 @@
+.shiping-view-section {
+  width: 100%;
+  margin: auto;
+}
+
+.shiping_amount_container {
+  margin-top: 40px;
+  padding: 10px 10px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+}
+
+.shiping_amount_content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.amount_text {
+  font-weight: bold;
+}
+
+.coupon_input_content {
+  margin: 10px 0px;
+}
+
+.coupon_input {
+  width: 100%;
+  padding: 8px 10px;
+  outline: none;
+  margin: 5px 0px;
+  border: 1px solid rgb(175, 175, 249);
+  border-radius: 5px;
+}
+
+.coupon_btn {
+  /* background: #86bc19; */
+  background: #666666;
+  width: 100%;
+  padding: 10px 0px;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  pointer-events: none;
+}
+
+.deal-title {
+  font-size: 12px;
+}
+
+
+@media screen and (max-width: 768px){
+    
+}

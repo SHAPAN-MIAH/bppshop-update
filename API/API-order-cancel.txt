@@ -1,0 +1,14 @@
+Cancel Order
+-----------------------------
+URL: https://bppshop.com.bd/api/v1/customer/order/cancel-order
+Method: POST
+Request:
+{
+    "order_id": "100410"
+}
+
+Response:
+{
+    "status": "success",
+    "message": "Order has been cancelled",
+}

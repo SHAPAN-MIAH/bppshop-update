@@ -1,0 +1,91 @@
+Shipping address
+-------------------------------------
+All Address
+-------------------
+URL: https://bppshop.com.bd/api/v1/shipping-address/
+Method: GET
+Response:
+{
+    "status": "success",
+    "message": "List of addresses",
+    "data": [
+        {
+            "id": 308,
+            "customer_id": 321,
+            "contact_person_name": "Rashed",
+            "address_type": "home",
+            "address": "12/1 Nazma Manzil",
+            "city": "Dhaka",
+            "thana": "Azimpur",
+            "zip": "Azimpur",
+            "phone": "01722945055",
+            "district_id": "1",
+            "upazila_id": "1",
+            "area_id": "1",
+            "created_at": "2023-01-17T13:20:53.000000Z",
+            "updated_at": "2023-01-17T13:20:53.000000Z",
+            "state": null,
+            "country": null,
+            "latitude": null,
+            "longitude": null,
+            "is_billing": 1
+        }
+    ]
+}
+
+Add Address
+-------------------
+URL: https://bppshop.com.bd/api/v1/shipping-address/add
+Method: POST
+Request:
+{
+    "contact_person_name": "Rashed",
+    "address": "46 Kalabagan 1st lane",
+    "district_id": 1,
+    "upazila_id": 1,
+    "area_id": 1,
+    "phone": "01722945055"
+}
+
+Response:
+{
+    "status": "success",
+    "message": "Address added successfully",
+    "data": {
+        "id": "309",
+        "customer_id": "321",
+        "contact_person_name": "Rashed",
+        "address_type": "home",
+        "address": "46 Kalabagan 1st lane",
+        "city": "Dhaka",
+        "thana": "Azimpur",
+        "zip": "Azimpur",
+        "phone": "01722945055",
+        "district_id": "1",
+        "upazila_id": "1",
+        "area_id": "1",
+        "created_at": "2023-01-17 19:28:18",
+        "updated_at": "2023-01-17 19:28:18",
+        "state": null,
+        "country": null,
+        "latitude": null,
+        "longitude": null,
+        "is_billing": "1"
+    }
+}
+
+Set Default Address
+-------------------
+URL: https://bppshop.com.bd/api/v1/shipping-address/set-default
+Method: POST
+Request:
+{
+    "address_id": 309
+}
+
+Response:
+{
+    "status": "success",
+    "message": "Address set as default"
+}
+

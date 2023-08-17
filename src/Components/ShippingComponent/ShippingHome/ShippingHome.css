@@ -1,0 +1,170 @@
+.shipping-heading {
+  font-weight: 700;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.chooseAddressBtnAddNewAddressBtn{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 13px;
+}
+.add_shipping_address_btn {
+  text-align: center;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  padding: 15px 0px;
+  color: #ef8341;
+}
+.add_more_address_btn{
+  width: 100%;
+  padding: 9px 0px;
+}
+/* .add_shipping_address_btn:hover {
+  background: #ef8341;
+} */
+
+.progress_container {
+  display: flex;
+  height: 5px;
+  overflow: hidden;
+  font-size: 0.75rem;
+  background-color: #e9ecef;
+  border-radius: 25rem;
+  margin-top: 25px;
+}
+
+.progress_content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 70%;
+  overflow: hidden;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  background-color: #0d6efd;
+  transition: width 0.6s ease;
+  background-color: #f99d71;
+}
+
+.shipping_container {
+  margin: 20px 0px;
+}
+
+.shipping-address-heading {
+  font-weight: 400;
+  font-size: 26px;
+  color: rgb(29, 25, 25);
+  margin: 50px 0px 20px 0px;
+}
+
+.shipping_address_box {
+  width: 100%;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  border-radius: 5px;
+  padding: 20px;
+  font-size: 14px;
+}
+
+.shipped_address {
+  margin-top: 14px;
+}
+
+.shiped_address a {
+  text-decoration: none;
+}
+
+.home_text {
+  background: #ef8341;
+  color: #fff;
+  padding: 2px 5px;
+  font-size: 10px;
+  border-radius: 3px;
+}
+.edit_address,.change_text{
+  color: #86bc19;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 13px;
+}
+.edit_address :hover,.change_text:hover{
+  color: #e05906;
+}
+
+.edit_address i,.change_text i {
+  font-size: 15px;
+}
+
+.shop_payment_btn_content {
+  margin: 40px 0px;
+}
+
+.shop_payment_btn {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.shop_payment_btn a {
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+}
+
+.shop_cart_btn,
+.proceed_payment_btn {
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.shop_cart_btn {
+  background: rgb(151, 151, 151);
+}
+.shop_cart_btn:hover {
+  background: rgb(117, 117, 117);
+}
+
+.proceed_payment_btn {
+  background: #ef8341;
+}
+.proceed_payment_btn:hover {
+  background: #e05906;
+}
+
+.proceedPaymentOverLay{
+  position: absolute;
+  background: #a8a8a8a4;
+  padding: 12px 100px;
+  width: 398px;
+  height: 45px;
+  margin-top: -44px;
+  border-radius: 5px;
+  cursor: default;
+}
+
+@media screen and (max-width: 768px) {
+  .shop_payment_btn_content {
+    margin: 20px 0px;
+  }
+  .proceed_payment_btn {
+    background: #ef8341;
+    font-size: 12px;
+    padding: 10px 0px !important;
+  }
+  .chooseDeliveryAlert{
+    font-size: 12px;
+    padding: 10px 0px !important;
+  }
+  .shop_cart_btn{
+    font-size: 12px;
+    padding: 10px 0px !important;
+  }
+}
