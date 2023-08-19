@@ -19,6 +19,8 @@ const LoginModal = () => {
 
   const onSubmit = (data) => {
     dispatch(userLogin(data));
+
+    localStorage.setItem("modalLogin", "true")
   };
 
   useEffect(() => {
@@ -103,7 +105,7 @@ const LoginModal = () => {
             </div>
             <div className="login_card_footer">
               <div className="needAccountToggleBtn">
-                Need an account ? <span onClick={loginSignupToggle} style={{cursor: "pointer",fontWeight: "600", color: "#ef8341", }}>  Sign Up </span>
+                Need an account? <span onClick={loginSignupToggle} style={{cursor: "pointer",fontWeight: "600", color: "#ef8341", }}> Sign Up</span>
               </div>
             </div>
           </div>

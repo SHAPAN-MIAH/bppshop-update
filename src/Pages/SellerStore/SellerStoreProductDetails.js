@@ -9,6 +9,7 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import {
+  ClearAddToCartRes,
   addItemsToCart,
   addItemsToCartAfterLogin,
   updateItemsToCart,
@@ -38,8 +39,11 @@ const SellerStoreProductDetails = () => {
   const [variantRes, setVariantRes] = useState({});
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const cartItems = useSelector((state) => state.cart.cartItems);
+  const cartItems = useSelector((state) => state.cart.cartItems[0]?.data);
   const token = localStorage.getItem("token");
+  const { isAuthenticated } = useSelector((state) => state.user);
+  const { loginRes } = useSelector((state) => state.loginRes);
+  const { signupRes } = useSelector((state) => state.signupRes);
 
   useEffect(() => {
     axios.get(`${baseUrl}/products/details/${id}`).then((res) => {
@@ -237,7 +241,7 @@ const SellerStoreProductDetails = () => {
       });
       return;
     }
-    dispatch(addItemsToCart(id, newQty, defaultChoices));
+    // dispatch(addItemsToCart(id, newQty, defaultChoices));
     dispatch(updateItemsToCart(id, newQty, defaultChoices));
   };
 
@@ -246,59 +250,164 @@ const SellerStoreProductDetails = () => {
     if (1 >= quantity) {
       return;
     }
-    dispatch(addItemsToCart(id, newQty, defaultChoices));
+    // dispatch(addItemsToCart(id, newQty, defaultChoices));
     dispatch(updateItemsToCart(id, newQty, defaultChoices));
   };
 
+  const [modalIsOpen, setIsOpen] = React.useState(false);
+  function openModal() {
+    setIsOpen(true);
+  }
+  function closeModal() {
+    setIsOpen(false);
+  }
+
+  const modalLogin = localStorage.getItem("modalLogin");
+  const cartItemBeforeLogin = useSelector(
+    (state) => state.cartItemBeforeLogin.cartItem[0]
+  );
+
+  // add to cart after login res............
+  useEffect(() => {
+    if (isAuthenticated === true && token) {
+      (loginRes?.status === "success") | (signupRes?.status === "success") &&
+        closeModal();
+
+      if (modalLogin === "true") {
+        let color = productDetail?.colors?.map((color) => color?.code);
+        const addItemsToCartDataWithColor = {
+          id: `${productDetail?.id}`,
+          color: `${selectedColor ? selectedColor : color[0]}`,
+          quantity: `${quantityCount}`,
+        };
+
+        defaultChoices &&
+          defaultChoices.forEach((element) => {
+            addItemsToCartDataWithColor[element.name] =
+              `${element.options}`.trim();
+          });
+
+        const addItemsToCartDataWithoutColor = {
+          id: `${productDetail.id}`,
+          quantity: `${quantityCount}`,
+        };
+
+        defaultChoices &&
+          defaultChoices.forEach((element) => {
+            addItemsToCartDataWithoutColor[element.name] =
+              `${element.options}`.trim();
+          });
+
+        if (token) {
+          productDetail?.colors?.length > 0
+            ? dispatch(addItemsToCartAfterLogin(addItemsToCartDataWithColor))
+            : dispatch(
+                addItemsToCartAfterLogin(addItemsToCartDataWithoutColor)
+              );
+          addToCartOverlyLoading();
+        }
+
+        // if(AddToCartResponse?.map(i => i.status == "success")){
+
+        //   // toaster
+        //   toast.success(`Product added to cart successfully`, {
+        //     duration: 5000,
+        //     style: {
+        //       width: "100%",
+        //       height: "80px",
+        //       padding: "0px 20px",
+        //       background: "#86bc19",
+        //       color: "#fff",
+        //     },
+        //   });
+        // }
+      }
+    }
+  }, [
+    loginRes,
+    signupRes,
+    isAuthenticated,
+    token,
+    modalLogin,
+    dispatch,
+    defaultChoices,
+    productDetail,
+    quantityCount,
+    selectedColor,
+    // AddToCartResponse,
+  ]);
+
   // add to cart with price variant options..........................................
   const addToCartHandler = (productDetail, quantityCount) => {
-    let color = productDetail?.colors?.map((color) => color?.code);
-    const addItemsToCartDataWithColor = {
-      id: `${productDetail?.id}`,
-      color: `${selectedColor ? selectedColor : color[0]}`,
-      quantity: `${quantityCount}`,
-    };
-
-    defaultChoices &&
-      defaultChoices.forEach((element) => {
-        addItemsToCartDataWithColor[element.name] = `${element.options}`;
-      });
-
-    const addItemsToCartDataWithoutColor = {
-      id: `${productDetail.id}`,
-      quantity: `${quantityCount}`,
-    };
-
-    defaultChoices &&
-      defaultChoices.forEach((element) => {
-        addItemsToCartDataWithoutColor[element.name] =
-          `${element.options}`.trim();
-      });
-
-    if (token) {
-      productDetail?.colors?.length > 0
-        ? dispatch(addItemsToCartAfterLogin(addItemsToCartDataWithColor)) &&
-          dispatch(addItemsToCart(productDetail, quantityCount, defaultChoices))
-        : dispatch(addItemsToCartAfterLogin(addItemsToCartDataWithoutColor)) &&
-          dispatch(
-            addItemsToCart(productDetail, quantityCount, defaultChoices)
-          );
-    } else {
-      dispatch(addItemsToCart(productDetail, quantityCount, defaultChoices));
+    if (!token) {
+      // dispatch(addItemsToCart(productDetail, quantityCount));
+      openModal();
     }
 
-    // toaster
-    toast.success(`Product added to cart successfully`, {
-      duration: 5000,
-      style: {
-        width: "100%",
-        height: "80px",
-        padding: "0px 20px",
-        background: "#86bc19",
-        color: "#fff",
-      },
-    });
+    if (isAuthenticated === true && token) {
+      let color = productDetail?.colors?.map((color) => color?.code);
+      const addItemsToCartDataWithColor = {
+        id: `${productDetail?.id}`,
+        color: `${selectedColor ? selectedColor : color[0]}`,
+        quantity: `${quantityCount}`,
+      };
+
+      defaultChoices &&
+        defaultChoices.forEach((element) => {
+          addItemsToCartDataWithColor[element.name] =
+            `${element.options}`.trim();
+        });
+
+      const addItemsToCartDataWithoutColor = {
+        id: `${productDetail.id}`,
+        quantity: `${quantityCount}`,
+      };
+
+      defaultChoices &&
+        defaultChoices.forEach((element) => {
+          addItemsToCartDataWithoutColor[element.name] =
+            `${element.options}`.trim();
+        });
+
+      if (token) {
+        productDetail?.colors?.length > 0
+          ? dispatch(addItemsToCartAfterLogin(addItemsToCartDataWithColor))
+          : dispatch(addItemsToCartAfterLogin(addItemsToCartDataWithoutColor));
+
+        addToCartOverlyLoading();
+      }
+      // if(AddToCartResponse?.map(i => i.status == "success")){
+      //   // toaster
+      //   toast.success(`Product added to cart successfully`, {
+      //     duration: 3000,
+      //     style: {
+      //       width: "100%",
+      //       height: "80px",
+      //       padding: "0px 20px",
+      //       background: "#86bc19",
+      //       color: "#fff",
+      //     },
+      //   });
+
+      // }
+      dispatch(ClearAddToCartRes());
+    }
   };
+
+  const addToCartOverlyLoading = () => {
+    const addToCartLoaderOverlay = document.querySelector(
+      ".addToCart_loader_overlay"
+    );
+
+    addToCartLoaderOverlay.style.display = "block";
+  };
+
+  if (addedItemId) {
+    const addToCartLoaderOverlay = document.querySelector(
+      ".addToCart_loader_overlay"
+    );
+    addToCartLoaderOverlay.style.display = "none";
+  }
 
   // youtube video embed code split function............
 
@@ -317,7 +426,7 @@ const SellerStoreProductDetails = () => {
   const [modal, setModal] = useState(false);
   const [videoLoading, setVideoLoading] = useState(true);
 
-  const openModal = () => {
+  const openVideoModal = () => {
     setModal(!modal);
   };
 
@@ -386,7 +495,7 @@ const SellerStoreProductDetails = () => {
 
                         {productDetail.video_url && (
                           <div className="video_modal_btn">
-                            <button onClick={openModal}>
+                            <button onClick={openVideoModal}>
                               <AiOutlineYoutube className="videoPlayerIcon" />
                               {modal ? (
                                 <section className="modal__bg">

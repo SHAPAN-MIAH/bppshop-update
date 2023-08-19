@@ -10,6 +10,7 @@ import {
 import { imgThumbnailBaseUrl } from "../../../BaseUrl/BaseUrl";
 import toast from "react-hot-toast";
 import { SignupRedirectAction } from "../../../Redux/Actions/SignUpRedirectAction";
+import { useEffect } from "react";
 
 const CartDetailsView = () => {
   const [quantityCount, setQuantityCount] = useState(1);
@@ -19,6 +20,10 @@ const CartDetailsView = () => {
   const cartItems = useSelector((state) => {
     return state.cart.cartItems;
   });
+
+
+  const ItemQtyUpdateRes = useSelector((state) => state.ItemQtyUpdateRes.ItemQtyUpdateRes)
+
   
   //default choise option
   const choice_options = cartItems.choice_options;
@@ -38,7 +43,6 @@ const CartDetailsView = () => {
 
 
   const increaseQuantity = (id, quantity, stock) => {
-    console.log(id, quantity, stock);
 
     const newQty = quantity + 1;
     if (stock <= quantity) {
@@ -55,6 +59,20 @@ const CartDetailsView = () => {
       return;
     }
 
+
+    if(ItemQtyUpdateRes[0]?.status == "failed"){
+      toast.success(`${ItemQtyUpdateRes[0]?.message}`, {
+        duration: 3000,
+        style: {
+          width: "100%",
+          height: "80px",
+          padding: "0px 20px",
+          background: "#86bc19",
+          color: "#fff",
+        },
+      });
+    }
+
     // dispatch(addItemsToCart(id, newQty, defaultChoices));
 
     dispatch(updateItemsToCart(id, newQty));
@@ -65,13 +83,12 @@ const CartDetailsView = () => {
     if (1 >= quantity) {
       return;
     }
-    dispatch(addItemsToCart(id, newQty, defaultChoices));
+    // dispatch(addItemsToCart(id, newQty, defaultChoices));
     dispatch(updateItemsToCart(id, newQty, defaultChoices));
   };
 
   //cart item remove functionality
   const handleRemoveItemFormCart = (id) => {
-    console.log(id)
 
     dispatch(removeItemsFromCart(id));
     // toaster
@@ -87,6 +104,9 @@ const CartDetailsView = () => {
     });
   };
 
+  // useEffect(() => {
+   
+  // }, [])
 
   const CartDetailsCloseHandler = () => {
     const cartDetailsViewContainer = document.querySelector(
@@ -258,7 +278,7 @@ const CartDetailsView = () => {
               )}` : "0.00"}
             </h6>
           </div>
-          {cartItems?.length < 1 ? (
+          {!cartItems[0]?.data?.length ? (
             <button onClick={CartEmptyAlert} type="">
               Place Order
             </button>

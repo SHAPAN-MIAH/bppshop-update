@@ -17,12 +17,17 @@ import { AgentInfoReducer } from "./Reducers/AgentReducers";
 import { SignupRedirectReducer } from "./Reducers/SignupRedirectReducer";
 import CategoryReducers from "./Reducers/CategoryReducers";
 import { AdminInfoReducer } from "./Reducers/AdminReducers";
+import CartItemReducer from "./Reducers/CartItemReducers";
+import AddToCartResponseReducer from "./Reducers/AddToCartResponseReducers";
+import ItemQtyUpdateResReducer from "./Reducers/ItemQtyUpdateResReducer";
 
 
 const rootReducer = combineReducers({
   allCategories: CategoryReducers,
   searchProducts:searchProductReducer,
+  cartItemBeforeLogin: CartItemReducer,
   cart: CartReducers,
+  AddToCartResponse: AddToCartResponseReducer,
   cartGroup: CartGroupReducers,
   user: userReducer,
   loginRes: loginResReducer,
@@ -37,7 +42,8 @@ const rootReducer = combineReducers({
   deliveryCharge:deliveryChargeReducers,
   agentInfo: AgentInfoReducer,
   adminInfo: AdminInfoReducer,
-  signupRedirect: SignupRedirectReducer
+  signupRedirect: SignupRedirectReducer,
+  ItemQtyUpdateRes: ItemQtyUpdateResReducer
 });
 
 let initialState = {

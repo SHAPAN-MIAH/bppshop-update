@@ -80,7 +80,7 @@ const AllSellerStore = () => {
             </>
           ) : (
             allSellerStore &&
-            allSellerStore.map((sellerStore) => (
+            allSellerStore?.map((sellerStore) => (
               <Link
                 key={sellerStore?.id}
                 to={`/sellers-store/${sellerStore?.seller_id}`}

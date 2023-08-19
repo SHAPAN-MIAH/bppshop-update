@@ -16,7 +16,7 @@ const CheckoutComplete = () => {
           <div className="successImg">
             <img width={100} src={successImg} alt="" />
           </div>
-          <h4>Hey, {user.name}</h4>
+          <h4>Hey, {user?.name}</h4>
           <h5>Your order has been placed successfully!</h5>
 
           <div className="checkout_success_btn_container">

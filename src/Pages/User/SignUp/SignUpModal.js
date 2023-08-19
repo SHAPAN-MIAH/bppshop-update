@@ -21,6 +21,7 @@ const SignUpModal = () => {
 
   const onSubmit = (data) => {
     dispatch(userRegister(data));
+    localStorage.setItem("modalLogin", "true")
 
   };
 
@@ -166,7 +167,7 @@ const SignUpModal = () => {
             <div className="row">
               <div className="signup_card_footer login_card_footer">
                 <div className="sign_in_path">
-                  Already have account ? <span style={{cursor: "pointer", fontWeight: "600", color: "#ef8341"}} onClick={loginSignupToggle}> Sign in</span>
+                  Already have account? <span style={{cursor: "pointer", fontWeight: "600", color: "#ef8341"}} onClick={loginSignupToggle}> Sign in</span>
                 </div>
               </div>
             </div>

@@ -1,6 +1,6 @@
 const CartReducer = (state = { cartItems: [] }, action) => {
   switch (action.type) {
-    case "ADD_TO_CART":
+    // case "ADD_TO_CART":
     case "GET_CART_SUCCESS": {
       const item = action.payload;
 

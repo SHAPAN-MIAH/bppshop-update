@@ -6,6 +6,7 @@ import MetaData from "../../../Pages/Layout/MetaData";
 import {
   addItemsToCart,
   removeItemsFromCart,
+  updateItemsToCart,
 } from "../../../Redux/Actions/CartAction";
 import "./CheckoutShopCart.css";
 
@@ -13,7 +14,7 @@ const CheckoutShopCart = () => {
   const dispatch = useDispatch();
 
   const cartItems = useSelector((state) => {
-    return state.cart.cartItems;
+    return state.cart.cartItems[0]?.data;
   });
 
   // console.log(cartItems);
@@ -23,7 +24,9 @@ const CheckoutShopCart = () => {
     if (stock <= quantity) {
       return;
     }
-    dispatch(addItemsToCart(id, newQty));
+    // dispatch(addItemsToCart(id, newQty));
+
+    dispatch(updateItemsToCart(id, newQty));
   };
 
   const decreaseQuantity = (id, quantity) => {
@@ -31,7 +34,9 @@ const CheckoutShopCart = () => {
     if (1 >= quantity) {
       return;
     }
-    dispatch(addItemsToCart(id, newQty));
+    // dispatch(addItemsToCart(id, newQty));
+
+    dispatch(updateItemsToCart(id, newQty));
   };
 
   const CartEmptyAlert = () => {
@@ -47,15 +52,15 @@ const CheckoutShopCart = () => {
         <div className="shop_cart_container">
           <i>Shop name : BPP Shop</i>
 
-          {cartItems.length > 0 ? (
+          {cartItems?.length > 0 ? (
             <div className="table-responsive">
               <table className="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table my-3">
                 <thead className="">
-                  <tr className="text-center">
+                  <tr className="">
                     <th className="font-weight-bold">SL#</th>
-                    <th className="font-weight-bold">Product Images</th>
+                    <th className="font-weight-bold">Product</th>
                     <th className="font-weight-bold">Product Name</th>
-                    <th className="font-weight-bold">Unit</th>
+                    {/* <th className="font-weight-bold">Unit</th> */}
                     <th className="font-weight-bold">Unit price</th>
                     <th className="font-weight-bold">Qty</th>
                     <th className="font-weight-bold">Price</th>
@@ -65,55 +70,50 @@ const CheckoutShopCart = () => {
                 <tbody>
                   {cartItems?.map((item, index) => {
                     return (
-                      <tr key={item.product.id}>
+                      <tr key={item.id}>
                         <td>{index + 1}</td>
                         <td>
                           <img
                             style={{ width: "40px" }}
-                            src={
-                              imgThumbnailBaseUrl +
-                              `/${item?.product?.thumbnail}`
-                            }
+                            src={imgThumbnailBaseUrl + `/${item?.thumbnail}`}
                             alt=""
                           />
                         </td>
                         <td>
                           {" "}
                           <small>
-                            {item?.product?.name?.toString().substring(0, 16)}
+                            {item?.name?.toString().substring(0, 16)}
                             ..
-                            
                           </small>
                         </td>
-                        <td>
+                        {/* <td>
                           {" "}
                           <small>
-                          <small>
-                            {item?.product?.choice_options?.map(
-                              (option) => option.options[0]
-                            )}
-                          </small>
-                            {item?.product?.choice_options?.map(
+                            <small>
+                              {item?.choices?.map(
+                                (option) => option.options[0]
+                              )}
+                            </small>
+                            {item?.choices?.map(
                               (option) => option.title
                             )}
                           </small>
-                        </td>
+                        </td> */}
                         <td>
                           {" "}
-                          {item?.product?.discount > 0 ? (
-                            <div >
+                          {item?.discount > 0 ? (
+                            <div>
                               {" "}
                               <small className="m-1">
                                 &#2547;{" "}
-                                {item?.product?.unit_price -
-                                  item?.product?.discount}
+                                {item?.price - item?.discount}
                               </small>
                               <small className="m-1">
-                                <del>&#2547; {item?.product?.unit_price}</del>
+                                <del>&#2547; {item?.price}</del>
                               </small>
                             </div>
                           ) : (
-                            <small>&#2547; {item?.product?.unit_price}</small>
+                            <small>&#2547; {item?.price}</small>
                           )}
                         </td>
                         <td>
@@ -121,7 +121,11 @@ const CheckoutShopCart = () => {
                           <div className="quantity-set">
                             <small
                               onClick={() =>
-                                decreaseQuantity(item?.product, item?.quantity)
+                                decreaseQuantity(
+                                  item?.id,
+                                  item?.quantity,
+                                  item?.choice_options
+                                )
                               }
                               className="shopCartMinusBtn"
                             >
@@ -133,9 +137,10 @@ const CheckoutShopCart = () => {
                             <small
                               onClick={() =>
                                 increaseQuantity(
-                                  item?.product,
+                                  item?.id,
                                   item?.quantity,
-                                  item?.product?.current_stock
+                                  item?.current_stock
+                                  // item?.choice_options
                                 )
                               }
                               className="shopCartPlusBtn"
@@ -145,24 +150,21 @@ const CheckoutShopCart = () => {
                           </div>
                         </td>
                         <td>
-                          {item?.product?.discount > 0 ? (
+                          {item?.discount > 0 ? (
                             <small className="mx-2">
                               Total : &#2547;
-                              {item?.quantity *
-                                (item?.product?.unit_price -
-                                  item?.product?.discount)}
+                              {item?.quantity * (item?.price - item?.discount)}
                             </small>
                           ) : (
                             <small className="mx-2">
-                              Total : &#2547;{" "}
-                              {item?.quantity * item?.product?.unit_price}
+                              Total : &#2547; {item?.quantity * item?.price}
                             </small>
                           )}
                         </td>
                         <td>
                           <span
                             onClick={() =>
-                              dispatch(removeItemsFromCart(item?.product?.id))
+                              dispatch(removeItemsFromCart(item?.id))
                             }
                             className="cartItemDeleteBtn"
                           >

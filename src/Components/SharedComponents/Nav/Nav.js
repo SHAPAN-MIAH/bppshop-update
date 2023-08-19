@@ -122,6 +122,7 @@ const Nav = () => {
         localStorage.removeItem("token");
         localStorage.removeItem("agentId");
         localStorage.removeItem("SignupRedirect");
+        localStorage.removeItem("modalLogin");
 
         navigate("/");
 

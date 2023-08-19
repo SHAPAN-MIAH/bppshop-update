@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import defaultProImg from "../../Assets/Images/defaultImg.jpg";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -9,8 +9,34 @@ import { imgThumbnailBaseUrl } from "../../BaseUrl/BaseUrl";
 import { Link, useParams } from "react-router-dom";
 import toast from "react-hot-toast";
 import { RatingStar } from "rating-star";
+import LoginModal from "../User/Login/LoginModal";
+import SignUpModal from "../User/SignUp/SignUpModal";
+import Modal from "react-modal";
+
+Modal.setAppElement("#root");
+
+const customStyles = {
+  content: {
+    width: "1050px",
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+    borderRadius: "10px",
+    paddingBottom: "20px",
+  },
+};
 
 const BrandsProductsCard = ({ product }) => {
+  const [modalIsOpen, setIsOpen] = React.useState(false);
+  function openModal() {
+    setIsOpen(true);
+  }
+  function closeModal() {
+    setIsOpen(false);
+  }
   const token = localStorage.getItem("token");
   const { brandName, brandId } = useParams();
 
@@ -34,96 +60,147 @@ const BrandsProductsCard = ({ product }) => {
   const [quantity, setQuantity] = useState(1);
 
   const dispatch = useDispatch();
-  const cartItems = useSelector((state) => state.cart.cartItems);
-  const cartItemsId = cartItems.map((i) => i.product.id);
-  const addedItemId = cartItemsId.find((i) => i === id);
+  const cartItems = useSelector((state) => state.cart.cartItems?.[0]?.data);
+  const cartItemsId = cartItems?.map((i) => i?.product_id);
+  const addedItemId = cartItemsId?.find((i) => i == id);
 
-  // console.log(addedItemId)
+  const { isAuthenticated } = useSelector((state) => state.user);
+  const { loginRes } = useSelector((state) => state.loginRes);
+  const { signupRes } = useSelector((state) => state.signupRes);
+  const modalLogin = localStorage.getItem("modalLogin");
+  const cartItemBeforeLogin = useSelector(
+    (state) => state.cartItemBeforeLogin.cartItem
+  );
 
+  useEffect(() => {
+    if (isAuthenticated === true && token) {
+      (loginRes?.status === "success") | (signupRes?.status === "success") &&
+        closeModal();
+
+      if (modalLogin === "true") {
+        // default choice option.....
+        const choice_options = cartItemBeforeLogin[0]?.product?.choice_options;
+        const choice_options_name = choice_options?.map(
+          (option) => option.name
+        );
+        const choice_options_defaultValue = choice_options?.map(
+          (option) => option?.options[0]
+        );
+        const defaultChoices = choice_options_name?.map((name, index) => ({
+          name,
+          options: choice_options_defaultValue[index],
+        }));
+
+        let color = colors?.map((color) => color?.code);
+
+        const addItemsToCartDataWithColor = {
+          id: `${cartItemBeforeLogin[0]?.product?.id}`,
+          color: `${color[0]}`,
+          quantity: `${quantity}`,
+        };
+
+        const addItemsToCartDataWithoutColor = {
+          id: `${cartItemBeforeLogin[0]?.product?.id}`,
+          quantity: `${quantity}`,
+        };
+
+        defaultChoices?.forEach((element) => {
+          addItemsToCartDataWithColor[element.name] =
+            `${element.options}`.trim();
+        });
+
+        defaultChoices?.forEach((element) => {
+          addItemsToCartDataWithoutColor[element.name] =
+            `${element.options}`.trim();
+        });
+
+        if ((loginRes?.status === "success") || (signupRes?.status === "success")
+        ) {
+          cartItemBeforeLogin[0]?.product?.colors?.length > 0
+            ? dispatch(addItemsToCartAfterLogin(addItemsToCartDataWithColor))
+            : dispatch(
+                addItemsToCartAfterLogin(addItemsToCartDataWithoutColor)
+              );
+
+
+              addToCartOverlyLoading()
+        }
+      }
+    }
+  }, [loginRes, signupRes, isAuthenticated, token, cartItemBeforeLogin, modalLogin, colors, dispatch, quantity]);
+
+  // Add to cart functionality.............................
   const addToCartHandler = (product, quantity) => {
-    //default choise option
-    const choice_options = product.choice_options;
-    const choice_options_name = choice_options.map((option) => option.name);
 
-    const choice_options_defaultValue = choice_options.map(
-      (option) => option.options[0]
-    );
+    if (!token) {
+      dispatch(addItemsToCart(product, quantity));
+      openModal();
 
-    const defaultChoices = choice_options_name.map((name, index) => ({
-      name,
-      options: choice_options_defaultValue[index],
-    }));
-
-    dispatch(addItemsToCart(product, quantity, defaultChoices));
-
-    // toaster
-    toast.success(`Product added to cart successfully`, {
-      duration: 5000,
-
-      style: {
-        width: "100%",
-        height: "80px",
-        padding: "0px 20px",
-        background: "#86bc19",
-        color: "#fff",
-      },
-    });
-
-    let color = colors?.map((color) => color?.code);
-
-    const addItemsToCartDataWithColor = {
-      id: `${product.id}`,
-      color: `${color[0]}`,
-      quantity: `${quantity}`,
-    };
-
-    const addItemsToCartDataWithoutColor = {
-      id: `${product.id}`,
-      quantity: `${quantity}`,
-    };
-
-    defaultChoices.forEach((element) => {
-      addItemsToCartDataWithColor[element.name] = `${element.options}`.trim();
-    });
-
-    defaultChoices.forEach((element) => {
-      addItemsToCartDataWithoutColor[element.name] =
-        `${element.options}`.trim();
-    });
-
-    if (token) {
-      product?.colors?.length > 0
-        ? dispatch(addItemsToCartAfterLogin(addItemsToCartDataWithColor))
-        : dispatch(addItemsToCartAfterLogin(addItemsToCartDataWithoutColor));
     }
 
-    // Animate the product image to the cart container
-    const productImage = document.querySelector(".product-card-body img");
+    if (isAuthenticated === true && token) {
+      //default choice option.....
+      const choice_options = product.choice_options;
+      const choice_options_name = choice_options.map((option) => option.name);
+      const choice_options_defaultValue = choice_options.map(
+        (option) => option.options[0]
+      );
+      const defaultChoices = choice_options_name.map((name, index) => ({
+        name,
+        options: choice_options_defaultValue[index],
+      }));
 
-    const productImageClone = productImage.cloneNode(true);
-    document.body.appendChild(productImageClone);
+      let color = colors?.map((color) => color?.code);
 
-    // const cart = document.querySelector(".cart");
-    // const cartRect = cart.getBoundingClientRect();
-    // const productImageRect = productImage.getBoundingClientRect();
+      const addItemsToCartDataWithColor = {
+        id: `${product.id}`,
+        color: `${color[0]}`,
+        quantity: `${quantity}`,
+      };
 
-    const animation = productImageClone.animate(
-      // [
-      //   {
-      //     transform: `translate(${productImageRect.left}px, ${productImageRect.top}px)`,
-      //   },
-      //   { transform: `translate(${cartRect.top}px, ${cartRect.top}px)` },
-      // ],
-      {
-        duration: 100,
-        easing: "ease-in-out",
+      const addItemsToCartDataWithoutColor = {
+        id: `${product.id}`,
+        quantity: `${quantity}`,
+      };
+
+      defaultChoices.forEach((element) => {
+        addItemsToCartDataWithColor[element.name] = `${element.options}`.trim();
+      });
+
+      defaultChoices.forEach((element) => {
+        addItemsToCartDataWithoutColor[element.name] =
+          `${element.options}`.trim();
+      });
+
+      if (isAuthenticated === true && token) {
+        product?.colors?.length > 0
+          ? dispatch(addItemsToCartAfterLogin(addItemsToCartDataWithColor))
+          : dispatch(addItemsToCartAfterLogin(addItemsToCartDataWithoutColor));
       }
+
+
+      addToCartOverlyLoading()
+    }
+    
+  };
+
+  const addToCartOverlyLoading = () => {
+    
+    const addToCartLoaderOverlay = document.querySelector(
+      ".addToCart_loader_overlay"
     );
 
-    animation.onfinish = () => {
-      productImageClone.remove();
-    };
+    addToCartLoaderOverlay.style.display = "block";
   };
+
+  if (addedItemId) {
+    const addToCartLoaderOverlay = document.querySelector(
+      ".addToCart_loader_overlay"
+    );
+
+    addToCartLoaderOverlay.style.display = "none";
+
+  }
 
   const scrollTop = () => {
     document.body.scrollTop = 0;
@@ -260,6 +337,26 @@ const BrandsProductsCard = ({ product }) => {
             </div> */}
         </div>
       </div>
+
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        style={customStyles}
+        contentLabel="Example Modal"
+      >
+        <span onClick={closeModal} className="modalCloseBtn">
+          <i className="bi bi-x-lg"></i>
+        </span>
+        <br />
+        <div className="LoginModal_container">
+          <LoginModal />
+        </div>
+        <div className="SignUpModal_container">
+          <SignUpModal />
+        </div>
+        <br />
+        <br />
+      </Modal>
     </>
   );
 };

@@ -4,13 +4,14 @@ import delivery from "../../../Assets/Images/shiping-icons/delivery.png";
 import money from "../../../Assets/Images/shiping-icons/money.png";
 import Genuine from "../../../Assets/Images/shiping-icons/Genuine.png";
 import Payment from "../../../Assets/Images/shiping-icons/Payment.png";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import MetaData from "./../../Layout/MetaData";
+import { useEffect } from "react";
 
 const ShippingDetails = () => {
   const cartItems = useSelector((state) => {
-    return state.cart.cartItems;
+    return state.cart.cartItems[0]?.data;
   });
   // console.log(cartItems);
   const { deliveryCharge } = useSelector((state) => state?.deliveryCharge);
@@ -18,13 +19,13 @@ const ShippingDetails = () => {
 
   const totalDiscount = parseInt(
     `${cartItems?.reduce(
-      (acc, item) => acc + item?.quantity * item?.product?.discount,
+      (acc, item) => acc + item?.quantity * item?.discount,
       0
     )}`
   );
   const totalPrice = parseInt(
     `${cartItems?.reduce(
-      (acc, item) => acc + item?.quantity * item?.product?.unit_price,
+      (acc, item) => acc + item?.quantity * item?.price,
       0
     )}`
   );
@@ -32,6 +33,12 @@ const ShippingDetails = () => {
   if (deliveryCost > 0) {
     grandTotalPrice = totalPrice + deliveryCost - totalDiscount;
   }
+
+
+  const navigate = useNavigate();
+  useEffect(() => {
+    cartItems?.length < 1 && navigate("/")
+  })
 
   return (
     <>
@@ -50,7 +57,7 @@ const ShippingDetails = () => {
                     &#2547;{" "}
                     {`${cartItems?.reduce(
                       (acc, item) =>
-                        acc + item?.quantity * item?.product?.unit_price,
+                        acc + item?.quantity * item?.price,
                       0
                     )}`}
                     .00

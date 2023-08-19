@@ -6,6 +6,7 @@ import "./Layout.css";
 import Cart from "../../Components/Cart/Cart";
 import CartDetailsView from "./../../Components/Cart/CartDetailsView/CartDetailsView";
 import { Toaster } from "react-hot-toast";
+import preloader from "../../Assets/Images/loading.gif"
 
 // const notify = () => toast('Here is your toast.');
 
@@ -77,8 +78,12 @@ const Layout = ({ children }) => {
           className="cartDetailsView_section_overlay"
         ></div>
         <div className="addToCart_loader_overlay">
-          <div className="w-100 h-100 d-flex justify-content-center align-items-center text-white">
+          <div className="w-100 h-100 d-flex justify-content-center align-items-center text-center text-white">
+            <div>
+            <img width={150} src={preloader} alt=""/>
+            <br/>
             <h4>Product Adding In Cart...</h4>
+            </div>
           </div>
         </div>
       </div>

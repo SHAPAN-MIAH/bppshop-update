@@ -42,6 +42,7 @@ const ProductCard = ({ product }) => {
 
   const { slug, subSlug, subSubSlug } = useParams();
   const token = localStorage.getItem("token");
+  const modalLogin = localStorage.getItem("modalLogin");
   const location = useLocation();
 
   const {
@@ -60,6 +61,11 @@ const ProductCard = ({ product }) => {
   const [quantity, setQuantity] = useState(1);
 
   const dispatch = useDispatch();
+  const cartItemBeforeLogin = useSelector(
+    (state) => state.cartItemBeforeLogin.cartItem
+  );
+
+  // console.log(cartItemBeforeLogin)
   const cartItems = useSelector((state) => state.cart.cartItems?.[0]?.data);
   const cartGroupItems = useSelector((state) => state.cartGroup.cartGroupItems);
   const cartItemsId = cartItems?.map((i) => i?.product_id);
@@ -69,26 +75,74 @@ const ProductCard = ({ product }) => {
   const { loginRes } = useSelector((state) => state.loginRes);
   const { signupRes } = useSelector((state) => state.signupRes);
 
-  const [loading, setLoading] = useState(true);
-
-  const [selectProductForAddToCart, setSelectProductForAddToCart] = useState();
 
   useEffect(() => {
     if (isAuthenticated === true && token) {
       (loginRes?.status === "success") | (signupRes?.status === "success") &&
         closeModal();
+
+      if (modalLogin === "true") {
+        // default choice option.....
+        const choice_options = cartItemBeforeLogin[0]?.product?.choice_options;
+        const choice_options_name = choice_options?.map(
+          (option) => option.name
+        );
+        const choice_options_defaultValue = choice_options?.map(
+          (option) => option?.options[0]
+        );
+        const defaultChoices = choice_options_name?.map((name, index) => ({
+          name,
+          options: choice_options_defaultValue[index],
+        }));
+
+        let color = colors?.map((color) => color?.code);
+
+        const addItemsToCartDataWithColor = {
+          id: `${cartItemBeforeLogin[0]?.product?.id}`,
+          color: `${color[0]}`,
+          quantity: `${quantity}`,
+        };
+
+        const addItemsToCartDataWithoutColor = {
+          id: `${cartItemBeforeLogin[0]?.product?.id}`,
+          quantity: `${quantity}`,
+        };
+
+        defaultChoices?.forEach((element) => {
+          addItemsToCartDataWithColor[element.name] =
+            `${element.options}`.trim();
+        });
+
+        defaultChoices?.forEach((element) => {
+          addItemsToCartDataWithoutColor[element.name] =
+            `${element.options}`.trim();
+        });
+
+        if ((loginRes?.status === "success") || (signupRes?.status === "success")
+        ) {
+          cartItemBeforeLogin[0]?.product?.colors?.length > 0
+            ? dispatch(addItemsToCartAfterLogin(addItemsToCartDataWithColor))
+            : dispatch(
+                addItemsToCartAfterLogin(addItemsToCartDataWithoutColor)
+              );
+
+
+              addToCartOverlyLoading()
+        }
+      }
     }
-  }, [loginRes, signupRes, isAuthenticated, token]);
+  }, [loginRes, signupRes, isAuthenticated, token, cartItemBeforeLogin, modalLogin, colors, dispatch, quantity]);
 
-
-
+  // Add to cart functionality.............................
   const addToCartHandler = (product, quantity) => {
-    // setSelectProductForAddToCart(product, quantity)
-    
-    if (isAuthenticated === true && token && (loginRes?.status === "success") | (signupRes?.status === "success")) {
 
-      // console.log(selectProductForAddToCart);
+    if (!token) {
+      dispatch(addItemsToCart(product, quantity));
+      openModal();
 
+    }
+
+    if (isAuthenticated === true && token) {
       //default choice option.....
       const choice_options = product.choice_options;
       const choice_options_name = choice_options.map((option) => option.name);
@@ -122,42 +176,20 @@ const ProductCard = ({ product }) => {
           `${element.options}`.trim();
       });
 
-      if (
-        isAuthenticated === true &&
-        token &&
-        (loginRes?.status === "success") | (signupRes?.status === "success")
-      ) {
+      if (isAuthenticated === true && token) {
         product?.colors?.length > 0
           ? dispatch(addItemsToCartAfterLogin(addItemsToCartDataWithColor))
           : dispatch(addItemsToCartAfterLogin(addItemsToCartDataWithoutColor));
       }
-      addToCartOverlyLoading();
 
 
-    }else{
-      openModal();
+      addToCartOverlyLoading()
     }
-
-    // toaster
-    // if(addedItemId){
-    //   toast.success(`Product added to cart successfully`, {
-    //     duration: 5000,
-
-    //     style: {
-    //       width: "100%",
-    //       height: "80px",
-    //       padding: "0px 20px",
-    //       background: "#86bc19",
-    //       color: "#fff",
-    //     },
-    //   });
-    // }
+    
   };
 
-  
-  
-
   const addToCartOverlyLoading = () => {
+    
     const addToCartLoaderOverlay = document.querySelector(
       ".addToCart_loader_overlay"
     );
@@ -171,17 +203,22 @@ const ProductCard = ({ product }) => {
     );
 
     addToCartLoaderOverlay.style.display = "none";
+
+    // toaster
+    // toast.success(`Product added to cart successfully`, {
+    //   duration: 2000,
+
+    //   style: {
+    //     width: "100%",
+    //     height: "80px",
+    //     padding: "0px 20px",
+    //     background: "#86bc19",
+    //     color: "#fff",
+    //   },
+    // });
   }
 
-  // const addToCartOverlyLoadingDone = () => {
-  //   const cartDetailsViewSectionOverlay = document.querySelector(
-  //     ".cartDetailsView_section_overlay"
-  //   );
-
-  //   cartDetailsViewSectionOverlay.style.display = "none";
-
-  // }
-
+  
 
   const scrollTop = () => {
     document.body.scrollTop = 0;

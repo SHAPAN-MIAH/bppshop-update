@@ -3,9 +3,15 @@ export const SignupRedirectReducer = (state = { signupRedirect: {} }, action) =>
     case "SIGNUP_REDIRECT":
       return {
         ...state,
-        isAuthenticated: action.payload,
+        signupRedirect: action.payload,
       };
 
+      case "CLEAR_SIGNUP_REDIRECT" : 
+      {
+        return {
+          signupRedirect: {},
+        };
+      }
     default:
       return state;
   }

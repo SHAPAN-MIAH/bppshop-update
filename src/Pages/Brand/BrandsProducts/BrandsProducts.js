@@ -17,7 +17,7 @@ const BrandsProducts = () => {
   useEffect(() => {
     axios
       .get(`${baseUrl}/brands/products/${brandId}`)
-      .then((res) => setBrandProducts(res?.data.data));
+      .then((res) => setBrandProducts(res?.data?.data));
     setLoading(false);
   }, [brandId]);
 
@@ -52,7 +52,7 @@ const BrandsProducts = () => {
               <Skeleton height="335px" borderRadius="10px" count={1} />
             </>
           ) : (
-            brandProducts.map((product) => (
+            brandProducts?.map((product) => (
               <BrandsProductsCard key={product?.id} product={product}/>
             ))
           )}

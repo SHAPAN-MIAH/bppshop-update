@@ -12,6 +12,7 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import {
+  ClearAddToCartRes,
   addItemsToCart,
   addItemsToCartAfterLogin,
   updateItemsToCart,
@@ -28,6 +29,25 @@ import "react-modal-video/scss/modal-video.scss";
 import { AiOutlineYoutube, AiFillPlayCircle } from "react-icons/ai";
 import MetaData from "../Layout/MetaData";
 // import { BiLoaderAlt } from "react-icons/bi";
+import Modal from "react-modal";
+import LoginModal from "../User/Login/LoginModal";
+import SignUpModal from "../User/SignUp/SignUpModal";
+
+Modal.setAppElement("#root");
+
+const customStyles = {
+  content: {
+    width: "1050px",
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+    borderRadius: "10px",
+    paddingBottom: "20px",
+  },
+};
 
 const ProductDetailsPage = () => {
   const { slug, subSlug, subSubSlug, id } = useParams();
@@ -40,9 +60,15 @@ const ProductDetailsPage = () => {
   const [variantRes, setVariantRes] = useState({});
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const cartItems = useSelector((state) => state.cart.cartItems);
+  const cartItems = useSelector((state) => state.cart.cartItems?.[0]?.data);
+  const AddToCartResponse = useSelector(
+    (state) => state.AddToCartResponse.AddToCartResponse
+  );
   const token = localStorage.getItem("token");
   const sellerId = localStorage.getItem("sellerId");
+  const { isAuthenticated } = useSelector((state) => state.user);
+  const { loginRes } = useSelector((state) => state.loginRes);
+  const { signupRes } = useSelector((state) => state.signupRes);
 
   // Product Details............................
   useEffect(() => {
@@ -64,12 +90,12 @@ const ProductDetailsPage = () => {
   //   token && axios.post(`${baseUrl}/customer/audit-log`, auditLog, config);
   // }, []);
 
-  const cartItemsId = cartItems.map((i) => i?.product?.id);
-  const addedItemId = cartItemsId.find((i) => i === newId);
-  const isItemExist = cartItems.find((i) => i?.product?.id === addedItemId);
+  const cartItemsId = cartItems?.map((i) => i?.product_id);
+  const addedItemId = cartItemsId?.find((i) => i == newId);
+  const isItemExist = cartItems?.find((i) => i?.product_id == addedItemId);
   const paramId = subSubSlug;
   const productDetailsPathId = productDetail?.id?.toString();
-  const productDetailsPath = productDetailsPathId === paramId;
+  const productDetailsPath = productDetailsPathId == paramId;
   const choiceOptions = productDetail?.choice_options?.map(
     (list) => list?.options
   );
@@ -243,7 +269,7 @@ const ProductDetailsPage = () => {
       });
       return;
     }
-    dispatch(addItemsToCart(id, newQty, defaultChoices));
+    // dispatch(addItemsToCart(id, newQty, defaultChoices));
     dispatch(updateItemsToCart(id, newQty, defaultChoices));
   };
 
@@ -252,59 +278,164 @@ const ProductDetailsPage = () => {
     if (1 >= quantity) {
       return;
     }
-    dispatch(addItemsToCart(id, newQty, defaultChoices));
+    // dispatch(addItemsToCart(id, newQty, defaultChoices));
     dispatch(updateItemsToCart(id, newQty, defaultChoices));
   };
 
+  const [modalIsOpen, setIsOpen] = React.useState(false);
+  function openModal() {
+    setIsOpen(true);
+  }
+  function closeModal() {
+    setIsOpen(false);
+  }
+
+  const modalLogin = localStorage.getItem("modalLogin");
+  const cartItemBeforeLogin = useSelector(
+    (state) => state.cartItemBeforeLogin.cartItem[0]
+  );
+
+  // add to cart after login res............
+  useEffect(() => {
+    if (isAuthenticated === true && token) {
+      (loginRes?.status === "success") | (signupRes?.status === "success") &&
+        closeModal();
+
+      if (modalLogin === "true") {
+        let color = productDetail?.colors?.map((color) => color?.code);
+        const addItemsToCartDataWithColor = {
+          id: `${productDetail?.id}`,
+          color: `${selectedColor ? selectedColor : color[0]}`,
+          quantity: `${quantityCount}`,
+        };
+
+        defaultChoices &&
+          defaultChoices.forEach((element) => {
+            addItemsToCartDataWithColor[element.name] =
+              `${element.options}`.trim();
+          });
+
+        const addItemsToCartDataWithoutColor = {
+          id: `${productDetail.id}`,
+          quantity: `${quantityCount}`,
+        };
+
+        defaultChoices &&
+          defaultChoices.forEach((element) => {
+            addItemsToCartDataWithoutColor[element.name] =
+              `${element.options}`.trim();
+          });
+
+        if (token) {
+          productDetail?.colors?.length > 0
+            ? dispatch(addItemsToCartAfterLogin(addItemsToCartDataWithColor))
+            : dispatch(
+                addItemsToCartAfterLogin(addItemsToCartDataWithoutColor)
+              );
+          addToCartOverlyLoading();
+        }
+
+        // if(AddToCartResponse?.map(i => i.status == "success")){
+
+        //   // toaster
+        //   toast.success(`Product added to cart successfully`, {
+        //     duration: 5000,
+        //     style: {
+        //       width: "100%",
+        //       height: "80px",
+        //       padding: "0px 20px",
+        //       background: "#86bc19",
+        //       color: "#fff",
+        //     },
+        //   });
+        // }
+      }
+    }
+  }, [
+    loginRes,
+    signupRes,
+    isAuthenticated,
+    token,
+    modalLogin,
+    dispatch,
+    defaultChoices,
+    productDetail,
+    quantityCount,
+    selectedColor,
+    AddToCartResponse,
+  ]);
+
   // add to cart with price variant options..........................................
   const addToCartHandler = (productDetail, quantityCount) => {
-    let color = productDetail?.colors?.map((color) => color?.code);
-    const addItemsToCartDataWithColor = {
-      id: `${productDetail?.id}`,
-      color: `${selectedColor ? selectedColor : color[0]}`,
-      quantity: `${quantityCount}`,
-    };
-
-    defaultChoices &&
-      defaultChoices.forEach((element) => {
-        addItemsToCartDataWithColor[element.name] = `${element.options}`.trim();
-      });
-
-    const addItemsToCartDataWithoutColor = {
-      id: `${productDetail.id}`,
-      quantity: `${quantityCount}`,
-    };
-
-    defaultChoices &&
-      defaultChoices.forEach((element) => {
-        addItemsToCartDataWithoutColor[element.name] =
-          `${element.options}`.trim();
-      });
-
-    if (token) {
-      productDetail?.colors?.length > 0
-        ? dispatch(addItemsToCartAfterLogin(addItemsToCartDataWithColor)) &&
-          dispatch(addItemsToCart(productDetail, quantityCount, defaultChoices))
-        : dispatch(addItemsToCartAfterLogin(addItemsToCartDataWithoutColor)) &&
-          dispatch(
-            addItemsToCart(productDetail, quantityCount, defaultChoices)
-          );
-    } else {
-      dispatch(addItemsToCart(productDetail, quantityCount, defaultChoices));
+    if (!token) {
+      // dispatch(addItemsToCart(productDetail, quantityCount));
+      openModal();
     }
 
-    // toaster
-    toast.success(`Product added to cart successfully`, {
-      duration: 5000,
-      style: {
-        width: "100%",
-        height: "80px",
-        padding: "0px 20px",
-        background: "#86bc19",
-        color: "#fff",
-      },
-    });
+    if (isAuthenticated === true && token) {
+      let color = productDetail?.colors?.map((color) => color?.code);
+      const addItemsToCartDataWithColor = {
+        id: `${productDetail?.id}`,
+        color: `${selectedColor ? selectedColor : color[0]}`,
+        quantity: `${quantityCount}`,
+      };
+
+      defaultChoices &&
+        defaultChoices.forEach((element) => {
+          addItemsToCartDataWithColor[element.name] =
+            `${element.options}`.trim();
+        });
+
+      const addItemsToCartDataWithoutColor = {
+        id: `${productDetail.id}`,
+        quantity: `${quantityCount}`,
+      };
+
+      defaultChoices &&
+        defaultChoices.forEach((element) => {
+          addItemsToCartDataWithoutColor[element.name] =
+            `${element.options}`.trim();
+        });
+
+      if (token) {
+        productDetail?.colors?.length > 0
+          ? dispatch(addItemsToCartAfterLogin(addItemsToCartDataWithColor))
+          : dispatch(addItemsToCartAfterLogin(addItemsToCartDataWithoutColor));
+
+        addToCartOverlyLoading();
+      }
+      // if(AddToCartResponse?.map(i => i.status == "success")){
+      //   // toaster
+      //   toast.success(`Product added to cart successfully`, {
+      //     duration: 3000,
+      //     style: {
+      //       width: "100%",
+      //       height: "80px",
+      //       padding: "0px 20px",
+      //       background: "#86bc19",
+      //       color: "#fff",
+      //     },
+      //   });
+
+      // }
+      dispatch(ClearAddToCartRes());
+    }
   };
+
+  const addToCartOverlyLoading = () => {
+    const addToCartLoaderOverlay = document.querySelector(
+      ".addToCart_loader_overlay"
+    );
+
+    addToCartLoaderOverlay.style.display = "block";
+  };
+
+  if (addedItemId) {
+    const addToCartLoaderOverlay = document.querySelector(
+      ".addToCart_loader_overlay"
+    );
+    addToCartLoaderOverlay.style.display = "none";
+  }
 
   const [isOpen, setOpen] = useState(false);
 
@@ -341,9 +472,8 @@ const ProductDetailsPage = () => {
   }
 
   const SellerNameSave = (sellerName) => {
-    localStorage.setItem("sellerName", sellerName)
+    localStorage.setItem("sellerName", sellerName);
   };
-
 
   return (
     <>
@@ -725,27 +855,30 @@ const ProductDetailsPage = () => {
               {productDetail?.seller && (
                 <div className="seller-product-suggestion-container">
                   <div className="seller-store-content">
-                    <Link to={`/sellers-store/${productDetail?.seller?.id}`}
-                    onClick={(e) => {SellerNameSave(productDetail?.seller?.shop_name)}}
+                    <Link
+                      to={`/sellers-store/${productDetail?.seller?.id}`}
+                      onClick={(e) => {
+                        SellerNameSave(productDetail?.seller?.shop_name);
+                      }}
                     >
-                    <div className="seller-store-banner">
-                      <img
-                        src={`https://backend.bppshop.com.bd/storage/shop/banner/${productDetail?.seller?.banner}`}
-                        alt=""
-                      />
+                      <div className="seller-store-banner">
+                        <img
+                          src={`https://backend.bppshop.com.bd/storage/shop/banner/${productDetail?.seller?.banner}`}
+                          alt=""
+                        />
 
-                      <div className="seller-store-profile-container">
-                        <div className="seller-profile-image">
-                          <img
-                            src={`https://backend.bppshop.com.bd/storage/shop/${productDetail?.seller?.image}`}
-                            alt=""
-                          />
+                        <div className="seller-store-profile-container">
+                          <div className="seller-profile-image">
+                            <img
+                              src={`https://backend.bppshop.com.bd/storage/shop/${productDetail?.seller?.image}`}
+                              alt=""
+                            />
+                          </div>
+                          <p className="sellerName">
+                            {productDetail?.seller?.shop_name}
+                          </p>
                         </div>
-                        <p className="sellerName">
-                          {productDetail?.seller?.shop_name}
-                        </p>
                       </div>
-                    </div>
                     </Link>
                   </div>
 
@@ -792,6 +925,26 @@ const ProductDetailsPage = () => {
       </div> */}
 
       <ProductReview productDetail={productDetail} />
+
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        style={customStyles}
+        contentLabel="Example Modal"
+      >
+        <span onClick={closeModal} className="modalCloseBtn">
+          <i className="bi bi-x-lg"></i>
+        </span>
+        <br />
+        <div className="LoginModal_container">
+          <LoginModal />
+        </div>
+        <div className="SignUpModal_container">
+          <SignUpModal />
+        </div>
+        <br />
+        <br />
+      </Modal>
     </>
   );
 };

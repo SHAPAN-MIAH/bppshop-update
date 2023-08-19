@@ -6,3 +6,10 @@ export const SignupRedirectAction  = (isTrue) => async(dispatch, getState) => {
     dispatch({ type: 'SIGNUP_REDIRECT_FAIL', payload: error.response.message });
   }
 }
+
+export const SignupRedirectClear = ()=> async(dispatch)=>{
+  dispatch({
+    type: "CLEAR_SIGNUP_REDIRECT",
+  });
+  localStorage.removeItem("SignupRedirect");
+}
