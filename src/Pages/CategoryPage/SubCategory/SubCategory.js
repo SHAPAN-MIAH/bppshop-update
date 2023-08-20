@@ -8,17 +8,17 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 
 const SubCategory = () => {
-  const allCategories = useSelector((state) => state.allCategories.categories.data);
-  const loading = useSelector((state) => state.allCategories.loading);
+  const allCategories = useSelector((state) => state?.allCategories?.categories?.data);
+  const loading = useSelector((state) => state?.allCategories?.loading);
   const { slug } = useParams();
-  const subCategories = allCategories.find((item) => item.slug === slug);
+  const subCategories = allCategories?.find((item) => item?.slug === slug);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (!loading && !subCategories) {
-      navigate("/404", { replace: true });
-    }
-  }, [subCategories, loading, navigate]);
+  // useEffect(() => {
+  //   if (!loading && !subCategories) {
+  //     navigate("/404", { replace: true });
+  //   }
+  // }, [subCategories, loading, navigate]);
 
   return (
     <>
@@ -141,7 +141,7 @@ const SubCategory = () => {
                   <Skeleton height="335px" borderRadius="10px" count={1} />
                   <Skeleton height="335px" borderRadius="10px" count={1} />
                 </>
-              ) : (
+              ) : ( subCategories && 
                 subCategories?.childes?.map((subcategory) => (
                   <SubCategoryCard
                     key={subcategory.id}

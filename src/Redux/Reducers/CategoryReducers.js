@@ -2,7 +2,7 @@ import {
   ALL_CATEGORY_REQUEST,
   ALL_CATEGORY_SUCCESS,
   ALL_CATEGORY_FAIL,
-  CLEAR_CATEGORY_ERROR,
+  CLEAR_CATEGORY,
 } from "../Constants/CategoryConstants";
 
 
@@ -24,10 +24,9 @@ const CategoryReducers = (state = { categories: [] }, action) => {
         loading: false,
         error: action.payload,
       };
-    case CLEAR_CATEGORY_ERROR:
+    case CLEAR_CATEGORY :
       return {
-        ...state,
-        error: null,
+        categories: [],
       };
 
       default:

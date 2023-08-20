@@ -2,12 +2,12 @@ import {
   ALL_CATEGORY_REQUEST,
   ALL_CATEGORY_SUCCESS,
   ALL_CATEGORY_FAIL,
-  CLEAR_CATEGORY_ERROR,
+  CLEAR_CATEGORY,
 } from "../Constants/CategoryConstants";
 import axios from "axios";
 import { baseUrl } from "../../BaseUrl/BaseUrl";
 
-export const getCategories = () => async (dispatch) => {
+export const getCategories = () => async (dispatch, getState) => {
   try {
     dispatch({ type: ALL_CATEGORY_REQUEST });
     const { data } = await axios.get(`${baseUrl}/categories`);
@@ -17,6 +17,11 @@ export const getCategories = () => async (dispatch) => {
       payload: data,
     });
     
+    localStorage.setItem(
+      "categories",
+      JSON.stringify(getState().allCategories.categories)
+    );
+    
   } catch (error) {
     dispatch({
       type: ALL_CATEGORY_FAIL,
@@ -25,6 +30,6 @@ export const getCategories = () => async (dispatch) => {
   }
 };
 
-export const clearCategoriesErrors = () => async (dispatch) => {
-  dispatch({ type: CLEAR_CATEGORY_ERROR });
+export const clearCategories = () => async (dispatch) => {
+  dispatch({ type: CLEAR_CATEGORY });
 };

@@ -137,7 +137,7 @@ export const getCartData = () => async (dispatch, getState) => {
 
     const { data } = await axios.get(`${baseUrl}/cart`, config);
 
-    console.log(data);
+    // console.log(data);
 
     dispatch({ type: "GET_CART_SUCCESS", payload: data });
     localStorage.setItem(

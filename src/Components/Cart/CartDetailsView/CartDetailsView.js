@@ -94,7 +94,6 @@ const CartDetailsView = () => {
   };
 
 
-
   useEffect(() => {
     if (itemRemoveRes[0]?.status == "success") {
       // toaster
