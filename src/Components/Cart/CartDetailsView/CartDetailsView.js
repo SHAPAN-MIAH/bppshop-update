@@ -20,15 +20,18 @@ const CartDetailsView = () => {
   const cartItems = useSelector((state) => {
     return state.cart.cartItems;
   });
+  const itemRemoveRes = useSelector((state) => {
+    return state.RemoveItemRes.RemoveItemRes;
+  });
 
+  const ItemQtyUpdateRes = useSelector(
+    (state) => state.ItemQtyUpdateRes.ItemQtyUpdateRes
+  );
 
-  const ItemQtyUpdateRes = useSelector((state) => state.ItemQtyUpdateRes.ItemQtyUpdateRes)
-
-  
   //default choise option
   const choice_options = cartItems.choice_options;
   // console.log(choice_options)
-  
+
   // const choice_options_name = choice_options.map((option) => option.name);
 
   // const choice_options_defaultValue = choice_options.map(
@@ -40,10 +43,7 @@ const CartDetailsView = () => {
   //   options: choice_options_defaultValue[index],
   // }));
 
-
-
   const increaseQuantity = (id, quantity, stock) => {
-
     const newQty = quantity + 1;
     if (stock <= quantity) {
       toast.error("Stock Limited.", {
@@ -59,8 +59,7 @@ const CartDetailsView = () => {
       return;
     }
 
-
-    if(ItemQtyUpdateRes[0]?.status == "failed"){
+    if (ItemQtyUpdateRes[0]?.status == "failed") {
       toast.success(`${ItemQtyUpdateRes[0]?.message}`, {
         duration: 3000,
         style: {
@@ -77,7 +76,7 @@ const CartDetailsView = () => {
 
     dispatch(updateItemsToCart(id, newQty));
   };
- 
+
   const decreaseQuantity = (id, quantity, defaultChoices) => {
     const newQty = quantity - 1;
     if (1 >= quantity) {
@@ -89,24 +88,28 @@ const CartDetailsView = () => {
 
   //cart item remove functionality
   const handleRemoveItemFormCart = (id) => {
-
     dispatch(removeItemsFromCart(id));
-    // toaster
-    toast.success(`Item removed from cart successfully`, {
-      duration: 5000,
-      style: {
-        width: "100%",
-        height: "80px",
-        padding: "0px 20px",
-        background: "#86bc19",
-        color: "#fff",
-      },
-    });
+
+    
   };
 
-  // useEffect(() => {
-   
-  // }, [])
+
+
+  useEffect(() => {
+    if (itemRemoveRes[0]?.status == "success") {
+      // toaster
+      toast.success(`Item removed from cart successfully`, {
+        duration: 5000,
+        style: {
+          width: "100%",
+          height: "80px",
+          padding: "0px 20px",
+          background: "#86bc19",
+          color: "#fff",
+        },
+      });
+    }
+  }, [itemRemoveRes])
 
   const CartDetailsCloseHandler = () => {
     const cartDetailsViewContainer = document.querySelector(
@@ -122,7 +125,6 @@ const CartDetailsView = () => {
   };
 
   const CartDetailsCloseHandlerAfterPlaceOrder = () => {
-
     const cartDetailsViewSectionOverlay = document.querySelector(
       ".cartDetailsView_section_overlay"
     );
@@ -168,10 +170,7 @@ const CartDetailsView = () => {
           ) : (
             cartItems?.[0]?.data?.map((item) => (
               <div key={item?.id} className="cartDetails">
-                <img
-                  src={imgThumbnailBaseUrl + `/${item?.thumbnail}`}
-                  alt=""
-                />
+                <img src={imgThumbnailBaseUrl + `/${item?.thumbnail}`} alt="" />
                 <div className="cart-content-qty-container">
                   <div className="d-flex justify-content-between">
                     <small>
@@ -180,15 +179,11 @@ const CartDetailsView = () => {
                         {item?.choice_options?.map(
                           (option) => option.options[0]
                         )}
-                        {item?.choice_options?.map(
-                          (option) => option.title
-                        )}
+                        {item?.choice_options?.map((option) => option.title)}
                       </span>
                     </small>
                     <span
-                      onClick={() =>
-                        handleRemoveItemFormCart(item?.id)
-                      }
+                      onClick={() => handleRemoveItemFormCart(item?.id)}
                       className="cartItemDeleteBtn"
                     >
                       <i className="bi bi-trash3"></i>
@@ -197,11 +192,7 @@ const CartDetailsView = () => {
                   <div className="cart-content">
                     {item?.discount > 0 ? (
                       <div className="d-flex justify-content-center align-items-center">
-                        <span>
-                          {" "}
-                          &#2547;{" "}
-                          {item?.price - item?.discount}
-                        </span>{" "}
+                        <span> &#2547; {item?.price - item?.discount}</span>{" "}
                         <del className="text-danger ms-1">
                           &#2547; {item?.price}
                         </del>
@@ -218,10 +209,10 @@ const CartDetailsView = () => {
                         <span
                           onClick={() =>
                             decreaseQuantity(
-                              item?.id, 
-                              item?.quantity, 
+                              item?.id,
+                              item?.quantity,
                               item?.choice_options
-                              )
+                            )
                           }
                           className="cartMinusBtn"
                         >
@@ -247,9 +238,7 @@ const CartDetailsView = () => {
                       {item?.discount > 0 ? (
                         <span className="mx-2 text-end">
                           &#2547;
-                          {item?.quantity *
-                            (item?.price -
-                              item?.discount)}
+                          {item?.quantity * (item?.price - item?.discount)}
                         </span>
                       ) : (
                         <span className="mx-2 text-end">
@@ -268,14 +257,16 @@ const CartDetailsView = () => {
             <h6>Grand Total: </h6>
             <h6>
               = &#2547;{" "}
-              {cartItems?.[0]?.data?.length ? `${cartItems?.[0]?.data?.reduce(
-                (acc, item) =>
-                  acc +
-                  item?.quantity *
-                    (item?.price - item?.discount) *
-                    quantityCount,
-                0
-              )}` : "0.00"}
+              {cartItems?.[0]?.data?.length
+                ? `${cartItems?.[0]?.data?.reduce(
+                    (acc, item) =>
+                      acc +
+                      item?.quantity *
+                        (item?.price - item?.discount) *
+                        quantityCount,
+                    0
+                  )}`
+                : "0.00"}
             </h6>
           </div>
           {!cartItems[0]?.data?.length ? (

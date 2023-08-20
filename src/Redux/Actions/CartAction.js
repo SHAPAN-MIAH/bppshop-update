@@ -171,6 +171,10 @@ export const removeItemsFromCart =
         type: "REMOVE_ITEM_FROM_CART_SUCCESS",
         payload: productId,
       });
+      dispatch({
+        type: "REMOVE_ITEM_FROM_CART_RES",
+        payload: data,
+      });
 
       localStorage.setItem(
         "cartGroupItems",

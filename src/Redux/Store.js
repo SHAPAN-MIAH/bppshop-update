@@ -20,6 +20,7 @@ import { AdminInfoReducer } from "./Reducers/AdminReducers";
 import CartItemReducer from "./Reducers/CartItemReducers";
 import AddToCartResponseReducer from "./Reducers/AddToCartResponseReducers";
 import ItemQtyUpdateResReducer from "./Reducers/ItemQtyUpdateResReducer";
+import RemoveItemResReducer from "./Reducers/RemoveItemResReducer";
 
 
 const rootReducer = combineReducers({
@@ -43,7 +44,8 @@ const rootReducer = combineReducers({
   agentInfo: AgentInfoReducer,
   adminInfo: AdminInfoReducer,
   signupRedirect: SignupRedirectReducer,
-  ItemQtyUpdateRes: ItemQtyUpdateResReducer
+  ItemQtyUpdateRes: ItemQtyUpdateResReducer,
+  RemoveItemRes: RemoveItemResReducer
 });
 
 let initialState = {
