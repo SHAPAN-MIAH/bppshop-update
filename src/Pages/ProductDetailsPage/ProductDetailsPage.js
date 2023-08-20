@@ -437,7 +437,7 @@ const ProductDetailsPage = () => {
     addToCartLoaderOverlay.style.display = "none";
   }
 
-  const [isOpen, setOpen] = useState(false);
+  
 
   // const [modal, setModal] = useState(false);
   // const [videoLoading, setVideoLoading] = useState(true);
@@ -450,8 +450,10 @@ const ProductDetailsPage = () => {
   //   setVideoLoading(!videoLoading);
   // };
 
-  // youtube video embed code split function............
 
+  
+  // youtube video embed code split function............
+  const [isOpen, setOpen] = useState(false);
   let embed_video_url;
 
   const youtube_url = () => {
@@ -539,46 +541,6 @@ const ProductDetailsPage = () => {
                         />
                       )}
 
-                      {/* {productDetail.video_url && <div className="video_modal_btn">
-                          <button onClick={openModal} >
-                            <AiFillPlayCircle className="videoPlayerIcon"/>
-                            {modal ? (
-                              <section className="modal__bg">
-                                <div className="modal__align">
-                                  <div className="modal__content" modal={modal}>
-                                    <IoCloseOutline
-                                      className="modal__close"
-                                      arial-label="Close modal"
-                                      onClick={setModal}
-                                    />
-                                    <div className="modal__video-align">
-                                      {videoLoading ? (
-                                        <div className="modal__spinner">
-                                          <BiLoaderAlt
-                                            className="modal__spinner-style"
-                                            fadeIn="none"
-                                          />
-                                        </div>
-                                      ) : null}
-                                      <iframe
-                                        className="modal__video-style"
-                                        onLoad={spinner}
-                                        loading="lazy"
-                                        width="800"
-                                        height="500"
-                                        src={`https://www.youtube.com/embed/${embed_video_url}`}
-                                        title="YouTube video player"
-                                        frameBorder="0"
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                        allowfullscreen
-                                      ></iframe>
-                                    </div>
-                                  </div>
-                                </div>
-                              </section>
-                            ) : null}
-                          </button>
-                        </div>} */}
                     </div>
 
                     <div className="left_1" id="productImgGallery">

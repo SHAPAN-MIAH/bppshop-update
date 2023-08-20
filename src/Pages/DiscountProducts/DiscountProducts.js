@@ -27,7 +27,7 @@ const DiscountProducts = () => {
         return;
       }
       setPrevPage(currPage);
-      setDiscountProduct([...discountProduct, ...response.data.products]);
+      setDiscountProduct([...discountProduct, ...response?.data?.products]);
     };
     if (!lastList && prevPage !== currPage) {
       fetchData();
@@ -68,7 +68,7 @@ const DiscountProducts = () => {
               <Skeleton height="335px" borderRadius="10px" count={1} />
             </>
           ) : (
-            discountProduct.map((product) => (
+            discountProduct?.map((product) => (
               <DiscountProductCard key={product?.id} product={product} />
             ))
           )}
