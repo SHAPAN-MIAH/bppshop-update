@@ -7,21 +7,21 @@ import MetaData from "./../../Layout/MetaData";
 import { useSelector } from "react-redux";
 
 const SubSubCategory = () => {
-  const allCategories = useSelector((state) => state.allCategories.categories.data);
-  const loading = useSelector((state) => state.allCategories.loading);
+  const allCategories = useSelector((state) => state?.allCategories?.categories?.data);
+  const loading = useSelector((state) => state?.allCategories?.loading);
   const { slug, subSlug } = useParams();
-  const subCategories = allCategories.find((item) => item.slug === slug);
+  const subCategories = allCategories?.find((item) => item?.slug === slug);
   const subSubCategories = subCategories?.childes?.find(
-    (item) => item.slug === subSlug
+    (item) => item?.slug === subSlug
   );
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (!loading && !subSubCategories) {
-      navigate("/404", { replace: true });
-    }
-  }, [subSubCategories, loading, navigate]);
+  // useEffect(() => {
+  //   if (!loading && !subSubCategories) {
+  //     navigate("/404", { replace: true });
+  //   }
+  // }, [subSubCategories, loading, navigate]);
 
   return (
     <>
@@ -198,7 +198,7 @@ const SubSubCategory = () => {
                   <Skeleton height="335px" borderRadius="10px" count={1} />
                   <Skeleton height="335px" borderRadius="10px" count={1} />
                 </>
-              ) : (
+              ) : ( subSubCategories &&
                 subSubCategories?.childes?.map((SubSubcategory) => (
                   <SubSubCategoryCard
                     key={SubSubcategory.id}

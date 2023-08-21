@@ -49,6 +49,11 @@ const rootReducer = combineReducers({
 });
 
 let initialState = {
+  allCategories: {
+    categories: localStorage.getItem("categories")
+      ? JSON.parse(localStorage.getItem("categories"))
+      : [],
+  },
   cart: {
     cartItems: localStorage.getItem("cartItems")
       ? JSON.parse(localStorage.getItem("cartItems"))

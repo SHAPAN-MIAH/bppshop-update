@@ -25,6 +25,7 @@ import {
 } from "../../../Redux/Actions/SearchAction";
 import { useState } from "react";
 import { clearUserOrders } from "../../../Redux/Actions/UserOrderAction";
+import { clearCategories } from "../../../Redux/Actions/CategoriesAction";
 
 const Nav = () => {
   const dispatch = useDispatch();
@@ -118,6 +119,7 @@ const Nav = () => {
         dispatch(ClearCartGroupItems());
         dispatch(ClearDeliveryCharge());
         dispatch(clearUserOrders());
+        // dispatch(clearCategories());
 
         localStorage.removeItem("token");
         localStorage.removeItem("agentId");
