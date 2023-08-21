@@ -78,10 +78,11 @@ const ProductCard = ({ product }) => {
 
   useEffect(() => {
     if (isAuthenticated === true && token) {
-      (loginRes?.status === "success") | (signupRes?.status === "success") &&
+      if(loginRes?.status === "success" || signupRes?.status === "success"){
         closeModal();
+      }
 
-      if (modalLogin === "true") {
+      if (modalLogin === "true" && loginRes?.status === "success" | signupRes?.status === "success") {
         // default choice option.....
         const choice_options = cartItemBeforeLogin[0]?.product?.choice_options;
         const choice_options_name = choice_options?.map(
@@ -118,8 +119,8 @@ const ProductCard = ({ product }) => {
             `${element.options}`.trim();
         });
 
-        if ((loginRes?.status === "success") || (signupRes?.status === "success")
-        ) {
+        // if ((loginRes?.status === "success") || (signupRes?.status === "success")
+        // ) {
           cartItemBeforeLogin[0]?.product?.colors?.length > 0
             ? dispatch(addItemsToCartAfterLogin(addItemsToCartDataWithColor))
             : dispatch(
@@ -128,7 +129,7 @@ const ProductCard = ({ product }) => {
 
 
               addToCartOverlyLoading()
-        }
+        // }
       }
     }
   }, [loginRes, signupRes, isAuthenticated, token, cartItemBeforeLogin, modalLogin, colors, dispatch, quantity]);

@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import defaultProImg from "../../Assets/Images/defaultImg.jpg";
 import { useDispatch, useSelector } from "react-redux";
@@ -75,13 +74,16 @@ const BestSellingProductCard = ({ product }) => {
   const { loginRes } = useSelector((state) => state.loginRes);
   const { signupRes } = useSelector((state) => state.signupRes);
 
-
   useEffect(() => {
     if (isAuthenticated === true && token) {
-      (loginRes?.status === "success") | (signupRes?.status === "success") &&
+      if (loginRes?.status === "success" || signupRes?.status === "success") {
         closeModal();
+      }
 
-      if (modalLogin === "true") {
+      if (
+        modalLogin === "true" &&
+        (loginRes?.status === "success") | (signupRes?.status === "success")
+      ) {
         // default choice option.....
         const choice_options = cartItemBeforeLogin[0]?.product?.choice_options;
         const choice_options_name = choice_options?.map(
@@ -118,28 +120,34 @@ const BestSellingProductCard = ({ product }) => {
             `${element.options}`.trim();
         });
 
-        if ((loginRes?.status === "success") || (signupRes?.status === "success")
-        ) {
+        if (loginRes?.status === "success" || signupRes?.status === "success") {
           cartItemBeforeLogin[0]?.product?.colors?.length > 0
             ? dispatch(addItemsToCartAfterLogin(addItemsToCartDataWithColor))
             : dispatch(
                 addItemsToCartAfterLogin(addItemsToCartDataWithoutColor)
               );
 
-
-              addToCartOverlyLoading()
+          addToCartOverlyLoading();
         }
       }
     }
-  }, [loginRes, signupRes, isAuthenticated, token, cartItemBeforeLogin, modalLogin, colors, dispatch, quantity]);
+  }, [
+    loginRes,
+    signupRes,
+    isAuthenticated,
+    token,
+    cartItemBeforeLogin,
+    modalLogin,
+    colors,
+    dispatch,
+    quantity,
+  ]);
 
   // Add to cart functionality.............................
   const addToCartHandler = (product, quantity) => {
-
     if (!token) {
       dispatch(addItemsToCart(product, quantity));
       openModal();
-
     }
 
     if (isAuthenticated === true && token) {
@@ -182,14 +190,11 @@ const BestSellingProductCard = ({ product }) => {
           : dispatch(addItemsToCartAfterLogin(addItemsToCartDataWithoutColor));
       }
 
-
-      addToCartOverlyLoading()
+      addToCartOverlyLoading();
     }
-    
   };
 
   const addToCartOverlyLoading = () => {
-    
     const addToCartLoaderOverlay = document.querySelector(
       ".addToCart_loader_overlay"
     );
@@ -217,8 +222,6 @@ const BestSellingProductCard = ({ product }) => {
     //   },
     // });
   }
-
-  
 
   const scrollTop = () => {
     document.body.scrollTop = 0;
@@ -276,9 +279,7 @@ const BestSellingProductCard = ({ product }) => {
                 <small>({reviews_count})</small>
               </div>
 
-              <Link
-                to={`/best-selling/${id}`} addedItemId={addedItemId}
-              >
+              <Link to={`/best-selling/${id}`} addedItemId={addedItemId}>
                 {current_stock > 0 ? (
                   <div
                     className="quickView_AddToCart_overlay"
@@ -351,4 +352,3 @@ const BestSellingProductCard = ({ product }) => {
   );
 };
 export default BestSellingProductCard;
-

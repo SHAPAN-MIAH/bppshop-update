@@ -462,7 +462,7 @@ const SellerStoreProductDetails = () => {
 
   return (
     <>
-      <h4>Brand Products:</h4>
+      <h4>Seller Products:</h4>
       <nav aria-label="breadcrumb">
         <ol className="breadcrumb my-4">
           <li className="breadcrumb-item" aria-current="page">

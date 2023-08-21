@@ -27,6 +27,7 @@ const TrackOrderDetails = () => {
   let subTotal = 0;
   let taxAmount = 0;
   let discountAmount = 0;
+  let shippingcost = 0;
   return (
     <>
       <MetaData title="Track-Order-Details - BPPShop" />
@@ -110,11 +111,12 @@ const TrackOrderDetails = () => {
             {/* //new start*/}
             <tbody>
               {userOrderDetails?.map((item) => {
-                subTotal += item?.qty * item?.product_details?.unit_price;
-                taxAmount += item.tax;
-                discountAmount += item.discount;
+                subTotal += item?.qty * item?.price;
+                taxAmount += item?.product_details?.tax;
+                discountAmount += item?.discount;
+                shippingcost += item?.product_details?.shipping_cost
                 return (
-                  <tr key={item.id}>
+                  <tr key={item?.id}>
                     <td>
                       <img
                         className="track_order_img"
@@ -129,14 +131,14 @@ const TrackOrderDetails = () => {
                     <td>
                       <h6> {item?.product_details?.name}</h6>
                       <div className="text-muted">
-                        <span>{item?.product_details?.unit} </span>
+                        {/* <span>{item?.unit} </span> */}
                         <span className="track_amount_value">
-                          {item?.product_details?.min_qty}
+                          {item?.min_qty}
                         </span>
                       </div>
                       <div className="fw-bold text-warning">
                         <span className="track_amount_value">
-                          ৳ {item?.product_details?.unit_price}.00
+                          ৳ {item?.price}.00
                         </span>
                       </div>
                     </td>
@@ -164,7 +166,7 @@ const TrackOrderDetails = () => {
                       </div>
                       <div className="fs-5">
                         <span className="track_amount_value">
-                          ৳ {item?.qty * item?.product_details?.unit_price}.00
+                          ৳ {item?.qty * item?.price}.00
                         </span>
                       </div>
                     </td>
@@ -217,7 +219,7 @@ const TrackOrderDetails = () => {
               <div className="px-2 py-1">
                 <span className="text-muted">Total: </span>
                 <span className="track_amount_value">
-                  ৳{subTotal + deliveryCost + taxAmount - discountAmount}.00
+                  ৳{subTotal + shippingcost + taxAmount - discountAmount}.00
                 </span>
               </div>
             </div>

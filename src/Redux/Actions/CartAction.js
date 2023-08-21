@@ -76,7 +76,7 @@ export const addItemsToCartAfterLogin = (addItemToCartAfterLoginData) => async (
     } catch (error) {
       dispatch({
         type: "ADD_TO_CART_AFTER_LOGIN_FAIL",
-        payload: error.response.data.message,
+        payload: error?.response?.data?.message,
       });
     }
 };
@@ -137,7 +137,7 @@ export const getCartData = () => async (dispatch, getState) => {
 
     const { data } = await axios.get(`${baseUrl}/cart`, config);
 
-    console.log(data);
+    // console.log(data);
 
     dispatch({ type: "GET_CART_SUCCESS", payload: data });
     localStorage.setItem(
@@ -145,7 +145,7 @@ export const getCartData = () => async (dispatch, getState) => {
       JSON.stringify(getState().cart.cartItems)
     );
   } catch (error) {
-    dispatch({ type: "GET_CART_FAIL", payload: error.response.data.message });
+    dispatch({ type: "GET_CART_FAIL", payload: error?.response?.data?.message });
   }
 };
 
