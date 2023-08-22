@@ -5,14 +5,14 @@ const CartReducer = (state = { cartItems: [] }, action) => {
       const item = action.payload;
 
       const isItemExist = state.cartItems?.find(
-        (i) => i.id === item.id
+        (i) => i.id == item.id
       );
 
       if (isItemExist) {
         return {
           ...state,
           cartItems: state.cartItems.map((i) =>
-            i.id === isItemExist.id ? item : i
+            i.id == isItemExist.id ? item : i
           ),
         };
       } else {

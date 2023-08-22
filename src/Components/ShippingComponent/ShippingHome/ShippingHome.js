@@ -9,7 +9,7 @@ const ShippingHome = () => {
 
   const { shippingAddressInfo } = useSelector((state) => state?.shippingInfo);
 
-  // console.log(shippingAddressInfo);
+  console.log(shippingAddressInfo);
 
   const changeShippingInfo = () => {
     navigate("/choose-shipping-address");
@@ -27,11 +27,11 @@ const ShippingHome = () => {
     //onclick placeorder go to top of the page
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
-  }
+  };
 
   return (
     <div>
-      {shippingAddressInfo?.data?.is_billing === "1" ? (
+      {shippingAddressInfo?.data?.is_billing == "1" ? (
         <h2 className="shipping-heading">YOUR SELECTED DELIVERY ADDRESS</h2>
       ) : (
         <h2 className="shipping-heading">
@@ -45,7 +45,7 @@ const ShippingHome = () => {
         <p className="chooseAlert text-danger"></p>
         {/* <div className="shipping-address-heading">Choose Delivery address</div> */}
         {shippingAddressInfo?.data &&
-        shippingAddressInfo?.data?.is_billing === "1" ? (
+        shippingAddressInfo?.data?.is_billing == "1" ? (
           <div className="shipping_address_box">
             <div className="shipped_name">
               <h6>
@@ -55,7 +55,11 @@ const ShippingHome = () => {
             <div className="shipped_address">
               <span className="home_text"> Home </span>
               <span className="mx-1">
-                {shippingAddressInfo?.data?.phone} |{" "} { shippingAddressInfo?.data?.city}, { shippingAddressInfo?.data?.thana}, { shippingAddressInfo?.data?.zip}, { shippingAddressInfo?.data?.address}{" "}
+                {shippingAddressInfo?.data?.phone} |{" "}
+                {shippingAddressInfo?.data?.city},{" "}
+                {shippingAddressInfo?.data?.thana},{" "}
+                {shippingAddressInfo?.data?.zip},{" "}
+                {shippingAddressInfo?.data?.address}{" "}
               </span>
               <div className="mt-2">
                 <Link
@@ -97,7 +101,7 @@ const ShippingHome = () => {
               <i className="bi bi-chevron-left"></i> Shopping cart
             </div>
           </Link>
-          {shippingAddressInfo?.data?.is_billing === "1" ? (
+          {shippingAddressInfo?.data?.is_billing == "1" ? (
             <Link to="/shipping-address/checkout-payment">
               <div className="proceed_payment_btn">
                 Proceed payment <i className="bi bi-chevron-right"></i>

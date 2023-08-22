@@ -25,7 +25,7 @@ const SignUp = () => {
   useEffect(() => {
     if (token) {
       navigate("/");
-      signupRes?.status==="success" &&   toast.success(`${signupRes?.message}`, {
+      signupRes?.status=="success" &&   toast.success(`${signupRes?.message}`, {
         duration: 5000,
         style: {
           width: "100%",
@@ -133,7 +133,7 @@ const SignUp = () => {
                     </div>
                   </div>
                 </div>
-                {signupRes?.status === "failed" && (
+                {signupRes?.status == "failed" && (
                   <small className="text-danger">{signupRes?.message}</small>
                 )}
                 <div className="form-group d-flex flex-wrap justify-content-between">

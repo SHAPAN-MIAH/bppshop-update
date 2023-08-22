@@ -73,12 +73,12 @@ const BrandsProductsCard = ({ product }) => {
   );
 
   useEffect(() => {
-    if (isAuthenticated === true && token) {
-      if(loginRes?.status === "success" || signupRes?.status === "success"){
+    if (isAuthenticated == true && token) {
+      if(loginRes?.status == "success" || signupRes?.status == "success"){
         closeModal();
       }
 
-      if (modalLogin === "true" && loginRes?.status === "success" | signupRes?.status === "success") {
+      if (modalLogin == "true" && loginRes?.status == "success" | signupRes?.status == "success") {
         // default choice option.....
         const choice_options = cartItemBeforeLogin[0]?.product?.choice_options;
         const choice_options_name = choice_options?.map(
@@ -115,7 +115,7 @@ const BrandsProductsCard = ({ product }) => {
             `${element.options}`.trim();
         });
 
-        if ((loginRes?.status === "success") || (signupRes?.status === "success")
+        if ((loginRes?.status == "success") || (signupRes?.status == "success")
         ) {
           cartItemBeforeLogin[0]?.product?.colors?.length > 0
             ? dispatch(addItemsToCartAfterLogin(addItemsToCartDataWithColor))
@@ -139,7 +139,7 @@ const BrandsProductsCard = ({ product }) => {
 
     }
 
-    if (isAuthenticated === true && token) {
+    if (isAuthenticated == true && token) {
       //default choice option.....
       const choice_options = product.choice_options;
       const choice_options_name = choice_options.map((option) => option.name);
@@ -173,7 +173,7 @@ const BrandsProductsCard = ({ product }) => {
           `${element.options}`.trim();
       });
 
-      if (isAuthenticated === true && token) {
+      if (isAuthenticated == true && token) {
         product?.colors?.length > 0
           ? dispatch(addItemsToCartAfterLogin(addItemsToCartDataWithColor))
           : dispatch(addItemsToCartAfterLogin(addItemsToCartDataWithoutColor));

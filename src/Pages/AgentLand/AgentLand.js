@@ -16,7 +16,7 @@ const AgentLand = () => {
   useEffect(() => {
     dispatch(AgentLogin(agentToken));
 
-    if(agentInfo?.status === "success"){
+    if(agentInfo?.status == "success"){
       navigate("/");
     }
 

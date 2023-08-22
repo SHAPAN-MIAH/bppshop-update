@@ -45,7 +45,7 @@ const CheckoutPayment = () => {
       axios
         .post(`${baseUrl}/cart/checkout`, agent_checkout, config)
         .then((res) => {
-          if (res.data.status === "success") {
+          if (res.data.status == "success") {
             dispatch(ClearCart());
             // dispatch(clearShippingAddress());
             dispatch(ClearCartGroupItems());
@@ -57,7 +57,7 @@ const CheckoutPayment = () => {
       axios
         .post(`${baseUrl}/cart/checkout`, { address_id: id }, config)
         .then((res) => {
-          if (res.data.status === "success") {
+          if (res.data.status == "success") {
             dispatch(ClearCart());
             // dispatch(clearShippingAddress());
             dispatch(ClearCartGroupItems());
@@ -74,7 +74,7 @@ const CheckoutPayment = () => {
   // }
 
   const [paymentType, setPaymentType] = useState("");
-  const isRadioSelected = (value) => paymentType === value;
+  const isRadioSelected = (value) => paymentType == value;
   const handleRadioClick = (event) => setPaymentType(event.target.value);
 
   // let cashOnDeliveryPayment = false;
@@ -310,10 +310,10 @@ const CheckoutPayment = () => {
               id="cashOnDeliveryNextBtn"
             >
               {/* Next */}
-              {/* {paymentType === "cashOnDelivery" ? "Confirm": "Next"} */}
-              {paymentType === "mobilePayment" ||
-              paymentType === "bankPayment" ||
-              paymentType === "agentWalletPayment"
+              {/* {paymentType == "cashOnDelivery" ? "Confirm": "Next"} */}
+              {paymentType == "mobilePayment" ||
+              paymentType == "bankPayment" ||
+              paymentType == "agentWalletPayment"
                 ? "Next"
                 : "Confirm Order"}
             </button>

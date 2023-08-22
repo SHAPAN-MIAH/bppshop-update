@@ -22,8 +22,8 @@ const QuickViewModal = ({ pid }) => {
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.cartItems);
   const cartItemsId = cartItems.map((i) => i.product.id);
-  const addedItemId = cartItemsId.find((i) => i === pid);
-  const isItemExist = cartItems.find((i) => i?.product?.id === addedItemId);
+  const addedItemId = cartItemsId.find((i) => i == pid);
+  const isItemExist = cartItems.find((i) => i?.product?.id == addedItemId);
 
   useEffect(() => {
     axios.get(`${baseUrl}/products/details/${pid}`).then((res) => {
@@ -89,7 +89,7 @@ const QuickViewModal = ({ pid }) => {
       options: selectOption[1].trim(),
     };
     defaultChoices.push(newName);
-    if (defaultChoices.findIndex((f) => f.name === newName.name) === -1) {
+    if (defaultChoices.findIndex((f) => f.name == newName.name) == -1) {
       setSelectedOption((element) => [...defaultChoices, newName]);
     } else {
       const newSelectedOption = [...defaultChoices];
@@ -298,7 +298,7 @@ const QuickViewModal = ({ pid }) => {
                     <div className="left_1">
                       {productDetail?.images?.map((image, i) => (
                         <div
-                          className={i === 0 ? "img_wrap active" : "img_wrap"}
+                          className={i == 0 ? "img_wrap active" : "img_wrap"}
                           key={i}
                           onClick={() => hoverHandler(image, i)}
                           ref={addRefs}
@@ -403,7 +403,7 @@ const QuickViewModal = ({ pid }) => {
                             id={
                               index[0]
                                 ? "activatedColor"
-                                : activeColor === index
+                                : activeColor == index
                                 ? "activatedColor"
                                 : ""
                             }

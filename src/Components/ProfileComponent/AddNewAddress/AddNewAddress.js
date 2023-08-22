@@ -54,7 +54,7 @@ const AddNewAddress = () => {
 
     dispatch(addShippingAddress(newData));
 
-    if (shippingAddressInfo?.status === "success") {
+    if (shippingAddressInfo?.status == "success") {
       navigate("/profile/account-address");
     }
   };

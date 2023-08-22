@@ -60,7 +60,9 @@ export const addItemsToCartAfterLogin = (addItemToCartAfterLoginData) => async (
         config
       );
 
-      if (data.status === "success") {
+      console.log(data)
+
+      if (data.status == "success") {
         dispatch({ type: "ADD_TO_CART_AFTER_LOGIN_SUCCESS", payload: data });
         localStorage.setItem(
           "cartGroupItems",
@@ -95,7 +97,7 @@ export const addItemsToCart = (product, quantity) => async (dispatch, getState) 
 // Update Cart without login....................................................
 export const updateItemsToCart = (id, newQty) => async (dispatch, getState) => {
   const cartItems = getState().cart.cartItems;
-  const isItemExist = cartItems[0]?.data?.find((i) => i.id === id);
+  const isItemExist = cartItems[0]?.data?.find((i) => i.id == id);
 
   const cartUpdateInfo = {
     key: `${isItemExist?.id}`,
@@ -112,7 +114,7 @@ export const updateItemsToCart = (id, newQty) => async (dispatch, getState) => {
       config
     );
 
-    if (data.status === "success") {
+    if (data.status == "success") {
       dispatch(getCartData());
     }
 
@@ -153,7 +155,7 @@ export const getCartData = () => async (dispatch, getState) => {
 export const removeItemsFromCart =
   (productId) => async (dispatch, getState) => {
     const cartItems = getState().cart.cartItems;
-    const isItemExist = cartItems?.[0].data.find((i) => i.id === productId);
+    const isItemExist = cartItems?.[0].data.find((i) => i.id == productId);
     const cartId = { key: `${isItemExist?.id}` };
 
     if (isItemExist) {

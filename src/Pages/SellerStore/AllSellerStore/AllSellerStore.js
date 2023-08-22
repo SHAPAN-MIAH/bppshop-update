@@ -37,7 +37,7 @@ const AllSellerStore = () => {
   const onScroll = () => {
     if (listInnerRef.current) {
       const { scrollTop, scrollHeight, clientHeight } = listInnerRef.current;
-      if (scrollTop + clientHeight === scrollHeight) {
+      if (scrollTop + clientHeight == scrollHeight) {
         setCurrPage(currPage + 1);
       }
     }

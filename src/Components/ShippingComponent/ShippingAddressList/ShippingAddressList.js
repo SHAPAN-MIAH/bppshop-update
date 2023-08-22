@@ -32,7 +32,7 @@ const ShippingAddressList = () => {
 
     dispatch(setDefaultShippingAddress(addressId));
 
-    if (shippingAddressInfo?.status === "success") {
+    if (shippingAddressInfo?.status == "success") {
       navigate("/shipping-address");
     }
   };
@@ -50,7 +50,7 @@ const ShippingAddressList = () => {
     axios
       .post(`${baseUrl}/shipping-address/delete-address`, deleteData, config)
       .then((res) => {
-        if (res.status === 200) {
+        if (res.status == 200) {
           dispatch(loadAllShippingAddress());
           toast.success(res?.data?.message, {
             duration: 5000,
@@ -110,7 +110,7 @@ const ShippingAddressList = () => {
                           </h6>
                         </div>
                         <div>
-                          {shippingAddInfo?.is_billing === 1 ? (
+                          {shippingAddInfo?.is_billing == 1 ? (
                             <div className="default_btn">
                               <i className="bi bi-check-circle-fill"></i>
                             </div>

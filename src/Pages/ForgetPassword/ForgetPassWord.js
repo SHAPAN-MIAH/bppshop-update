@@ -13,7 +13,7 @@ const ForgetPassWord = () => {
     axios
       .post(baseUrl + "/auth/forgot", data)
       .then((res) => {
-        if (res?.data?.status === "success") {
+        if (res?.data?.status == "success") {
           alert(res?.data?.message);
           navigate("/login")
         }

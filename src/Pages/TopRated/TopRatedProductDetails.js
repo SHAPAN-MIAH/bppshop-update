@@ -123,7 +123,7 @@ const TopRatedProductDetails = () => {
       options: selectOption[1].trim(),
     };
     defaultChoices.push(newName);
-    if (defaultChoices.findIndex((f) => f.name === newName.name) === -1) {
+    if (defaultChoices.findIndex((f) => f.name == newName.name) == -1) {
       setSelectedOption((element) => [...defaultChoices, newName]);
     } else {
       const newSelectedOption = [...defaultChoices];
@@ -293,11 +293,11 @@ const TopRatedProductDetails = () => {
 
   // add to cart after login res............
   useEffect(() => {
-    if (isAuthenticated === true && token) {
-      (loginRes?.status === "success") | (signupRes?.status === "success") &&
+    if (isAuthenticated == true && token) {
+      (loginRes?.status == "success") | (signupRes?.status == "success") &&
         closeModal();
 
-      if (modalLogin === "true") {
+      if (modalLogin == "true") {
         let color = productDetail?.colors?.map((color) => color?.code);
         const addItemsToCartDataWithColor = {
           id: `${productDetail?.id}`,
@@ -368,7 +368,7 @@ const TopRatedProductDetails = () => {
       openModal();
     }
 
-    if (isAuthenticated === true && token) {
+    if (isAuthenticated == true && token) {
       let color = productDetail?.colors?.map((color) => color?.code);
       const addItemsToCartDataWithColor = {
         id: `${productDetail?.id}`,
@@ -486,7 +486,7 @@ const TopRatedProductDetails = () => {
         </ol>
       </nav>
       <br />
-      {/* {productDetailsPath === true && ( */}
+      {/* {productDetailsPath == true && ( */}
 
       <div className="product_details_page_container">
         <div className="container-fluid">
@@ -549,7 +549,7 @@ const TopRatedProductDetails = () => {
 
                       {productDetail?.images?.map((image, i) => (
                         <div
-                          className={i === 0 ? "img_wrap active" : "img_wrap"}
+                          className={i == 0 ? "img_wrap active" : "img_wrap"}
                           key={i}
                           onClick={() => hoverHandler(image, i)}
                           ref={addRefs}
@@ -650,7 +650,7 @@ const TopRatedProductDetails = () => {
                             id={
                               index[0]
                                 ? "activatedColor"
-                                : activeColor === index
+                                : activeColor == index
                                 ? "activatedColor"
                                 : ""
                             }

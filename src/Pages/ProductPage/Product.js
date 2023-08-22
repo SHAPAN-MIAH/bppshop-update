@@ -16,12 +16,12 @@ const Product = () => {
   
   const { slug, subSlug, subSubSlug } = useParams();
   const navigate = useNavigate();
-  const categories = allCategories?.find((item) => item?.slug === slug);
+  const categories = allCategories?.find((item) => item?.slug == slug);
   const subCategories = categories?.childes?.find(
-    (item) => item?.slug === subSlug
+    (item) => item?.slug == subSlug
   );
   const subSubCategories = subCategories?.childes?.find(
-    (item) => item.slug === subSubSlug
+    (item) => item.slug == subSubSlug
   );
 
   const [products, setProducts] = useState([]);
@@ -44,99 +44,99 @@ const Product = () => {
 
   return (
     <div className="categoryView-section productView-section">
-      {subSubSlug === "beef" ? (
+      {subSubSlug == "beef" ? (
         <MetaData
           title="Buy online Fresh Meat at Low Price in Bangladesh."
           description="Order Fresh & best quality Beef online at reasonable price in dhaka. buy premium quality Beef from Bpp Shop and get fast home delivery."
         />
-      ) : subSubSlug === "mutton" ? (
+      ) : subSubSlug == "mutton" ? (
         <MetaData
           title="Buy Ready To Cook Fresh Mutton online at Low Price in Bd."
           description="Order Fresh Mutton online at reasonable price in dhaka. buy premium quality Ready To Cook Mutton from Bpp Shop and get fast home delivery."
         />
-      ) : subSubSlug === "duck-chicken" ? (
+      ) : subSubSlug == "duck-chicken" ? (
         <MetaData
           title="Buy Ready To Cook Fresh Duck & Chicken online at Low Price in Bd."
           description="Order  Fresh Duck & chicken online at reasonable price in dhaka. buy premium quality Ready To Cook Duck & Chicken  from Bpp Shop and get fast home delivery."
         />
-      ) : subSubSlug === "fish" ? (
+      ) : subSubSlug == "fish" ? (
         <MetaData
           title="Buy Fresh Fish online at best price in Dhaka City."
           description="Buy Fresh fish online at best price in Dhaka with Fast Delivery. 
           We collect fishes from various sources while ensuring utmost quality and value."
         />
-      ) : subSubSlug === "dried-fish" ? (
+      ) : subSubSlug == "dried-fish" ? (
         <MetaData
           title="Order Organic Dried Fish Online at Low Price in Bangladesh."
           description="Buy premium quality dried fish (sutki) in bangladesh at low price. order various kinds of dried fish from Bpp Shop. fast Home delivery."
         />
-      ) : subSubSlug === "tofu-meat-alternatives" ? (
+      ) : subSubSlug == "tofu-meat-alternatives" ? (
         <MetaData
           title="Buy Tofu & Meat Alternatives Products Online  Low Price."
           description="Buy different kind of fresh and good quality Tofu & Meat Alternatives food at lowest prices in bangladesh. order Tofu & Meat Alternatives from Bpp Shop. fast home delivery."
         />
-      ) : subSubSlug === "breads" ? (
+      ) : subSubSlug == "breads" ? (
         <MetaData
           title="Buy Online Breads Products at Low Price."
           description="Buy variety of Bread & Bakery Products at Low Price in bangladesh. 
           Order you bread and bakery products on Bpp Shop with fast home delivery."
         />
-      ) : subSubSlug === "biscuits" ? (
+      ) : subSubSlug == "biscuits" ? (
         <MetaData
           title="Buy Biscuits Online at Lowest Prices in Bangladesh."
           description="Buy wide range of biscuits online from Bp Shop. 
           Shop your favorite Biscuits at Lowest Prices in Bangladesh. Get fastest home delivery."
         />
-      ) : subSubSlug === "cookies" ? (
+      ) : subSubSlug == "cookies" ? (
         <MetaData
           title="Buy Cookies Online at Lowest Prices in Bangladesh."
           description="Buy wide range of cookies online from Bp Shop. 
           Shop your favorite cookies at Lowest Prices in Bangladesh. Get fastest home delivery."
         />
-      ) : subSubSlug === "bakery-snacks" ? (
+      ) : subSubSlug == "bakery-snacks" ? (
         <MetaData
           title="Buy Online Bakery & Snacks Products at Low Price."
           description="Buy variety of Bakery & Snacks Products at Low Price in bangladesh. 
           Order you bakery & Snacks products on Bpp Shop with fast home delivery."
         />
-      ) : subSubSlug === "cakes" ? (
+      ) : subSubSlug == "cakes" ? (
         <MetaData
           title="Buy Cake Online at Lowest Prices in Bangladesh."
           description="Buy Cake Online at Lowest Prices on Bpp Shop in Bangladesh.  
           Bpp Shop offer all types of fresh delicious cakes. fast home delivery."
         />
-      ) : subSubSlug === "dips-spreads" ? (
+      ) : subSubSlug == "dips-spreads" ? (
         <MetaData
           title="Buy Dips & Spreads Products online at Low Prices."
           description="Buy dips & spreads product online in bangladesh at lowest price.
           Order wide range of dips & spreads products On Bpp Shop. Fast Home Delivery."
         />
-      ) : subSubSlug === "water" ? (
+      ) : subSubSlug == "water" ? (
         <MetaData
           title="Buy Mineral Water at Low Price In Bangladesh."
           description="Order Fresh snd top quality Mineral Water online at lowest prices in bangladesh on Bpp Shop. buy different size's Healthy & purified drinking water.quick delivery."
         />
-      ) : subSubSlug === "soft-drinks" ? (
+      ) : subSubSlug == "soft-drinks" ? (
         <MetaData
           title="Buy Soft Drinks Online at Lowest Price in Bangladesh."
           description="Buy different kind of fresh and good quality soft drinks at lowest prices in bangladesh. order non-alcoholic refreshing soft drinks from Bpp Shop. fast home delivery."
         />
-      ) : subSubSlug === "tea" ? (
+      ) : subSubSlug == "tea" ? (
         <MetaData
           title="Buy Tea Online in Bangladesh at Best Price from Bpp Shop."
           description="Buy organic Tea at low price In Bangladesh. Bpp Shop Provide the best quality organic tea. Buy Green Tea, Black Tea, Herbal Tea, Masala Tea, Chamomile Tea and Tea Bags."
         />
-      ) : subSubSlug === "coffee" ? (
+      ) : subSubSlug == "coffee" ? (
         <MetaData
           title="Order Coffee Online in Bangladesh at Low Prices."
           description="Buy huge collection of coffee from top brand at reasonable price. order best quality coffee beans online in bangladesh. Fastest home delivery."
         />
-      ) : subSubSlug === "juice" ? (
+      ) : subSubSlug == "juice" ? (
         <MetaData
           title="Buy Juices Online at Low Price in Bangladesh."
           description="Buy ALL kind of Fresh & Genuine Juice online at low price in bangladesh on Bpp Shop. online juice shopping in Bangladesh with fast home delivery."
         />
-      ) : subSubSlug === "syrups-powder-drinks" ? (
+      ) : subSubSlug == "syrups-powder-drinks" ? (
         <MetaData
           title="Buy Syrup & Power Drinks at Low Price Online in Bd."
           description="All kind of original & quality full syrups & powder Drinks available on Bpp Shop. Buy Syrup & Powder Drinks at lowest price in bangladesh. fast home delivery."

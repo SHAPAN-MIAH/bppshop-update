@@ -54,29 +54,13 @@ import AllSellerStore from "./Pages/SellerStore/AllSellerStore/AllSellerStore";
 import SellerStoreProduct from './Pages/SellerStore/SellerStoreProduct/SellerStoreProduct';
 import SellerStoreProductDetails from "./Pages/SellerStore/SellerStoreProductDetails";
 import { getCategories } from "./Redux/Actions/CategoriesAction";
-// import Modal from "react-modal";
+import { useSelector } from "react-redux";
 
-
-
-// Modal.setAppElement("#root");
-
-// const customStyles = {
-//   content: {
-//     width: "550px",
-//     top: "50%",
-//     left: "50%",
-//     right: "auto",
-//     bottom: "auto",
-//     marginRight: "-50%",
-//     transform: "translate(-50%, -50%)",
-//     borderRadius: "0px",
-//     paddingBottom: "20px",
-//   },
-// };
 
 
 function App() {
   const token = localStorage.getItem("token");
+  const { isAuthenticated, loading } = useSelector((state) => state.user);
 
   useEffect(() => {
     store.dispatch(getCategories())
@@ -86,19 +70,13 @@ function App() {
       store.dispatch(loadUserOrders())
     }
     
-    if (token==="undefined" || token===null || token==="") {
+    if (token=="undefined" || token==null || token=="") {
       localStorage.removeItem("token")
     }
+    // if(isAuthenticated == false){
+    //   localStorage.removeItem("token");
+    // }
   }, [token]);
-
-
-  // const [modalIsOpen, setIsOpen] = React.useState(false);
-  // function openModal() {
-  //   setIsOpen(true);
-  // }
-  // function closeModal() {
-  //   setIsOpen(false);
-  // }
 
 
   return (
@@ -163,19 +141,6 @@ function App() {
           <Route path="/customer/force-login-by-agent/:agentToken" element={<AgentLand />} />
         </Routes>
       </Layout>
-
-      {/* <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
-        style={customStyles}
-        contentLabel="Example Modal"
-      >
-        <span onClick={closeModal} className="modalCloseBtn">
-          <i className="bi bi-x-lg"></i>
-        </span>
-        Download app
-        <br />
-      </Modal> */}
     </div>
   );
 }

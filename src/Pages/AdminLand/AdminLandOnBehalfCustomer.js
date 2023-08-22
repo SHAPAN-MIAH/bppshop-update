@@ -15,7 +15,7 @@ const AdminLandOnBehalfCustomer = () => {
 
   useEffect(() => {
     dispatch(AdminLogin(adminToken));
-    if (adminInfo?.status === "success") {
+    if (adminInfo?.status == "success") {
       navigate("/");
     }
     

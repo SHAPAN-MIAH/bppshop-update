@@ -12,7 +12,7 @@ export const AgentLogin = (agentToken) => async (dispatch, getState) => {
 
     // console.log(data)
 
-    if (data.status === "success") {
+    if (data.status == "success") {
       dispatch(AgentInfo(data));
       dispatch({ type: 'AGENT_LOGIN_SUCCESS', payload: data });
       localStorage.setItem("token", data.token);

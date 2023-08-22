@@ -49,7 +49,7 @@ const AddProductReview = () => {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
-        if (res?.data?.status === "success") {
+        if (res?.data?.status == "success") {
           reset();
           setRating(rating);
           getProductsReviewDetails();

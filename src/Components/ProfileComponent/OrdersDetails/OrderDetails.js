@@ -11,7 +11,7 @@ const OrderDetails = () => {
   const { id } = useParams();
   const { userOrders } = useSelector((state) => state?.userOrders);
   const { userOrderDetails } = useSelector((state) => state?.userOrderDetails);
-  const userOrder = userOrders?.find((order) => order?.id === parseInt(id));
+  const userOrder = userOrders?.find((order) => order?.id == parseInt(id));
   const OrderDetails = userOrderDetails?.map((orderDetail) => orderDetail);
 
   useEffect(() => {

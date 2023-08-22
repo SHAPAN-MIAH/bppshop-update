@@ -26,8 +26,8 @@ const SignUpModal = () => {
   };
 
   useEffect(() => {
-    if (isAuthenticated === true && token) {
-      signupRes?.status==="success" && toast.success(`${signupRes?.message}`, {
+    if (isAuthenticated == true && token) {
+      signupRes?.status=="success" && toast.success(`${signupRes?.message}`, {
         duration: 5000,
         style: {
           width: "100%",
@@ -138,7 +138,7 @@ const SignUpModal = () => {
                     </div>
                   </div>
                 </div>
-                {signupRes?.status === "failed" && (
+                {signupRes?.status == "failed" && (
                   <small className="text-danger">{signupRes?.message}</small>
                 )}
                 <div className="form-group d-flex flex-wrap justify-content-between">

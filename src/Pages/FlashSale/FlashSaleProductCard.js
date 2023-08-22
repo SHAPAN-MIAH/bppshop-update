@@ -68,7 +68,7 @@
 //   const dispatch = useDispatch();
 //   const cartItems = useSelector((state) => state.cart.cartItems);
 //   const cartItemsId = cartItems.map((i) => i.product.id);
-//   const addedItemId = cartItemsId.find((i) => i === id);
+//   const addedItemId = cartItemsId.find((i) => i == id);
 
 //   const addToCartHandler = (product, quantity) => {
 //     //default choise option

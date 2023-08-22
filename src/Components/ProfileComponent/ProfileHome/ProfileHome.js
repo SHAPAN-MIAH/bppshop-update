@@ -16,7 +16,7 @@ const ProfileHome = () => {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
-        if (res?.data?.status === "success") {
+        if (res?.data?.status == "success") {
           alert(res?.data?.message);
         }
       });
@@ -184,7 +184,7 @@ export default ProfileHome;
 //         headers: { Authorization: `Bearer ${token}` },
 //       })
 //       .then((res) => {
-//         if (res?.data?.status === "success") {
+//         if (res?.data?.status == "success") {
 //           console.log(res?.data);
 //           alert(res?.data?.message);
 //         }

@@ -21,8 +21,8 @@ const AddShipping = () => {
   const [address, setAddress] = useState(null);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { shippingAddressInfo } = useSelector((state) => state.shippingInfo);
-  const { user } = useSelector((state) => state.user);
+  const { shippingAddressInfo } = useSelector((state) => state?.shippingInfo);
+  const { user } = useSelector((state) => state?.user);
 
 
   useEffect(() => {
@@ -31,14 +31,14 @@ const AddShipping = () => {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
-        setDistrictDataOptions(res.data.data);
+        setDistrictDataOptions(res?.data?.data);
       });
   }, [token]);
 
 
   const handleDistrictChange = (e) => {
     e.preventDefault();
-    const districtId = e.target.value;
+    const districtId = e?.target?.value;
     setDistrictId(e.target.value);
     axios
       .get(baseUrl + `/location/thanas/${districtId}`)
@@ -94,7 +94,7 @@ const AddShipping = () => {
   
     console.log(newData)
     
-    if (shippingAddressInfo?.status === "success") {
+    if (shippingAddressInfo?.status == "success") {
       navigate("/shipping-address");
     }  
      

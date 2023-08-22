@@ -105,7 +105,7 @@ const EditShipping = () => {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
-        if (res?.data?.status === "success") {
+        if (res?.data?.status == "success") {
           dispatch(setDefaultShippingAddress(addressId));
           dispatch(getDeliveryCharge(district_id));
           navigate("/shipping-address");

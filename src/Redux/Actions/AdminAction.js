@@ -11,7 +11,7 @@ export const AdminLogin = (adminToken) => async (dispatch, getState) => {
     );
     // console.log(data)
 
-    if (data.status === "success") {
+    if (data.status == "success") {
       dispatch(AdminInfo(data))
       dispatch({ type: 'ADMIN_LOGIN_SUCCESS', payload: data });
       localStorage.setItem("token", data.token);

@@ -51,11 +51,11 @@ const SearchProductDetails = () => {
   // }, []);
 
   const cartItemsId = cartItems.map((i) => i?.product?.id);
-  const addedItemId = cartItemsId.find((i) => i === newId);
-  const isItemExist = cartItems.find((i) => i?.product?.id === addedItemId);
+  const addedItemId = cartItemsId.find((i) => i == newId);
+  const isItemExist = cartItems.find((i) => i?.product?.id == addedItemId);
   const paramId = id;
   const productDetailsPathId = productDetail?.id?.toString();
-  const productDetailsPath = productDetailsPathId === paramId;
+  const productDetailsPath = productDetailsPathId == paramId;
   const choiceOptions = productDetail?.choice_options?.map(
     (list) => list?.options
   );
@@ -87,7 +87,7 @@ const SearchProductDetails = () => {
       options: selectOption[1].trim(),
     };
     defaultChoices.push(newName);
-    if (defaultChoices.findIndex((f) => f.name === newName.name) === -1) {
+    if (defaultChoices.findIndex((f) => f.name == newName.name) == -1) {
       setSelectedOption((element) => [...defaultChoices, newName]);
     } else {
       const newSelectedOption = [...defaultChoices];
@@ -334,7 +334,7 @@ const SearchProductDetails = () => {
         </ol>
       </nav>
       <br />
-      {/* {productDetailsPath === true && ( */}
+      {/* {productDetailsPath == true && ( */}
         <div className="product_details_page_container">
           <div className="container-fluid">
             <div className="row">
@@ -419,7 +419,7 @@ const SearchProductDetails = () => {
                       <div className="left_1">
                         {productDetail?.images?.map((image, i) => (
                           <div
-                            className={i === 0 ? "img_wrap active" : "img_wrap"}
+                            className={i == 0 ? "img_wrap active" : "img_wrap"}
                             key={i}
                             onClick={() => hoverHandler(image, i)}
                             ref={addRefs}
@@ -517,7 +517,7 @@ const SearchProductDetails = () => {
                               id={
                                 index[0]
                                   ? "activatedColor"
-                                  : activeColor === index
+                                  : activeColor == index
                                   ? "activatedColor"
                                   : ""
                               }

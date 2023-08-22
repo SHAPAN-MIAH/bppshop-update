@@ -11,6 +11,8 @@ import { loadUserOrders } from "../../../Redux/Actions/UserOrderAction";
 import { useEffect } from "react";
 
 const OrderHome = () => {
+  const token = localStorage.getItem("token");
+  const { isAuthenticated } = useSelector((state) => state.user);
   // const { userOrders } = useSelector((state) => state?.userOrders);
   // const { cancelOrdersResponse } = useSelector(
   //   (state) => state?.cancelOrdersResponse
@@ -22,7 +24,7 @@ const OrderHome = () => {
   // };
   // useEffect(() => {
   //   store.dispatch(loadUserOrders());
-  //   if (cancelOrdersResponse?.status === "success") {
+  //   if (cancelOrdersResponse?.status == "success") {
   //     store.dispatch(loadUserOrders());
   //     toast.success(`${cancelOrdersResponse?.message}`, {
   //       duration: 5000,
@@ -36,7 +38,7 @@ const OrderHome = () => {
   //       },
   //     });
   //   }
-  //   if (cancelOrdersResponse?.status === "failed") {
+  //   if (cancelOrdersResponse?.status == "failed") {
   //     toast.success(`${cancelOrdersResponse?.message}`, {
   //       duration: 5000,
   
@@ -52,22 +54,25 @@ const OrderHome = () => {
   // }, [cancelOrdersResponse?.status, cancelOrdersResponse?.message]);
   const { userOrders } = useSelector((state) => state?.userOrders);
 
+  
   useEffect(() => {
-    store.dispatch(loadUserOrders());
+    if(isAuthenticated == true && token){
+      store.dispatch(loadUserOrders());
+    }
   }, []);
 
   const handleOrderCancel = (id) => {
     const order_id = {
       order_id: `${id}`,
     };
-    const token = localStorage.getItem("token");
+    
     const config = { headers: { Authorization: `Bearer ${token}` } };
     axios
       .post(`${baseUrl}/customer/order/cancel-order`, order_id, config)
       .then((res) => {
-        if (res.data.status === "success") {
+        if (res?.data?.status == "success") {
           store.dispatch(loadUserOrders());
-          toast.success(res.data.message, {
+          toast.success(res?.data?.message, {
             duration: 5000,
             style: {
               width: "100%",
@@ -78,7 +83,7 @@ const OrderHome = () => {
             },
           });
         } else {
-          toast.success(res.data.message, {
+          toast.success(res?.data?.message, {
             duration: 5000,
             style: {
               width: "100%",

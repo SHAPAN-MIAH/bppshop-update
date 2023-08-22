@@ -27,9 +27,14 @@ export const userLogin = (loginData) => async (dispatch, getState) => {
       loginData,
       config
     );
-    if (data.status === "success") {
+    if (data.status == "success") {
       dispatch({ type: LOGIN_SUCCESS, payload: data });
       localStorage.setItem("token", data.token);
+      localStorage.setItem(
+        "loginRes",
+        JSON.stringify(getState().loginRes.loginRes)
+      );
+
       dispatch(getCartData())
     }else{
       dispatch({ type: LOGIN_FAIL, payload: data });
@@ -49,7 +54,7 @@ export const userLogin = (loginData) => async (dispatch, getState) => {
 
 
 // Register
-export const userRegister = (userData) => async (dispatch) => {
+export const userRegister = (userData) => async (dispatch, getState) => {
   try {
     dispatch({ type: REGISTER_USER_REQUEST });
     const config = { headers: { "Content-Type": "multipart/form-data" } };
@@ -58,9 +63,14 @@ export const userRegister = (userData) => async (dispatch) => {
       userData,
       config
     );
-    if (data.status === "success") {
+    if (data.status == "success") {
       dispatch({ type: REGISTER_USER_SUCCESS, payload: data});
       localStorage.setItem("token", data.token);
+
+      localStorage.setItem(
+        "signupRes",
+        JSON.stringify(getState().signupRes.signupRes)
+      );
     }else{
       dispatch({ type: REGISTER_USER_FAIL, payload: data });
     }
@@ -86,7 +96,7 @@ export const loadUser = () => async (dispatch) => {
     const { data } = await axios.get(`${baseUrl}/customer/profile`, {
       headers: { Authorization: `Bearer ${token}` },
     });
-    if (data.status === "success") {
+    if (data.status == "success") {
       dispatch({ type: LOAD_USER_SUCCESS, payload: data.data });
     }
   } catch (error) {

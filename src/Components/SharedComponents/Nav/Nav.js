@@ -111,7 +111,7 @@ const Nav = () => {
   const handleLogout = () => {
     const config = { headers: { Authorization: `Bearer ${token}` } };
     axios.get(`${baseUrl}/customer/logout`, config).then((res) => {
-      if (res.data.status === "success") {
+      if (res.data.status == "success") {
         dispatch(logout());
         dispatch(ClearCart());
         dispatch(clearShippingAddress());

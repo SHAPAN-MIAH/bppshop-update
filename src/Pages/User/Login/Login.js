@@ -22,8 +22,8 @@ const Login = () => {
   };
 
   useEffect(() => {
-    if (isAuthenticated === true && token) {
-      loginRes?.status === "success" &&
+    if (isAuthenticated == true && token) {
+      loginRes?.status == "success" &&
         toast.success(`${loginRes?.message}`, {
           duration: 5000,
           style: {
@@ -71,7 +71,7 @@ const Login = () => {
                     placeholder="Enter Password"
                   />
                 </div>
-                {loginRes?.status === "failed" && (
+                {loginRes?.status == "failed" && (
                   <small className="text-danger">{loginRes?.message}</small>
                 )}
                 <div className="form-group d-flex flex-wrap justify-content-between py-2">

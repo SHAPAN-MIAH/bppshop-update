@@ -7,7 +7,7 @@ import "./TrackOrder.css";
 const TrackOrder = () => {
   const { id } = useParams();
   const { userOrders } = useSelector((state) => state?.userOrders);
-  const userOrder = userOrders?.find((order) => order?.id === parseInt(id));
+  const userOrder = userOrders?.find((order) => order?.id == parseInt(id));
   return (
     <>
     <MetaData title="Tracked-Order-Info - BPPShop" />

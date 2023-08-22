@@ -23,7 +23,7 @@ const Sidebar = () => {
   // const subMenuHandler = (slug, index) => {
   //   setCategorySlugName(slug);
 
-  //   const subCategories = allCategory.find((item) => item.slug === slug);
+  //   const subCategories = allCategory.find((item) => item.slug == slug);
 
   //   setSubCategory(subCategories.childes);
   //   const categoryItem = document.getElementById(`categoryItem ${index}`);
@@ -46,10 +46,10 @@ const Sidebar = () => {
   //   setSubCategorySlugName(subSlug);
 
   //   const subCategories = allCategory.find(
-  //     (item) => item.slug === categorySlugName
+  //     (item) => item.slug == categorySlugName
   //   );
   //   const subSubCategories = subCategories?.childes.find(
-  //     (item) => item.slug === subSlug
+  //     (item) => item.slug == subSlug
   //   );
   //   setSubSubCategoryList(subSubCategories);
 
@@ -60,7 +60,7 @@ const Sidebar = () => {
   //   // const subSubMenu = document.querySelector(".subSubMenu");
   //   // subSubCategoryItem.append(subSubMenu);
 
-  //   if (subSubCategories.slug === subSlug) {
+  //   if (subSubCategories.slug == subSlug) {
   //     const subSubCategoryItem = document.getElementById(
   //       `subSubCategoryItem ${indx}`
   //     );
@@ -142,7 +142,7 @@ const Sidebar = () => {
                       handleMenuClick(categoryItem.id)
                     }
                     className={
-                      activeMenu === categoryItem.id
+                      activeMenu == categoryItem.id
                         ? "subSubMenuActive"
                         : ""
                     }
@@ -184,7 +184,7 @@ const Sidebar = () => {
                                     handleSubMenuClick(subcategory.id)
                                   }
                                   className={
-                                    activeSubMenu === subcategory.id
+                                    activeSubMenu == subcategory.id
                                       ? "subMenuActive"
                                       : ""
                                   }
@@ -208,7 +208,7 @@ const Sidebar = () => {
                                               handleSubSubMenuClick(subsubcategory.id)
                                             }
                                             className={
-                                              activeSubSubMenu === subsubcategory.id
+                                              activeSubSubMenu == subsubcategory.id
                                                 ? "subSubMenuActive"
                                                 : ""
                                             }

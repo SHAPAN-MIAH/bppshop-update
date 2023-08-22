@@ -59,6 +59,16 @@ let initialState = {
       ? JSON.parse(localStorage.getItem("cartItems"))
       : [],
   },
+  signupRes: {
+    signupRes: localStorage.getItem("signupRes")
+      ? JSON.parse(localStorage.getItem("signupRes"))
+      : {},
+  },
+  loginRes: {
+    loginRes: localStorage.getItem("loginRes")
+      ? JSON.parse(localStorage.getItem("loginRes"))
+      : {},
+  },
 
   shippingInfo: {
     shippingAddressInfo: localStorage.getItem("shippingAddressInfo")
