@@ -48,7 +48,8 @@ import { SignupRedirectClear } from "./SignUpRedirectAction";
 // };
 
 // add to cart after login....................................................
-export const addItemsToCartAfterLogin = (addItemToCartAfterLoginData) => async (dispatch, getState) => {
+export const addItemsToCartAfterLogin =
+  (addItemToCartAfterLoginData) => async (dispatch, getState) => {
     try {
       dispatch({ type: "ADD_TO_CART_AFTER_LOGIN_REQUEST" });
       const token = localStorage.getItem("token");
@@ -60,17 +61,17 @@ export const addItemsToCartAfterLogin = (addItemToCartAfterLoginData) => async (
         config
       );
 
-      console.log(data)
-
+      // console.log(data);
+      
       if (data.status == "success") {
         dispatch({ type: "ADD_TO_CART_AFTER_LOGIN_SUCCESS", payload: data });
         localStorage.setItem(
           "cartGroupItems",
           JSON.stringify(getState().cartGroup.cartGroupItems)
         );
+
         localStorage.removeItem("modalLogin");
         dispatch(ClearCartItem());
-
         dispatch(getCartData());
       } else {
         dispatch({ type: "ADD_TO_CART_AFTER_LOGIN_FAIL" });
@@ -81,10 +82,11 @@ export const addItemsToCartAfterLogin = (addItemToCartAfterLoginData) => async (
         payload: error?.response?.data?.message,
       });
     }
-};
+  };
 
 // ADD TO CART without login......................................................
-export const addItemsToCart = (product, quantity) => async (dispatch, getState) => {
+export const addItemsToCart =
+  (product, quantity) => async (dispatch, getState) => {
     dispatch({
       type: "ADD_TO_CART",
       payload: {
@@ -92,12 +94,14 @@ export const addItemsToCart = (product, quantity) => async (dispatch, getState) 
         quantity,
       },
     });
-};
+  };
 
 // Update Cart without login....................................................
 export const updateItemsToCart = (id, newQty) => async (dispatch, getState) => {
   const cartItems = getState().cart.cartItems;
   const isItemExist = cartItems[0]?.data?.find((i) => i.id == id);
+
+  // console.log(isItemExist)
 
   const cartUpdateInfo = {
     key: `${isItemExist?.id}`,
@@ -147,7 +151,10 @@ export const getCartData = () => async (dispatch, getState) => {
       JSON.stringify(getState().cart.cartItems)
     );
   } catch (error) {
-    dispatch({ type: "GET_CART_FAIL", payload: error?.response?.data?.message });
+    dispatch({
+      type: "GET_CART_FAIL",
+      payload: error?.response?.data?.message,
+    });
   }
 };
 
@@ -187,9 +194,8 @@ export const removeItemsFromCart =
 
     dispatch(getCartData());
 
-    dispatch(SignupRedirectClear())
-    
-};
+    dispatch(SignupRedirectClear());
+  };
 
 // CLEAR CART........................................................
 export const ClearCartItem = () => async (dispatch, getState) => {

@@ -669,7 +669,7 @@ const NewArrivalProductDetails = () => {
                       <span
                         onClick={() =>
                           decreaseQuantity(
-                            productDetail,
+                            isItemExist.id,
                             isItemExist?.quantity,
                             defaultChoices
                             // productDetail?.choice_options
@@ -687,7 +687,7 @@ const NewArrivalProductDetails = () => {
                               ? quantityCount - 1
                               : quantityCount
                           );
-                          priceVariantHandlerByChoiceOption(quantityCount - 1);
+                          // priceVariantHandlerByChoiceOption(quantityCount - 1);
                         }}
                         className="minus"
                       >
@@ -703,7 +703,7 @@ const NewArrivalProductDetails = () => {
                       <span
                         onClick={() =>
                           increaseQuantity(
-                            productDetail,
+                            isItemExist.id,
                             isItemExist?.quantity,
                             productDetail?.current_stock,
                             defaultChoices
@@ -722,11 +722,11 @@ const NewArrivalProductDetails = () => {
                               ? quantityCount + 1
                               : quantityCount
                           );
-                          priceVariantHandlerByChoiceOption(
-                            productDetail?.current_stock >= quantityCount + 1
-                              ? quantityCount + 1
-                              : quantityCount
-                          );
+                          // priceVariantHandlerByChoiceOption(
+                          //   productDetail?.current_stock >= quantityCount + 1
+                          //     ? quantityCount + 1
+                          //     : quantityCount
+                          // );
                         }}
                         className="plus"
                       >

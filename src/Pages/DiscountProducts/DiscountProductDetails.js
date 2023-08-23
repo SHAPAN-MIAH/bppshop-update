@@ -676,7 +676,7 @@ const DiscountProductDetails = () => {
                       <span
                         onClick={() =>
                           decreaseQuantity(
-                            productDetail,
+                            isItemExist.id,
                             isItemExist?.quantity,
                             defaultChoices
                             // productDetail?.choice_options
@@ -694,7 +694,7 @@ const DiscountProductDetails = () => {
                               ? quantityCount - 1
                               : quantityCount
                           );
-                          priceVariantHandlerByChoiceOption(quantityCount - 1);
+                          // priceVariantHandlerByChoiceOption(quantityCount - 1);
                         }}
                         className="minus"
                       >
@@ -710,7 +710,7 @@ const DiscountProductDetails = () => {
                       <span
                         onClick={() =>
                           increaseQuantity(
-                            productDetail,
+                            isItemExist.id,
                             isItemExist?.quantity,
                             productDetail?.current_stock,
                             defaultChoices
@@ -729,11 +729,11 @@ const DiscountProductDetails = () => {
                               ? quantityCount + 1
                               : quantityCount
                           );
-                          priceVariantHandlerByChoiceOption(
-                            productDetail?.current_stock >= quantityCount + 1
-                              ? quantityCount + 1
-                              : quantityCount
-                          );
+                          // priceVariantHandlerByChoiceOption(
+                          //   productDetail?.current_stock >= quantityCount + 1
+                          //     ? quantityCount + 1
+                          //     : quantityCount
+                          // );
                         }}
                         className="plus"
                       >

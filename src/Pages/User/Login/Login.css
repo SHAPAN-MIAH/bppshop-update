@@ -156,6 +156,9 @@
   }
 }
 
+.modal_login_card{
+  width: 60%;
+}
 
 
 @media screen and (max-width: 768px) {
@@ -164,5 +167,29 @@
   }
   .signin_btn {
     margin: 10px 0px 20px 0px;
+  }
+
+  .modal_login_card{
+    width: 55%;
+  }
+}
+@media screen and (max-width: 668px) {
+  .modal_login_card{
+    width: 50%;
+  }
+}
+@media screen and (max-width: 576px) {
+  .modal_login_card{
+    width: 40%;
+  }
+}
+@media screen and (max-width: 450px) {
+  .modal_login_card{
+    width: 35%;
+  }
+}
+@media screen and (max-width: 360px) {
+  .modal_login_card{
+    width: 30%;
   }
 }

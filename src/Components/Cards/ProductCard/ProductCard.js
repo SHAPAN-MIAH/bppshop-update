@@ -76,21 +76,17 @@ const ProductCard = ({ product }) => {
   const { signupRes } = useSelector((state) => state.signupRes);
 
   useEffect(() => {
-    if (
-      isAuthenticated == true &&
-      token
-    ) {
+    if (isAuthenticated == true) {
       closeModal();
 
       if (modalLogin == "true") {
         addToCartAfterLoginRes();
       }
     }
-  }, [loginRes, signupRes, isAuthenticated, token, modalLogin]);
+  }, [isAuthenticated, modalLogin]);
 
   // add to cart after login response......
   const addToCartAfterLoginRes = () => {
-
     const choice_options = cartItemBeforeLogin[0]?.product?.choice_options;
     const choice_options_name = choice_options?.map((option) => option.name);
     const choice_options_defaultValue = choice_options?.map(
@@ -124,11 +120,11 @@ const ProductCard = ({ product }) => {
     });
 
     // if (loginRes?.status == "success" || signupRes?.status == "success") {
-      cartItemBeforeLogin[0]?.product?.colors?.length > 0
-        ? dispatch(addItemsToCartAfterLogin(addItemsToCartDataWithColor))
-        : dispatch(addItemsToCartAfterLogin(addItemsToCartDataWithoutColor));
+    cartItemBeforeLogin[0]?.product?.colors?.length > 0
+      ? dispatch(addItemsToCartAfterLogin(addItemsToCartDataWithColor))
+      : dispatch(addItemsToCartAfterLogin(addItemsToCartDataWithoutColor));
 
-      addToCartOverlyLoading();
+    addToCartOverlyLoading();
     // }
   };
 

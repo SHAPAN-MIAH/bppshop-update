@@ -252,7 +252,7 @@ const BestSellingProductDetails = () => {
   // }, [productDetailsPath, navigate]);
 
   // cart item increase decrease function..............................
-  const increaseQuantity = (id, quantity, stock, defaultChoices) => {
+  const increaseQuantity = (id, quantity, stock) => {
     // console.log(defaultChoices);
 
     const newQty = quantity + 1;
@@ -270,16 +270,16 @@ const BestSellingProductDetails = () => {
       return;
     }
     // dispatch(addItemsToCart(id, newQty, defaultChoices));
-    dispatch(updateItemsToCart(id, newQty, defaultChoices));
+    dispatch(updateItemsToCart(id, newQty));
   };
 
-  const decreaseQuantity = (id, quantity, defaultChoices) => {
+  const decreaseQuantity = (id, quantity) => {
     const newQty = quantity - 1;
     if (1 >= quantity) {
       return;
     }
     // dispatch(addItemsToCart(id, newQty, defaultChoices));
-    dispatch(updateItemsToCart(id, newQty, defaultChoices));
+    dispatch(updateItemsToCart(id, newQty));
   };
 
   const [modalIsOpen, setIsOpen] = React.useState(false);
@@ -677,7 +677,7 @@ const BestSellingProductDetails = () => {
                       <span
                         onClick={() =>
                           decreaseQuantity(
-                            productDetail,
+                            isItemExist.id,
                             isItemExist?.quantity,
                             defaultChoices
                             // productDetail?.choice_options
@@ -695,7 +695,7 @@ const BestSellingProductDetails = () => {
                               ? quantityCount - 1
                               : quantityCount
                           );
-                          priceVariantHandlerByChoiceOption(quantityCount - 1);
+                          // priceVariantHandlerByChoiceOption(quantityCount - 1);
                         }}
                         className="minus"
                       >
@@ -711,7 +711,7 @@ const BestSellingProductDetails = () => {
                       <span
                         onClick={() =>
                           increaseQuantity(
-                            productDetail,
+                            isItemExist.id,
                             isItemExist?.quantity,
                             productDetail?.current_stock,
                             defaultChoices
@@ -730,11 +730,11 @@ const BestSellingProductDetails = () => {
                               ? quantityCount + 1
                               : quantityCount
                           );
-                          priceVariantHandlerByChoiceOption(
-                            productDetail?.current_stock >= quantityCount + 1
-                              ? quantityCount + 1
-                              : quantityCount
-                          );
+                          // priceVariantHandlerByChoiceOption(
+                          //   productDetail?.current_stock >= quantityCount + 1
+                          //     ? quantityCount + 1
+                          //     : quantityCount
+                          // );
                         }}
                         className="plus"
                       >

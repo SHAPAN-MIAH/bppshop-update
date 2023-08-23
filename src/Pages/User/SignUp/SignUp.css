@@ -47,12 +47,50 @@
 .SignUpModal_container {
   display: none;
 }
+.modal_signup_card_container{
+  width: 60%;
+}
 @media screen and (max-width: 768px) {
   .signup_card_body {
-    padding: 40px 20px;
+    padding: 20px;
   }
 
+  .modal_signup_card_container{
+    width: 60%;
+  }
+  
   .signup_card_footer {
     padding: 15px 30px;
   }
+  
+}
+@media screen and (max-width: 657px) {
+  .modal_signup_card_container{
+    width: 50%;
+  }
+  
+}
+@media screen and (max-width: 576px) {
+  .modal_signup_card_container{
+    width: 45%;
+  }
+  
+}
+@media screen and (max-width: 550px) {
+  .modal_signup_card_container{
+    width: 40%;
+  }
+  
+}
+@media screen and (max-width: 400px) {
+  .modal_signup_card_container{
+    width: 35%;
+  }
+  
+}
+@media screen and (max-width: 360px) {
+  .modal_signup_card_container{
+    width: 30%;
+  }
+  
 }

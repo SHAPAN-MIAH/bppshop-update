@@ -101,6 +101,8 @@ const ProductDetailsPage = () => {
   );
   const colors = productDetail?.colors?.map((color) => color?.code);
 
+  console.log(isItemExist)
+
   //default choice option..............................
   const defaultOptionName = productDetail?.choice_options?.map(
     (list) => list?.name
@@ -252,8 +254,8 @@ const ProductDetailsPage = () => {
   // }, [productDetailsPath, navigate]);
 
   // cart item increase decrease function..............................
-  const increaseQuantity = (id, quantity, stock, defaultChoices) => {
-    // console.log(defaultChoices);
+  const increaseQuantity = (id, quantity, stock) => {
+    console.log(id, quantity, stock);
 
     const newQty = quantity + 1;
     if (stock <= quantity) {
@@ -270,16 +272,16 @@ const ProductDetailsPage = () => {
       return;
     }
     // dispatch(addItemsToCart(id, newQty, defaultChoices));
-    dispatch(updateItemsToCart(id, newQty, defaultChoices));
+    dispatch(updateItemsToCart(id, newQty));
   };
 
-  const decreaseQuantity = (id, quantity, defaultChoices) => {
+  const decreaseQuantity = (id, quantity) => {
     const newQty = quantity - 1;
     if (1 >= quantity) {
       return;
     }
     // dispatch(addItemsToCart(id, newQty, defaultChoices));
-    dispatch(updateItemsToCart(id, newQty, defaultChoices));
+    dispatch(updateItemsToCart(id, newQty));
   };
 
   const [modalIsOpen, setIsOpen] = React.useState(false);
@@ -686,9 +688,8 @@ const ProductDetailsPage = () => {
                       <span
                         onClick={() =>
                           decreaseQuantity(
-                            productDetail,
+                            isItemExist.id,
                             isItemExist?.quantity,
-                            defaultChoices
                             // productDetail?.choice_options
                           )
                         }
@@ -704,7 +705,7 @@ const ProductDetailsPage = () => {
                               ? quantityCount - 1
                               : quantityCount
                           );
-                          priceVariantHandlerByChoiceOption(quantityCount - 1);
+                          // priceVariantHandlerByChoiceOption(quantityCount - 1);
                         }}
                         className="minus"
                       >
@@ -720,10 +721,10 @@ const ProductDetailsPage = () => {
                       <span
                         onClick={() =>
                           increaseQuantity(
-                            productDetail,
+                            isItemExist.id,
                             isItemExist?.quantity,
                             productDetail?.current_stock,
-                            defaultChoices
+                            // defaultChoices
                             // productDetail?.choice_options
                           )
                         }
@@ -739,11 +740,11 @@ const ProductDetailsPage = () => {
                               ? quantityCount + 1
                               : quantityCount
                           );
-                          priceVariantHandlerByChoiceOption(
-                            productDetail?.current_stock >= quantityCount + 1
-                              ? quantityCount + 1
-                              : quantityCount
-                          );
+                          // priceVariantHandlerByChoiceOption(
+                          //   productDetail?.current_stock >= quantityCount + 1
+                          //     ? quantityCount + 1
+                          //     : quantityCount
+                          // );
                         }}
                         className="plus"
                       >

@@ -69,7 +69,7 @@ const SignUpModal = () => {
     <>
       <MetaData title="Sign-Up - BPPShop" />
       <div className="row justify-content-center">
-        <div className="col-md-8">
+        <div className="modal_signup_card_container">
           <div className="signup_card">
             <div className="signup_card_body">
               <h4 className=" mb-4">Create Account</h4>

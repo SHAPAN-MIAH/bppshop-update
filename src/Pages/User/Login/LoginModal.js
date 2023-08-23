@@ -50,8 +50,8 @@ const LoginModal = () => {
   return (
     <>
       <MetaData title="Login - BPPShop" />
-      <div className="row justify-content-center">
-        <div className="col-md-6">
+      <div className="d-flex justify-content-center">
+        <div className="modal_login_card">
           <div className="login_card">
             <div className="card-body">
               <h4 className="mb-4">Sign in</h4>
