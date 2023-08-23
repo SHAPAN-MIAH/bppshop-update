@@ -70,9 +70,9 @@ function App() {
       store.dispatch(loadUserOrders())
     }
     
-    // if (isAuthenticated == false) {
-    //   localStorage.removeItem("token")
-    // }
+    if (isAuthenticated == false) {
+      localStorage.removeItem("token")
+    }
     
   }, [token]);
 
