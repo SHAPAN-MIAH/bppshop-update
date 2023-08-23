@@ -70,12 +70,10 @@ function App() {
       store.dispatch(loadUserOrders())
     }
     
-    if (token=="undefined" || token==null || token=="") {
+    if (isAuthenticated == false) {
       localStorage.removeItem("token")
     }
-    // if(isAuthenticated == false){
-    //   localStorage.removeItem("token");
-    // }
+    
   }, [token]);
 
 
