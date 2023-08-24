@@ -68,18 +68,7 @@ const ProfileHome = () => {
                 />
               </div>
             </div> 
-            <div className="col-md-6 col-sm-12 mb-3">
-              <div className="form-group">
-                <label htmlFor="inputEmail4">Email </label>
-                <input
-                  {...register("email")}
-                  type="email"
-                  className="input_field"
-                  name="email"
-                  defaultValue={user?.email}
-                />
-              </div>
-            </div>
+           
             <div className="col-md-6 col-sm-12 mb-3">
               <div className="form-group">
                 <label htmlFor="phone">Phone </label>

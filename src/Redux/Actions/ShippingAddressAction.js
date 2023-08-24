@@ -9,30 +9,38 @@ import {
   SET_DEFAULT_SHIPPING_ADDRESS_REQUEST,
   SET_DEFAULT_SHIPPING_ADDRESS_SUCCESS,
   SET_DEFAULT_SHIPPING_ADDRESS_FAIL,
-} from "../Constants/ShippingAddressConstants.js"
-import { baseUrl } from './../../BaseUrl/BaseUrl';
-
+} from "../Constants/ShippingAddressConstants.js";
+import { baseUrl } from "./../../BaseUrl/BaseUrl";
 
 // Add shipping address action
-export const addShippingAddress = (shippingData) => async (dispatch, getState) => {
-  try {
-    dispatch({ type: ADD_SHIPPING_ADDRESS_REQUEST });
-    const token = localStorage.getItem("token");
-    const config = { headers: { Authorization: `Bearer ${token}` } };
+export const addShippingAddress =
+  (shippingData) => async (dispatch, getState) => {
+    try {
+      dispatch({ type: ADD_SHIPPING_ADDRESS_REQUEST });
+      const token = localStorage.getItem("token");
+      const config = { headers: { Authorization: `Bearer ${token}` } };
 
-    const { data } = await axios.post(
-      `${baseUrl}/shipping-address/add`,
-      shippingData,
-      config
-    );
+      const { data } = await axios.post(
+        `${baseUrl}/shipping-address/add`,
+        shippingData,
+        config
+      );
 
-    dispatch({ type: ADD_SHIPPING_ADDRESS_SUCCESS, payload: data });
+      if (data.status == "success") {
+        dispatch({ type: ADD_SHIPPING_ADDRESS_SUCCESS, payload: data });
+      }
 
-    localStorage.setItem("shippingAddressInfo", JSON.stringify(getState().shippingInfo.shippingAddressInfo));
-  } catch (error) {
-    dispatch({ type: ADD_SHIPPING_ADDRESS_FAIL, payload: error.response.data.message });
-  }
-};
+      localStorage.setItem(
+        "shippingAddressInfo",
+        JSON.stringify(getState().shippingInfo.shippingAddressInfo)
+      );
+    } catch (error) {
+      dispatch({
+        type: ADD_SHIPPING_ADDRESS_FAIL,
+        payload: error.response.data.message,
+      });
+    }
+  };
 
 // Load shipping address action
 export const loadAllShippingAddress = () => async (dispatch, getState) => {
@@ -41,55 +49,70 @@ export const loadAllShippingAddress = () => async (dispatch, getState) => {
     const token = localStorage.getItem("token");
     const config = { headers: { Authorization: `Bearer ${token}` } };
 
-    const { data } = await axios.get(
-      `${baseUrl}/shipping-address`,
-      config
-    );
+    const { data } = await axios.get(`${baseUrl}/shipping-address`, config);
 
     dispatch({ type: LOAD_SHIPPING_ADDRESS_SUCCESS, payload: data });
 
-    localStorage.setItem("allShippingAddressInfo", JSON.stringify(getState().allShippingInfo.allShippingAddressInfo));
+    localStorage.setItem(
+      "allShippingAddressInfo",
+      JSON.stringify(getState().allShippingInfo.allShippingAddressInfo)
+    );
   } catch (error) {
-    dispatch({ type: LOAD_SHIPPING_ADDRESS_FAIL, payload: error.response.data.message });
+    dispatch({
+      type: LOAD_SHIPPING_ADDRESS_FAIL,
+      payload: error.response.data.message,
+    });
   }
 };
 
 // Set default shipping address action
-export const setDefaultShippingAddress = (addressId) => async (dispatch, getState) => {
-  try {
-    dispatch({ type: SET_DEFAULT_SHIPPING_ADDRESS_REQUEST });
-    const token = localStorage.getItem("token");
-    const config = { headers: { Authorization: `Bearer ${token}` } };
+export const setDefaultShippingAddress =
+  (addressId) => async (dispatch, getState) => {
+    try {
+      dispatch({ type: SET_DEFAULT_SHIPPING_ADDRESS_REQUEST });
+      const token = localStorage.getItem("token");
+      const config = { headers: { Authorization: `Bearer ${token}` } };
 
-    const { data } = await axios.post(
-      `${baseUrl}/shipping-address/set-default`,
-      addressId,
-      config
-    );
+      const { data } = await axios.post(
+        `${baseUrl}/shipping-address/set-default`,
+        addressId,
+        config
+      );
 
-    dispatch({ type: SET_DEFAULT_SHIPPING_ADDRESS_SUCCESS, payload: data });
+      dispatch({ type: SET_DEFAULT_SHIPPING_ADDRESS_SUCCESS, payload: data });
 
-    localStorage.setItem("shippingAddressInfo", JSON.stringify(getState().shippingInfo.shippingAddressInfo));
-  } catch (error) {
-    dispatch({ type: SET_DEFAULT_SHIPPING_ADDRESS_FAIL, payload: error.response.data.message });
-  }
-};
-
+      localStorage.setItem(
+        "shippingAddressInfo",
+        JSON.stringify(getState().shippingInfo.shippingAddressInfo)
+      );
+    } catch (error) {
+      dispatch({
+        type: SET_DEFAULT_SHIPPING_ADDRESS_FAIL,
+        payload: error.response.data.message,
+      });
+    }
+  };
 
 // Clear shipping address
 export const clearShippingAddress = () => async (dispatch, getState) => {
   dispatch({
-    type: "CLEAR_SHIPPING_ADDRESS"
+    type: "CLEAR_SHIPPING_ADDRESS",
   });
 
-  localStorage.setItem("shippingAddressInfo", JSON.stringify(getState().shippingInfo.shippingAddressInfo));
+  localStorage.setItem(
+    "shippingAddressInfo",
+    JSON.stringify(getState().shippingInfo.shippingAddressInfo)
+  );
 };
 
 // Clear All shipping address
 export const clearAllShippingAddress = () => async (dispatch, getState) => {
   dispatch({
-    type: "CLEAR_ALL_SHIPPING_ADDRESS"
+    type: "CLEAR_ALL_SHIPPING_ADDRESS",
   });
 
-  localStorage.setItem("allShippingAddressInfo", JSON.stringify(getState().allShippingInfo.allShippingAddressInfo));
+  localStorage.setItem(
+    "allShippingAddressInfo",
+    JSON.stringify(getState().allShippingInfo.allShippingAddressInfo)
+  );
 };

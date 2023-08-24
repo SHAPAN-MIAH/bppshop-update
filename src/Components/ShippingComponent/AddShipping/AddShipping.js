@@ -92,16 +92,15 @@ const AddShipping = () => {
       upazila_id 
     };
   
-    console.log(newData)
-    
-    if (shippingAddressInfo?.status == "success") {
-      navigate("/shipping-address");
-    }  
      
     dispatch(addShippingAddress(newData));
     dispatch(getDeliveryCharge(district_id));
-    
+
   };
+  
+  if (shippingAddressInfo?.status == "success") {
+    navigate("/shipping-address");
+  } 
 
   const scrollTop = () => {
     //onclick placeorder go to top of the page
