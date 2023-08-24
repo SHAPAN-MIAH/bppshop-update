@@ -449,6 +449,22 @@ const NewArrivalProductDetails = () => {
     addToCartOverlyLoadingCloseHandler()
   }
 
+  useEffect(() => {
+    if( AddToCartResponse[0]?.status == "failed"){
+      addToCartOverlyLoadingCloseHandler();
+      toast.error(`${AddToCartResponse[0]?.message}`, {
+        duration: 2000,
+        style: {
+          width: "100%",
+          height: "80px",
+          padding: "0px 20px",
+          background: "#86bc19",
+          color: "#fff",
+        },
+      });
+    }
+  })
+
   const [isOpen, setOpen] = useState(false);
 
   // const [modal, setModal] = useState(false);
