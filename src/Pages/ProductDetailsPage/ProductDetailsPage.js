@@ -101,7 +101,7 @@ const ProductDetailsPage = () => {
   );
   const colors = productDetail?.colors?.map((color) => color?.code);
 
-  console.log(isItemExist)
+  // console.log(isItemExist);
 
   //default choice option..............................
   const defaultOptionName = productDetail?.choice_options?.map(
@@ -336,21 +336,6 @@ const ProductDetailsPage = () => {
               );
           addToCartOverlyLoading();
         }
-
-        // if(AddToCartResponse?.map(i => i.status == "success")){
-
-        //   // toaster
-        //   toast.success(`Product added to cart successfully`, {
-        //     duration: 5000,
-        //     style: {
-        //       width: "100%",
-        //       height: "80px",
-        //       padding: "0px 20px",
-        //       background: "#86bc19",
-        //       color: "#fff",
-        //     },
-        //   });
-        // }
       }
     }
   }, [
@@ -406,54 +391,24 @@ const ProductDetailsPage = () => {
 
         addToCartOverlyLoading();
       }
-      // if(AddToCartResponse?.map(i => i.status == "success")){
-      //   // toaster
-      //   toast.success(`Product added to cart successfully`, {
-      //     duration: 3000,
-      //     style: {
-      //       width: "100%",
-      //       height: "80px",
-      //       padding: "0px 20px",
-      //       background: "#86bc19",
-      //       color: "#fff",
-      //     },
-      //   });
 
-      // }
       dispatch(ClearAddToCartRes());
     }
   };
 
   const addToCartOverlyLoading = () => {
-    const addToCartLoaderOverlay = document.querySelector(
-      ".addToCart_loader_overlay"
-    );
-
-    addToCartLoaderOverlay.style.display = "block";
+    document.querySelector(".addToCart_loader_overlay").style.display = 'block';
+  };
+  const addToCartOverlyLoadingClose = () => {
+    document.querySelector(".addToCart_loader_overlay").style.display = 'none';
   };
 
-  if (addedItemId) {
-    const addToCartLoaderOverlay = document.querySelector(
-      ".addToCart_loader_overlay"
-    );
-    addToCartLoaderOverlay.style.display = "none";
+  if (isItemExist?.id) {
+    addToCartOverlyLoadingClose()
   }
 
-  
+ 
 
-  // const [modal, setModal] = useState(false);
-  // const [videoLoading, setVideoLoading] = useState(true);
-
-  // const openModal = () => {
-  //   setModal(!modal);
-  // };
-
-  // const spinner = () => {
-  //   setVideoLoading(!videoLoading);
-  // };
-
-
-  
   // youtube video embed code split function............
   const [isOpen, setOpen] = useState(false);
   let embed_video_url;
@@ -542,7 +497,6 @@ const ProductDetailsPage = () => {
                           }}
                         />
                       )}
-
                     </div>
 
                     <div className="left_1" id="productImgGallery">
@@ -689,7 +643,7 @@ const ProductDetailsPage = () => {
                         onClick={() =>
                           decreaseQuantity(
                             isItemExist.id,
-                            isItemExist?.quantity,
+                            isItemExist?.quantity
                             // productDetail?.choice_options
                           )
                         }
@@ -723,7 +677,7 @@ const ProductDetailsPage = () => {
                           increaseQuantity(
                             isItemExist.id,
                             isItemExist?.quantity,
-                            productDetail?.current_stock,
+                            productDetail?.current_stock
                             // defaultChoices
                             // productDetail?.choice_options
                           )
