@@ -254,13 +254,26 @@ const ProductDetailsPage = () => {
   // }, [productDetailsPath, navigate]);
 
   // cart item increase decrease function..............................
+  const increaseQuantityBeforeAddToCart = (quantity, stock) => {
+    if (stock <= quantity) {
+      toast.error("Sorry, Stock is limited!", {
+        duration: 2000,
+        style: {
+          width: "100%",
+          height: "80px",
+          padding: "0px 20px",
+          background: "#86bc19",
+          color: "#fff",
+        },
+      });
+      return;
+    }
+  };
   const increaseQuantity = (id, quantity, stock) => {
-    console.log(id, quantity, stock);
-
     const newQty = quantity + 1;
     if (stock <= quantity) {
-      toast.error("Stock Limited.", {
-        duration: 3000,
+      toast.error("Sorry, Stock is limited!", {
+        duration: 2000,
         style: {
           width: "100%",
           height: "80px",
@@ -397,17 +410,19 @@ const ProductDetailsPage = () => {
   };
 
   const addToCartOverlyLoading = () => {
-    document.querySelector(".addToCart_loader_overlay").style.display = 'block';
-  };
-  const addToCartOverlyLoadingClose = () => {
-    document.querySelector(".addToCart_loader_overlay").style.display = 'none';
+    document.querySelector(".addToCart_loader_overlay").style.display = "block";
   };
 
-  if (isItemExist?.id) {
-    addToCartOverlyLoadingClose()
+  const addToCartOverlyLoadingCloseHandler = () => {
+    const addToCartLoaderOverlay = document.querySelector(
+      ".addToCart_loader_overlay"
+    );
+    addToCartLoaderOverlay.style.display = "none";
+  };
+
+  if (AddToCartResponse[0]?.status == "success") {
+    addToCartOverlyLoadingCloseHandler();
   }
-
- 
 
   // youtube video embed code split function............
   const [isOpen, setOpen] = useState(false);
@@ -690,7 +705,10 @@ const ProductDetailsPage = () => {
                       <span
                         onClick={() => {
                           setQuantityCount(
-                            productDetail?.current_stock > quantityCount
+                            // productDetail?.current_stock > quantityCount
+                            //   ? quantityCount + 1
+                            //   : quantityCount
+                            productDetail?.current_stock >= quantityCount + 1
                               ? quantityCount + 1
                               : quantityCount
                           );
@@ -702,7 +720,13 @@ const ProductDetailsPage = () => {
                         }}
                         className="plus"
                       >
-                        <i className="bi bi-plus-lg"></i>
+                        <i
+                          className="bi bi-plus-lg"
+                          onClick={() => increaseQuantityBeforeAddToCart(
+                            quantityCount,
+                            productDetail?.current_stock
+                          )}
+                        ></i>
                       </span>
                     )}
                   </div>

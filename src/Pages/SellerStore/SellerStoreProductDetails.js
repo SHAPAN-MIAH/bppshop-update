@@ -62,6 +62,9 @@ const SellerStoreProductDetails = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.cartItems[0]?.data);
+  const AddToCartResponse = useSelector(
+    (state) => state.AddToCartResponse.AddToCartResponse
+  );
   const token = localStorage.getItem("token");
   const { isAuthenticated } = useSelector((state) => state.user);
   const { loginRes } = useSelector((state) => state.loginRes);
@@ -247,6 +250,23 @@ const SellerStoreProductDetails = () => {
   //   }
   // }, [productDetailsPath, loading, navigate]);
 
+
+  const increaseQuantityBeforeAddToCart = (quantity, stock) => {
+    if (stock <= quantity) {
+      toast.error("Sorry, Stock is limited!", {
+        duration: 2000,
+        style: {
+          width: "100%",
+          height: "80px",
+          padding: "0px 20px",
+          background: "#86bc19",
+          color: "#fff",
+        },
+      });
+      return;
+    }
+  };
+  
   // cart item increase decrease function..............................
   const increaseQuantity = (id, quantity, stock, defaultChoices) => {
     const newQty = quantity + 1;
@@ -424,11 +444,13 @@ const SellerStoreProductDetails = () => {
     addToCartLoaderOverlay.style.display = "block";
   };
 
-  if (addedItemId) {
-    const addToCartLoaderOverlay = document.querySelector(
-      ".addToCart_loader_overlay"
-    );
+  const addToCartOverlyLoadingCloseHandler = () => {
+    const addToCartLoaderOverlay = document.querySelector(".addToCart_loader_overlay");
     addToCartLoaderOverlay.style.display = "none";
+  };
+
+  if (AddToCartResponse[0]?.status == "success") {
+    addToCartOverlyLoadingCloseHandler()
   }
 
   // youtube video embed code split function............
@@ -737,7 +759,13 @@ const SellerStoreProductDetails = () => {
                         }}
                         className="plus"
                       >
-                        <i className="bi bi-plus-lg"></i>
+                        <i
+                          className="bi bi-plus-lg"
+                          onClick={() => increaseQuantityBeforeAddToCart(
+                            quantityCount,
+                            productDetail?.current_stock
+                          )}
+                        ></i>
                       </span>
                     )}
                   </div>

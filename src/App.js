@@ -55,6 +55,7 @@ import SellerStoreProduct from './Pages/SellerStore/SellerStoreProduct/SellerSto
 import SellerStoreProductDetails from "./Pages/SellerStore/SellerStoreProductDetails";
 import { getCategories } from "./Redux/Actions/CategoriesAction";
 import { useSelector } from "react-redux";
+import { getCartData } from "./Redux/Actions/CartAction";
 
 
 
@@ -67,7 +68,8 @@ function App() {
     
     if(token){
       store.dispatch(loadUser());
-      store.dispatch(loadUserOrders())
+      store.dispatch(loadUserOrders());
+      store.dispatch(getCartData());
     }
     
     // if (isAuthenticated == false) {

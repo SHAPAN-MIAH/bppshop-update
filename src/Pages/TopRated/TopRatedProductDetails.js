@@ -247,6 +247,25 @@ const TopRatedProductDetails = () => {
   //   }
   // }, [productDetailsPath, navigate]);
 
+
+  const increaseQuantityBeforeAddToCart = (quantity, stock) => {
+   
+    if (stock <= quantity) {
+      toast.error("Sorry, Stock is limited!", {
+        duration: 2000,
+        style: {
+          width: "100%",
+          height: "80px",
+          padding: "0px 20px",
+          background: "#86bc19",
+          color: "#fff",
+        },
+      });
+      return;
+    }
+  };
+
+  
   // cart item increase decrease function..............................
   const increaseQuantity = (id, quantity, stock, defaultChoices) => {
     // console.log(defaultChoices);
@@ -426,11 +445,13 @@ const TopRatedProductDetails = () => {
     addToCartLoaderOverlay.style.display = "block";
   };
 
-  if (addedItemId) {
-    const addToCartLoaderOverlay = document.querySelector(
-      ".addToCart_loader_overlay"
-    );
+  const addToCartOverlyLoadingCloseHandler = () => {
+    const addToCartLoaderOverlay = document.querySelector(".addToCart_loader_overlay");
     addToCartLoaderOverlay.style.display = "none";
+  };
+
+  if (AddToCartResponse[0]?.status == "success") {
+    addToCartOverlyLoadingCloseHandler()
   }
 
   const [isOpen, setOpen] = useState(false);
@@ -728,7 +749,13 @@ const TopRatedProductDetails = () => {
                         }}
                         className="plus"
                       >
-                        <i className="bi bi-plus-lg"></i>
+                        <i
+                          className="bi bi-plus-lg"
+                          onClick={() => increaseQuantityBeforeAddToCart(
+                            quantityCount,
+                            productDetail?.current_stock
+                          )}
+                        ></i>
                       </span>
                     )}
                   </div>

@@ -52,6 +52,12 @@ const CheckoutPayment = () => {
             navigate("/checkout-complete");
             proccedordergifContainer.style.display = "none";
           }
+          if (res.data.status == "failed") {
+            proccedordergifContainer.style.display = "none";
+            document.querySelector(
+              ".checkout_failed_status_container"
+            ).innerHTML = `${res.data.message}`;
+          }
         });
     } else {
       axios
@@ -326,6 +332,7 @@ const CheckoutPayment = () => {
           <img src={proccedordergif} alt="" />
         </div>
       </div>
+      <div className="checkout_failed_status_container d-flex justify-content-center mt-5 text-danger"></div>
     </>
   );
 };

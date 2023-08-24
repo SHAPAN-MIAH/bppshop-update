@@ -47,7 +47,7 @@ const CartDetailsView = () => {
     const newQty = quantity + 1;
     if (stock <= quantity) {
       toast.error("Stock Limited.", {
-        duration: 3000,
+        duration: 2000,
         style: {
           width: "100%",
           height: "80px",
@@ -61,7 +61,7 @@ const CartDetailsView = () => {
 
     if (ItemQtyUpdateRes[0]?.status == "failed") {
       toast.success(`${ItemQtyUpdateRes[0]?.message}`, {
-        duration: 3000,
+        duration: 2000,
         style: {
           width: "100%",
           height: "80px",
@@ -98,7 +98,7 @@ const CartDetailsView = () => {
     if (itemRemoveRes[0]?.status == "success") {
       // toaster
       toast.success(`Item removed from cart successfully`, {
-        duration: 5000,
+        duration: 2000,
         style: {
           width: "100%",
           height: "80px",
