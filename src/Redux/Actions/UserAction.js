@@ -15,7 +15,11 @@ import {
 } from "../Constants/UserConstants.js";
 import axios from "axios";
 import { baseUrl } from "./../../BaseUrl/BaseUrl";
-import { addItemsToCartWithLogin, getCartData } from "./CartAction.js";
+import {
+  addItemsToCartAfterLogin,
+  addItemsToCartWithLogin,
+  getCartData,
+} from "./CartAction.js";
 
 // Login
 export const userLogin = (loginData) => async (dispatch, getState) => {
@@ -34,9 +38,58 @@ export const userLogin = (loginData) => async (dispatch, getState) => {
         "loginRes",
         JSON.stringify(getState().loginRes.loginRes)
       );
+      
+      // add to cart after login response......
+      const addToCartAfterLoginRes = () => {
+        const cartItemBeforeLogin = getState().cartItemBeforeLogin.cartItem;
+        let quantity = 1;
+        let colors = [];
+        const choice_options = cartItemBeforeLogin[0]?.product?.choice_options;
+        const choice_options_name = choice_options?.map(
+          (option) => option.name
+        );
+        const choice_options_defaultValue = choice_options?.map(
+          (option) => option?.options[0]
+        );
+        const defaultChoices = choice_options_name?.map((name, index) => ({
+          name,
+          options: choice_options_defaultValue[index],
+        }));
 
-      dispatch(getCartData())
-    }else{
+        let color = colors?.map((color) => color?.code);
+
+        const addItemsToCartDataWithColor = {
+          id: `${cartItemBeforeLogin[0]?.product?.id}`,
+          color: `${color[0]}`,
+          quantity: `${quantity}`,
+        };
+
+        const addItemsToCartDataWithoutColor = {
+          id: `${cartItemBeforeLogin[0]?.product?.id}`,
+          quantity: `${quantity}`,
+        };
+
+        defaultChoices?.forEach((element) => {
+          addItemsToCartDataWithColor[element.name] =
+            `${element.options}`.trim();
+        });
+
+        defaultChoices?.forEach((element) => {
+          addItemsToCartDataWithoutColor[element.name] =
+            `${element.options}`.trim();
+        });
+
+        // if (loginRes?.status == "success" || signupRes?.status == "success") {
+        cartItemBeforeLogin[0]?.product?.colors?.length > 0
+          ? dispatch(addItemsToCartAfterLogin(addItemsToCartDataWithColor))
+          : dispatch(addItemsToCartAfterLogin(addItemsToCartDataWithoutColor));
+
+        // addToCartOverlyLoading();
+        // }
+      };
+      addToCartAfterLoginRes()
+      dispatch(getCartData());
+    } else {
       dispatch({ type: LOGIN_FAIL, payload: data });
     }
 
@@ -44,14 +97,11 @@ export const userLogin = (loginData) => async (dispatch, getState) => {
     if (token) {
       dispatch(loadUser());
       // dispatch(addItemsToCartAfterLogin());
-      
     }
   } catch (error) {
     dispatch({ type: LOGIN_FAIL, payload: error.response.message });
   }
 };
-
-
 
 // Register
 export const userRegister = (userData) => async (dispatch, getState) => {
@@ -64,14 +114,65 @@ export const userRegister = (userData) => async (dispatch, getState) => {
       config
     );
     if (data.status == "success") {
-      dispatch({ type: REGISTER_USER_SUCCESS, payload: data});
+      dispatch({ type: REGISTER_USER_SUCCESS, payload: data });
       localStorage.setItem("token", data.token);
 
       localStorage.setItem(
         "signupRes",
         JSON.stringify(getState().signupRes.signupRes)
       );
-    }else{
+
+      // add to cart after login response......
+      const addToCartAfterLoginRes = () => {
+        const cartItemBeforeLogin = getState().cartItemBeforeLogin.cartItem;
+        let quantity = 1;
+        let colors = [];
+        const choice_options = cartItemBeforeLogin[0]?.product?.choice_options;
+        const choice_options_name = choice_options?.map(
+          (option) => option.name
+        );
+        const choice_options_defaultValue = choice_options?.map(
+          (option) => option?.options[0]
+        );
+        const defaultChoices = choice_options_name?.map((name, index) => ({
+          name,
+          options: choice_options_defaultValue[index],
+        }));
+
+        let color = colors?.map((color) => color?.code);
+
+        const addItemsToCartDataWithColor = {
+          id: `${cartItemBeforeLogin[0]?.product?.id}`,
+          color: `${color[0]}`,
+          quantity: `${quantity}`,
+        };
+
+        const addItemsToCartDataWithoutColor = {
+          id: `${cartItemBeforeLogin[0]?.product?.id}`,
+          quantity: `${quantity}`,
+        };
+
+        defaultChoices?.forEach((element) => {
+          addItemsToCartDataWithColor[element.name] =
+            `${element.options}`.trim();
+        });
+
+        defaultChoices?.forEach((element) => {
+          addItemsToCartDataWithoutColor[element.name] =
+            `${element.options}`.trim();
+        });
+
+        // if (loginRes?.status == "success" || signupRes?.status == "success") {
+        cartItemBeforeLogin[0]?.product?.colors?.length > 0
+          ? dispatch(addItemsToCartAfterLogin(addItemsToCartDataWithColor))
+          : dispatch(addItemsToCartAfterLogin(addItemsToCartDataWithoutColor));
+
+        // addToCartOverlyLoading();
+        // }
+      };
+      addToCartAfterLoginRes()
+      dispatch(getCartData());
+    } else {
       dispatch({ type: REGISTER_USER_FAIL, payload: data });
     }
 

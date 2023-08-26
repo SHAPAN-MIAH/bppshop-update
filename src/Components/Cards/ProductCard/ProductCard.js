@@ -78,12 +78,10 @@ const ProductCard = ({ product }) => {
   useEffect(() => {
     if (isAuthenticated == true) {
       closeModal();
-
-      if (modalLogin == "true") {
-        addToCartAfterLoginRes();
-      }
     }
-  }, [isAuthenticated, modalLogin]);
+  }, [isAuthenticated]);
+
+  
 
   // add to cart after login response......
   const addToCartAfterLoginRes = () => {
@@ -127,6 +125,12 @@ const ProductCard = ({ product }) => {
     addToCartOverlyLoading();
     // }
   };
+
+  // useEffect(()=> {
+  //   if (modalLogin == "true") {
+  //     addToCartAfterLoginRes();
+  //   }
+  // }, [modalLogin])
 
   // Add to cart functionality.............................
   const addToCartHandler = (product, quantity) => {
