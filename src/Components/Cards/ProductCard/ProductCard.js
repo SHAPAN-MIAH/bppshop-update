@@ -136,6 +136,7 @@ const ProductCard = ({ product }) => {
   const addToCartHandler = (product, quantity) => {
     if (!token) {
       dispatch(addItemsToCart(product, quantity));
+      localStorage.setItem("productCartLoginAddItem", "true")
       openModal();
     }
 

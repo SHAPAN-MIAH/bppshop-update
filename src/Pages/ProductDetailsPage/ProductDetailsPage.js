@@ -369,6 +369,7 @@ const ProductDetailsPage = () => {
   const addToCartHandler = (productDetail, quantityCount) => {
     if (!token) {
       // dispatch(addItemsToCart(productDetail, quantityCount));
+      localStorage.setItem("productDetailsPageLoginSignupAddItem", "true")
       openModal();
     }
 

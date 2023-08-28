@@ -72,6 +72,8 @@ export const addItemsToCartAfterLogin =
         );
 
         localStorage.removeItem("modalLogin");
+        localStorage.removeItem("modalSignup");
+        // localStorage.removeItem("productCartLoginAddItem");
 
         dispatch(ClearCartItem());
         dispatch(getCartData());

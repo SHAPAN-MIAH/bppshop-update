@@ -88,7 +88,13 @@ export const userLogin = (loginData, addToCartAfterLoginRes) => async (dispatch,
         // addToCartOverlyLoading();
         // }
       };
-      addToCartAfterLoginRes()
+      const modalLogin = localStorage.getItem("modalLogin");
+      const productCartLoginAddItem = localStorage.getItem("productCartLoginAddItem");
+      // const productCartLoginAddItem = localStorage.getItem("productDetailsPageLoginSignupAddItem");
+
+      if(modalLogin == "true" && productCartLoginAddItem){
+        addToCartAfterLoginRes()
+      }
       dispatch(getCartData());
     } else {
       dispatch({ type: LOGIN_FAIL, payload: data });
@@ -171,7 +177,11 @@ export const userRegister = (userData) => async (dispatch, getState) => {
         // addToCartOverlyLoading();
         // }
       };
-      addToCartAfterLoginRes()
+
+      const modalSignup = localStorage.getItem("modalSignup");
+      if(modalSignup == "true"){
+        addToCartAfterLoginRes()
+      }
       dispatch(getCartData());
     } else {
       dispatch({ type: REGISTER_USER_FAIL, payload: data });

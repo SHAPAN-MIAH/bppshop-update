@@ -21,7 +21,7 @@ const SignUpModal = () => {
 
   const onSubmit = (data) => {
     dispatch(userRegister(data));
-    localStorage.setItem("modalLogin", "true")
+    localStorage.setItem("modalSignup", "true")
 
   };
 
