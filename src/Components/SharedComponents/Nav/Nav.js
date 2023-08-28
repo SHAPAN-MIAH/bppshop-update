@@ -7,6 +7,7 @@ import bppShopshortLogo from "../../../Assets/Images/bpp shop logo 02-01-01.png"
 import Sidebar from "../Sidebar/Sidebar";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  ClearAddToCartRes,
   ClearCart,
   ClearCartGroupItems,
 } from "./../../../Redux/Actions/CartAction";
@@ -119,6 +120,7 @@ const Nav = () => {
         dispatch(ClearCartGroupItems());
         dispatch(ClearDeliveryCharge());
         dispatch(clearUserOrders());
+        dispatch(ClearAddToCartRes())
         // dispatch(clearCategories());
 
         localStorage.removeItem("token");

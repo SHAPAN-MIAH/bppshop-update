@@ -18,7 +18,8 @@ import { baseUrl } from "./../../BaseUrl/BaseUrl";
 import { addItemsToCartWithLogin, getCartData } from "./CartAction.js";
 
 // Login
-export const userLogin = (loginData) => async (dispatch, getState) => {
+export const userLogin = (loginData, addToCartAfterLoginRes) => async (dispatch, getState) => {
+ 
   try {
     dispatch({ type: LOGIN_REQUEST });
     const config = { headers: { "Content-Type": "application/json" } };

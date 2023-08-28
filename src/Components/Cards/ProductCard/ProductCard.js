@@ -83,7 +83,11 @@ const ProductCard = ({ product }) => {
         addToCartAfterLoginRes();
       }
     }
-  }, [isAuthenticated, modalLogin]);
+  }, [ modalLogin]);
+
+  // console.log(isAuthenticated, modalLogin)
+  
+ 
 
   // add to cart after login response......
   const addToCartAfterLoginRes = () => {
@@ -317,7 +321,7 @@ const ProductCard = ({ product }) => {
         </span>
         <br />
         <div className="LoginModal_container">
-          <LoginModal />
+          <LoginModal addToCartAfterLoginRes={addToCartAfterLoginRes}/>
         </div>
         <div className="SignUpModal_container">
           <SignUpModal />

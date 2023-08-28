@@ -436,7 +436,9 @@ const ProductDetailsPage = () => {
           background: "#86bc19",
           color: "#fff",
         },
-      });
+      })
+      dispatch(ClearAddToCartRes())
+      
     }
   })
 
