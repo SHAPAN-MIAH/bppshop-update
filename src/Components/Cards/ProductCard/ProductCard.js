@@ -78,16 +78,10 @@ const ProductCard = ({ product }) => {
   useEffect(() => {
     if (isAuthenticated == true) {
       closeModal();
-
-      if (modalLogin == "true") {
-        addToCartAfterLoginRes();
-      }
     }
-  }, [ modalLogin]);
+  }, [isAuthenticated]);
 
-  // console.log(isAuthenticated, modalLogin)
   
- 
 
   // add to cart after login response......
   const addToCartAfterLoginRes = () => {
@@ -131,6 +125,12 @@ const ProductCard = ({ product }) => {
     addToCartOverlyLoading();
     // }
   };
+
+  // useEffect(()=> {
+  //   if (modalLogin == "true") {
+  //     addToCartAfterLoginRes();
+  //   }
+  // }, [modalLogin])
 
   // Add to cart functionality.............................
   const addToCartHandler = (product, quantity) => {
@@ -321,7 +321,7 @@ const ProductCard = ({ product }) => {
         </span>
         <br />
         <div className="LoginModal_container">
-          <LoginModal addToCartAfterLoginRes={addToCartAfterLoginRes}/>
+          <LoginModal/>
         </div>
         <div className="SignUpModal_container">
           <SignUpModal />

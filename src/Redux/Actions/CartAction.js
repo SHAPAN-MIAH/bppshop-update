@@ -60,9 +60,11 @@ export const addItemsToCartAfterLogin =
         addItemToCartAfterLoginData,
         config
       );
-      
+
+      // console.log(data);
+
       dispatch({ type: "ADD_TO_CART_AFTER_LOGIN_SUCCESS", payload: data });
-      
+
       if (data.status == "success") {
         localStorage.setItem(
           "cartGroupItems",

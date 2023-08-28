@@ -9,7 +9,7 @@ const ShippingHome = () => {
 
   const { shippingAddressInfo } = useSelector((state) => state?.shippingInfo);
 
-  console.log(shippingAddressInfo);
+  // console.log(shippingAddressInfo);
 
   const changeShippingInfo = () => {
     navigate("/choose-shipping-address");

@@ -4,7 +4,7 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import CartReducers from "./Reducers/CartReducers";
 import { userReducer } from './Reducers/UserReducers';
 import { userOrderDetailReducers, userOrderReducers } from './Reducers/UserOrderReducers';
-import { addShippingAddressReducers, loadAllShippingAddressReducers, } from "./Reducers/ShippingAddressReducers";
+import { addShippingAddressReducers } from "./Reducers/ShippingAddressReducers";
 import PriceVariantReducers from './Reducers/PriceVariantReducers';
 import { productDetailsReducers } from "./Reducers/ProductReducers";
 import CartGroupReducers from "./Reducers/CartGroupReducers";
@@ -21,6 +21,7 @@ import CartItemReducer from "./Reducers/CartItemReducers";
 import AddToCartResponseReducer from "./Reducers/AddToCartResponseReducers";
 import ItemQtyUpdateResReducer from "./Reducers/ItemQtyUpdateResReducer";
 import RemoveItemResReducer from "./Reducers/RemoveItemResReducer";
+import { loadAllShippingAddressReducers } from "./Reducers/LoadAllShippingAddressReducers";
 
 
 const rootReducer = combineReducers({

@@ -8,8 +8,7 @@ import { useSelector } from "react-redux";
 import toast from "react-hot-toast";
 import MetaData from "../../Layout/MetaData";
 
-const LoginModal = ({addToCartAfterLoginRes}) => {
-  console.log(addToCartAfterLoginRes);
+const LoginModal = () => {
 
   const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
