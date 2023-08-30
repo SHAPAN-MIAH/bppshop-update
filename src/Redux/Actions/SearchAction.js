@@ -8,10 +8,8 @@ export const searchProduct = (searchData) => async (dispatch, getState) => {
     const url = baseUrl + "/products/search";
     const { data } = await axios.post(url, searchData);
 
-    console.log(data)
-
-    dispatch({ type: "SEARCH_PRODUCT_SUCCESS", payload: data.products });
-    //   localStorage.setItem("searchProduct", JSON.stringify(getState().searchProduct));
+    dispatch({ type: "SEARCH_PRODUCT_SUCCESS", payload: data });
+      // localStorage.setItem("searchProduct", JSON.stringify(getState().searchProduct));
   } catch (error) {
     dispatch({ type: "SEARCH_PRODUCT_FAIL", payload: error });
   }
@@ -26,8 +24,8 @@ export const searchProductByCategory =
       const productUrl = `${baseUrl}/categories/products/${suggestionId}`;
 
       const { data } = await axios.get(productUrl);
-      console.log(data)
-      dispatch({ type: "SEARCH_PRODUCT_SUCCESS", payload: data.data });
+
+      dispatch({ type: "SEARCH_PRODUCT_SUCCESS", payload: data });
       //   localStorage.setItem("searchProduct", JSON.stringify(getState().searchProduct));
     } catch (error) {
       dispatch({ type: "SEARCH_PRODUCT_FAIL", payload: error });
