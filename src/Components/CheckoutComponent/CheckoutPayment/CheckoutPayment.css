@@ -42,13 +42,13 @@
   border-radius: 5px;
   padding: 10px 15px;
   border: 1px solid gainsboro;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px,
-    rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+  /* box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px,
+    rgba(0, 0, 0, 0.1) 0px 0px 1px 0px; */
   margin-bottom: 20px;
   margin-left: 25px;
 }
 .COD_Btn img {
-  width: 70px;
+  width: 60px;
 }
 
 .payment-option-way,
