@@ -11,6 +11,8 @@ const Search = () => {
     (state) => state?.searchProducts
   );
 
+  // console.log(searchProducts)
+
   return (
     <>
       <MetaData title="Search:- BPPShop" />
