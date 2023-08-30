@@ -8,8 +8,8 @@ export const searchProduct = (searchData) => async (dispatch, getState) => {
     const url = baseUrl + "/products/search";
     const { data } = await axios.post(url, searchData);
 
-    dispatch({ type: "SEARCH_PRODUCT_SUCCESS", payload: data.products });
-    //   localStorage.setItem("searchProduct", JSON.stringify(getState().searchProduct));
+    dispatch({ type: "SEARCH_PRODUCT_SUCCESS", payload: data });
+      // localStorage.setItem("searchProduct", JSON.stringify(getState().searchProduct));
   } catch (error) {
     dispatch({ type: "SEARCH_PRODUCT_FAIL", payload: error });
   }
