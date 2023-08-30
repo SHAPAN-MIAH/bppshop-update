@@ -306,6 +306,7 @@ const ProductDetailsPage = () => {
   }
 
   const modalLogin = localStorage.getItem("modalLogin");
+  const modalSignup = localStorage.getItem("modalSignup");
   const cartItemBeforeLogin = useSelector(
     (state) => state.cartItemBeforeLogin.cartItem[0]
   );
@@ -315,59 +316,52 @@ const ProductDetailsPage = () => {
     if (isAuthenticated == true && token) {
       (loginRes?.status == "success") | (signupRes?.status == "success") &&
         closeModal();
-
-        addTocartAfterLoginSignupResInDetailsPage()
+      if (modalLogin == "true" || modalSignup == "true") {
+        addTocartAfterLoginSignupResInDetailsPage();
+      }
     }
-  }, [
-    loginRes,
-    signupRes,
-    isAuthenticated,
-    token,
-  ]);
+  }, [loginRes, signupRes, isAuthenticated, token]);
 
   // Add to cart after login and signup response..
   const addTocartAfterLoginSignupResInDetailsPage = () => {
     // if (modalLogin == "true") {
-      let color = productDetail?.colors?.map((color) => color?.code);
-      const addItemsToCartDataWithColor = {
-        id: `${productDetail?.id}`,
-        color: `${selectedColor ? selectedColor : color[0]}`,
-        quantity: `${quantityCount}`,
-      };
+    let color = productDetail?.colors?.map((color) => color?.code);
+    const addItemsToCartDataWithColor = {
+      id: `${productDetail?.id}`,
+      color: `${selectedColor ? selectedColor : color[0]}`,
+      quantity: `${quantityCount}`,
+    };
 
-      defaultChoices &&
-        defaultChoices.forEach((element) => {
-          addItemsToCartDataWithColor[element.name] =
-            `${element.options}`.trim();
-        });
+    defaultChoices &&
+      defaultChoices.forEach((element) => {
+        addItemsToCartDataWithColor[element.name] = `${element.options}`.trim();
+      });
 
-      const addItemsToCartDataWithoutColor = {
-        id: `${productDetail.id}`,
-        quantity: `${quantityCount}`,
-      };
+    const addItemsToCartDataWithoutColor = {
+      id: `${productDetail.id}`,
+      quantity: `${quantityCount}`,
+    };
 
-      defaultChoices &&
-        defaultChoices.forEach((element) => {
-          addItemsToCartDataWithoutColor[element.name] =
-            `${element.options}`.trim();
-        });
+    defaultChoices &&
+      defaultChoices.forEach((element) => {
+        addItemsToCartDataWithoutColor[element.name] =
+          `${element.options}`.trim();
+      });
 
-      if (token) {
-        productDetail?.colors?.length > 0
-          ? dispatch(addItemsToCartAfterLogin(addItemsToCartDataWithColor))
-          : dispatch(
-              addItemsToCartAfterLogin(addItemsToCartDataWithoutColor)
-            );
-        addToCartOverlyLoading();
-      }
+    if (token) {
+      productDetail?.colors?.length > 0
+        ? dispatch(addItemsToCartAfterLogin(addItemsToCartDataWithColor))
+        : dispatch(addItemsToCartAfterLogin(addItemsToCartDataWithoutColor));
+      addToCartOverlyLoading();
+    }
     // }
-  }
+  };
 
   // add to cart with price variant options..........................................
   const addToCartHandler = (productDetail, quantityCount) => {
     if (!token) {
       // dispatch(addItemsToCart(productDetail, quantityCount));
-      localStorage.setItem("productDetailsPageLoginSignupAddItem", "true")
+      localStorage.setItem("productDetailsPageLoginSignupAddItem", "true");
       openModal();
     }
 
@@ -424,7 +418,7 @@ const ProductDetailsPage = () => {
   }
 
   useEffect(() => {
-    if( AddToCartResponse[0]?.status == "failed"){
+    if (AddToCartResponse[0]?.status == "failed") {
       addToCartOverlyLoadingCloseHandler();
       toast.error(`${AddToCartResponse[0]?.message}`, {
         duration: 2000,
@@ -435,11 +429,10 @@ const ProductDetailsPage = () => {
           background: "#86bc19",
           color: "#fff",
         },
-      })
-      dispatch(ClearAddToCartRes())
-      
+      });
+      dispatch(ClearAddToCartRes());
     }
-  })
+  });
 
   // youtube video embed code split function............
   const [isOpen, setOpen] = useState(false);
@@ -739,10 +732,12 @@ const ProductDetailsPage = () => {
                       >
                         <i
                           className="bi bi-plus-lg"
-                          onClick={() => increaseQuantityBeforeAddToCart(
-                            quantityCount,
-                            productDetail?.current_stock
-                          )}
+                          onClick={() =>
+                            increaseQuantityBeforeAddToCart(
+                              quantityCount,
+                              productDetail?.current_stock
+                            )
+                          }
                         ></i>
                       </span>
                     )}
