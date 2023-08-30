@@ -25,7 +25,7 @@ export const searchProductByCategory =
 
       const { data } = await axios.get(productUrl);
 
-      dispatch({ type: "SEARCH_PRODUCT_SUCCESS", payload: data.data });
+      dispatch({ type: "SEARCH_PRODUCT_SUCCESS", payload: data });
       //   localStorage.setItem("searchProduct", JSON.stringify(getState().searchProduct));
     } catch (error) {
       dispatch({ type: "SEARCH_PRODUCT_FAIL", payload: error });
