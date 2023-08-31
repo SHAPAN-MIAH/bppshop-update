@@ -12,31 +12,31 @@ const SignUp = () => {
   const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
   const { signupRes } = useSelector((state) => state.signupRes);
-  const cartItems = useSelector((state) =>  state.cart.cartItems);
+  const cartItems = useSelector((state) => state.cart.cartItems);
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
   const SignupRedirect = localStorage.getItem("SignupRedirect");
 
   const onSubmit = (data) => {
     dispatch(userRegister(data));
-
   };
 
   useEffect(() => {
     if (token) {
       navigate("/");
-      signupRes?.status=="success" &&   toast.success(`${signupRes?.message}`, {
-        duration: 5000,
-        style: {
-          width: "100%",
-          height: "80px",
-          padding: "0px 20px",
-          background: "#86bc19",
-          color: "#fff",
-        },
-      });
+      signupRes?.status == "success" &&
+        toast.success(`${signupRes?.message}`, {
+          duration: 5000,
+          style: {
+            width: "100%",
+            height: "80px",
+            padding: "0px 20px",
+            background: "#86bc19",
+            color: "#fff",
+          },
+        });
 
-      if(cartItems.length < 1){
+      if (cartItems.length < 1) {
         navigate("/");
         // toast.error(`Your Cart Is Empty. Please add product in cart first.`, {
         //   duration: 7000,
@@ -50,15 +50,22 @@ const SignUp = () => {
         // });
       }
 
-      if(SignupRedirect && cartItems.length > 0){
+      if (SignupRedirect && cartItems.length > 0) {
         navigate("/shipping-address");
         localStorage.removeItem("SignupRedirect");
       }
-    } 
+    }
+  }, [token, SignupRedirect, navigate, signupRes, cartItems]);
 
-  }, [token, SignupRedirect, navigate,signupRes, cartItems]);
+  const [passwordType, setPasswordType] = useState("password");
 
-  
+  const togglePassword = () => {
+    if (passwordType === "password") {
+      setPasswordType("text");
+      return;
+    }
+    setPasswordType("password");
+  };
 
   return (
     <>
@@ -109,27 +116,51 @@ const SignUp = () => {
                   <div className=" col-md-6">
                     <div className="my-1">
                       <label>Password</label>
-                      <input
-                        {...register("password", { required: true })}
-                        className="form-control"
-                        type="password"
-                        name="password"
-                        placeholder="Minimum 8 characters long"
-                        required
-                      />
+                      <div className="d-flex">
+                        <input
+                          {...register("password", { required: true })}
+                          className="form-control"
+                          type={passwordType}
+                          name="password"
+                          placeholder="Minimum 8 characters long"
+                          required
+                        />
+                        <span
+                          className="passwordToggleBtn"
+                          onClick={togglePassword}
+                        >
+                          {passwordType === "password" ? (
+                            <i className="bi bi-eye-slash"></i>
+                          ) : (
+                            <i className="bi bi-eye"></i>
+                          )}
+                        </span>
+                      </div>
                     </div>
                   </div>
                   <div className=" col-md-6">
                     <div className="my-1">
                       <label>Confirm password</label>
-                      <input
-                        {...register("con_password", { required: true })}
-                        className="form-control"
-                        type="password"
-                        name="con_password"
-                        placeholder="Minimum 8 characters long"
-                        required
-                      />
+                      <div className="d-flex">
+                        <input
+                          {...register("con_password", { required: true })}
+                          className="form-control"
+                          type="password"
+                          name="con_password"
+                          placeholder="Minimum 8 characters long"
+                          required
+                        />
+                        <span
+                          className="passwordToggleBtn"
+                          onClick={togglePassword}
+                        >
+                          {passwordType === "password" ? (
+                            <i className="bi bi-eye-slash"></i>
+                          ) : (
+                            <i className="bi bi-eye"></i>
+                          )}
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </div>

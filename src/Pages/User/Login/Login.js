@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./Login.css";
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -40,6 +40,16 @@ const Login = () => {
     }
   }, [loginRes, isAuthenticated, token, location, navigate]);
 
+  const [passwordType, setPasswordType] = useState("password");
+
+  const togglePassword = () => {
+    if (passwordType === "password") {
+      setPasswordType("text");
+      return;
+    }
+    setPasswordType("password");
+  };
+
   return (
     <>
       <MetaData title="Login - BPPShop" />
@@ -62,14 +72,27 @@ const Login = () => {
                 </div>
                 <div className="form-group">
                   <label>Password</label>
-                  <input
-                    {...register("password", { required: true })}
-                    required
-                    className="login_input_form"
-                    name="password"
-                    type="password"
-                    placeholder="Enter Password"
-                  />
+                  <div className="d-flex">
+                    <input
+                      {...register("password", { required: true })}
+                      required
+                      className="login_input_form"
+                      name="password"
+                      type={passwordType}
+                      placeholder="Enter Password"
+                    />
+
+                    <span
+                      className="passwordToggleBtn"
+                      onClick={togglePassword}
+                    >
+                      {passwordType === "password" ? (
+                        <i className="bi bi-eye-slash"></i>
+                      ) : (
+                        <i className="bi bi-eye"></i>
+                      )}
+                    </span>
+                  </div>
                 </div>
                 {loginRes?.status == "failed" && (
                   <small className="text-danger">{loginRes?.message}</small>

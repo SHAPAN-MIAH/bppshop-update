@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./Login.css";
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -9,7 +9,6 @@ import toast from "react-hot-toast";
 import MetaData from "../../Layout/MetaData";
 
 const LoginModal = () => {
-
   const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
   const { loginRes } = useSelector((state) => state.loginRes);
@@ -21,7 +20,7 @@ const LoginModal = () => {
   const onSubmit = (data) => {
     dispatch(userLogin(data));
 
-    localStorage.setItem("modalLogin", "true")
+    localStorage.setItem("modalLogin", "true");
   };
 
   useEffect(() => {
@@ -48,6 +47,16 @@ const LoginModal = () => {
     document.querySelector(".SignUpModal_container").style.display = "block";
   };
 
+  const [passwordType, setPasswordType] = useState("password");
+
+  const togglePassword = () => {
+    if (passwordType === "password") {
+      setPasswordType("text");
+      return;
+    }
+    setPasswordType("password");
+  };
+
   return (
     <>
       <MetaData title="Login - BPPShop" />
@@ -70,14 +79,26 @@ const LoginModal = () => {
                 </div>
                 <div className="form-group">
                   <label>Password</label>
-                  <input
-                    {...register("password", { required: true })}
-                    required
-                    className="login_input_form"
-                    name="password"
-                    type="password"
-                    placeholder="Enter Password"
-                  />
+                  <div className="d-flex">
+                    <input
+                      {...register("password", { required: true })}
+                      required
+                      className="login_input_form"
+                      name="password"
+                      type={passwordType}
+                      placeholder="Enter Password"
+                    />
+                    <span
+                      className="passwordToggleBtn"
+                      onClick={togglePassword}
+                    >
+                      {passwordType === "password" ? (
+                        <i className="bi bi-eye-slash"></i>
+                      ) : (
+                        <i className="bi bi-eye"></i>
+                      )}
+                    </span>
+                  </div>
                 </div>
                 {loginRes?.status == "failed" && (
                   <small className="text-danger">{loginRes?.message}</small>
@@ -106,7 +127,18 @@ const LoginModal = () => {
             </div>
             <div className="login_card_footer">
               <div className="needAccountToggleBtn">
-                Need an account? <span onClick={loginSignupToggle} style={{cursor: "pointer",fontWeight: "600", color: "#ef8341", }}> Sign Up</span>
+                Need an account?{" "}
+                <span
+                  onClick={loginSignupToggle}
+                  style={{
+                    cursor: "pointer",
+                    fontWeight: "600",
+                    color: "#ef8341",
+                  }}
+                >
+                  {" "}
+                  Sign Up
+                </span>
               </div>
             </div>
           </div>

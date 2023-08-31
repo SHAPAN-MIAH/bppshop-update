@@ -159,7 +159,16 @@
 .modal_login_card{
   width: 60%;
 }
-
+/* .passwordInput{
+  position: relative;
+} */
+.passwordToggleBtn{
+  /* position: absolute; */
+  z-index: 999;
+  margin-top: 5px;
+  margin-left: -30px;
+  font-size: 20px;
+}
 
 @media screen and (max-width: 768px) {
   .card-body {
