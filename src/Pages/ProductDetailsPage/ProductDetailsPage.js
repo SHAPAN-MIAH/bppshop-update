@@ -758,6 +758,8 @@ const ProductDetailsPage = () => {
                   <div className="totalPrice">
                     {isItemExist?.quantity ? (
                       <h5>
+                        Total Price:
+
                         {productDetail?.discount > 0 ? (
                           <span className="mx-2 text-end">
                             &#2547;{" "}
