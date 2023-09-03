@@ -697,7 +697,7 @@ const ProductDetailsPage = () => {
                               ? quantityCount - 1
                               : quantityCount
                           );
-                          // priceVariantHandlerByChoiceOption(quantityCount - 1);
+                          priceVariantHandlerByChoiceOption(quantityCount - 1);
                         }}
                         className="minus"
                       >
@@ -728,18 +728,15 @@ const ProductDetailsPage = () => {
                       <span
                         onClick={() => {
                           setQuantityCount(
-                            // productDetail?.current_stock > quantityCount
-                            //   ? quantityCount + 1
-                            //   : quantityCount
                             productDetail?.current_stock >= quantityCount + 1
                               ? quantityCount + 1
                               : quantityCount
                           );
-                          // priceVariantHandlerByChoiceOption(
-                          //   productDetail?.current_stock >= quantityCount + 1
-                          //     ? quantityCount + 1
-                          //     : quantityCount
-                          // );
+                          priceVariantHandlerByChoiceOption(
+                            productDetail?.current_stock >= quantityCount + 1
+                              ? quantityCount + 1
+                              : quantityCount
+                          );
                         }}
                         className="plus"
                       >

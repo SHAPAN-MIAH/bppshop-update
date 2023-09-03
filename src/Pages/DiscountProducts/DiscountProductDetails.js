@@ -727,7 +727,7 @@ const DiscountProductDetails = () => {
                               ? quantityCount - 1
                               : quantityCount
                           );
-                          // priceVariantHandlerByChoiceOption(quantityCount - 1);
+                          priceVariantHandlerByChoiceOption(quantityCount - 1);
                         }}
                         className="minus"
                       >
@@ -763,11 +763,11 @@ const DiscountProductDetails = () => {
                               ? quantityCount + 1
                               : quantityCount
                           );
-                          // priceVariantHandlerByChoiceOption(
-                          //   productDetail?.current_stock >= quantityCount + 1
-                          //     ? quantityCount + 1
-                          //     : quantityCount
-                          // );
+                          priceVariantHandlerByChoiceOption(
+                            productDetail?.current_stock >= quantityCount + 1
+                              ? quantityCount + 1
+                              : quantityCount
+                          );
                         }}
                         className="plus"
                       >
