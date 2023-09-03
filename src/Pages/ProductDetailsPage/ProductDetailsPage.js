@@ -53,7 +53,7 @@ const ProductDetailsPage = () => {
   const { slug, subSlug, subSubSlug, id } = useParams();
 
   // console.log(slug, subSlug, subSubSlug)
-  
+
   let newId = parseInt(id);
   const [productDetail, setProductDetail] = useState([]);
   const [quantityCount, setQuantityCount] = useState(1);
@@ -70,7 +70,6 @@ const ProductDetailsPage = () => {
   const { isAuthenticated } = useSelector((state) => state.user);
   const { loginRes } = useSelector((state) => state.loginRes);
   const { signupRes } = useSelector((state) => state.signupRes);
-
 
   // Product Details............................
   useEffect(() => {
@@ -209,7 +208,6 @@ const ProductDetailsPage = () => {
   const [selectedColor, setSelectedColor] = useState([]);
   const [activeColor, setActiveColor] = useState(0);
 
-
   const priceVariantHandlerByColor = (selectedColor, index) => {
     setSelectedColor(selectedColor);
     setActiveColor(index);
@@ -226,7 +224,6 @@ const ProductDetailsPage = () => {
       });
     dispatch(getPriceVariant(priceVariantDefaultColorData));
   };
-
 
   // Product Images Zoom Slider Functions...................................
   const newData = productDetail?.images?.map((img) => ({
@@ -253,14 +250,12 @@ const ProductDetailsPage = () => {
     }
   };
 
-
   // 404 function...................................
   // useEffect(() => {
   //   if ( !productDetailsPath) {
   //     navigate("/404", { replace: true });
   //   }
   // }, [productDetailsPath, navigate]);
-
 
   // cart item increase decrease function..............................
   const increaseQuantityBeforeAddToCart = (quantity, stock) => {
@@ -278,7 +273,6 @@ const ProductDetailsPage = () => {
       return;
     }
   };
-
 
   const increaseQuantity = (id, quantity, stock) => {
     const newQty = quantity + 1;
@@ -333,7 +327,6 @@ const ProductDetailsPage = () => {
       }
     }
   }, [loginRes, signupRes, isAuthenticated, token]);
-
 
   // Add to cart after login and signup response..
   const addTocartAfterLoginSignupResInDetailsPage = () => {
@@ -470,6 +463,11 @@ const ProductDetailsPage = () => {
 
   const SellerNameSave = (sellerName) => {
     localStorage.setItem("sellerName", sellerName);
+  };
+
+  const pageMount = () => {
+    setQuantityCount(1);
+    setVariantRes("");
   };
 
   return (
@@ -756,7 +754,6 @@ const ProductDetailsPage = () => {
                     {isItemExist?.quantity ? (
                       <h5>
                         Total Price:
-
                         {productDetail?.discount > 0 ? (
                           <span className="mx-2 text-end">
                             &#2547;{" "}
@@ -853,7 +850,10 @@ const ProductDetailsPage = () => {
                   <div className="seller-product-view-container ">
                     {productDetail?.seller?.product?.map((item) => (
                       <Link to={`/${slug}/${subSlug}/${subSubSlug}/${item.id}`}>
-                        <div className="seller_product_item">
+                        <div
+                          className="seller_product_item"
+                          onClick={() => pageMount()}
+                        >
                           <div>
                             {item.thumbnail ? (
                               <img

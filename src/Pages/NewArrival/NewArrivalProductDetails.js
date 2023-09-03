@@ -504,6 +504,11 @@ const NewArrivalProductDetails = () => {
   };
 
 
+  const pageMount = () => {
+    setQuantityCount(1);
+    setVariantRes("")
+  };
+
   
   return (
     <>
@@ -873,7 +878,7 @@ const NewArrivalProductDetails = () => {
                   <div className="seller-product-view-container ">
                     {productDetail?.seller?.product?.map((item) => (
                       <Link to={`/new-arrival/${item.id}`}>
-                        <div className="seller_product_item">
+                        <div className="seller_product_item" onClick={() => pageMount()}>
                           <div>
                             {item.thumbnail ? (
                               <img

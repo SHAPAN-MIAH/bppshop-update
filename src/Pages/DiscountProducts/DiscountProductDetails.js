@@ -502,6 +502,11 @@ const DiscountProductDetails = () => {
     localStorage.setItem("sellerName", sellerName);
   };
 
+
+  const pageMount = () => {
+    setQuantityCount(1);
+    setVariantRes("")
+  };
   
 
   return (
@@ -880,7 +885,7 @@ const DiscountProductDetails = () => {
                   <div className="seller-product-view-container ">
                     {productDetail?.seller?.product?.map((item) => (
                       <Link to={`/discount-products/${item.id}`}>
-                        <div className="seller_product_item">
+                        <div className="seller_product_item" onClick={() => pageMount()}>
                           <div>
                             {item.thumbnail ? (
                               <img

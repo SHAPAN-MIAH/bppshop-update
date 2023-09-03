@@ -498,6 +498,13 @@ const SellerStoreProductDetails = () => {
     localStorage.setItem("sellerName", sellerName);
   };
 
+
+  const pageMount = () => {
+    setQuantityCount(1);
+    setVariantRes("")
+  };
+
+
   return (
     <>
       <h4>Seller Products:</h4>
@@ -883,7 +890,7 @@ const SellerStoreProductDetails = () => {
                   <div className="seller-product-view-container ">
                     {productDetail?.seller?.product?.map((item) => (
                       <Link to={`/sellers-store/${sellerId}/${item.id}`}>
-                        <div className="seller_product_item">
+                        <div className="seller_product_item" onClick={() => pageMount()}>
                           <div>
                             {item.thumbnail ? (
                               <img
