@@ -18,21 +18,14 @@ const SellerStoreProduct = () => {
   const [lastList, setLastList] = useState(false);
   const sellerName = localStorage.getItem("sellerName");
 
-  // useEffect(() => {
-  //   axios
-  //     .get(`${baseUrl}/seller/${sellerId}/products?limit=${limit}&offset=${currPage}`)
-  //     .then((res) => setSellerProducts(res?.data?.products));
-  //   setLoading(false);
-  // }, [sellerId]);
+ 
 
   useEffect(() => {
-    let limit = 30;
+    let limit = 10;
     const fetchData = async () => {
       const response = await axios.get(
         `${baseUrl}/seller/${sellerId}/products?limit=${limit}&offset=${currPage}`
       );
-      // setLoading(false);
-      // console.log(response.data);
       response && setLoading(false);
       if (!response?.data?.products?.length) {
         setLastList(true);

@@ -26,6 +26,7 @@ import LoginModal from "../User/Login/LoginModal";
 import SignUpModal from "../User/SignUp/SignUpModal";
 import ModalVideo from "react-modal-video";
 import "react-modal-video/scss/modal-video.scss";
+import RelatedProduct from "../../Components/RelatedProduct/RelatedProduct";
 
 
 Modal.setAppElement("#root");
@@ -918,7 +919,7 @@ const DiscountProductDetails = () => {
       </div>
       {/* )} */}
       <ProductReview productDetail={productDetail} />
-
+      <RelatedProduct productId={id}/>
 
       <Modal
         isOpen={modalIsOpen}

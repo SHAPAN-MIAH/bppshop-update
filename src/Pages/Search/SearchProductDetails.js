@@ -33,6 +33,7 @@ import MetaData from "../Layout/MetaData";
 import Modal from "react-modal";
 import LoginModal from "../User/Login/LoginModal";
 import SignUpModal from "../User/SignUp/SignUpModal";
+import RelatedProduct from "../../Components/RelatedProduct/RelatedProduct";
 
 Modal.setAppElement("#root");
 
@@ -920,7 +921,8 @@ const SearchProductDetails = () => {
       </div> */}
 
       <ProductReview productDetail={productDetail} />
-
+      <RelatedProduct productId={id}/>
+      
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}

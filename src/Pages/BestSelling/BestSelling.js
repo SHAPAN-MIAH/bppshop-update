@@ -16,7 +16,7 @@ const BestSelling = () => {
   const [lastList, setLastList] = useState(false);
 
   useEffect(() => {
-    let limit = 100;
+    let limit = 15;
     const fetchData = async () => {
       const response = await axios.get(
         `${baseUrl}/products/best-sellings?limit=${limit}&offset=${currPage}`

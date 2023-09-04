@@ -2,6 +2,7 @@
   margin-top: 20px;
   padding: 10px 0px;
   border-top: 1px solid gainsboro;
+  border-bottom: 1px solid gainsboro;
 }
 .customer-qa {
   border-right: 1px solid gainsboro;
@@ -102,7 +103,7 @@
 .customer_comment_reviews {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
-  max-height: 350px;
+  max-height: 440px;
   overflow-y: scroll;
 }
 .averageRating-container {
@@ -111,14 +112,15 @@
 }
 
 .averageRating-container h1 {
-  font-size: 70px;
+  font-size: 55px;
   margin-right: 20px;
   font-weight: 600;
 }
 
 .averageRating-container h2 {
-  font-size: 25px;
+  font-size: 20px;
   margin-top: 10px;
+  margin-bottom: -.5px;
   font-weight: 600;
 }
 

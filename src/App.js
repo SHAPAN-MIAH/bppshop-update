@@ -56,6 +56,8 @@ import SellerStoreProductDetails from "./Pages/SellerStore/SellerStoreProductDet
 import { getCategories } from "./Redux/Actions/CategoriesAction";
 import { useSelector } from "react-redux";
 import { getCartData } from "./Redux/Actions/CartAction";
+import AllProducts from "./Pages/AllProducts/AllProducts";
+import AllProductDetails from "./Pages/AllProducts/AllProductDetails";
 
 
 
@@ -90,6 +92,8 @@ function App() {
           <Route path="/:slug/:subSlug/:subSubSlug" element={<Product />} />
           <Route path="/:slug/:subSlug/:subSubSlug/:id" element={<ProductDetailsPage/>} />
           {/* <Route path="/products/:productSlug" element={<ProductDetailsPage/>} /> */}
+          <Route path="/all-products" element={<AllProducts/>} />
+          <Route path="/all-products/:id" element={<AllProductDetails/>} />
           <Route path="/search" element={<Search/>} />
           <Route path="/search/:id" element={<SearchProductDetails/>} />
           <Route path="/sellers-store" element={<AllSellerStore/>} />

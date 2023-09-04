@@ -28,6 +28,7 @@ import defaultProImg from "../../Assets/Images/defaultImg.jpg";
 import SignUpModal from "../User/SignUp/SignUpModal";
 import LoginModal from "../User/Login/LoginModal";
 import Modal from "react-modal";
+import RelatedProduct from "../../Components/RelatedProduct/RelatedProduct";
 
 Modal.setAppElement("#root");
 
@@ -923,7 +924,7 @@ const SellerStoreProductDetails = () => {
       </div>
       {/* )} */}
       <ProductReview productDetail={productDetail} />
-
+      <RelatedProduct productId={id}/>
 
       <Modal
         isOpen={modalIsOpen}

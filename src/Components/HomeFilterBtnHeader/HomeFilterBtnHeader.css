@@ -1,6 +1,6 @@
 /* -------Header Button Design------- */
 .homeFilterBtnHeader-container-section {
-  width: 40%;
+  width: 60%;
   margin-top: 80px !important;
   margin-bottom: 40px !important;
   display: flex;
@@ -12,13 +12,14 @@
   width: 100%;
   margin: auto;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(6, 1fr);
+  grid-gap: 10px;
   justify-content: center;
   align-items: center;
 }
 
 .header_btn button {
-  width: auto;
+  width: 100%;
   background: #ef8341;
   border-radius: 4px;
   margin: 5px 10px;

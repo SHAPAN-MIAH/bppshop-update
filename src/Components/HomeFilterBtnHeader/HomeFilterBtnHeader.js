@@ -7,7 +7,12 @@ const HomeFilterBtnHeader = () => {
     <>
       <div className="homeFilterBtnHeader-container-section">
         <div className="header_btn">
-        <div>
+          <div>
+            <Link to="/all-products">
+              <button>All Products</button>
+            </Link>
+          </div>
+          <div>
             <Link to="/sellers-store">
               <button>Store</button>
             </Link>
@@ -17,7 +22,7 @@ const HomeFilterBtnHeader = () => {
               <button>Brand's</button>
             </Link>
           </div>
-          
+
           <div>
             <div className="dropdown">
               <button
@@ -33,13 +38,17 @@ const HomeFilterBtnHeader = () => {
                 aria-labelledby="dropdownMenuButton1"
               >
                 <li>
-                  <Link className="dropdown-item" to="/discount-products">Discounted Products</Link>
+                  <Link className="dropdown-item" to="/discount-products">
+                    Discounted Products
+                  </Link>
                 </li>
                 <li>
                   <hr className="dropdown-divider" />
                 </li>
                 <li>
-                  <Link className="dropdown-item" to="/flash-sale">Flash Sale</Link>
+                  <Link className="dropdown-item" to="/flash-sale">
+                    Flash Sale
+                  </Link>
                 </li>
               </ul>
             </div>

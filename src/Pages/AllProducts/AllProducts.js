@@ -1,14 +1,14 @@
-import axios from "axios";
 import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
-import { baseUrl } from "./../../BaseUrl/BaseUrl";
+import axios from "axios";
+import { baseUrl } from "../../BaseUrl/BaseUrl";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import { useRef } from "react";
-import TopRatedProductCard from "./TopRatedProductCard";
+import AllProductsCard from "./AllProductsCard";
 
-const TopRated = () => {
-  const [topRatedProduct, setTopRatedProduct] = useState([]);
+const AllProducts = () => {
+    const [newArrivalProduct, setNewArrivalProduct] = useState([]);
   const [loading, setLoading] = useState(true);
   const listInnerRef = useRef();
   const [currPage, setCurrPage] = useState(1);
@@ -19,7 +19,7 @@ const TopRated = () => {
     let limit = 15;
     const fetchData = async () => {
       const response = await axios.get(
-        `${baseUrl}/products/top-rated?limit=${limit}&offset=${currPage}`
+        `${baseUrl}/products/latest?limit=${limit}&offset=${currPage}`
       );
       // console.log(response);
       response && setLoading(false);
@@ -28,12 +28,12 @@ const TopRated = () => {
         return;
       }
       setPrevPage(currPage);
-      setTopRatedProduct([...topRatedProduct, ...response.data.products]);
+      setNewArrivalProduct([...newArrivalProduct, ...response.data.products]);
     };
     if (!lastList && prevPage !== currPage) {
       fetchData();
     }
-  }, [currPage, lastList, prevPage, topRatedProduct]);
+  }, [currPage, lastList, prevPage, newArrivalProduct]);
 
   const onScroll = () => {
     if (listInnerRef.current) {
@@ -43,10 +43,11 @@ const TopRated = () => {
       }
     }
   };
+
   return (
     <>
       <div className="newArrival_container">
-        <h4>Top Rated Products:</h4>
+        <h4>All Products:</h4>
         <div
           onScroll={onScroll}
           ref={listInnerRef}
@@ -69,8 +70,8 @@ const TopRated = () => {
                 <Skeleton height="335px" borderRadius="10px" count={1} />
               </>
             ) : (
-              topRatedProduct?.map((product) => (
-                <TopRatedProductCard key={product?.id} product={product} />
+              newArrivalProduct?.map((product) => (
+                <AllProductsCard key={product?.id} product={product} />
               ))
             )}
           </SkeletonTheme>
@@ -81,4 +82,4 @@ const TopRated = () => {
   );
 };
 
-export default TopRated;
+export default AllProducts;

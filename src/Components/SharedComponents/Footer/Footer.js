@@ -110,6 +110,9 @@ const Footer = () => {
                 <a href="https://www.facebook.com/bppshopofficial">
                 <i className="bi bi-facebook"></i>
                 </a>
+                <a href="https://www.youtube.com/@bppshopofficial">
+                <i className="bi bi-youtube"></i>
+                </a>
                 <i className="bi bi-instagram"></i>
                 <i className="bi bi-twitter"></i>
               </div>
