@@ -82,7 +82,22 @@ hr:not([size]) {
   background: #ffffff;
 }
 
+@media only screen and (max-width: 1550px) {
+  /* .homeFilterBtnHeader-container-section {
+    width: 90%;
+  } */
+
+  .header_btn {
+    width: 100%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-content: center;
+    align-items: center;
+  }
+}
 @media only screen and (max-width: 768px) {
+
   .header_btn {
     width: 100%;
     margin: auto;
