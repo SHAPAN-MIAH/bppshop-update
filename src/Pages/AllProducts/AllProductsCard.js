@@ -118,13 +118,11 @@ const AllProductsCard = ({ product }) => {
         `${element.options}`.trim();
     });
 
-    // if (loginRes?.status == "success" || signupRes?.status == "success") {
     cartItemBeforeLogin[0]?.product?.colors?.length > 0
       ? dispatch(addItemsToCartAfterLogin(addItemsToCartDataWithColor))
       : dispatch(addItemsToCartAfterLogin(addItemsToCartDataWithoutColor));
 
     addToCartOverlyLoading();
-    // }
   };
 
   // Add to cart functionality.............................
@@ -176,7 +174,6 @@ const AllProductsCard = ({ product }) => {
           : dispatch(addItemsToCartAfterLogin(addItemsToCartDataWithoutColor));
       }
 
-
       addToCartOverlyLoading()
     }
     
@@ -198,18 +195,6 @@ const AllProductsCard = ({ product }) => {
 
     addToCartLoaderOverlay.style.display = "none";
 
-    // toaster
-    // toast.success(`Product added to cart successfully`, {
-    //   duration: 2000,
-
-    //   style: {
-    //     width: "100%",
-    //     height: "80px",
-    //     padding: "0px 20px",
-    //     background: "#86bc19",
-    //     color: "#fff",
-    //   },
-    // });
   }
 
   

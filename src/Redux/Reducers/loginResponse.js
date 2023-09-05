@@ -34,10 +34,18 @@ export const loginResReducer = (state = { loginRes: {} }, action) => {
         isAuthenticated: false,
         loginRes: action.payload,
       };
+
+      case "CLEAR_LOGIN_RES" : {
+        return {
+          loginRes: {}
+        }
+      }
+
     default:
       return state;
   }
 };
+
 
 export const profileReducer = (state = {}, action) => {
   switch (action.type) {

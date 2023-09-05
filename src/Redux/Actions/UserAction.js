@@ -110,6 +110,7 @@ export const userLogin = (loginData, addToCartAfterLoginRes) => async (dispatch,
   }
 };
 
+
 // Register
 export const userRegister = (userData) => async (dispatch, getState) => {
   try {
@@ -228,6 +229,27 @@ export const logout = () => async (dispatch) => {
     dispatch({ type: LOGOUT_FAIL, payload: error.response.data.message });
   }
 };
+
+export const clearLoginRes =  () => async (dispatch, getState) => {
+  dispatch({
+    type: "CLEAR_LOGIN_RES",
+  });
+  localStorage.setItem(
+    "loginRes",
+    JSON.stringify(getState().loginRes.loginRes)
+  );
+}
+
+export const clearRegisterRes =  () => async (dispatch, getState) => {
+  dispatch({
+    type: "CLEAR_REGISTER_RES",
+  });
+  localStorage.setItem(
+    "signupRes",
+    JSON.stringify(getState().signupRes.signupRes)
+  );
+}
+
 
 // // Update Profile
 // export const updateProfile = (userData) => async (dispatch) => {

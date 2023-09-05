@@ -19,7 +19,7 @@ import axios from "axios";
 import { baseUrl } from "./../../../BaseUrl/BaseUrl";
 import { ClearDeliveryCharge } from "../../../Redux/Actions/DeliveryChargeAction";
 import toast from "react-hot-toast";
-import { logout } from "./../../../Redux/Actions/UserAction";
+import { clearLoginRes, clearRegisterRes, logout } from "./../../../Redux/Actions/UserAction";
 import {
   searchProduct,
   searchProductByCategory,
@@ -121,12 +121,18 @@ const Nav = () => {
         dispatch(ClearDeliveryCharge());
         dispatch(clearUserOrders());
         dispatch(ClearAddToCartRes())
-        // dispatch(clearCategories());
+        dispatch(clearLoginRes())
+        dispatch(clearRegisterRes())
 
         localStorage.removeItem("token");
         localStorage.removeItem("agentId");
         localStorage.removeItem("SignupRedirect");
         localStorage.removeItem("modalLogin");
+        localStorage.removeItem("modalSignup");
+        localStorage.removeItem("productCartLoginAddItem");
+        localStorage.removeItem("sellerName");
+        localStorage.removeItem("brandName");
+        localStorage.removeItem("productDetailsPageLoginSignupAddItem");
 
         navigate("/");
 

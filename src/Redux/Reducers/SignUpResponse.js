@@ -23,6 +23,11 @@ export const signUpResReducer = (state = { signupRes: {} }, action) => {
           signupRes: action.payload,
         };
   
+        case "CLEAR_REGISTER_RES" : {
+          return{
+            signupRes: {}
+          }
+        }
       default:
         return state;
     }

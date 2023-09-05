@@ -331,7 +331,6 @@ const ProductDetailsPage = () => {
 
   // Add to cart after login and signup response..
   const addTocartAfterLoginSignupResInDetailsPage = () => {
-    // if (modalLogin == "true") {
     let color = productDetail?.colors?.map((color) => color?.code);
     const addItemsToCartDataWithColor = {
       id: `${productDetail?.id}`,
@@ -361,7 +360,6 @@ const ProductDetailsPage = () => {
         : dispatch(addItemsToCartAfterLogin(addItemsToCartDataWithoutColor));
       addToCartOverlyLoading();
     }
-    // }
   };
 
   // add to cart with price variant options..........................................
@@ -469,7 +467,7 @@ const ProductDetailsPage = () => {
   const pageMount = () => {
     setQuantityCount(1);
     setVariantRes("");
-    setSelectedOption("")
+    setSelectedOption("");
   };
 
   return (
@@ -893,7 +891,7 @@ const ProductDetailsPage = () => {
 
       <ProductReview productDetail={productDetail} />
 
-      <RelatedProduct productId={id}/>
+      <RelatedProduct productId={id} />
 
       <Modal
         isOpen={modalIsOpen}

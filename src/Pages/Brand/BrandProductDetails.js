@@ -309,76 +309,51 @@ const BrandProductDetails = () => {
   const cartItemBeforeLogin = useSelector(
     (state) => state.cartItemBeforeLogin.cartItem[0]
   );
+  const modalSignup = localStorage.getItem("modalSignup");
 
-  // add to cart after login res............
-  useEffect(() => {
+   // add to cart after login res............
+   useEffect(() => {
     if (isAuthenticated == true && token) {
       (loginRes?.status == "success") | (signupRes?.status == "success") &&
         closeModal();
-
-      if (modalLogin == "true") {
-        let color = productDetail?.colors?.map((color) => color?.code);
-        const addItemsToCartDataWithColor = {
-          id: `${productDetail?.id}`,
-          color: `${selectedColor ? selectedColor : color[0]}`,
-          quantity: `${quantityCount}`,
-        };
-
-        defaultChoices &&
-          defaultChoices.forEach((element) => {
-            addItemsToCartDataWithColor[element.name] =
-              `${element.options}`.trim();
-          });
-
-        const addItemsToCartDataWithoutColor = {
-          id: `${productDetail.id}`,
-          quantity: `${quantityCount}`,
-        };
-
-        defaultChoices &&
-          defaultChoices.forEach((element) => {
-            addItemsToCartDataWithoutColor[element.name] =
-              `${element.options}`.trim();
-          });
-
-        if (token) {
-          productDetail?.colors?.length > 0
-            ? dispatch(addItemsToCartAfterLogin(addItemsToCartDataWithColor))
-            : dispatch(
-                addItemsToCartAfterLogin(addItemsToCartDataWithoutColor)
-              );
-          addToCartOverlyLoading();
-        }
-
-        // if(AddToCartResponse?.map(i => i.status == "success")){
-
-        //   // toaster
-        //   toast.success(`Product added to cart successfully`, {
-        //     duration: 5000,
-        //     style: {
-        //       width: "100%",
-        //       height: "80px",
-        //       padding: "0px 20px",
-        //       background: "#86bc19",
-        //       color: "#fff",
-        //     },
-        //   });
-        // }
+      if (modalLogin == "true" || modalSignup == "true") {
+        addTocartAfterLoginSignupResInDetailsPage();
       }
     }
-  }, [
-    loginRes,
-    signupRes,
-    isAuthenticated,
-    token,
-    modalLogin,
-    dispatch,
-    defaultChoices,
-    productDetail,
-    quantityCount,
-    selectedColor,
-    AddToCartResponse,
-  ]);
+  }, [loginRes, signupRes, isAuthenticated, token]);
+
+  // Add to cart after login and signup response..
+  const addTocartAfterLoginSignupResInDetailsPage = () => {
+    let color = productDetail?.colors?.map((color) => color?.code);
+    const addItemsToCartDataWithColor = {
+      id: `${productDetail?.id}`,
+      color: `${selectedColor ? selectedColor : color[0]}`,
+      quantity: `${quantityCount}`,
+    };
+
+    defaultChoices &&
+      defaultChoices.forEach((element) => {
+        addItemsToCartDataWithColor[element.name] = `${element.options}`.trim();
+      });
+
+    const addItemsToCartDataWithoutColor = {
+      id: `${productDetail.id}`,
+      quantity: `${quantityCount}`,
+    };
+
+    defaultChoices &&
+      defaultChoices.forEach((element) => {
+        addItemsToCartDataWithoutColor[element.name] =
+          `${element.options}`.trim();
+      });
+
+    if (token) {
+      productDetail?.colors?.length > 0
+        ? dispatch(addItemsToCartAfterLogin(addItemsToCartDataWithColor))
+        : dispatch(addItemsToCartAfterLogin(addItemsToCartDataWithoutColor));
+      addToCartOverlyLoading();
+    }
+  };
 
   // add to cart with price variant options..........................................
   const addToCartHandler = (productDetail, quantityCount) => {

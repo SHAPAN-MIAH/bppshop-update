@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import {
   baseUrl,
@@ -12,7 +12,6 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import {
   ClearAddToCartRes,
-  addItemsToCart,
   addItemsToCartAfterLogin,
   updateItemsToCart,
 } from "./../../Redux/Actions/CartAction";
@@ -23,11 +22,8 @@ import toast from "react-hot-toast";
 import defaultProImg from "../../Assets/Images/defaultImg.jpg";
 import ModalVideo from "react-modal-video";
 import "react-modal-video/scss/modal-video.scss";
-
-// import { IoCloseOutline } from "react-icons/io5";
-import { AiOutlineYoutube, AiFillPlayCircle } from "react-icons/ai";
+import {AiFillPlayCircle } from "react-icons/ai";
 import MetaData from "../Layout/MetaData";
-// import { BiLoaderAlt } from "react-icons/bi";
 import Modal from "react-modal";
 import LoginModal from "../User/Login/LoginModal";
 import SignUpModal from "../User/SignUp/SignUpModal";
@@ -52,20 +48,16 @@ const customStyles = {
 const BestSellingProductDetails = () => {
   const { slug, subSlug, subSubSlug, id } = useParams();
 
-  // console.log(slug, subSlug, subSubSlug)
   let newId = parseInt(id);
   const [productDetail, setProductDetail] = useState([]);
   const [quantityCount, setQuantityCount] = useState(1);
-  // const [loading, setLoading] = useState(true);
   const [variantRes, setVariantRes] = useState({});
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.cartItems?.[0]?.data);
   const AddToCartResponse = useSelector(
     (state) => state.AddToCartResponse.AddToCartResponse
   );
   const token = localStorage.getItem("token");
-  const sellerId = localStorage.getItem("sellerId");
   const { isAuthenticated } = useSelector((state) => state.user);
   const { loginRes } = useSelector((state) => state.loginRes);
   const { signupRes } = useSelector((state) => state.signupRes);
@@ -73,18 +65,16 @@ const BestSellingProductDetails = () => {
   // Product Details............................
   useEffect(() => {
     axios.get(`${baseUrl}/products/details/${id}`).then((res) => {
-      // setLoading(false);
       setProductDetail(res.data.data);
     });
   }, [id]);
 
-  // console.log(productDetail);
 
   // Customer Audit log.........................
-  const auditLog = {
-    product_id: id,
-  };
-  const config = { headers: { Authorization: `Bearer ${token}` } };
+  // const auditLog = {
+  //   product_id: id,
+  // };
+  // const config = { headers: { Authorization: `Bearer ${token}` } };
 
   // useEffect(() => {
   //   token && axios.post(`${baseUrl}/customer/audit-log`, auditLog, config);
@@ -305,79 +295,54 @@ const BestSellingProductDetails = () => {
   }
 
   const modalLogin = localStorage.getItem("modalLogin");
+  const modalSignup = localStorage.getItem("modalSignup");
   const cartItemBeforeLogin = useSelector(
     (state) => state.cartItemBeforeLogin.cartItem[0]
   );
 
-  // add to cart after login res............
-  useEffect(() => {
+   // add to cart after login res............
+   useEffect(() => {
     if (isAuthenticated == true && token) {
       (loginRes?.status == "success") | (signupRes?.status == "success") &&
         closeModal();
-
-      if (modalLogin == "true") {
-        let color = productDetail?.colors?.map((color) => color?.code);
-        const addItemsToCartDataWithColor = {
-          id: `${productDetail?.id}`,
-          color: `${selectedColor ? selectedColor : color[0]}`,
-          quantity: `${quantityCount}`,
-        };
-
-        defaultChoices &&
-          defaultChoices.forEach((element) => {
-            addItemsToCartDataWithColor[element.name] =
-              `${element.options}`.trim();
-          });
-
-        const addItemsToCartDataWithoutColor = {
-          id: `${productDetail.id}`,
-          quantity: `${quantityCount}`,
-        };
-
-        defaultChoices &&
-          defaultChoices.forEach((element) => {
-            addItemsToCartDataWithoutColor[element.name] =
-              `${element.options}`.trim();
-          });
-
-        if (token) {
-          productDetail?.colors?.length > 0
-            ? dispatch(addItemsToCartAfterLogin(addItemsToCartDataWithColor))
-            : dispatch(
-                addItemsToCartAfterLogin(addItemsToCartDataWithoutColor)
-              );
-          addToCartOverlyLoading();
-        }
-
-        // if(AddToCartResponse?.map(i => i.status == "success")){
-
-        //   // toaster
-        //   toast.success(`Product added to cart successfully`, {
-        //     duration: 5000,
-        //     style: {
-        //       width: "100%",
-        //       height: "80px",
-        //       padding: "0px 20px",
-        //       background: "#86bc19",
-        //       color: "#fff",
-        //     },
-        //   });
-        // }
+      if (modalLogin == "true" || modalSignup == "true") {
+        addTocartAfterLoginSignupResInDetailsPage();
       }
     }
-  }, [
-    loginRes,
-    signupRes,
-    isAuthenticated,
-    token,
-    modalLogin,
-    dispatch,
-    defaultChoices,
-    productDetail,
-    quantityCount,
-    selectedColor,
-    AddToCartResponse,
-  ]);
+  }, [loginRes, signupRes, isAuthenticated, token]);
+
+  // Add to cart after login and signup response..
+  const addTocartAfterLoginSignupResInDetailsPage = () => {
+    let color = productDetail?.colors?.map((color) => color?.code);
+    const addItemsToCartDataWithColor = {
+      id: `${productDetail?.id}`,
+      color: `${selectedColor ? selectedColor : color[0]}`,
+      quantity: `${quantityCount}`,
+    };
+
+    defaultChoices &&
+      defaultChoices.forEach((element) => {
+        addItemsToCartDataWithColor[element.name] = `${element.options}`.trim();
+      });
+
+    const addItemsToCartDataWithoutColor = {
+      id: `${productDetail.id}`,
+      quantity: `${quantityCount}`,
+    };
+
+    defaultChoices &&
+      defaultChoices.forEach((element) => {
+        addItemsToCartDataWithoutColor[element.name] =
+          `${element.options}`.trim();
+      });
+
+    if (token) {
+      productDetail?.colors?.length > 0
+        ? dispatch(addItemsToCartAfterLogin(addItemsToCartDataWithColor))
+        : dispatch(addItemsToCartAfterLogin(addItemsToCartDataWithoutColor));
+      addToCartOverlyLoading();
+    }
+  };
 
   // add to cart with price variant options..........................................
   const addToCartHandler = (productDetail, quantityCount) => {
@@ -418,20 +383,7 @@ const BestSellingProductDetails = () => {
 
         addToCartOverlyLoading();
       }
-      // if(AddToCartResponse?.map(i => i.status == "success")){
-      //   // toaster
-      //   toast.success(`Product added to cart successfully`, {
-      //     duration: 3000,
-      //     style: {
-      //       width: "100%",
-      //       height: "80px",
-      //       padding: "0px 20px",
-      //       background: "#86bc19",
-      //       color: "#fff",
-      //     },
-      //   });
-
-      // }
+   
       dispatch(ClearAddToCartRes());
     }
   };
@@ -471,16 +423,6 @@ const BestSellingProductDetails = () => {
     }
   })
 
-  // const [modal, setModal] = useState(false);
-  // const [videoLoading, setVideoLoading] = useState(true);
-
-  // const openModal = () => {
-  //   setModal(!modal);
-  // };
-
-  // const spinner = () => {
-  //   setVideoLoading(!videoLoading);
-  // };
 
   // youtube video embed code split function............
   const [isOpen, setOpen] = useState(false);
