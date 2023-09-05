@@ -46,6 +46,8 @@ const RelatedProduct = ({ productId }) => {
       .get(`${baseUrl}/products/related-products/${productId}`)
       .then((res) => setRelatedProduct(res.data.data));
   }, []);
+
+  
   return (
     <div>
       <h2 className="text-center mt-5 mb-4">Related Products</h2>

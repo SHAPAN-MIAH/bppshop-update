@@ -453,7 +453,7 @@ const AllProductDetails = () => {
     setQuantityCount(1);
     setVariantRes("");
   };
-  
+
 
   return (
     <>

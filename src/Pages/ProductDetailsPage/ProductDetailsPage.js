@@ -468,6 +468,7 @@ const ProductDetailsPage = () => {
     setQuantityCount(1);
     setVariantRes("");
     setSelectedOption("");
+
   };
 
   return (
