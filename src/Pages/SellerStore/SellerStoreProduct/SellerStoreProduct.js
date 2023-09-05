@@ -66,7 +66,7 @@ const SellerStoreProduct = () => {
         className="product-container mt-4"
         onScroll={onScroll}
         ref={listInnerRef}
-        style={{ height: "70vh", overflowY: "auto" }}
+        style={{ height: "700px", overflowY: "auto" }}
       >
         {/* <div className="product-content"> */}
         <SkeletonTheme baseColor="#DDDDDD" highlightColor="#e3e3e3">
