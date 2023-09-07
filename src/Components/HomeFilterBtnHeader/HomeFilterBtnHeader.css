@@ -99,7 +99,7 @@ hr:not([size]) {
 @media only screen and (max-width: 576px) {
   .homeFilterBtnHeader-container-section {
     width: 45%;
-    
+    margin-bottom: 10px !important;
   }
 
   .header_btn {
