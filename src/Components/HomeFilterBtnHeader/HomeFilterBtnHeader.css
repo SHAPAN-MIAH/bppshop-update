@@ -114,9 +114,14 @@ hr:not([size]) {
 
   .header_btn button {
     width: 120px;
-    height: 25px;
+    /* height: 25px; */
     margin: 5px;
     font-size: 12px;
+    font-weight: 500;
+    background: #ffffff;
+    color: #ef8341;
+    border: 1px solid gainsboro;
+    overflow: hidden;
   }
 }
 @media only screen and (max-width: 500px) {
