@@ -110,13 +110,13 @@ hr:not([size]) {
     margin: auto;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-gap: 0px;
+    grid-gap: 0px !important;
     justify-content: center;
     align-items: center;
   }
   .header_btn button {
     width: 120px;
-    margin: 5px ;
+    /* margin: 5px ; */
     padding: 5px;
     font-size: 12px;
   }
@@ -138,6 +138,7 @@ hr:not([size]) {
     margin: auto;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    grid-gap: 0px !important;
     justify-content: center;
     align-items: center;
   }
@@ -162,6 +163,7 @@ hr:not([size]) {
     margin: auto;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    grid-gap: 0px !important;
     justify-content: center;
     align-items: center;
   }
