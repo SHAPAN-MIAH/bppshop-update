@@ -82,60 +82,61 @@ const SellerStoreProductsCard = ({ product }) => {
     if (isAuthenticated == true) {
       closeModal();
 
-      if (modalLogin == "true") {
-        addToCartAfterLoginRes();
-      }
+      // if (modalLogin == "true") {
+      //   addToCartAfterLoginRes();
+      // }
     }
   }, [isAuthenticated, modalLogin]);
 
   // add to cart after login response......
-  const addToCartAfterLoginRes = () => {
-    const choice_options = cartItemBeforeLogin[0]?.product?.choice_options;
-    const choice_options_name = choice_options?.map((option) => option.name);
-    const choice_options_defaultValue = choice_options?.map(
-      (option) => option?.options[0]
-    );
-    const defaultChoices = choice_options_name?.map((name, index) => ({
-      name,
-      options: choice_options_defaultValue[index],
-    }));
+  // const addToCartAfterLoginRes = () => {
+  //   const choice_options = cartItemBeforeLogin[0]?.product?.choice_options;
+  //   const choice_options_name = choice_options?.map((option) => option.name);
+  //   const choice_options_defaultValue = choice_options?.map(
+  //     (option) => option?.options[0]
+  //   );
+  //   const defaultChoices = choice_options_name?.map((name, index) => ({
+  //     name,
+  //     options: choice_options_defaultValue[index],
+  //   }));
 
-    let color = colors?.map((color) => color?.code);
+  //   let color = colors?.map((color) => color?.code);
 
-    const addItemsToCartDataWithColor = {
-      id: `${cartItemBeforeLogin[0]?.product?.id}`,
-      color: `${color[0]}`,
-      quantity: `${quantity}`,
-    };
+  //   const addItemsToCartDataWithColor = {
+  //     id: `${cartItemBeforeLogin[0]?.product?.id}`,
+  //     color: `${color[0]}`,
+  //     quantity: `${quantity}`,
+  //   };
 
-    const addItemsToCartDataWithoutColor = {
-      id: `${cartItemBeforeLogin[0]?.product?.id}`,
-      quantity: `${quantity}`,
-    };
+  //   const addItemsToCartDataWithoutColor = {
+  //     id: `${cartItemBeforeLogin[0]?.product?.id}`,
+  //     quantity: `${quantity}`,
+  //   };
 
-    defaultChoices?.forEach((element) => {
-      addItemsToCartDataWithColor[element.name] = `${element.options}`.trim();
-    });
+  //   defaultChoices?.forEach((element) => {
+  //     addItemsToCartDataWithColor[element.name] = `${element.options}`.trim();
+  //   });
 
-    defaultChoices?.forEach((element) => {
-      addItemsToCartDataWithoutColor[element.name] =
-        `${element.options}`.trim();
-    });
+  //   defaultChoices?.forEach((element) => {
+  //     addItemsToCartDataWithoutColor[element.name] =
+  //       `${element.options}`.trim();
+  //   });
 
-    // if (loginRes?.status == "success" || signupRes?.status == "success") {
-    cartItemBeforeLogin[0]?.product?.colors?.length > 0
-      ? dispatch(addItemsToCartAfterLogin(addItemsToCartDataWithColor))
-      : dispatch(addItemsToCartAfterLogin(addItemsToCartDataWithoutColor));
+  //   // if (loginRes?.status == "success" || signupRes?.status == "success") {
+  //   cartItemBeforeLogin[0]?.product?.colors?.length > 0
+  //     ? dispatch(addItemsToCartAfterLogin(addItemsToCartDataWithColor))
+  //     : dispatch(addItemsToCartAfterLogin(addItemsToCartDataWithoutColor));
 
-    addToCartOverlyLoading();
-    // }
-  };
+  //   addToCartOverlyLoading();
+  //   // }
+  // };
 
   // Add to cart functionality.............................
   const addToCartHandler = (product, quantity) => {
 
     if (!token) {
       dispatch(addItemsToCart(product, quantity));
+      localStorage.setItem("productCartLoginAddItem", "true")
       openModal();
 
     }
