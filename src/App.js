@@ -54,7 +54,7 @@ import AllSellerStore from "./Pages/SellerStore/AllSellerStore/AllSellerStore";
 import SellerStoreProduct from './Pages/SellerStore/SellerStoreProduct/SellerStoreProduct';
 import SellerStoreProductDetails from "./Pages/SellerStore/SellerStoreProductDetails";
 import { getCategories } from "./Redux/Actions/CategoriesAction";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import { getCartData } from "./Redux/Actions/CartAction";
 import AllProducts from "./Pages/AllProducts/AllProducts";
 import AllProductDetails from "./Pages/AllProducts/AllProductDetails";
@@ -63,7 +63,7 @@ import AllProductDetails from "./Pages/AllProducts/AllProductDetails";
 
 function App() {
   const token = localStorage.getItem("token");
-  const { isAuthenticated, loading } = useSelector((state) => state.user);
+  // const { isAuthenticated, loading } = useSelector((state) => state.user);
 
   useEffect(() => {
     store.dispatch(getCategories())
