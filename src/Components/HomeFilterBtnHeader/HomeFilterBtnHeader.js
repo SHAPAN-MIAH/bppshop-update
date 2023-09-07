@@ -22,38 +22,6 @@ const HomeFilterBtnHeader = () => {
               <button>Brand's</button>
             </Link>
           </div>
-
-          <div>
-            <div className="dropdown">
-              <button
-                className="dropdown-toggle discountFlashSaleBTn"
-                id="dropdownMenuButton1"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                <span className="">Discounted Products/ Flash Sale</span>
-              </button>
-              <ul
-                className="dropdown-menu"
-                aria-labelledby="dropdownMenuButton1"
-              >
-                <li>
-                  <Link className="dropdown-item" to="/discount-products">
-                    Discounted Products
-                  </Link>
-                </li>
-                <li>
-                  <hr className="dropdown-divider" />
-                </li>
-                <li>
-                  <Link className="dropdown-item" to="/flash-sale">
-                    Flash Sale
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </div>
-
           <div className="dropdown">
             <button
               className="dropdown-toggle"
@@ -87,6 +55,38 @@ const HomeFilterBtnHeader = () => {
               </li>
             </ul>
           </div>
+          <div>
+            <div className="dropdown">
+              <button
+                className="dropdown-toggle discountFlashSaleBTn"
+                id="dropdownMenuButton1"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <span className="">Discounted Products/ Flash Sale</span>
+              </button>
+              <ul
+                className="dropdown-menu"
+                aria-labelledby="dropdownMenuButton1"
+              >
+                <li>
+                  <Link className="dropdown-item" to="/discount-products">
+                    Discounted Products
+                  </Link>
+                </li>
+                <li>
+                  <hr className="dropdown-divider" />
+                </li>
+                <li>
+                  <Link className="dropdown-item" to="/flash-sale">
+                    Flash Sale
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+         
           <div className="dropdown">
             <button
               className="dropdown-toggle"

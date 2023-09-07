@@ -776,7 +776,7 @@ const NewArrivalProductDetails = () => {
                     </button>
                   ) : (
                     <button className="btn_before_add_cart_stockOut">
-                      <i class="bi bi-cart-x"></i> Stock Out
+                      <i className="bi bi-cart-x"></i> Stock Out
                     </button>
                   )}
                   <button className="addWishListBtn">

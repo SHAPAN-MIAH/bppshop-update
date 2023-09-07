@@ -44,7 +44,7 @@
   /* font-family: "Space Grotesk", sans-serif; */
   /* font-family: "Varela Round", sans-serif; */
 }
-.discountFlashSaleBTn{
+.discountFlashSaleBTn {
   overflow: hidden;
 }
 
@@ -52,11 +52,10 @@
   font-family: "Montserrat", sans-serif;
   padding: 2px 0px;
 }
-.dropdown-item{
+.dropdown-item {
   padding-left: 12px;
   padding-right: 12px;
 }
-
 
 .dropdown-toggle::after {
   font-size: 18px;
@@ -83,36 +82,37 @@ hr:not([size]) {
 }
 
 @media only screen and (max-width: 768px) {
+  .homeFilterBtnHeader-container-section {
+    width: 60%;
+    margin-top: 70px !important;
+    margin-bottom: 10px !important;
+  }
   .header_btn {
     width: 100%;
     margin: auto;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    grid-gap: 0px;
     justify-content: center;
     align-items: center;
   }
   .header_btn button {
     width: 120px;
-    /* height: 42px; */
-    margin: 5px 10px;
+    margin: 5px ;
+    padding: 5px;
     font-size: 12px;
   }
-  
-  .discountFlashSale{
+
+  .discountFlashSale {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
   }
-  
 }
 @media only screen and (max-width: 576px) {
   .homeFilterBtnHeader-container-section {
     width: 45%;
-    margin-top: 80px !important;
-    margin-bottom: 40px !important;
-    display: flex;
-    justify-content: center;
-    margin: auto;
+    
   }
 
   .header_btn {
@@ -125,61 +125,44 @@ hr:not([size]) {
   }
 
   .header_btn button {
-    width: 140px;
-    height: 42px;
-    margin: 5px ;
+    width: 120px;
+    height: 25px;
+    margin: 5px;
     font-size: 12px;
   }
 }
 @media only screen and (max-width: 500px) {
- 
-
   .header_btn button {
-    width: 140px;
-    /* height: 42px; */
-    margin: 5px ;
+    width: 100px;
+    margin: 5px;
     font-size: 12px;
   }
 }
 @media only screen and (max-width: 450px) {
-  .homeFilterBtnHeader-container-section {
-    width: 45%;
-    margin-top: 80px !important;
-    margin-bottom: 40px !important;
-    display: flex;
-    justify-content: center;
-    margin: auto;
-  }
-
   .header_btn {
     width: 100%;
     margin: auto;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     justify-content: center;
     align-items: center;
   }
   .header_btn button {
-    width: 150px;
-    /* height: 42px; */
-    margin: 5px ;
+    width: 100px;
+    margin: 5px;
     font-size: 12px;
   }
 }
 @media only screen and (max-width: 350px) {
- 
   .header_btn button {
-    width: 140px;
-    /* height: 42px; */
+    width: 90px;
     margin: 5px;
     font-size: 12px;
   }
 }
 @media only screen and (max-width: 320px) {
- 
   .header_btn button {
-    width: 130px;
-    /* height: 42px; */
+    width: 80px;
     margin: 5px;
     font-size: 12px;
   }
