@@ -85,8 +85,6 @@ const HomeFilterBtnHeader = () => {
               </ul>
             </div>
           </div>
-
-         
           <div className="dropdown">
             <button
               className="dropdown-toggle"

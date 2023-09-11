@@ -50,6 +50,11 @@ const BrandsProducts = () => {
               <Skeleton height="335px" borderRadius="10px" count={1} />
               <Skeleton height="335px" borderRadius="10px" count={1} />
               <Skeleton height="335px" borderRadius="10px" count={1} />
+              <Skeleton height="335px" borderRadius="10px" count={1} />
+              <Skeleton height="335px" borderRadius="10px" count={1} />
+              <Skeleton height="335px" borderRadius="10px" count={1} />
+              <Skeleton height="335px" borderRadius="10px" count={1} />
+              <Skeleton height="335px" borderRadius="10px" count={1} />
             </>
           ) : (
             brandProducts?.map((product) => (

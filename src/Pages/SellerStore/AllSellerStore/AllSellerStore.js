@@ -53,15 +53,12 @@ const AllSellerStore = () => {
       <div
         onScroll={onScroll}
         ref={listInnerRef}
-        style={{ height: "70vh", overflowY: "auto" }}
+        style={{ height: "100vh", overflowY: "auto" }}
         className="all-seller-store-container mt-4 pb-5"
       >
         <SkeletonTheme baseColor="#DDDDDD" highlightColor="#e3e3e3">
           {loading ? (
             <>
-              <Skeleton height="250px" borderRadius="10px" count={1} />
-              <Skeleton height="250px" borderRadius="10px" count={1} />
-              <Skeleton height="250px" borderRadius="10px" count={1} />
               <Skeleton height="250px" borderRadius="10px" count={1} />
               <Skeleton height="250px" borderRadius="10px" count={1} />
               <Skeleton height="250px" borderRadius="10px" count={1} />
