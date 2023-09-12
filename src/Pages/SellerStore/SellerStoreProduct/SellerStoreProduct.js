@@ -21,7 +21,7 @@ const SellerStoreProduct = () => {
  
 
   useEffect(() => {
-    let limit = 10;
+    let limit = 15;
     const fetchData = async () => {
       const response = await axios.get(
         `${baseUrl}/seller/${sellerId}/products?limit=${limit}&offset=${currPage}`

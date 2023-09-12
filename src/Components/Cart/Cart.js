@@ -7,9 +7,7 @@ const Cart = () => {
   const cartItems = useSelector((state) => {
     return state.cart.cartItems;
   });
-  // const cartItems = useSelector((state) => {
-  //   return state.cartGroup.cartGroupItems;
-  // });
+  
 
   const CartDetailsViewHandler = () => {
     const cartDetailsViewContainer = document.querySelector(

@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./CartDetailsView.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
-  addItemsToCart,
   updateItemsToCart,
   removeItemsFromCart,
 } from "./../../../Redux/Actions/CartAction";
@@ -15,7 +14,6 @@ import { useEffect } from "react";
 const CartDetailsView = () => {
   const [quantityCount, setQuantityCount] = useState(1);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const cartItems = useSelector((state) => {
     return state.cart.cartItems;
@@ -27,21 +25,6 @@ const CartDetailsView = () => {
   const ItemQtyUpdateRes = useSelector(
     (state) => state.ItemQtyUpdateRes.ItemQtyUpdateRes
   );
-
-  //default choise option
-  const choice_options = cartItems.choice_options;
-  // console.log(choice_options)
-
-  // const choice_options_name = choice_options.map((option) => option.name);
-
-  // const choice_options_defaultValue = choice_options.map(
-  //   (option) => option.options[0]
-  // );
-
-  // const defaultChoices = choice_options_name.map((name, index) => ({
-  //   name,
-  //   options: choice_options_defaultValue[index],
-  // }));
 
   const increaseQuantity = (id, quantity, stock) => {
     const newQty = quantity + 1;
@@ -73,7 +56,6 @@ const CartDetailsView = () => {
     }
 
     // dispatch(addItemsToCart(id, newQty, defaultChoices));
-
     dispatch(updateItemsToCart(id, newQty));
   };
 
@@ -88,9 +70,7 @@ const CartDetailsView = () => {
 
   //cart item remove functionality
   const handleRemoveItemFormCart = (id) => {
-    dispatch(removeItemsFromCart(id));
-
-    
+    dispatch(removeItemsFromCart(id));    
   };
 
 
@@ -136,11 +116,10 @@ const CartDetailsView = () => {
       "cartDetailsView-container-toggle"
     );
 
-    //onclick placeorder go to top of the page
+    //onclick place order go to top of the page
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
 
-    // navigate("/shipping-address")
     dispatch(SignupRedirectAction(true));
   };
 
@@ -150,7 +129,7 @@ const CartDetailsView = () => {
     document.querySelector(".cartEmptyAlert").style.color = "red";
   };
 
-  // console.log(cartItems);
+ 
 
   return (
     <>

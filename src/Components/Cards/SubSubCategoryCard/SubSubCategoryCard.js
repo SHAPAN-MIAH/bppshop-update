@@ -5,7 +5,7 @@ import { categoryBaseUrl } from "../../../BaseUrl/BaseUrl";
 
 const SubSubCategoryCard = ({ SubSubcategory }) => {
   const navigate = useNavigate();
-  const { id, name, slug, img, thumb } = SubSubcategory;
+  const { id, name, slug, thumb } = SubSubcategory;
 
   const handleProductView = (id, subSubSlug) => {
     if (id) {

@@ -4,8 +4,7 @@ import defaultProImg from "../../../Assets/Images/defaultImg.jpg";
 import { categoryBaseUrl } from "../../../BaseUrl/BaseUrl";
 
 const CategoryCard = ({ category }) => {
-  // console.log(category);
-  const { img, name, id, slug, thumb } = category;
+  const { name, id, slug, thumb } = category;
   const navigate = useNavigate();
 
   const handleSubCategoryView = (id) => {

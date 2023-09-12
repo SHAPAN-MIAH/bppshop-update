@@ -20,7 +20,6 @@ const AllSellerStore = () => {
       const response = await axios.get(
         `${baseUrl}/seller/all?limit=${limit}&offset=${currPage}`
       );
-      // console.log(response.data.data);
       response && setLoading(false);
       if (!response?.data?.data?.length) {
         setLastList(true);
@@ -59,6 +58,11 @@ const AllSellerStore = () => {
         <SkeletonTheme baseColor="#DDDDDD" highlightColor="#e3e3e3">
           {loading ? (
             <>
+              <Skeleton height="250px" borderRadius="10px" count={1} />
+              <Skeleton height="250px" borderRadius="10px" count={1} />
+              <Skeleton height="250px" borderRadius="10px" count={1} />
+              <Skeleton height="250px" borderRadius="10px" count={1} />
+              <Skeleton height="250px" borderRadius="10px" count={1} />
               <Skeleton height="250px" borderRadius="10px" count={1} />
               <Skeleton height="250px" borderRadius="10px" count={1} />
               <Skeleton height="250px" borderRadius="10px" count={1} />
