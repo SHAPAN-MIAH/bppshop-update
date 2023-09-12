@@ -7,8 +7,8 @@
   border: 1px solid gainsboro;
   background: #ffffff;
   top: 60px;
-  margin-left: 79%;
-  transform: translateX(450px);
+  margin-left: 79.1%;
+  transform: translateX(105vw);
   transition: transform 250ms ease-in-out;
   font-weight: 500;
  
