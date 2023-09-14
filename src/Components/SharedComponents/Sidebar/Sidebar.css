@@ -9,13 +9,8 @@
   background: #ffffff;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-  /* transform: translateX(-300px); */
   transition: transform 250ms ease-in-out;
   overflow: scroll;
-}
-
-.sidebar-toggle-section-toggle{
-  transform: translateX(-300px);
 }
 
 #sidebarMenu::-webkit-scrollbar {
@@ -27,20 +22,11 @@
   scrollbar-width: none;
 }
 
-#openSidebarMenu {
+#openSidebarMenu, #closeSidebarMenu {
   display: none;
 }
 
-/* .sidebarIconToggle {
-  width: 22px;
-  height: 22px;
-  position: absolute;
-  z-index: 20;
-  top: 20px;
-  left: 30px;
-  cursor: pointer;
-} */
-.sidebarIconToggle {
+.openSidebarIconToggle, .closeSidebarIconToggle {
   width: 22px;
   height: 22px;
   position: absolute;
@@ -49,34 +35,13 @@
   left: 15px;
   cursor: pointer;
 }
-.sidebarIconToggle i {
+.openSidebarIconToggle{
+  display: none;
+}
+.openSidebarIconToggle i, .closeSidebarIconToggle i {
   color: white;
   font-size: 24px;
   position: absolute;
-}
-.spinner {
-  height: 2px;
-  background: #fff;
-  transition: all 0.3s;
-}
-
-.middle,
-.bottom {
-  margin-top: 5px;
-}
-
-#openSidebarMenu:checked ~ .sidebarIconToggle > .middle {
-  opacity: 0;
-}
-
-#openSidebarMenu:checked ~ .sidebarIconToggle > .top {
-  transform: rotate(135deg);
-  margin-top: 8px;
-}
-
-#openSidebarMenu:checked ~ .sidebarIconToggle > .bottom {
-  transform: rotate(-135deg);
-  margin-top: -9px;
 }
 
 #openSidebarMenu:checked ~ #sidebarMenu {
@@ -101,7 +66,7 @@
   padding: 5px 9px;
   color: #fd7e14;
   background: #fff;
-  font-size: 20px; 
+  font-size: 20px;
 }
 
 .menu li {
@@ -142,7 +107,6 @@
 
 .subMenu,
 .subSubMenu {
-  /* display: none; */
   border-left: 1px solid rgb(216, 216, 216);
   margin-left: -10px;
 }
@@ -164,7 +128,7 @@
 }
 
 .subMenuActive,
-.subSubMenuActive{
+.subSubMenuActive {
   color: #fd7e14 !important;
   font-weight: 600 !important;
 }
@@ -184,19 +148,11 @@
     transition: transform 250ms ease-in-out;
     overflow: scroll;
   }
-
-  #openSidebarMenu:checked ~ .sidebarIconToggle > .middle {
-    opacity: 0;
+  .openSidebarIconToggle{
+    display: block;
   }
-
-  #openSidebarMenu:checked ~ .sidebarIconToggle > .top {
-    transform: rotate(135deg);
-    margin-top: 8px;
-  }
-
-  #openSidebarMenu:checked ~ .sidebarIconToggle > .bottom {
-    transform: rotate(-135deg);
-    margin-top: -9px;
+  .closeSidebarIconToggle{
+    display: none;
   }
 
   #openSidebarMenu:checked ~ #sidebarMenu {
