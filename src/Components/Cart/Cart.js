@@ -26,15 +26,12 @@ const Cart = () => {
     );
   };
 
-  const sidebarOpenHandler = () => {
-    document.querySelector("#sidebarMenu").style.transform =
-      "translateX(-300px)";
-  };
+ 
 
   return (
     <>
       <div className="cart">
-        <button onClick={sidebarOpenHandler} className="start-shopping-btn ">
+        <button className="start-shopping-btn ">
           Start Shopping
         </button>
         <div onClick={CartDetailsViewHandler}>

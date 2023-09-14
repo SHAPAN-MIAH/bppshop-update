@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Nav from "./../../Components/SharedComponents/Nav/Nav";
 import HomeFilterBtnHeader from "./../../Components/HomeFilterBtnHeader/HomeFilterBtnHeader";
 import Footer from "./../../Components/SharedComponents/Footer/Footer";
@@ -6,78 +6,65 @@ import "./Layout.css";
 import Cart from "../../Components/Cart/Cart";
 import CartDetailsView from "./../../Components/Cart/CartDetailsView/CartDetailsView";
 import { Toaster } from "react-hot-toast";
-import preloader from "../../Assets/Images/loading.gif"
-
-// const notify = () => toast('Here is your toast.');
-
-const searchSuggestionCloseHandler = () => {
-  const suggestedItemContainer = document.querySelector(
-    ".suggested_item_container"
-  );
-  const sidebarMenu = document.querySelector(
-    "#sidebarMenu"
-  );
-
-  suggestedItemContainer.style.display = "none";
-  // sidebarMenu.style.transform = "translateX(-300px)";
-
-};
-
-const CartDetailsCloseHandler = () => {
-  const cartDetailsViewContainer = document.querySelector(
-    ".cartDetailsView-container"
-  );
-
-  const cartDetailsViewSectionOverlay = document.querySelector(
-    ".cartDetailsView_section_overlay"
-  );
-  const suggestedItemContainer = document.querySelector(
-    ".suggested_item_container"
-  );
-
-  cartDetailsViewSectionOverlay.style.display = "none";
-  suggestedItemContainer.style.display = "none";
-  cartDetailsViewContainer.classList.toggle("cartDetailsView-container-toggle");
-};
-
-// const sidebarCloseGlobalHandler = () => {
-//   const sidebarToggleSection = document.querySelector("#sidebarMenu");
-//   sidebarToggleSection.classList.toggle(
-//     "sidebar-toggle-section-toggle"
-//   );
-// }
-
-// $(document).ready(function(){
-//   $('#addtocart').on('click',function(){
-
-//     var button = $(this);
-//     var cart = $('#cart');
-//     var cartTotal = cart.attr('data-totalitems');
-//     var newCartTotal = parseInt(cartTotal) + 1;
-
-//     button.addClass('sendtocart');
-//     setTimeout(function(){
-//       button.removeClass('sendtocart');
-//       cart.addClass('shake').attr('data-totalitems', newCartTotal);
-//       setTimeout(function(){
-//         cart.removeClass('shake');
-//       },500)
-//     },1000)
-//   })
-// })
+import preloader from "../../Assets/Images/loading.gif";
 
 const Layout = ({ children }) => {
+  const suggestedItemContainer = document.querySelector(
+    ".suggested_item_container"
+  );
+  const mediaQueryDesktop = window.matchMedia("(max-width: 1540px)");
+
+  const searchSuggestionCloseHandler = () => {
+    suggestedItemContainer.style.display = "none";
+  };
+
+  const CartDetailsCloseHandler = () => {
+    const cartDetailsViewContainer = document.querySelector(
+      ".cartDetailsView-container"
+    );
+
+    const cartDetailsViewSectionOverlay = document.querySelector(
+      ".cartDetailsView_section_overlay"
+    );
+    const suggestedItemContainer = document.querySelector(
+      ".suggested_item_container"
+    );
+
+    cartDetailsViewSectionOverlay.style.display = "none";
+    suggestedItemContainer.style.display = "none";
+    cartDetailsViewContainer.classList.toggle(
+      "cartDetailsView-container-toggle"
+    );
+  };
+
+  const sidebarCloseHandler = () => {
+    const mediaQuery = window.matchMedia("(max-width: 1550px)");
+    const sidebarMenu = document.querySelector("#sidebarMenu");
+    const openSidebarIconToggle = document.querySelector(
+      ".openSidebarIconToggle"
+    );
+    const closeSidebarIconToggle = document.querySelector(
+      ".closeSidebarIconToggle"
+    );
+    if (mediaQuery.matches) {
+      sidebarMenu.style.transform = "translateX(-300px)";
+      closeSidebarIconToggle.style.display = "none";
+      openSidebarIconToggle.style.display = "block";
+    }
+  };
+
   return (
     <div>
       <Nav />
       <div onClick={searchSuggestionCloseHandler}>
-        <HomeFilterBtnHeader />
-        {/* <main className="layout_container" onClick={sidebarCloseGlobalHandler}>{children}</main> */}
-        <main className="layout_container ">{children}</main>
-        <CartDetailsView />
-        <Cart />
-        <Footer />
-        <Toaster position="top-right" reverseOrder={false} />
+        <div onClick={sidebarCloseHandler}>
+          <HomeFilterBtnHeader />
+          <main className="layout_container ">{children}</main>
+          <CartDetailsView />
+          <Cart />
+          <Footer />
+          <Toaster position="top-right" reverseOrder={false} />
+        </div>
         <div
           onClick={CartDetailsCloseHandler}
           className="cartDetailsView_section_overlay"
@@ -85,9 +72,9 @@ const Layout = ({ children }) => {
         <div className="addToCart_loader_overlay">
           <div className="w-100 h-100 d-flex justify-content-center align-items-center text-center text-white">
             <div>
-            <img width={150} src={preloader} alt=""/>
-            <br/>
-            <h4>Product Adding In Cart...</h4>
+              <img width={150} src={preloader} alt="" />
+              <br />
+              <h4>Product Adding In Cart...</h4>
             </div>
           </div>
         </div>

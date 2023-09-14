@@ -49,7 +49,7 @@ const RelatedProduct = ({ productId }) => {
 
   
   return (
-    <div>
+    <div className="mb-5">
       <h2 className="text-center mt-5 mb-4">Related Products</h2>
       <Carousel
         responsive={responsive}
