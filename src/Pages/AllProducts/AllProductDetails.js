@@ -469,7 +469,7 @@ const AllProductDetails = () => {
           </li>
         </ol>
       </nav>
-      <br />
+      {/* <br /> */}
       {/* {productDetailsPath == true && ( */}
 
       <div className="product_details_page_container">

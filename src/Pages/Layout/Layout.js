@@ -14,8 +14,13 @@ const searchSuggestionCloseHandler = () => {
   const suggestedItemContainer = document.querySelector(
     ".suggested_item_container"
   );
+  const sidebarMenu = document.querySelector(
+    "#sidebarMenu"
+  );
 
   suggestedItemContainer.style.display = "none";
+  // sidebarMenu.style.transform = "translateX(-300px)";
+
 };
 
 const CartDetailsCloseHandler = () => {

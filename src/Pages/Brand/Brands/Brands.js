@@ -91,6 +91,13 @@ const Brands = () => {
               <Skeleton height="250px" borderRadius="10px" count={1} />
               <Skeleton height="250px" borderRadius="10px" count={1} />
               <Skeleton height="250px" borderRadius="10px" count={1} />
+              <Skeleton height="250px" borderRadius="10px" count={1} />
+              <Skeleton height="250px" borderRadius="10px" count={1} />
+              <Skeleton height="250px" borderRadius="10px" count={1} />
+              <Skeleton height="250px" borderRadius="10px" count={1} />
+              <Skeleton height="250px" borderRadius="10px" count={1} />
+              <Skeleton height="250px" borderRadius="10px" count={1} />
+              <Skeleton height="250px" borderRadius="10px" count={1} />
             </>
           ) : (
             brands &&

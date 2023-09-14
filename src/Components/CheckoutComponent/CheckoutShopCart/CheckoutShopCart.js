@@ -17,15 +17,12 @@ const CheckoutShopCart = () => {
     return state.cart.cartItems[0]?.data;
   });
 
-  // console.log(cartItems);
-
   const increaseQuantity = (id, quantity, stock) => {
     const newQty = quantity + 1;
     if (stock <= quantity) {
       return;
     }
     // dispatch(addItemsToCart(id, newQty));
-
     dispatch(updateItemsToCart(id, newQty));
   };
 
@@ -35,7 +32,6 @@ const CheckoutShopCart = () => {
       return;
     }
     // dispatch(addItemsToCart(id, newQty));
-
     dispatch(updateItemsToCart(id, newQty));
   };
 
