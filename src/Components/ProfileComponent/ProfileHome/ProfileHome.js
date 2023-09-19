@@ -56,7 +56,7 @@ const ProfileHome = () => {
       <div className="profile_right_content">
         <div className="profile_info_container">
           <div className="d-flex justify-content-between">
-            <h4 className="profile_heading"> Profile Info </h4>
+            <h4 className="profile_heading"> Profile Info__ </h4>
             <Link to="/profile/update-profile">
             <button className="profileUpdateOpenBtn" >
               Edit Profile <i class="bi bi-pencil-square"></i>
@@ -64,13 +64,11 @@ const ProfileHome = () => {
             </Link>
           </div>
 
-          <br />
-          <div>
+          <div className="profile-content-container">
             <h5><strong>Name: </strong> {user?.name} </h5>
-            
+            <br/>
             <p><strong>Email: </strong> {user?.email}</p>
             <p><strong>Phone: </strong> {user?.phone}</p>
-            <p><strong>Optional Phone: </strong> {user?.optional_phone}</p>
           </div>
         </div>
         

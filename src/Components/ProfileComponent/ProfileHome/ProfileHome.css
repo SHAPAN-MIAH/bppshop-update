@@ -1,3 +1,12 @@
+.profile-content-container{
+    /* border:  1px solid gainsboro; */
+    padding: 20px 0px;
+    border-radius: 5px;
+}
+.profile-content-container p{
+    border:  1px solid gainsboro;
+    padding: 10px 10px;
+}
 .profileUpdateOpenBtn{
     background: #ef8341;
     color: #fff;

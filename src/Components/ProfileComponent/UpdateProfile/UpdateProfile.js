@@ -40,7 +40,7 @@ const UpdateProfile = () => {
           <h4 className="profile_heading"> Profile Update </h4>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="row my-3">
-              <div className="col-md-6 col-sm-12 mb-3">
+              <div className="col-md-12 col-sm-12 mb-3">
                 <div className="form-group">
                   <label htmlFor="name">Your name </label>
                   <input
@@ -68,9 +68,7 @@ const UpdateProfile = () => {
               <div className="col-md-6 col-sm-12 mb-3">
                 <div className="form-group">
                   <label htmlFor="phone">Phone </label>
-                  <small className="text-primary">
-                    ( Country code is must Like for BD 880 )
-                  </small>
+                  
                   <input
                     type="text"
                     className="input_field"
@@ -80,18 +78,7 @@ const UpdateProfile = () => {
                   />
                 </div>
               </div>
-              <div className="col-md-6 col-sm-12 mb-3">
-                <div className="form-group">
-                  <label htmlFor="phone">Optional Phone </label>
-                  <input
-                    {...register("optional_phone")}
-                    type="text"
-                    className="input_field"
-                    name="phone"
-                    defaultValue={user?.optional_phone}
-                  />
-                </div>
-              </div>
+              
               <div className="col-md-6 col-sm-12">
                 <div className="form-group">
                   <label htmlFor="si-password">New password</label>
