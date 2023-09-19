@@ -30,9 +30,9 @@ const Profile = () => {
               {/* <div className="sidebar_left">
                 <Link to="/profile/track-order"> Track your order</Link>
               </div> */}
-              <Link to="/profile/account-address">
+              {/* <Link to="/profile/account-address">
                 <p className="sidebar_left">Previous Order Address</p>
-              </Link>
+              </Link> */}
             </div>
           </div>
           <div className="col-md-9 col-sm-12">

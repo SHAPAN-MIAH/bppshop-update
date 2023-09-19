@@ -215,6 +215,8 @@
     justify-content: center;
     margin-left: -70px;
   }
+
+  
 }
 @media only screen and (max-width: 668px) {
   
@@ -253,6 +255,9 @@
 @media only screen and (max-width: 400px) {
   .searchInput {
     margin-left: -100px;
+  }
+  .Modal {
+    width: 350px;
   }
 }
 

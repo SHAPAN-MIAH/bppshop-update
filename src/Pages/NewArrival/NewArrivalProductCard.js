@@ -16,21 +16,36 @@ import SignUpModal from "../User/SignUp/SignUpModal";
 
 Modal.setAppElement("#root");
 
-const customStyles = {
+let customStyles = {
   content: {
-    width: "1050px",
+    width: "400px",
     top: "50%",
     left: "50%",
     right: "auto",
     bottom: "auto",
     marginRight: "-50%",
     transform: "translate(-50%, -50%)",
-    borderRadius: "10px",
+    borderRadius: "0px",
     paddingBottom: "20px",
   },
 };
 
 const NewArrivalProductCard = ({ product }) => {
+  if (window.matchMedia("(max-width: 460px)").matches) {
+    customStyles = {
+      content: {
+        width: "360px",
+        top: "50%",
+        left: "50%",
+        right: "auto",
+        bottom: "auto",
+        marginRight: "-50%",
+        transform: "translate(-50%, -50%)",
+        borderRadius: "0px",
+        paddingBottom: "20px",
+      },
+    };
+  }
   const [modalIsOpen, setIsOpen] = React.useState(false);
   function openModal() {
     setIsOpen(true);

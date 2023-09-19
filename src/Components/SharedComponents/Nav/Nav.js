@@ -19,20 +19,68 @@ import axios from "axios";
 import { baseUrl } from "./../../../BaseUrl/BaseUrl";
 import { ClearDeliveryCharge } from "../../../Redux/Actions/DeliveryChargeAction";
 import toast from "react-hot-toast";
-import { clearLoginRes, clearRegisterRes, logout } from "./../../../Redux/Actions/UserAction";
+import {
+  clearLoginRes,
+  clearRegisterRes,
+  logout,
+} from "./../../../Redux/Actions/UserAction";
 import {
   searchProduct,
   searchProductByCategory,
 } from "../../../Redux/Actions/SearchAction";
 import { useState } from "react";
 import { clearUserOrders } from "../../../Redux/Actions/UserOrderAction";
-import { clearCategories } from "../../../Redux/Actions/CategoriesAction";
+// import { clearCategories } from "../../../Redux/Actions/CategoriesAction";
+import Modal from "react-modal";
+import LoginModal from "../../../Pages/User/Login/LoginModal";
+import SignUpModal from "../../../Pages/User/SignUp/SignUpModal";
+
+Modal.setAppElement("#root");
+
+let customStyles = {
+  content: {
+    width: "400px",
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+    borderRadius: "0px",
+    paddingBottom: "20px",
+  },
+};
 
 const Nav = () => {
+  if (window.matchMedia("(max-width: 460px)").matches) {
+    customStyles = {
+      content: {
+        width: "360px",
+        top: "50%",
+        left: "50%",
+        right: "auto",
+        bottom: "auto",
+        marginRight: "-50%",
+        transform: "translate(-50%, -50%)",
+        borderRadius: "0px",
+        paddingBottom: "20px",
+      },
+    };
+  }
+
+  const [modalIsOpen, setIsOpen] = React.useState(false);
+  function openModal() {
+    setIsOpen(true);
+  }
+  function closeModal() {
+    setIsOpen(false);
+  }
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
-
+  const { loginRes } = useSelector((state) => state.loginRes);
+  const { isAuthenticated } = useSelector((state) => state.user);
   const user = useSelector((state) => state.user.user);
   const allCategories = useSelector(
     (state) => state.allCategories.categories.data
@@ -120,9 +168,9 @@ const Nav = () => {
         dispatch(ClearCartGroupItems());
         dispatch(ClearDeliveryCharge());
         dispatch(clearUserOrders());
-        dispatch(ClearAddToCartRes())
-        dispatch(clearLoginRes())
-        dispatch(clearRegisterRes())
+        dispatch(ClearAddToCartRes());
+        dispatch(clearLoginRes());
+        dispatch(clearRegisterRes());
 
         localStorage.removeItem("token");
         localStorage.removeItem("agentId");
@@ -150,6 +198,12 @@ const Nav = () => {
       }
     });
   };
+
+  useEffect(() => {
+    if (isAuthenticated == true && token) {
+      loginRes?.status == "success" && closeModal();
+    }
+  }, [loginRes, isAuthenticated, token]);
 
   return (
     <>
@@ -269,12 +323,18 @@ const Nav = () => {
                 </div>
               ) : (
                 <div className="dropdown-menu profile_dropdown">
-                  <Link to="/login">
+                  <li className="dropdown-item" onClick={openModal}>
+                    Login
+                  </li>
+                  <li className="dropdown-item" onClick={openModal}>
+                    Sign-Up
+                  </li>
+                  {/* <Link to="/login">
                     <li className="dropdown-item">Login</li>
                   </Link>
                   <Link to="/signup">
                     <li className="dropdown-item">Sign-Up</li>
-                  </Link>
+                  </Link> */}
                 </div>
               )}
             </div>
@@ -282,6 +342,25 @@ const Nav = () => {
           {/* </div> */}
         </nav>
       </div>
+
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        style={customStyles}
+        contentLabel="Login Modal"
+      >
+        <span onClick={closeModal} className="modalCloseBtn">
+          <i className="bi bi-x-lg"></i>
+        </span>
+        <div className="LoginModal_container">
+          <LoginModal navLoginOpen={true} />
+        </div>
+        <div className="SignUpModal_container">
+          <SignUpModal navLoginOpen={true} />
+        </div>
+        <br />
+        <br />
+      </Modal>
     </>
   );
 };

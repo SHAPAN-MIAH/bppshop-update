@@ -39,7 +39,7 @@ Modal.setAppElement("#root");
 
 const customStyles = {
   content: {
-    width: "1050px",
+    width: "400px",
     top: "50%",
     left: "50%",
     right: "auto",

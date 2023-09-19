@@ -68,30 +68,39 @@ hr:not([size]) {
   background: #ffffff;
 }
 
-@media only screen and (max-width: 1550px) {
-  /* .homeFilterBtnHeader-container-section {
-    width: 90%;
-  } */
-
-  .header_btn {
-    width: 100%;
-    margin: auto;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    justify-content: center;
-    align-items: center;
-  }
-}
-@media only screen and (max-width: 768px) {
-<<<<<<< HEAD
-
-=======
+@media only screen and (max-width: 1540px) {
   .homeFilterBtnHeader-container-section {
     width: 60%;
     margin-top: 70px !important;
     margin-bottom: 10px !important;
   }
->>>>>>> 1fec612c86b9230febb96db6379fc0cb4391ed14
+  .header_btn {
+    width: 100%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 0px 10px !important;
+    justify-content: center;
+    align-items: center;
+  }
+  .header_btn button {
+    width: 100%;
+    padding: 5px;
+    font-size: 12px;
+  }
+
+  .discountFlashSale {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .homeFilterBtnHeader-container-section {
+    width: 60%;
+    margin-top: 70px !important;
+    margin-bottom: 10px !important;
+  }
   .header_btn {
     width: 100%;
     margin: auto;
@@ -103,7 +112,6 @@ hr:not([size]) {
   }
   .header_btn button {
     width: 120px;
-    /* margin: 5px ; */
     padding: 5px;
     font-size: 12px;
   }
@@ -132,7 +140,6 @@ hr:not([size]) {
 
   .header_btn button {
     width: 120px;
-    /* height: 25px; */
     margin: 5px;
     font-size: 12px;
     font-weight: 500;
