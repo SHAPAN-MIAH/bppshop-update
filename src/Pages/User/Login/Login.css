@@ -1,46 +1,52 @@
-.login_card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-  word-wrap: break-word;
-  background-color: #fff;
-  background-clip: border-box;
-  border-radius: 10px;
-  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
-    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
-  min-height: 410px;
-  overflow: hidden;
+.modal_login_card {
+  width: 100%;
+  padding: 0px 10px;
 }
-
+.numberLoginInput {
+  width: 100%;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #ced4da;
+  background-color: #fff;
+  font-size: 18px;
+  padding: 5px 0px;
+  margin: 10px 0px;
+}
+.login-with-email-container,
+#LoginWithPhoneNoToggleBtn {
+  display: none;
+}
+#LoginWithEmailToggleBtn,
+#LoginWithPhoneNoToggleBtn {
+  color: #707070;
+  border: 1px solid gainsboro;
+  background: none;
+  width: 100%;
+  padding: 10px 0px;
+  margin: 30px 0px 10px 0px;
+  transition: all 0.2s;
+  font-weight: 600;
+}
+#LoginWithEmailToggleBtn i,
+#LoginWithPhoneNoToggleBtn i {
+  font-size: 20px;
+  margin-right: 5px;
+  color: #ef8341;
+}
 .login_input_form {
   display: block;
   width: 100%;
-  padding: 0.375rem 0.75rem;
-  font-size: 1rem;
+  padding: 4px 0px;
+  font-size: 17px;
   font-weight: 400;
   line-height: 1.5;
   color: #212529;
   background-color: #fff;
   background-clip: padding-box;
-  border: 1px solid #ced4da;
+  border: none;
+  border-bottom: 1px solid #ced4da;
   appearance: none;
-  border-radius: 0.25rem;
   outline: none;
-}
-.card-body {
-  padding: 40px;
-}
-/* #invalid-feedback {
-    display: none;
-    width: 100%;
-    margin-top: .25rem;
-    font-size: 80%;
-    color: #f34770;
-} */
-
-.forget_pass a {
-  text-decoration: none;
 }
 
 .signin_btn {
@@ -48,26 +54,14 @@
   background: #ef8341;
   border: none;
   width: 100%;
-  padding: 8px;
-  border-radius: 5px;
-  margin: 10px 0px;
-  transition: all .2s;
+  padding: 10px 20px;
+  margin: 20px 0px 10px 0px;
+  transition: all 0.2s;
 }
 .signin_btn:hover {
   background: #666666;
-
 }
 
-.login_card_footer {
-  display: flex;
-  justify-content: space-between;
-  background: #f2f2f2;
-  color: #333333;
-  font-size: 16px;
-  text-align: center;
-  padding: 20px;
-  border-top: 1px solid gainsboro;
-}
 .sign_up_path a {
   color: white;
   text-decoration: none;
@@ -156,49 +150,75 @@
   }
 }
 
-.modal_login_card{
-  width: 60%;
-}
-/* .passwordInput{
-  position: relative;
-} */
-.passwordToggleBtn{
-  /* position: absolute; */
+.passwordToggleBtn {
   z-index: 999;
   margin-top: 5px;
-  margin-left: -30px;
+  margin-left: -20px;
   font-size: 20px;
 }
 
-@media screen and (max-width: 768px) {
-  .card-body {
-    padding: 40px 20px;
-  }
-  .signin_btn {
-    margin: 10px 0px 20px 0px;
-  }
+.otp_box{
+  display: none;
+  text-align: center;
+}
 
-  .modal_login_card{
-    width: 55%;
+#otpSubmitBtn{
+  color: #fff;
+  background: #ef8341;
+  border: none;
+  width: 100%;
+  padding: 10px 20px;
+  margin: 20px 0px;
+  transition: all 0.2s;
+}
+.countdown-text{
+  display: flex;
+  margin: 10px 0px 0px 0px;
+}
+.countdown-text p{
+  margin-bottom: 0px !important;
+}
+.resendOtpBtn{
+  color: #ffffff;
+  background: #ef8341;
+  border: none;
+  border-radius: 3px;
+  padding: 0px 5px;
+  margin-left: 10px;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+@media screen and (max-width: 768px) {
+  .modal_login_card {
+    width: 100%;
+    padding: 0px 20px;
   }
 }
 @media screen and (max-width: 668px) {
-  .modal_login_card{
-    width: 50%;
-  }
+  /* .modal_login_card {
+    width: 90%;
+  } */
 }
 @media screen and (max-width: 576px) {
-  .modal_login_card{
-    width: 40%;
+  /* .modal_login_card {
+    width: 80%;
+  } */
+  .login_input_form {
+    width: 100%;
+    padding: 4px 10px;
+    font-size: 20px;
   }
 }
 @media screen and (max-width: 450px) {
-  .modal_login_card{
-    width: 35%;
+  /* .modal_login_card {
+    width: 75%;
+  } */
+  .signin_btn {
+    width: 100%;
   }
 }
 @media screen and (max-width: 360px) {
-  .modal_login_card{
-    width: 30%;
-  }
+  /* .modal_login_card {
+    width: 70%;
+  } */
 }

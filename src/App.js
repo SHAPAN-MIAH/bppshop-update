@@ -58,6 +58,7 @@ import { useSelector } from "react-redux";
 import { getCartData } from "./Redux/Actions/CartAction";
 import AllProducts from "./Pages/AllProducts/AllProducts";
 import AllProductDetails from "./Pages/AllProducts/AllProductDetails";
+import UpdateProfile from "./Components/ProfileComponent/UpdateProfile/UpdateProfile";
 
 
 function App() {
@@ -126,6 +127,7 @@ function App() {
           <Route path="/choose-shipping-address" element={<ProtectedRoute><ShippingAddressList/></ProtectedRoute>}/>
           <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>}>
             <Route index element={<ProfileHome />}></Route>
+            <Route path="update-profile" element={<UpdateProfile />}></Route>
             <Route path="orders" element={<OrderHome />}></Route>
             <Route path="orders-detail/:id" element={<OrderDetails />}></Route>
             <Route path="track-order/:id" element={<TrackOrder/>}></Route>
