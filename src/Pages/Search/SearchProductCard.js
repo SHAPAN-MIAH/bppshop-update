@@ -93,55 +93,10 @@ const SearchProductCard = ({ product }) => {
   useEffect(() => {
     if (isAuthenticated == true) {
       closeModal();
-
-      // if (modalLogin == "true") {
-      //   addToCartAfterLoginRes();
-      // }
     }
   }, [isAuthenticated, modalLogin]);
 
-  // add to cart after login response......
-  // const addToCartAfterLoginRes = () => {
-  //   const choice_options = cartItemBeforeLogin[0]?.product?.choice_options;
-  //   const choice_options_name = choice_options?.map((option) => option.name);
-  //   const choice_options_defaultValue = choice_options?.map(
-  //     (option) => option?.options[0]
-  //   );
-  //   const defaultChoices = choice_options_name?.map((name, index) => ({
-  //     name,
-  //     options: choice_options_defaultValue[index],
-  //   }));
-
-  //   let color = colors?.map((color) => color?.code);
-
-  //   const addItemsToCartDataWithColor = {
-  //     id: `${cartItemBeforeLogin[0]?.product?.id}`,
-  //     color: `${color[0]}`,
-  //     quantity: `${quantity}`,
-  //   };
-
-  //   const addItemsToCartDataWithoutColor = {
-  //     id: `${cartItemBeforeLogin[0]?.product?.id}`,
-  //     quantity: `${quantity}`,
-  //   };
-
-  //   defaultChoices?.forEach((element) => {
-  //     addItemsToCartDataWithColor[element.name] = `${element.options}`.trim();
-  //   });
-
-  //   defaultChoices?.forEach((element) => {
-  //     addItemsToCartDataWithoutColor[element.name] =
-  //       `${element.options}`.trim();
-  //   });
-
-  //   // if (loginRes?.status == "success" || signupRes?.status == "success") {
-  //   cartItemBeforeLogin[0]?.product?.colors?.length > 0
-  //     ? dispatch(addItemsToCartAfterLogin(addItemsToCartDataWithColor))
-  //     : dispatch(addItemsToCartAfterLogin(addItemsToCartDataWithoutColor));
-
-  //   addToCartOverlyLoading();
-  //   // }
-  // };
+ 
 
   // Add to cart functionality.............................
   const addToCartHandler = (product, quantity) => {
@@ -214,19 +169,6 @@ const SearchProductCard = ({ product }) => {
     );
 
     addToCartLoaderOverlay.style.display = "none";
-
-    // toaster
-    // toast.success(`Product added to cart successfully`, {
-    //   duration: 2000,
-
-    //   style: {
-    //     width: "100%",
-    //     height: "80px",
-    //     padding: "0px 20px",
-    //     background: "#86bc19",
-    //     color: "#fff",
-    //   },
-    // });
   }
 
   
@@ -240,7 +182,6 @@ const SearchProductCard = ({ product }) => {
     <>
       <div className="product_card_content">
         <div className="product-card">
-          {/* ( */}
           <>
             <div className=" product-card-body">
               <div className="productImg_container">

@@ -97,56 +97,7 @@ const ProductCard = ({ product }) => {
     }
   }, [isAuthenticated]);
 
-  
 
-  // add to cart after login response......
-  // const addToCartAfterLoginRes = () => {
-  //   const choice_options = cartItemBeforeLogin[0]?.product?.choice_options;
-  //   const choice_options_name = choice_options?.map((option) => option.name);
-  //   const choice_options_defaultValue = choice_options?.map(
-  //     (option) => option?.options[0]
-  //   );
-  //   const defaultChoices = choice_options_name?.map((name, index) => ({
-  //     name,
-  //     options: choice_options_defaultValue[index],
-  //   }));
-
-  //   let color = colors?.map((color) => color?.code);
-
-  //   const addItemsToCartDataWithColor = {
-  //     id: `${cartItemBeforeLogin[0]?.product?.id}`,
-  //     color: `${color[0]}`,
-  //     quantity: `${quantity}`,
-  //   };
-
-  //   const addItemsToCartDataWithoutColor = {
-  //     id: `${cartItemBeforeLogin[0]?.product?.id}`,
-  //     quantity: `${quantity}`,
-  //   };
-
-  //   defaultChoices?.forEach((element) => {
-  //     addItemsToCartDataWithColor[element.name] = `${element.options}`.trim();
-  //   });
-
-  //   defaultChoices?.forEach((element) => {
-  //     addItemsToCartDataWithoutColor[element.name] =
-  //       `${element.options}`.trim();
-  //   });
-
-  //   // if (loginRes?.status == "success" || signupRes?.status == "success") {
-  //   cartItemBeforeLogin[0]?.product?.colors?.length > 0
-  //     ? dispatch(addItemsToCartAfterLogin(addItemsToCartDataWithColor))
-  //     : dispatch(addItemsToCartAfterLogin(addItemsToCartDataWithoutColor));
-
-  //   addToCartOverlyLoading();
-  //   // }
-  // };
-
-  // useEffect(()=> {
-  //   if (modalLogin == "true") {
-  //     addToCartAfterLoginRes();
-  //   }
-  // }, [modalLogin])
 
   // Add to cart functionality.............................
   const addToCartHandler = (product, quantity) => {
@@ -269,7 +220,7 @@ const ProductCard = ({ product }) => {
                   size={11}
                   className="RatingStar"
                 />{" "}
-                <small>({reviews_count})</small>
+                <small>({reviews_count? reviews_count : 0})</small>
               </div>
 
               <Link

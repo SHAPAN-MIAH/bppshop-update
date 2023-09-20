@@ -31,20 +31,13 @@
 .product-card-body-content {
   height: 30%;
   text-align: center;
-  /* padding: 0px 5px; */
 }
-/* .RatingStar{
-  padding-top: -20px !important;
-} */
 
 .product-card-body-content small {
   font-size: 12px;
 }
 
-.product-card-body-content-unit-price {
-  /* display: flex; */
-  /* justify-content: space-between; */
-  /* font-size: 15px; */
+.product-card-body-content-unit-price { 
   margin-top: 4px;
   margin-bottom: -3px;
 }
@@ -56,7 +49,6 @@
 .unitPrice_view {
   font-size: 15px;
   font-weight: 600;
-  /* color: #ef8341; */
   margin-left: 10px;
 }
 .quickView_AddToCart_overlay {

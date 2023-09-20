@@ -287,7 +287,7 @@ const TopRatedProductCard = ({ product }) => {
                   rating={rating?.map((r) => r?.average)}
                   size={14}
                 />{" "}
-                <small>({reviews_count})</small>
+                <small>({reviews_count? reviews_count : 0})</small>
               </div>
 
               <Link to={`/top-rated/${id}`} addedItemId={addedItemId}>

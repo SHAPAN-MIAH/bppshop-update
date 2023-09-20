@@ -12,14 +12,15 @@ const HomeFilterBtnHeader = () => {
               <button>All Products</button>
             </Link>
           </div>
-          <div>
-            <Link to="/sellers-store">
-              <button>Store</button>
-            </Link>
-          </div>
+          
           <div>
             <Link to="/brands">
               <button>Brand's</button>
+            </Link>
+          </div>
+          <div>
+            <Link to="/sellers-store">
+              <button>Store</button>
             </Link>
           </div>
           <div className="dropdown">
@@ -37,25 +38,28 @@ const HomeFilterBtnHeader = () => {
                   New Arrival
                 </Link>
               </li>
-              <li>
+              
                 <hr className="dropdown-divider" />
-              </li>
-              <li>
-                <Link className="dropdown-item" to="/top-rated">
-                  Top Rated
-                </Link>
-              </li>
-              <li>
-                <hr className="dropdown-divider" />
-              </li>
               <li>
                 <Link className="dropdown-item" to="/best-selling">
                   Best Selling
                 </Link>
               </li>
+              <hr className="dropdown-divider" />
+              <li>
+                <Link className="dropdown-item" to="/top-rated">
+                  Top Rated
+                </Link>
+              </li>
+              <hr className="dropdown-divider" />
+              <li>
+                  <Link className="dropdown-item" to="/discount-products">
+                    Discounted Products
+                  </Link>
+                </li>
             </ul>
           </div>
-          <div>
+          {/* <div>
             <div className="dropdown">
               <button
                 className="dropdown-toggle discountFlashSaleBTn"
@@ -63,7 +67,7 @@ const HomeFilterBtnHeader = () => {
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                <span className="">Discounted Products/ Flash Sale</span>
+                <span className="">Discounted Products</span>
               </button>
               <ul
                 className="dropdown-menu"
@@ -84,7 +88,7 @@ const HomeFilterBtnHeader = () => {
                 </li>
               </ul>
             </div>
-          </div>
+          </div> */}
           <div className="dropdown">
             <button
               className="dropdown-toggle"
@@ -103,9 +107,7 @@ const HomeFilterBtnHeader = () => {
                   Become a seller
                 </a>
               </li>
-              <li>
                 <hr className="dropdown-divider" />
-              </li>
               <li>
                 <a
                   className="dropdown-item"
@@ -114,9 +116,7 @@ const HomeFilterBtnHeader = () => {
                   Seller Login
                 </a>
               </li>
-              <li>
                 <hr className="dropdown-divider" />
-              </li>
               <li>
                 <a
                   className="dropdown-item"
@@ -125,9 +125,7 @@ const HomeFilterBtnHeader = () => {
                   Become a Agent
                 </a>
               </li>
-              <li>
                 <hr className="dropdown-divider" />
-              </li>
               <li>
                 <a
                   className="dropdown-item"
