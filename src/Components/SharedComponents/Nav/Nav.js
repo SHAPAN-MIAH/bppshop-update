@@ -30,7 +30,6 @@ import {
 } from "../../../Redux/Actions/SearchAction";
 import { useState } from "react";
 import { clearUserOrders } from "../../../Redux/Actions/UserOrderAction";
-// import { clearCategories } from "../../../Redux/Actions/CategoriesAction";
 import Modal from "react-modal";
 import LoginModal from "../../../Pages/User/Login/LoginModal";
 import SignUpModal from "../../../Pages/User/SignUp/SignUpModal";
@@ -86,8 +85,6 @@ const Nav = () => {
     (state) => state.allCategories.categories.data
   );
   const [SuggestedCategory, setSuggestedCategory] = useState([]);
-
-  // console.log(user)
 
   // search Suggestion..................................
   const [suggestion, setSuggestion] = useState("");
@@ -225,7 +222,6 @@ const Nav = () => {
             </div>
 
             <div className="searchInput">
-              {/* <form onChange={handleSearch}> */}
               <input
                 onKeyUp={handleSearchByKeyUp}
                 type="text"
@@ -244,7 +240,6 @@ const Nav = () => {
                   <i className="bi bi-search"></i>
                 </button>
               </span>
-              {/* </form> */}
 
               {SuggestedCategory && (
                 <div className="suggested_item_container">

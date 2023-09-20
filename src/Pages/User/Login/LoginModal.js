@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Login.css";
 import { useForm } from "react-hook-form";
-import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { userLogin } from "./../../../Redux/Actions/UserAction";
 import { useSelector } from "react-redux";
@@ -16,23 +15,23 @@ const LoginModal = ({ navLoginOpen }) => {
   const { register, handleSubmit } = useForm();
   const { loginRes } = useSelector((state) => state.loginRes);
   const { isAuthenticated } = useSelector((state) => state.user);
-  const navigate = useNavigate();
-  const location = useLocation();
   const token = localStorage.getItem("token");
 
+  
+  const [otpRequestData, setOtpRequestData] = useState({
+    phone: "",
+  });
   const [minutes, setMinutes] = useState(3);
   const [seconds, setSeconds] = useState(0);
   const [otpSuccessStatus, setOtpSuccessStatus] = useState(false);
   const [otp, setOtp] = useState("");
 
-  const [otpRequestData, setOtpRequestData] = useState({
-    phone: "",
-  });
 
   const handleChange = ({ currentTarget: input }) => {
     setOtpRequestData({ ...otpRequestData, [input.name]: input.value });
   };
 
+  
   const numberSubmit = async (e) => {
     e.preventDefault();
 
@@ -51,7 +50,6 @@ const LoginModal = ({ navLoginOpen }) => {
         }
       });
     } catch (error) {
-      // console.log(error);s
     }
   };
 
@@ -136,7 +134,6 @@ const LoginModal = ({ navLoginOpen }) => {
     setMinutes(3);
     setSeconds(0);
     axios.post(`${baseUrl}/auth/send`, resendOtpData).then((res) => {
-      // console.log(res);
     });
   };
 
@@ -156,7 +153,6 @@ const LoginModal = ({ navLoginOpen }) => {
 
   // user login action dispatch.........
   const onSubmit = (data) => {
-    // console.log(data);
     dispatch(userLogin(data));
 
     if (!navLoginOpen == true) {
