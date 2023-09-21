@@ -3,7 +3,7 @@
 }
 .profile_left_container{
     box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
-    padding: 20px 20px 20px 20px;
+    padding: 10px ;
     border-radius: 8px;
 }
 .profile_right_container {
@@ -13,14 +13,14 @@
 }
 .sidebar_left {
     border-bottom: 1px solid #FFDEDE;
-    padding: 5px 0px;
+    padding: 5px;
 }
 .profile_left_container a {
     text-decoration: none;
     font-size: 18px;
     color: #3a3a3a;
     font-weight: bold;
-    padding: 10px 0px;
+    /* padding: 10px 0px; */
 }
 .profile_left_container a p {
     margin-top: 10px;

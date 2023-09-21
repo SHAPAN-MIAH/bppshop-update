@@ -11,7 +11,23 @@
   padding: 15px 0px;
 }
 .order_status {
+  background: #6d6d6d;
+  padding: 1px 6px;
+  border: none;
+  border-radius: 3px;
+  color: white;
+  font-size: 14px;
+}
+.canceled_order_status {
   background: #f34770;
+  padding: 1px 6px;
+  border: none;
+  border-radius: 3px;
+  color: white;
+  font-size: 14px;
+}
+.delivered_order_status {
+  background: green;
   padding: 1px 6px;
   border: none;
   border-radius: 3px;
@@ -22,13 +38,13 @@
   background: green;
 }
 .my_order_view_btn:hover {
-  background: rgb(0, 175, 0);
+  background: rgb(133, 133, 133);
 }
 .my_order_cancel_btn {
-  background: red;
+  background: rgb(255, 31, 31);
 }
 .my_order_canceled_btn{
-  background: rgb(90, 90, 90);
+  background: rgb(110, 110, 110);
   padding: 4px 8px;
   color: white;
   margin: 0px 5px;

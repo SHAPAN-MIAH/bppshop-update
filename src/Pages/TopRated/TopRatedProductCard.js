@@ -336,40 +336,7 @@ const TopRatedProductCard = ({ product }) => {
               )}
             </div>
           </>
-          {/* ) : (
-            <div>
-              <div className="product-card-body">
-                <img
-                  src={imgThumbnailBaseUrl + `/${thumbnail}`}
-                  className="card-img-top"
-                  alt=""
-                />
-                <div className="product-card-body-content">
-                  <small>{name?.toString().substring(0, 20)}...</small>
-                  <br />
-                  <div className="product-card-body-content-unit-price">
-                    {newChoiceOption && (
-                      <span>
-                        {newChoiceOption?.title} : {newChoiceOption?.options[0]}
-                      </span>
-                    )}
-                    <br />
-                    <strong> &#2547; {unit_price}</strong>
-                  </div>
-                </div>
-              </div>
-              <div className="card-footer product-card-footer">
-                <button className="btn_before_add_cart">
-                  <i className="bi bi-cart-plus"></i> Stock Out
-                </button>
-              </div>
-              <div className="product_stock_out_overlay d-flex justify-content-center align-items-center">
-                <h3 className="text-center">
-                  Stock <br /> Out
-                </h3>
-              </div>
-            </div>
-          )} */}
+         
         </div>
       </div>
 

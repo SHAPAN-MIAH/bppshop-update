@@ -13,9 +13,9 @@ const Profile = () => {
       <div className="profile_container">
         <div className="row">
           <div className="col-md-3 col-sm-12">
-            <div className="profile_left_container m-2">
+            <div className="profile_left_container">
               <div className="d-flex mb-2">
-                <img width={30} src={avaterImg} alt="" />
+                <img width={30} style={{borderRadius: "50%"}} src={avaterImg} alt="" />
                 <div className="mx-2">
                   <h5>{user?.name}</h5>
                 </div>
@@ -36,7 +36,7 @@ const Profile = () => {
             </div>
           </div>
           <div className="col-md-9 col-sm-12">
-            <div className="profile_right_container m-2">
+            <div className="profile_right_container">
               <Outlet></Outlet>
             </div>
           </div>

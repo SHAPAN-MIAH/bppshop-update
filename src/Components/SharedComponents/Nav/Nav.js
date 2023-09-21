@@ -286,9 +286,9 @@ const Nav = () => {
                   <div
                     className="d-flex mx-3"
                     style={{
-                      borderBottom: "1px solid gray",
-                      padding: "10px ",
-                      marginBottom: "10px",
+                      // borderBottom: "1px solid gray",
+                      padding: "10px 0px",
+                      // marginBottom: "10px",
                     }}
                   >
                     {/* {agent.image ? (
@@ -309,9 +309,11 @@ const Nav = () => {
 
                     <h6 className="mx-2">{user?.name}</h6>
                   </div>
+                  <hr/>
                   <Link to="/profile">
-                    <li className="dropdown-item">View Profile</li>
+                    <li className="dropdown-item mt-1">View Profile</li>
                   </Link>
+                  
                   <li onClick={() => handleLogout()} className="dropdown-item">
                     Logout
                   </li>

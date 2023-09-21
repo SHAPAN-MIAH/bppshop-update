@@ -28,7 +28,7 @@ const OrderHome = () => {
   //     store.dispatch(loadUserOrders());
   //     toast.success(`${cancelOrdersResponse?.message}`, {
   //       duration: 5000,
-  
+
   //       style: {
   //         width: "100%",
   //         height: "80px",
@@ -41,7 +41,7 @@ const OrderHome = () => {
   //   if (cancelOrdersResponse?.status == "failed") {
   //     toast.success(`${cancelOrdersResponse?.message}`, {
   //       duration: 5000,
-  
+
   //       style: {
   //         width: "100%",
   //         height: "80px",
@@ -54,9 +54,8 @@ const OrderHome = () => {
   // }, [cancelOrdersResponse?.status, cancelOrdersResponse?.message]);
   const { userOrders } = useSelector((state) => state?.userOrders);
 
-  
   useEffect(() => {
-    if(isAuthenticated == true && token){
+    if (isAuthenticated == true && token) {
       store.dispatch(loadUserOrders());
     }
   }, []);
@@ -65,7 +64,7 @@ const OrderHome = () => {
     const order_id = {
       order_id: `${id}`,
     };
-    
+
     const config = { headers: { Authorization: `Bearer ${token}` } };
     axios
       .post(`${baseUrl}/customer/order/cancel-order`, order_id, config)
@@ -126,12 +125,22 @@ const OrderHome = () => {
                       {order?.created_at?.slice(0, 10)}
                     </td>
                     <td data-label="Status">
-                      <span className="order_status">
-                        {order?.order_status}
-                      </span>
+                      {order?.order_status == "canceled" ? (
+                        <span className="canceled_order_status">
+                          {order?.order_status}
+                        </span>
+                      ) : order?.order_status == "delivered" ? (
+                        <span className="delivered_order_status">
+                          {order?.order_status}
+                        </span>
+                      ) : (
+                        <span className="order_status">
+                          {order?.order_status}
+                        </span>
+                      )}
                     </td>
                     <td data-label="Total">
-                    &#2547; {order?.order_amount + order?.shipping_cost}
+                      &#2547; {order?.order_amount + order?.shipping_cost}
                     </td>
                     <td data-label="Action">
                       <Link to={`/profile/orders-detail/${order?.id}`}>
@@ -139,22 +148,21 @@ const OrderHome = () => {
                           <i className="bi bi-eye-fill"></i> View
                         </button>
                       </Link>
-                      {order?.order_status == "canceled" ? 
-                      <button
-                        // onClick={() => handleOrderCancel(order?.id)}
-                        className="my_order_canceled_btn"
-                      >
-                        <i className="bi bi-trash3-fill"></i> Canceled
-                      </button> : 
-                      <button
-                      onClick={() => handleOrderCancel(order?.id)}
-                      className="my_order_cancel_btn"
-                    >
-                      <i className="bi bi-trash3-fill"></i> Cancel
-                    </button>
-                      }
-                      
-                      
+                      {order?.order_status == "canceled" ? (
+                        <button
+                          // onClick={() => handleOrderCancel(order?.id)}
+                          className="my_order_canceled_btn"
+                        >
+                          <i className="bi bi-trash3-fill"></i> Canceled
+                        </button>
+                      ) : (
+                        <button
+                          onClick={() => handleOrderCancel(order?.id)}
+                          className="my_order_cancel_btn"
+                        >
+                          <i className="bi bi-trash3-fill"></i> Cancel
+                        </button>
+                      )}
                     </td>
                   </tr>
                 ))}
