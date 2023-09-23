@@ -468,6 +468,7 @@ const ProductDetailsPage = () => {
     setQuantityCount(1);
     setVariantRes("");
     setSelectedOption("");
+    setImg("")
 
   };
 
@@ -892,7 +893,7 @@ const ProductDetailsPage = () => {
 
       <ProductReview productDetail={productDetail} />
 
-      <RelatedProduct productId={id} />
+      <RelatedProduct productId={id} setImg={setImg} />
 
       <Modal
         isOpen={modalIsOpen}

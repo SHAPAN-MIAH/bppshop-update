@@ -465,6 +465,7 @@ const SellerStoreProductDetails = () => {
   const pageMount = () => {
     setQuantityCount(1);
     setVariantRes("")
+    setImg("")
   };
 
 
@@ -886,7 +887,7 @@ const SellerStoreProductDetails = () => {
       </div>
       {/* )} */}
       <ProductReview productDetail={productDetail} />
-      <RelatedProduct productId={id}/>
+      <RelatedProduct productId={id} setImg={setImg}/>
 
       <Modal
         isOpen={modalIsOpen}

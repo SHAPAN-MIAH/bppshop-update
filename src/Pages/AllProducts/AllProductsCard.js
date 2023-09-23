@@ -30,7 +30,7 @@ let customStyles = {
   },
 };
 
-const AllProductsCard = ({ product }) => {
+const AllProductsCard = ({ product, setImg }) => {
   if (window.matchMedia("(max-width: 460px)").matches) {
     customStyles = {
       content: {
@@ -220,9 +220,13 @@ const AllProductsCard = ({ product }) => {
     document.documentElement.scrollTop = 0;
   };
 
+  const imgReset = () => {
+    setImg("")
+  }
+
   return (
     <>
-      <div className="product_card_content">
+      <div className="product_card_content" onClick={imgReset}>
         <div className="product-card">
           {/* ( */}
           <>

@@ -462,6 +462,7 @@ const TopRatedProductDetails = () => {
   const pageMount = () => {
     setQuantityCount(1);
     setVariantRes("")
+    setImg("")
   };
 
 
@@ -864,7 +865,7 @@ const TopRatedProductDetails = () => {
       </div>
       {/* )} */}
       <ProductReview productDetail={productDetail} />
-      <RelatedProduct productId={id}/>
+      <RelatedProduct productId={id} setImg={setImg}/>
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}

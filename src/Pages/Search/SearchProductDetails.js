@@ -466,6 +466,7 @@ const SearchProductDetails = () => {
   const pageMount = () => {
     setQuantityCount(1);
     setVariantRes("")
+    setImg("")
   };
 
   return (
@@ -873,7 +874,7 @@ const SearchProductDetails = () => {
       </div> */}
 
       <ProductReview productDetail={productDetail} />
-      <RelatedProduct productId={id}/>
+      <RelatedProduct productId={id} setImg={setImg}/>
       
       <Modal
         isOpen={modalIsOpen}

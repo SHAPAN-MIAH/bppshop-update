@@ -14,7 +14,7 @@ import NewArrivalProductCard from "../../Pages/NewArrival/NewArrivalProductCard"
 import TopRatedProductCard from "../../Pages/TopRated/TopRatedProductCard";
 import SearchProductCard from "../../Pages/Search/SearchProductCard";
 
-const RelatedProduct = ({ productId }) => {
+const RelatedProduct = ({ productId , setImg }) => {
   let location = useLocation();
   const splitLocation = location?.pathname.split("/");
   const filterSplitLocation = splitLocation[1];
@@ -62,23 +62,23 @@ const RelatedProduct = ({ productId }) => {
         {relatedProduct?.map((product) => (
           <div style={{ margin: "0px 10px" }}>
             {filterSplitLocation == "all-products" ? (
-              <AllProductsCard key={product?.id} product={product} />
+              <AllProductsCard key={product?.id} product={product} setImg={setImg}/>
             ) : filterSplitLocation == "sellers-store" ? (
-              <SellerStoreProductsCard key={product?.id} product={product} />
+              <SellerStoreProductsCard key={product?.id} product={product} setImg={setImg}/>
             ) : filterSplitLocation == "brand" ? (
-              <BrandsProductsCard key={product?.id} product={product}/>
+              <BrandsProductsCard key={product?.id} product={product} setImg={setImg} />
             ) : filterSplitLocation == "discount-products" ? (
-              <DiscountProductCard key={product?.id} product={product} />
+              <DiscountProductCard key={product?.id} product={product} setImg={setImg}/>
             ) : filterSplitLocation == "best-selling" ? (
-              <BestSellingProductCard key={product?.id} product={product} />
+              <BestSellingProductCard key={product?.id} product={product} setImg={setImg}/>
             ) :  filterSplitLocation == "new-arrival" ? (
-              <NewArrivalProductCard key={product?.id} product={product} />
+              <NewArrivalProductCard key={product?.id} product={product} setImg={setImg}/>
             ) : filterSplitLocation == "top-rated" ? (
-              <TopRatedProductCard key={product?.id} product={product} />
+              <TopRatedProductCard key={product?.id} product={product} setImg={setImg}/>
             ) : filterSplitLocation == "search" ? (
-              <SearchProductCard key={product?.id} product={product} />
+              <SearchProductCard key={product?.id} product={product} setImg={setImg}/>
             ) : (
-              <ProductCard key={product.id} product={product} />
+              <ProductCard key={product.id} product={product} setImg={setImg} />
             )}
           </div>
         ))}
