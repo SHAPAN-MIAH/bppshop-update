@@ -59,6 +59,8 @@ import { getCartData } from "./Redux/Actions/CartAction";
 import AllProducts from "./Pages/AllProducts/AllProducts";
 import AllProductDetails from "./Pages/AllProducts/AllProductDetails";
 import UpdateProfile from "./Components/ProfileComponent/UpdateProfile/UpdateProfile";
+import AllCategoryProduct from "./Pages/ProductPage/AllCategoryProductPage/AllCategoryProduct";
+import AllCategoryProductDetails from "./Pages/ProductPage/AllCategoryProductPage/AllCategoryProductDetails";
 
 
 function App() {
@@ -88,6 +90,8 @@ function App() {
           <Route path="/" element={<Home />}/>
           
           <Route path="/:slug" element={ <SubCategory />}/>
+          <Route path="/:slug/all" element={ <AllCategoryProduct />}/>
+          <Route path="/:slug/all/:id" element={ <AllCategoryProductDetails />}/>
           <Route path="/:slug/:subSlug" element={ <SubSubCategory />}/>
           <Route path="/:slug/:subSlug/:subSubSlug" element={<Product />} />
           <Route path="/:slug/:subSlug/:subSubSlug/:id" element={<ProductDetailsPage/>} />

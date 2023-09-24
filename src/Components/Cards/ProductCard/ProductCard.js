@@ -31,7 +31,7 @@ let customStyles = {
   },
 };
 
-const ProductCard = ({ product, setImg }) => {
+const ProductCard = ({ product, setImg, allCategoryProductCard }) => {
   if (window.matchMedia("(max-width: 460px)").matches) {
     customStyles = {
       content: {
@@ -227,7 +227,8 @@ const ProductCard = ({ product, setImg }) => {
               </div>
 
               <Link
-                to={`/${slug}/${subSlug}/${subSubSlug}/${id}`}
+                to={allCategoryProductCard == true? `/${slug}/all/${id}`: `/${slug}/${subSlug}/${subSubSlug}/${id}`}
+                // to={`/${slug}/${subSlug}/${subSubSlug}/${id}`}
                 // to={`/${slug}/${subSlug}/${subSubSlug}/${product.slug}`}
                 // to={`/products/${product.slug}`}
                 addedItemId={addedItemId}

@@ -50,24 +50,31 @@ const Sidebar = () => {
   // Function to toggle the content
   const sidebarOpenHandler = () => {
     const sidebarMenu = document.querySelector("#sidebarMenu");
-    const openSidebarIconToggle = document.querySelector(".openSidebarIconToggle");
-    const closeSidebarIconToggle = document.querySelector(".closeSidebarIconToggle");
-      
-      sidebarMenu.style.transform = "translateX(0px)";
-      closeSidebarIconToggle.style.display = "block";
-      openSidebarIconToggle.style.display = "none";
-  }
+    const openSidebarIconToggle = document.querySelector(
+      ".openSidebarIconToggle"
+    );
+    const closeSidebarIconToggle = document.querySelector(
+      ".closeSidebarIconToggle"
+    );
+
+    sidebarMenu.style.transform = "translateX(0px)";
+    closeSidebarIconToggle.style.display = "block";
+    openSidebarIconToggle.style.display = "none";
+  };
 
   const sidebarCloseHandler = () => {
     const sidebarMenu = document.querySelector("#sidebarMenu");
-    const openSidebarIconToggle = document.querySelector(".openSidebarIconToggle");
-    const closeSidebarIconToggle = document.querySelector(".closeSidebarIconToggle");
+    const openSidebarIconToggle = document.querySelector(
+      ".openSidebarIconToggle"
+    );
+    const closeSidebarIconToggle = document.querySelector(
+      ".closeSidebarIconToggle"
+    );
 
-      sidebarMenu.style.transform = "translateX(-300px)";
-      closeSidebarIconToggle.style.display = "none";
-      openSidebarIconToggle.style.display = "block";
-  }
-
+    sidebarMenu.style.transform = "translateX(-300px)";
+    closeSidebarIconToggle.style.display = "none";
+    openSidebarIconToggle.style.display = "block";
+  };
 
   return (
     <>
@@ -88,7 +95,7 @@ const Sidebar = () => {
         <span className="closeSidebarIconToggle" onClick={sidebarCloseHandler}>
           <i className="bi bi-list"></i>
         </span>
-        
+
         <div id="sidebarMenu">
           <ul className="menu">
             <Link to="/">
@@ -124,6 +131,22 @@ const Sidebar = () => {
                   </li>
                   {expandedCategories?.includes(categoryIndex) && (
                     <div>
+                      <Link to={`/${categoryItem?.slug}/all`}>
+                      
+                      <p
+                        style={{
+                          borderBottom: "1px solid rgb(216, 216, 216)",
+                          paddingL: "10px 0px",
+                          marginBottom: "10px",
+                          fontSize: "13px",
+                          cursor: "pointer",
+                          fontWeight: "600"
+                        }}
+                      >
+                        All {categoryItem?.name}
+                      </p>
+                      </Link>
+
                       {categoryItem?.childes?.map(
                         (subcategory, subcategoryIndex) => {
                           return (
