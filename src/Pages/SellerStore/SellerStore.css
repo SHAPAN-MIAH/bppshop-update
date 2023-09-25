@@ -1,7 +1,7 @@
 .all-seller-store-container {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  grid-gap: 20px;
+  grid-gap: 15px;
 }
 
 .all-seller-store-container::-webkit-scrollbar {
@@ -21,8 +21,11 @@
   position: relative;
   overflow: hidden;
   cursor: pointer;
+  transition: all 0.3s;
 }
-
+.seller-store-content:hover {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
 .seller-store-banner,
 .seller-store-banner img {
   width: 100%;

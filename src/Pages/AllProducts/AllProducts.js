@@ -8,7 +8,7 @@ import { useRef } from "react";
 import AllProductsCard from "./AllProductsCard";
 
 const AllProducts = () => {
-    const [newArrivalProduct, setNewArrivalProduct] = useState([]);
+    const [updateAllProduct, setUpdateAllProduct] = useState([]);
   const [loading, setLoading] = useState(true);
   const listInnerRef = useRef();
   const [currPage, setCurrPage] = useState(1);
@@ -19,7 +19,7 @@ const AllProducts = () => {
     let limit = 15;
     const fetchData = async () => {
       const response = await axios.get(
-        `${baseUrl}/products/latest?limit=${limit}&offset=${currPage}`
+        `${baseUrl}/products/top?limit=${limit}&offset=${currPage}`
       );
       // console.log(response);
       response && setLoading(false);
@@ -28,17 +28,17 @@ const AllProducts = () => {
         return;
       }
       setPrevPage(currPage);
-      setNewArrivalProduct([...newArrivalProduct, ...response.data.products]);
+      setUpdateAllProduct([...updateAllProduct, ...response.data.products]);
     };
     if (!lastList && prevPage !== currPage) {
       fetchData();
     }
-  }, [currPage, lastList, prevPage, newArrivalProduct]);
+  }, [currPage, lastList, prevPage, updateAllProduct]);
 
   const onScroll = () => {
     if (listInnerRef.current) {
       const { scrollTop, scrollHeight, clientHeight } = listInnerRef.current;
-      if (scrollTop + clientHeight == scrollHeight) {
+      if (scrollTop + clientHeight === scrollHeight) {
         setCurrPage(currPage + 1);
       }
     }
@@ -51,7 +51,7 @@ const AllProducts = () => {
         <div
           onScroll={onScroll}
           ref={listInnerRef}
-          style={{ height: "100vh", overflowY: "auto" }}
+          style={{ height: "100vh", width: "auto", overflowY: "auto" }}
           className="product-container mt-4"
         >
           {/* <div className="product-content"> */}
@@ -75,7 +75,7 @@ const AllProducts = () => {
                 <Skeleton height="335px" borderRadius="10px" count={1} />
               </>
             ) : (
-              newArrivalProduct?.map((product) => (
+              updateAllProduct?.map((product) => (
                 <AllProductsCard key={product?.id} product={product} />
               ))
             )}

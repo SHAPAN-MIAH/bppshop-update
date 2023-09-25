@@ -1,38 +1,53 @@
-import React from "react";
-import { useState } from "react";
-import { useEffect } from "react";
-import axios from "axios";
-import { baseUrl } from "./../../BaseUrl/BaseUrl";
-import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
-import { useRef } from "react";
-import NewArrivalProductCard from "./NewArrivalProductCard";
 
-const NewArrival = () => {
-  const [newArrivalProduct, setNewArrivalProduct] = useState([]);
+
+
+
+import axios from "axios";
+import React, { useEffect, useRef, useState } from "react";
+import { useParams, Link } from "react-router-dom";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
+import { useSelector } from "react-redux";
+import ProductCard from "../../../Components/Cards/ProductCard/ProductCard";
+import { baseUrl } from "../../../BaseUrl/BaseUrl";
+
+const AllSubCategoryProduct = () => {
+  const allCategories = useSelector(
+    (state) => state.allCategories.categories.data
+  );
+
+  const { slug, subSlug } = useParams();
+  const categories = allCategories?.find((item) => item?.slug == slug);
+  const subCategories = categories?.childes?.find(
+    (item) => item?.slug == subSlug
+  );
+  const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const listInnerRef = useRef();
   const [currPage, setCurrPage] = useState(1);
   const [prevPage, setPrevPage] = useState(0);
   const [lastList, setLastList] = useState(false);
 
+
   useEffect(() => {
     let limit = 15;
     const fetchData = async () => {
       const response = await axios.get(
-        `${baseUrl}/products/latest?limit=${limit}&offset=${currPage}`
+        `${baseUrl}/categories/products/${subCategories?.id}?limit=${limit}&offset=${currPage}`
       );
+
       response && setLoading(false);
-      if (!response.data.products.length) {
+      if (!response.data.data.length) {
         setLastList(true);
         return;
       }
       setPrevPage(currPage);
-      setNewArrivalProduct([...newArrivalProduct, ...response.data.products]);
+      setProducts([...products, ...response.data.data]);
     };
     if (!lastList && prevPage !== currPage) {
       fetchData();
     }
-  }, [currPage, lastList, prevPage, newArrivalProduct]);
+  }, [currPage, lastList, prevPage, products, subCategories?.id]);
 
   const onScroll = () => {
     if (listInnerRef.current) {
@@ -43,17 +58,33 @@ const NewArrival = () => {
     }
   };
 
- 
-
   return (
     <>
-      <div className="newArrival_container">
-        <h4>New Arrival Products:</h4>
-      
-          <div className="product-content mt-4"
-           onScroll={onScroll}
-           ref={listInnerRef}
-           style={{ height: "100vh", overflowY: "auto" }}
+      <div className="categoryView-section productView-section">
+        <nav aria-label="breadcrumb">
+          <ol className="breadcrumb my-4">
+            <li className="breadcrumb-item">
+              <Link to="/">Home</Link>
+            </li>
+
+            <li className="breadcrumb-item active" aria-current="page">
+              <Link to={`/${slug}`}>{slug}</Link>
+            </li>
+            <li className="breadcrumb-item active" aria-current="page">
+            <Link to={`/${slug}/${subSlug}`}>{subSlug}</Link>
+            </li>
+            <li className="breadcrumb-item active" aria-current="page">
+              All {subCategories?.name}
+            </li>
+          </ol>
+        </nav>
+
+        <div className="categoryView-container productView-container">
+          <div
+            className="category_content product-content"
+            onScroll={onScroll}
+            ref={listInnerRef}
+            style={{ height: "100vh", overflowY: "auto" }}
           >
             <SkeletonTheme baseColor="#DDDDDD" highlightColor="#e3e3e3">
               {loading ? (
@@ -75,15 +106,16 @@ const NewArrival = () => {
                   <Skeleton height="335px" borderRadius="10px" count={1} />
                 </>
               ) : (
-                newArrivalProduct?.map((product) => (
-                  <NewArrivalProductCard key={product?.id} product={product} />
+                products?.map((product) => (
+                  <ProductCard key={product.id} product={product} allSubCategoryProductCard={true}/>
                 ))
               )}
             </SkeletonTheme>
           </div>
         </div>
+      </div>
     </>
   );
 };
 
-export default NewArrival;
+export default AllSubCategoryProduct;

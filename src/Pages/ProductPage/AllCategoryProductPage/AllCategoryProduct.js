@@ -18,7 +18,7 @@ const AllCategoryProduct = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const listInnerRef = useRef();
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currPage, setCurrPage] = useState(1);
   const [prevPage, setPrevPage] = useState(0);
   const [lastList, setLastList] = useState(false);
 
@@ -35,7 +35,7 @@ const AllCategoryProduct = () => {
     let limit = 15;
     const fetchData = async () => {
       const response = await axios.get(
-        `${baseUrl}/categories/products/${categories?.id}?limit=${limit}&offset=${currentPage}`
+        `${baseUrl}/categories/products/${categories?.id}?limit=${limit}&offset=${currPage}`
       );
 
       response && setLoading(false);
@@ -43,19 +43,19 @@ const AllCategoryProduct = () => {
         setLastList(true);
         return;
       }
-      setPrevPage(currentPage);
+      setPrevPage(currPage);
       setProducts([...products, ...response.data.data]);
     };
-    if (!lastList && prevPage !== currentPage) {
+    if (!lastList && prevPage !== currPage) {
       fetchData();
     }
-  }, [currentPage, lastList, prevPage, products, categories?.id]);
+  }, [currPage, lastList, prevPage, products, categories?.id]);
 
   const onScroll = () => {
     if (listInnerRef.current) {
       const { scrollTop, scrollHeight, clientHeight } = listInnerRef.current;
-      if (scrollTop + clientHeight == scrollHeight) {
-        setCurrentPage(currentPage + 1);
+      if (scrollTop + clientHeight === scrollHeight) {
+        setCurrPage(currPage + 1);
       }
     }
   };
@@ -80,11 +80,10 @@ const AllCategoryProduct = () => {
 
         <div className="categoryView-container productView-container">
           <div
-            // className="category_content product-content"
+            className="category_content product-content"
             onScroll={onScroll}
             ref={listInnerRef}
             style={{ height: "100vh", overflowY: "auto" }}
-            className="product-container mt-4"
           >
             <SkeletonTheme baseColor="#DDDDDD" highlightColor="#e3e3e3">
               {loading ? (

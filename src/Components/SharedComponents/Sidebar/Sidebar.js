@@ -132,19 +132,18 @@ const Sidebar = () => {
                   {expandedCategories?.includes(categoryIndex) && (
                     <div>
                       <Link to={`/${categoryItem?.slug}/all`}>
-                      
-                      <p
-                        style={{
-                          borderBottom: "1px solid rgb(216, 216, 216)",
-                          paddingL: "10px 0px",
-                          marginBottom: "10px",
-                          fontSize: "13px",
-                          cursor: "pointer",
-                          fontWeight: "600"
-                        }}
-                      >
-                        All {categoryItem?.name}
-                      </p>
+                        <p
+                          style={{
+                            borderBottom: "1px solid rgb(216, 216, 216)",
+                            paddingL: "10px 0px",
+                            marginBottom: "10px",
+                            fontSize: "13px",
+                            cursor: "pointer",
+                            fontWeight: "600",
+                          }}
+                        >
+                          All {categoryItem?.name}
+                        </p>
                       </Link>
 
                       {categoryItem?.childes?.map(
@@ -176,35 +175,53 @@ const Sidebar = () => {
                                   {subcategory?.name}
                                 </Link>
                               </li>
+
                               {expandedCategories?.includes(
                                 categoryIndex + "-" + subcategoryIndex
                               ) && (
-                                <ul className="subSubMenu">
-                                  {subcategory?.childes?.map(
-                                    (subsubcategory, subsubcategoryIndex) => {
-                                      return (
-                                        <li key={subsubcategoryIndex}>
-                                          <Link
-                                            to={`/${categoryItem?.slug}/${subcategory?.slug}/${subsubcategory?.slug}`}
-                                            onClick={() =>
-                                              handleSubSubMenuClick(
+                                <div>
+                                  <Link to={`/${categoryItem?.slug}/${subcategory?.slug}/all`}>
+                                  <p
+                                    style={{
+                                      borderBottom:
+                                        "1px solid rgb(216, 216, 216)",
+                                      paddingL: "10px 0px",
+                                      marginBottom: "10px",
+                                      fontSize: "12px",
+                                      cursor: "pointer",
+                                      fontWeight: "600",
+                                    }}
+                                  >
+                                    All {subcategory?.name}
+                                  </p>
+                                  </Link>
+                                  <ul className="subSubMenu">
+                                    {subcategory?.childes?.map(
+                                      (subsubcategory, subsubcategoryIndex) => {
+                                        return (
+                                          <li key={subsubcategoryIndex}>
+                                            <Link
+                                              to={`/${categoryItem?.slug}/${subcategory?.slug}/${subsubcategory?.slug}`}
+                                              onClick={() =>
+                                                handleSubSubMenuClick(
+                                                  subsubcategory.id
+                                                )
+                                              }
+                                              className={
+                                                activeSubSubMenu ==
                                                 subsubcategory.id
-                                              )
-                                            }
-                                            className={
-                                              activeSubSubMenu ==
-                                              subsubcategory.id
-                                                ? "subSubMenuActive"
-                                                : ""
-                                            }
-                                          >
-                                            {subsubcategory?.name}
-                                          </Link>
-                                        </li>
-                                      );
-                                    }
-                                  )}
-                                </ul>
+                                                  ? "subSubMenuActive"
+                                                  : ""
+                                              }
+                                            >
+                                              {subsubcategory?.name}
+                                            </Link>
+                                          </li>
+                                        );
+                                      }
+                                    )}
+                                  </ul>
+                                </div>
                               )}
                             </ul>
                           );

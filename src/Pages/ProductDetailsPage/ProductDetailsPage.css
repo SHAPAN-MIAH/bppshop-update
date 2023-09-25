@@ -332,6 +332,7 @@
 }
 .seller_product_item img{
   width: 60px;
+  margin: 0px 5px 0px 3px;
 }
 .seller_product_unit_price{
   font-weight: 600;

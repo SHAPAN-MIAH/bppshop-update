@@ -61,6 +61,8 @@ import AllProductDetails from "./Pages/AllProducts/AllProductDetails";
 import UpdateProfile from "./Components/ProfileComponent/UpdateProfile/UpdateProfile";
 import AllCategoryProduct from "./Pages/ProductPage/AllCategoryProductPage/AllCategoryProduct";
 import AllCategoryProductDetails from "./Pages/ProductPage/AllCategoryProductPage/AllCategoryProductDetails";
+import AllSubCategoryProduct from "./Pages/ProductPage/AllSubCategoryProductPage/AllSubCategoryProduct";
+import AllSubCategoryProductDetails from "./Pages/ProductPage/AllSubCategoryProductPage/AllSubCategoryProductDetails";
 
 
 function App() {
@@ -93,6 +95,8 @@ function App() {
           <Route path="/:slug/all" element={ <AllCategoryProduct />}/>
           <Route path="/:slug/all/:id" element={ <AllCategoryProductDetails />}/>
           <Route path="/:slug/:subSlug" element={ <SubSubCategory />}/>
+          <Route path="/:slug/:subSlug/all" element={ <AllSubCategoryProduct />}/>
+          <Route path="/:slug/:subSlug/all/:id" element={ <AllSubCategoryProductDetails />}/>
           <Route path="/:slug/:subSlug/:subSubSlug" element={<Product />} />
           <Route path="/:slug/:subSlug/:subSubSlug/:id" element={<ProductDetailsPage/>} />
           {/* <Route path="/products/:productSlug" element={<ProductDetailsPage/>} /> */}
