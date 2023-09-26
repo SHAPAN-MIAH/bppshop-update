@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import ProductCard from "../../Components/Cards/ProductCard/ProductCard";
 import "./Product.css";
 import { useParams, Link, useNavigate } from "react-router-dom";
@@ -26,6 +26,10 @@ const Product = () => {
 
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const listInnerRef = useRef();
+  const [currentPage, setCurrentPage] = useState(1);
+  const [prevPage, setPrevPage] = useState(0);
+  const [lastList, setLastList] = useState(false);
 
   useEffect(() => {
     axios
@@ -35,6 +39,35 @@ const Product = () => {
         setLoading(false);
       });
   }, [subSubCategories?.id]);
+
+  // useEffect(() => {
+  //   let limit = 15;
+  //   const fetchData = async () => {
+  //     const response = await axios.get(
+  //       `${baseUrl}/categories/products/${subSubCategories?.id}?limit=${limit}&offset=${currentPage}`
+  //     );
+
+  //     response && setLoading(false);
+  //     if (!response.data.data.length) {
+  //       setLastList(true);
+  //       return;
+  //     }
+  //     setPrevPage(currentPage);
+  //     setProducts([...products, ...response.data.data]);
+  //   };
+  //   if (!lastList && prevPage !== currentPage) {
+  //     fetchData();
+  //   }
+  // }, [currentPage, lastList, prevPage, products, subSubCategories?.id]);
+
+  const onScroll = () => {
+    if (listInnerRef.current) {
+      const { scrollTop, scrollHeight, clientHeight } = listInnerRef.current;
+      if (scrollTop + clientHeight == scrollHeight) {
+        setCurrentPage(currentPage + 1);
+      }
+    }
+  };
 
   // useEffect(() => {
   //   if (!isLoading && !subSubCategories) {
@@ -165,10 +198,21 @@ const Product = () => {
       <div className="categoryView-container productView-container">
         {/* {products?.length ? ( */}
 
-        <div className="category_content product-content">
+        <div 
+        className="category_content product-content"
+        // onScroll={onScroll}
+        // ref={listInnerRef}
+        // style={{ height: "100vh", overflowY: "auto" }}
+        // className="product-container mt-4"
+        >
           <SkeletonTheme baseColor="#DDDDDD" highlightColor="#e3e3e3">
             {loading ? (
               <>
+                <Skeleton height="335px" borderRadius="10px" count={1} />
+                <Skeleton height="335px" borderRadius="10px" count={1} />
+                <Skeleton height="335px" borderRadius="10px" count={1} />
+                <Skeleton height="335px" borderRadius="10px" count={1} />
+                <Skeleton height="335px" borderRadius="10px" count={1} />
                 <Skeleton height="335px" borderRadius="10px" count={1} />
                 <Skeleton height="335px" borderRadius="10px" count={1} />
                 <Skeleton height="335px" borderRadius="10px" count={1} />
