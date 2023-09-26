@@ -1,7 +1,7 @@
 .brand_container {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  grid-gap: 20px;
+  grid-gap: 15px;
 }
 .brand_container::-webkit-scrollbar {
   display: none;
@@ -17,6 +17,10 @@
   padding: 20px;
   text-align: center;
   cursor: pointer;
+  transition: all 0.3s;
+}
+.brand_content:hover {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 .brand_content img {
   width: 100px;
@@ -31,27 +35,23 @@
   .brand_container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-gap: 20px;
   }
 }
 @media screen and (max-width: 786px) {
   .brand_container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: 20px;
   }
 }
 @media screen and (max-width: 576px) {
   .brand_container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: 20px;
   }
 }
 @media screen and (max-width: 350px) {
   .brand_container {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
-    grid-gap: 20px;
   }
 }

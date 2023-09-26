@@ -823,7 +823,7 @@ const AllProductDetails = () => {
                   </h4>
                   <div className="seller-product-view-container ">
                     {productDetail?.seller?.product?.map((item) => (
-                      <Link to={`/new-arrival/${item.id}`}>
+                      <Link to={`/all-products/${item.id}`}>
                         <div
                           className="seller_product_item"
                           onClick={() => pageMount()}

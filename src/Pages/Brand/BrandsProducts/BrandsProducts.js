@@ -7,55 +7,65 @@ import { Link, useParams } from "react-router-dom";
 import "./BrandsProducts.css";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import BrandsProductsCard from "../BrandsProductsCard";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 const BrandsProducts = () => {
   const { brandId } = useParams();
   const [brandProducts, setBrandProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const brandName =  localStorage.getItem("brandName")
-  const listInnerRef = useRef();
-  const [currPage, setCurrPage] = useState(1);
-  const [prevPage, setPrevPage] = useState(0);
-  const [lastList, setLastList] = useState(false);
-
+  const brandName = localStorage.getItem("brandName");
+  // const listInnerRef = useRef();
+  // const [currPage, setCurrPage] = useState(1);
+  // const [prevPage, setPrevPage] = useState(0);
+  // const [lastList, setLastList] = useState(false);
 
   // useEffect(() => {
-  //   axios
-  //     .get(`${baseUrl}/brands/products/${brandId}`)
-  //     .then((res) => setBrandProducts(res?.data?.data));
-  //   setLoading(false);
-  // }, [brandId]);
+  //   let limit = 15;
+  //   const fetchData = async () => {
+  //     const response = await axios.get(
+  //       `${baseUrl}/brands/products/${brandId}?limit=${limit}&offset=${currPage}`
+  //     );
+  //     response && setLoading(false);
+  //     if (!response.data.data.length) {
+  //       setLastList(true);
+  //       return;
+  //     }
+  //     setPrevPage(currPage);
+  //     setBrandProducts([...brandProducts, ...response.data.data]);
+  //   };
+  //   if (!lastList && prevPage !== currPage) {
+  //     fetchData();
+  //   }
+  // }, [brandId, currPage, lastList, prevPage, brandProducts]);
 
+  // const onScroll = () => {
+  //   if (listInnerRef.current) {
+  //     const { scrollTop, scrollHeight, clientHeight } = listInnerRef.current;
+  //     if (scrollTop + clientHeight == scrollHeight) {
+  //       setCurrPage(currPage + 1);
+  //     }
+  //   }
+  // };
 
-  
+  const [hasMore, setHasMore] = useState(true);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
-    let limit = 15;
-    const fetchData = async () => {
-      const response = await axios.get(
-        `${baseUrl}/brands/products/${brandId}?limit=${limit}&offset=${currPage}`
-      );
-      response && setLoading(false);
-      if (!response.data.data.length) {
-        setLastList(true);
-        return;
-      }
-      setPrevPage(currPage);
-      setBrandProducts([...brandProducts, ...response.data.data]);
-    };
-    if (!lastList && prevPage !== currPage) {
-      fetchData();
-    }
-  }, [brandId, currPage, lastList, prevPage, brandProducts]);
+    fetchData();
+  }, []);
 
-
-  const onScroll = () => {
-    if (listInnerRef.current) {
-      const { scrollTop, scrollHeight, clientHeight } = listInnerRef.current;
-      if (scrollTop + clientHeight == scrollHeight) {
-        setCurrPage(currPage + 1);
-      }
-    }
+  const fetchData = () => {
+    axios
+      .get(`${baseUrl}/brands/products/${brandId}?limit=${15}&offset=${page}`)
+      .then((response) => {
+        response && setLoading(false);
+        setBrandProducts([...brandProducts, ...response?.data?.data]);
+        setHasMore(response?.data?.data.length > 0);
+        setPage(page + 1);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
   };
 
   
@@ -67,18 +77,56 @@ const BrandsProducts = () => {
           <li className="breadcrumb-item" aria-current="page">
             <Link to="/brands">Brands </Link>
           </li>
-         
+
           <li className="breadcrumb-item active" aria-current="page">
-          {brandName}
+            {brandName}
           </li>
         </ol>
       </nav>
-      <div 
-      onScroll={onScroll}
-      ref={listInnerRef}
-      style={{ height: "100vh", overflowY: "auto" }}
-      className="product-container mt-4">
-        {/* <div className="product-content"> */}
+      <InfiniteScroll
+        dataLength={brandProducts?.length}
+        next={fetchData}
+        hasMore={hasMore}
+        loader={
+          <h4 style={{ textAlign: "center", padding: "10px 0px" }}>
+            Loading...
+          </h4>
+        }
+      >
+        <div className="product-container">
+          <SkeletonTheme baseColor="#DDDDDD" highlightColor="#e3e3e3">
+            {loading ? (
+              <>
+                <Skeleton height="335px" borderRadius="10px" count={1} />
+                <Skeleton height="335px" borderRadius="10px" count={1} />
+                <Skeleton height="335px" borderRadius="10px" count={1} />
+                <Skeleton height="335px" borderRadius="10px" count={1} />
+                <Skeleton height="335px" borderRadius="10px" count={1} />
+                <Skeleton height="335px" borderRadius="10px" count={1} />
+                <Skeleton height="335px" borderRadius="10px" count={1} />
+                <Skeleton height="335px" borderRadius="10px" count={1} />
+                <Skeleton height="335px" borderRadius="10px" count={1} />
+                <Skeleton height="335px" borderRadius="10px" count={1} />
+                <Skeleton height="335px" borderRadius="10px" count={1} />
+                <Skeleton height="335px" borderRadius="10px" count={1} />
+                <Skeleton height="335px" borderRadius="10px" count={1} />
+                <Skeleton height="335px" borderRadius="10px" count={1} />
+                <Skeleton height="335px" borderRadius="10px" count={1} />
+              </>
+            ) : (
+              brandProducts?.map((product) => (
+                <BrandsProductsCard key={product?.id} product={product} />
+              ))
+            )}
+          </SkeletonTheme>
+        </div>
+      </InfiniteScroll>
+      {/* <div
+        onScroll={onScroll}
+        ref={listInnerRef}
+        style={{ height: "100vh", overflowY: "auto" }}
+        className="product-container mt-4"
+      >
         <SkeletonTheme baseColor="#DDDDDD" highlightColor="#e3e3e3">
           {loading ? (
             <>
@@ -100,12 +148,11 @@ const BrandsProducts = () => {
             </>
           ) : (
             brandProducts?.map((product) => (
-              <BrandsProductsCard key={product?.id} product={product}/>
+              <BrandsProductsCard key={product?.id} product={product} />
             ))
           )}
         </SkeletonTheme>
-        {/* </div> */}
-      </div>
+      </div> */}
     </>
   );
 };

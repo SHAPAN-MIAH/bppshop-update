@@ -8,12 +8,14 @@ import "react-loading-skeleton/dist/skeleton.css";
 import { baseUrl } from "../../BaseUrl/BaseUrl";
 import MetaData from "./../Layout/MetaData";
 import { useSelector } from "react-redux";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 const Product = () => {
-  const allCategories = useSelector((state) => state.allCategories.categories.data);
+  const allCategories = useSelector(
+    (state) => state.allCategories.categories.data
+  );
   const isLoading = useSelector((state) => state.allCategories.loading);
 
-  
   const { slug, subSlug, subSubSlug } = useParams();
   const navigate = useNavigate();
   const categories = allCategories?.find((item) => item?.slug == slug);
@@ -31,14 +33,39 @@ const Product = () => {
   const [prevPage, setPrevPage] = useState(0);
   const [lastList, setLastList] = useState(false);
 
+  const [hasMore, setHasMore] = useState(true);
+  const [page, setPage] = useState(1);
+
   useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = () => {
     axios
-      .get(`${baseUrl}/categories/products/${subSubCategories?.id}`)
-      .then((res) => {
-        setProducts(res.data.data);
-        setLoading(false);
+      .get(
+        `${baseUrl}/categories/products/${
+          subSubCategories?.id
+        }?limit=${15}&offset=${page}`
+      )
+      .then((response) => {
+        response && setLoading(false);
+        setProducts([...products, ...response?.data?.data]);
+        setHasMore(response?.data?.data.length > 0);
+        setPage(page + 1);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
       });
-  }, [subSubCategories?.id]);
+  };
+
+  // useEffect(() => {
+  //   axios
+  //     .get(`${baseUrl}/categories/products/${subSubCategories?.id}`)
+  //     .then((res) => {
+  //       setProducts(res.data.data);
+  //       setLoading(false);
+  //     });
+  // }, [subSubCategories?.id]);
 
   // useEffect(() => {
   //   let limit = 15;
@@ -197,45 +224,44 @@ const Product = () => {
 
       <div className="categoryView-container productView-container">
         {/* {products?.length ? ( */}
-
-        <div 
-        className="category_content product-content"
-        // onScroll={onScroll}
-        // ref={listInnerRef}
-        // style={{ height: "100vh", overflowY: "auto" }}
-        // className="product-container mt-4"
+        <InfiniteScroll
+          dataLength={products?.length}
+          next={fetchData}
+          hasMore={hasMore}
+          loader={
+            <h4 style={{ textAlign: "center", padding: "10px 0px" }}>
+              Loading...
+            </h4>
+          }
         >
-          <SkeletonTheme baseColor="#DDDDDD" highlightColor="#e3e3e3">
-            {loading ? (
-              <>
-                <Skeleton height="335px" borderRadius="10px" count={1} />
-                <Skeleton height="335px" borderRadius="10px" count={1} />
-                <Skeleton height="335px" borderRadius="10px" count={1} />
-                <Skeleton height="335px" borderRadius="10px" count={1} />
-                <Skeleton height="335px" borderRadius="10px" count={1} />
-                <Skeleton height="335px" borderRadius="10px" count={1} />
-                <Skeleton height="335px" borderRadius="10px" count={1} />
-                <Skeleton height="335px" borderRadius="10px" count={1} />
-                <Skeleton height="335px" borderRadius="10px" count={1} />
-                <Skeleton height="335px" borderRadius="10px" count={1} />
-                <Skeleton height="335px" borderRadius="10px" count={1} />
-                <Skeleton height="335px" borderRadius="10px" count={1} />
-                <Skeleton height="335px" borderRadius="10px" count={1} />
-                <Skeleton height="335px" borderRadius="10px" count={1} />
-                <Skeleton height="335px" borderRadius="10px" count={1} />
-              </>
-            ) : (
-              products?.map((product) => (
-                <ProductCard key={product.id} product={product} />
-              ))
-              // : !loading && (
-              //   <div className="d-flex justify-content-center align-items-center">
-              //     <h2 className="text-warning mt-5">Products will coming soon.</h2>
-              //   </div>
-              // )
-            )}
-          </SkeletonTheme>
-        </div>
+          <div className="category_content product-content">
+            <SkeletonTheme baseColor="#DDDDDD" highlightColor="#e3e3e3">
+              {loading ? (
+                <>
+                  <Skeleton height="335px" borderRadius="10px" count={1} />
+                  <Skeleton height="335px" borderRadius="10px" count={1} />
+                  <Skeleton height="335px" borderRadius="10px" count={1} />
+                  <Skeleton height="335px" borderRadius="10px" count={1} />
+                  <Skeleton height="335px" borderRadius="10px" count={1} />
+                  <Skeleton height="335px" borderRadius="10px" count={1} />
+                  <Skeleton height="335px" borderRadius="10px" count={1} />
+                  <Skeleton height="335px" borderRadius="10px" count={1} />
+                  <Skeleton height="335px" borderRadius="10px" count={1} />
+                  <Skeleton height="335px" borderRadius="10px" count={1} />
+                </>
+              ) : (
+                products?.map((product) => (
+                  <ProductCard key={product.id} product={product} />
+                ))
+                // : !loading && (
+                //   <div className="d-flex justify-content-center align-items-center">
+                //     <h2 className="text-warning mt-5">Products will coming soon.</h2>
+                //   </div>
+                // )
+              )}
+            </SkeletonTheme>
+          </div>
+        </InfiniteScroll>
         {/* ) : (
           !loading && (
             <div className="d-flex justify-content-center align-items-center">

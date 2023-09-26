@@ -1,12 +1,12 @@
+
 import React, { useState, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "./ProductDetailsPage.css";
 import { useParams } from "react-router-dom";
 import {
   baseUrl,
   imgBaseUrl,
   imgThumbnailBaseUrl,
-} from "./../../BaseUrl/BaseUrl";
+} from "../../../BaseUrl/BaseUrl";
 import { useEffect } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
@@ -16,23 +16,27 @@ import {
   addItemsToCart,
   addItemsToCartAfterLogin,
   updateItemsToCart,
-} from "./../../Redux/Actions/CartAction";
-import { getPriceVariant } from "./../../Redux/Actions/PriceVariantAction";
-import ProductReview from "./../../Components/ProductReview/ProductReview";
+} from "../../../Redux/Actions/CartAction";
+import { getPriceVariant } from "../../../Redux/Actions/PriceVariantAction";
+import ProductReview from "../../../Components/ProductReview/ProductReview";
 import ReactImageMagnify from "react-image-magnify";
 import toast from "react-hot-toast";
-import defaultProImg from "../../Assets/Images/defaultImg.jpg";
+import defaultProImg from "../../../Assets/Images/defaultImg.jpg";
 import ModalVideo from "react-modal-video";
 import "react-modal-video/scss/modal-video.scss";
 
 // import { IoCloseOutline } from "react-icons/io5";
 import { AiOutlineYoutube, AiFillPlayCircle } from "react-icons/ai";
-import MetaData from "../Layout/MetaData";
+// import MetaData from "../Layout/MetaData";
 // import { BiLoaderAlt } from "react-icons/bi";
 import Modal from "react-modal";
-import LoginModal from "../User/Login/LoginModal";
-import SignUpModal from "../User/SignUp/SignUpModal";
-import RelatedProduct from "../../Components/RelatedProduct/RelatedProduct";
+// import LoginModal from "../User/Login/LoginModal";
+// import SignUpModal from "../User/SignUp/SignUpModal";
+import RelatedProduct from "../../../Components/RelatedProduct/RelatedProduct";
+import LoginModal from "../../User/Login/LoginModal";
+import SignUpModal from "../../User/SignUp/SignUpModal";
+import MetaData from "../../Layout/MetaData";
+// import RelatedProduct from "../../Components/RelatedProduct/RelatedProduct";
 
 Modal.setAppElement("#root");
 
@@ -50,7 +54,7 @@ const customStyles = {
   },
 };
 
-const ProductDetailsPage = () => {
+const AllSubCategoryProductDetails = () => {
   const { slug, subSlug, subSubSlug, id } = useParams();
 
   // console.log(slug, subSlug, subSubSlug)
@@ -62,6 +66,17 @@ const ProductDetailsPage = () => {
   const [variantRes, setVariantRes] = useState({});
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const allCategories = useSelector(
+    (state) => state.allCategories.categories.data
+  );
+  const categories = allCategories?.find((item) => item?.slug == slug);
+  const subCategories = categories?.childes?.find(
+    (item) => item?.slug == subSlug
+  );
+  // const subSubCategories = subCategories?.childes?.find(
+  //   (item) => item.slug == subSubSlug
+  // );
+
   const cartItems = useSelector((state) => state.cart.cartItems?.[0]?.data);
   const AddToCartResponse = useSelector(
     (state) => state.AddToCartResponse.AddToCartResponse
@@ -492,8 +507,11 @@ const ProductDetailsPage = () => {
             <Link to={`/${slug}/${subSlug}`}>{subSlug}</Link>
           </li>
           <li className="breadcrumb-item active" aria-current="page">
-            <Link to={`/${slug}/${subSlug}/${subSubSlug}`}>{subSubSlug}</Link>
+            <Link to={`/${slug}/${subSlug}/all`}>All {subCategories?.name}</Link>
           </li>
+          {/* <li className="breadcrumb-item active" aria-current="page">
+            <Link to={`/${slug}/${subSlug}/${subSubSlug}`}>{subSubSlug}</Link>
+          </li> */}
           <li className="breadcrumb-item active" aria-current="page">
             {productDetail?.name}
           </li>
@@ -860,7 +878,7 @@ const ProductDetailsPage = () => {
                             {item.thumbnail ? (
                               <img
                                 src={imgThumbnailBaseUrl + `/${item.thumbnail}`}
-                                // className="card-img-top"
+                                className="card-img-top"
                                 alt=""
                               />
                             ) : (
@@ -917,4 +935,4 @@ const ProductDetailsPage = () => {
     </>
   );
 };
-export default ProductDetailsPage;
+export default AllSubCategoryProductDetails;

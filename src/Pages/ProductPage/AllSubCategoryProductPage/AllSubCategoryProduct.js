@@ -8,14 +8,16 @@ import ProductCard from "../../../Components/Cards/ProductCard/ProductCard";
 import { baseUrl } from "../../../BaseUrl/BaseUrl";
 import InfiniteScroll from "react-infinite-scroll-component";
 
-const AllCategoryProduct = () => {
+const AllSubCategoryProduct = () => {
   const allCategories = useSelector(
     (state) => state.allCategories.categories.data
   );
 
-  const { slug } = useParams();
+  const { slug, subSlug } = useParams();
   const categories = allCategories?.find((item) => item?.slug == slug);
-
+  const subCategories = categories?.childes?.find(
+    (item) => item?.slug == subSlug
+  );
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   // const listInnerRef = useRef();
@@ -27,7 +29,7 @@ const AllCategoryProduct = () => {
   //   let limit = 15;
   //   const fetchData = async () => {
   //     const response = await axios.get(
-  //       `${baseUrl}/categories/products/${categories?.id}?limit=${limit}&offset=${currPage}`
+  //       `${baseUrl}/categories/products/${subCategories?.id}?limit=${limit}&offset=${currPage}`
   //     );
 
   //     response && setLoading(false);
@@ -41,7 +43,7 @@ const AllCategoryProduct = () => {
   //   if (!lastList && prevPage !== currPage) {
   //     fetchData();
   //   }
-  // }, [currPage, lastList, prevPage, products, categories?.id]);
+  // }, [currPage, lastList, prevPage, products, subCategories?.id]);
 
   // const onScroll = () => {
   //   if (listInnerRef.current) {
@@ -51,7 +53,6 @@ const AllCategoryProduct = () => {
   //     }
   //   }
   // };
-
   const [hasMore, setHasMore] = useState(true);
   const [page, setPage] = useState(1);
 
@@ -63,7 +64,7 @@ const AllCategoryProduct = () => {
     axios
       .get(
         `${baseUrl}/categories/products/${
-          categories?.id
+          subCategories?.id
         }?limit=${15}&offset=${page}`
       )
       .then((response) => {
@@ -77,6 +78,7 @@ const AllCategoryProduct = () => {
       });
   };
 
+  
   return (
     <>
       <div className="categoryView-section productView-section">
@@ -90,7 +92,10 @@ const AllCategoryProduct = () => {
               <Link to={`/${slug}`}>{slug}</Link>
             </li>
             <li className="breadcrumb-item active" aria-current="page">
-              All {categories?.name}
+              <Link to={`/${slug}/${subSlug}`}>{subSlug}</Link>
+            </li>
+            <li className="breadcrumb-item active" aria-current="page">
+              All {subCategories?.name}
             </li>
           </ol>
         </nav>
@@ -131,7 +136,7 @@ const AllCategoryProduct = () => {
                     <ProductCard
                       key={product.id}
                       product={product}
-                      allCategoryProductCard={true}
+                      allSubCategoryProductCard={true}
                     />
                   ))
                 )}
@@ -144,4 +149,4 @@ const AllCategoryProduct = () => {
   );
 };
 
-export default AllCategoryProduct;
+export default AllSubCategoryProduct;
