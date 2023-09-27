@@ -139,7 +139,7 @@ const AllSellerStore = () => {
         hasMore={hasMore}
         loader={<h4 style={{textAlign: "center", padding: "10px 0px"}}>Loading...</h4>}
       >
-        <div className="all-seller-store-container mt-4 pb-5">
+        <div className="all-seller-store-container mt-4 ">
           <SkeletonTheme baseColor="#DDDDDD" highlightColor="#e3e3e3">
             {loading ? (
               <>

@@ -109,7 +109,7 @@ const AllProducts = () => {
           hasMore={hasMore}
           loader={<h4 style={{textAlign: "center", padding: "10px 0px"}}>Loading...</h4>}
         >
-          <div className="product-container mt-4">
+          <div className="product-container mt-3">
             <SkeletonTheme baseColor="#DDDDDD" highlightColor="#e3e3e3">
               {loading ? (
                 <>

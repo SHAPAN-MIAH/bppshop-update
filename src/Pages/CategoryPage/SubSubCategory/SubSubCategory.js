@@ -10,9 +10,9 @@ const SubSubCategory = () => {
   const allCategories = useSelector((state) => state?.allCategories?.categories?.data);
   const loading = useSelector((state) => state?.allCategories?.loading);
   const { slug, subSlug } = useParams();
-  const subCategories = allCategories?.find((item) => item?.slug == slug);
+  const subCategories = allCategories?.find((item) => item?.slug === slug);
   const subSubCategories = subCategories?.childes?.find(
-    (item) => item?.slug == subSlug
+    (item) => item?.slug === subSlug
   );
 
   const navigate = useNavigate();

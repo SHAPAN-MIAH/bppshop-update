@@ -137,7 +137,7 @@ const Sidebar = () => {
                             borderBottom: "1px solid rgb(216, 216, 216)",
                             paddingL: "10px 0px",
                             marginBottom: "10px",
-                            fontSize: "13px",
+                            fontSize: "12px",
                             cursor: "pointer",
                             fontWeight: "600",
                           }}
@@ -180,20 +180,22 @@ const Sidebar = () => {
                                 categoryIndex + "-" + subcategoryIndex
                               ) && (
                                 <div>
-                                  <Link to={`/${categoryItem?.slug}/${subcategory?.slug}/all`}>
-                                  <p
-                                    style={{
-                                      borderBottom:
-                                        "1px solid rgb(216, 216, 216)",
-                                      paddingL: "10px 0px",
-                                      marginBottom: "10px",
-                                      fontSize: "12px",
-                                      cursor: "pointer",
-                                      fontWeight: "600",
-                                    }}
+                                  <Link
+                                    to={`/${categoryItem?.slug}/${subcategory?.slug}/all`}
                                   >
-                                    All {subcategory?.name}
-                                  </p>
+                                    <p
+                                      style={{
+                                        borderBottom:
+                                          "1px solid rgb(216, 216, 216)",
+                                        paddingL: "10px 0px",
+                                        marginBottom: "10px",
+                                        fontSize: "12px",
+                                        cursor: "pointer",
+                                        fontWeight: "600",
+                                      }}
+                                    >
+                                      All {subcategory?.name}
+                                    </p>
                                   </Link>
                                   <ul className="subSubMenu">
                                     {subcategory?.childes?.map(
@@ -208,7 +210,7 @@ const Sidebar = () => {
                                                 )
                                               }
                                               className={
-                                                activeSubSubMenu ==
+                                                activeSubSubMenu ===
                                                 subsubcategory.id
                                                   ? "subSubMenuActive"
                                                   : ""

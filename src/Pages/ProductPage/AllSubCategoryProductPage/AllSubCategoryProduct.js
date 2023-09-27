@@ -57,10 +57,11 @@ const AllSubCategoryProduct = () => {
   const [page, setPage] = useState(1);
 
   useEffect(() => {
+    setPage(1);
     fetchData();
-  }, []);
+  }, [subCategories?.id]);
 
-  const fetchData = () => {
+  const fetchData = (p = page) => {
     axios
       .get(
         `${baseUrl}/categories/products/${
@@ -69,7 +70,11 @@ const AllSubCategoryProduct = () => {
       )
       .then((response) => {
         response && setLoading(false);
-        setProducts([...products, ...response?.data?.data]);
+        if (p == 1) {
+          setProducts(response?.data?.data);
+        } else {
+          setProducts([...products, ...response?.data?.data]);
+        }
         setHasMore(response?.data?.data.length > 0);
         setPage(page + 1);
       })
@@ -78,7 +83,6 @@ const AllSubCategoryProduct = () => {
       });
   };
 
-  
   return (
     <>
       <div className="categoryView-section productView-section">

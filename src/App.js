@@ -90,7 +90,6 @@ function App() {
       <Layout>
         <Routes>
           <Route path="/" element={<Home />}/>
-          
           <Route path="/:slug" element={ <SubCategory />}/>
           <Route path="/:slug/all" element={ <AllCategoryProduct />}/>
           <Route path="/:slug/all/:id" element={ <AllCategoryProductDetails />}/>

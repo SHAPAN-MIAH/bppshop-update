@@ -80,7 +80,7 @@ const TopRated = () => {
             </h4>
           }
         >
-          <div className="product-container mt-4">
+          <div className="product-container mt-3">
             <SkeletonTheme baseColor="#DDDDDD" highlightColor="#e3e3e3">
               {loading ? (
                 <>
