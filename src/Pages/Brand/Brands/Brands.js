@@ -88,7 +88,7 @@ const Brands = () => {
           }
         >
       <div
-        className="brand_container mt-4 pb-5"
+        className="brand_container mt-3"
       >
         <SkeletonTheme baseColor="#DDDDDD" highlightColor="#e3e3e3">
           {loading ? (
