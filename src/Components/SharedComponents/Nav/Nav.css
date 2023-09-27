@@ -192,13 +192,11 @@
 }
 
 /* responsive css */
-/* @media only screen and (max-width: 1400px) {
-  .searchInput {
-    position: relative;
-    width: 55%;
-    justify-content: center;
+@media only screen and (max-width: 1550px) {
+  .search {
+    margin-left: -15%;
   }
-} */
+}
 @media only screen and (max-width: 768px) {
   .nav-content {
     margin: 10px 13px 10px 30px;
