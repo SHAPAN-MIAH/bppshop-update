@@ -18,8 +18,7 @@ const Footer = () => {
               <br />
               <h5>Address</h5>
               <p className="address_footer">
-                17 (9th Floor), Alhaz Shamsuddin Mansion, New Eskaton Road,
-                Dhaka 1217
+              House 56, Road 1, Block A, Jahurul Islam City, Aftabnagar, Dhaka, Bangladesh
               </p>
             </div>
 

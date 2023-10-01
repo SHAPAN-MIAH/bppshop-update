@@ -58,7 +58,7 @@ const AllSubCategoryProduct = () => {
 
   useEffect(() => {
     setPage(1);
-    fetchData();
+    fetchData(1);
   }, [subCategories?.id]);
 
   const fetchData = (p = page) => {
@@ -66,7 +66,7 @@ const AllSubCategoryProduct = () => {
       .get(
         `${baseUrl}/categories/products/${
           subCategories?.id
-        }?limit=${15}&offset=${page}`
+        }?limit=${15}&offset=${p}`
       )
       .then((response) => {
         response && setLoading(false);

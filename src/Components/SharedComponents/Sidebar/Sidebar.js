@@ -3,7 +3,6 @@ import "./Sidebar.css";
 import { Link } from "react-router-dom";
 import { categoryBaseUrl } from "./../../../BaseUrl/BaseUrl";
 import { useSelector } from "react-redux";
-import { useEffect } from "react";
 
 const Sidebar = () => {
   const allCategory = useSelector(
@@ -13,18 +12,21 @@ const Sidebar = () => {
   const [expandedCategories, setExpandedCategories] = useState([]);
   const [activeCategory, setActiveCategory] = useState(null);
 
-  const sidebarToggleExpand = (categoryIndex) => {
-    setActiveCategory(categoryIndex);
 
+  const sidebarToggleExpand = (categoryIndex) => {
     setExpandedCategories(
       expandedCategories.includes(categoryIndex)
         ? expandedCategories.filter((index) => index !== categoryIndex)
         : [...expandedCategories, categoryIndex]
     );
 
+
+
+    setActiveCategory(categoryIndex);
     if (activeCategory) {
       const subMenu = document.querySelector(".subMenu");
       const subSubMenu = document.querySelector(".subSubMenu");
+
       subMenu.classList.toggle("subMenuActive");
       subSubMenu.classList.toggle("subSubMenuActive");
     }
@@ -106,7 +108,7 @@ const Sidebar = () => {
             <hr />
             {allCategory?.map((categoryItem, categoryIndex) => {
               return (
-                <ul key={categoryIndex} className="categoryMenu">
+                <ul key={categoryIndex} className="categoryMenu" >
                   <li onClick={() => sidebarToggleExpand(categoryIndex)}>
                     <Link
                       to={`/${categoryItem?.slug}`}
@@ -242,3 +244,75 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
+
+
+
+
+
+
+
+// /* eslint-disable react/prop-types */
+// import { useState } from "react";
+// import RenderSubCategory from "./renderSubCategory";
+
+// const SideDropdownMenu = ({ categories }) => {
+//   const [openCategory, setOpenCategory] = useState(null);
+
+//   const toggleCategory = (categoryId) => {
+//     if (openCategory === categoryId) {
+//       setOpenCategory(null);
+//     } else {
+//       setOpenCategory(categoryId);
+//     }
+//   };
+
+//   const renderCategory = (category) => {
+//     const isExpanded = openCategory === category.id;
+    
+//     return (
+//       <div key={category.id}>
+//         {/* cart design */}
+//         <div
+//           className={`category-header cursor-pointer ${
+//             isExpanded ? "active" : ""
+//           } flex items-center border-b-2 border-yellow-500 my-1`}
+//           onClick={() => toggleCategory(category.id)}
+//         >
+//           <div className="w-10 mx-3">
+//             <img
+//               src={`https://backend.bppshop.com.bd/storage/category/${category.icon}`}
+//               alt=""
+//             />
+//           </div>
+//           <div className="">{category.name}</div>
+//         </div>
+
+//         {/* dropdown functionality */}
+//         {isExpanded && category.childes && category.childes.length > 0 && (
+//           <ul className="subcategory-list">
+//             {category.childes.map((subcategory) => (
+//               <li
+//                 onClick={() => console.log(subcategory.name)}
+//                 key={subcategory.id}
+//                 className="ml-10 border-l-2 border-yellow-300 pl-3"
+//               >
+//                 {subcategory.name}
+//                 {subcategory.childes.map((subCate) => (
+//                   <RenderSubCategory key={subCate.id} subCate={subCate} />
+//                 ))}
+//               </li>
+//             ))}
+//           </ul>
+//         )}
+//       </div>
+//     );
+//   };
+
+//   return (
+//     <div className="side-dropdown-menu">
+//       {categories.map((category) => renderCategory(category))}
+//     </div>
+//   );
+// };
+
+// export default SideDropdownMenu;

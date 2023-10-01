@@ -57,7 +57,7 @@ const AllCategoryProduct = () => {
 
   useEffect(() => {
     setPage(1);
-    fetchData();
+    fetchData(1);
   }, [categories?.id]);
 
   const fetchData = (p = page) => {
@@ -65,7 +65,7 @@ const AllCategoryProduct = () => {
       .get(
         `${baseUrl}/categories/products/${
           categories?.id
-        }?limit=${15}&offset=${page}`
+        }?limit=${15}&offset=${p}`
       )
       .then((response) => {
         response && setLoading(false);
