@@ -262,6 +262,7 @@ const Sidebar = () => {
 
   const handleSubMenuClick = (subcategory) => {
     setActiveSubMenu(activeSubMenu === subcategory ? null : subcategory);
+    setActiveSubSubMenu("")
   };
 
   const handleSubSubMenuClick = (subsubcategory) => {
@@ -311,6 +312,9 @@ const Sidebar = () => {
     openSidebarIconToggle.style.display = "block";
   };
 
+  const activeViewHandler = () => {
+    setActiveSubSubMenu("")
+  }
   return (
     <>
       <div className="sidebar-section">
@@ -359,6 +363,7 @@ const Sidebar = () => {
                     <div>
                       <Link to={`/${categoryItem?.slug}/all`}>
                         <p
+                         onClick={() => activeViewHandler()}
                           style={{
                             borderBottom: "1px solid rgb(216, 216, 216)",
                             paddingL: "10px 0px",
@@ -398,6 +403,7 @@ const Sidebar = () => {
                                     to={`/${categoryItem?.slug}/${subcategory?.slug}/all`}
                                   >
                                     <p
+                                    onClick={() => activeViewHandler()}
                                       style={{
                                         borderBottom:
                                           "1px solid rgb(216, 216, 216)",
@@ -420,7 +426,7 @@ const Sidebar = () => {
                                               to={`/${categoryItem?.slug}/${subcategory?.slug}/${subsubcategory?.slug}`}
                                               className={
                                                 // isSubSubMenuExpanded(subsubcategory.id)
-                                                activeSubSubMenu ===
+                                                activeSubSubMenu ==
                                                 subsubcategory.id
                                                   ? "subSubMenuActive"
                                                   : ""
