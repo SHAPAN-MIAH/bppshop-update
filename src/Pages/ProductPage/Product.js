@@ -14,10 +14,8 @@ const Product = () => {
   const allCategories = useSelector(
     (state) => state.allCategories.categories.data
   );
-  const isLoading = useSelector((state) => state.allCategories.loading);
 
   const { slug, subSlug, subSubSlug } = useParams();
-  const navigate = useNavigate();
   const categories = allCategories?.find((item) => item?.slug === slug);
   const subCategories = categories?.childes?.find(
     (item) => item?.slug === subSlug
@@ -28,10 +26,7 @@ const Product = () => {
 
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-  // const listInnerRef = useRef();
-  // const [currentPage, setCurrentPage] = useState(1);
-  // const [prevPage, setPrevPage] = useState(0);
-  // const [lastList, setLastList] = useState(false);
+  
 
   const [hasMore, setHasMore] = useState(true);
   const [page, setPage] = useState(1);
@@ -63,6 +58,10 @@ const Product = () => {
       });
   };
 
+  // const listInnerRef = useRef();
+  // const [currentPage, setCurrentPage] = useState(1);
+  // const [prevPage, setPrevPage] = useState(0);
+  // const [lastList, setLastList] = useState(false);
   // useEffect(() => {
   //   axios
   //     .get(`${baseUrl}/categories/products/${subSubCategories?.id}`)

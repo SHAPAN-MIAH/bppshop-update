@@ -52,12 +52,9 @@ const customStyles = {
 
 const ProductDetailsPage = () => {
   const { slug, subSlug, subSubSlug, id } = useParams();
-
-  // console.log(slug, subSlug, subSubSlug)
-
-  let newId = parseInt(id);
   const [productDetail, setProductDetail] = useState([]);
   const [quantityCount, setQuantityCount] = useState(1);
+  
   // const [loading, setLoading] = useState(true);
   const [variantRes, setVariantRes] = useState({});
   const navigate = useNavigate();
@@ -92,6 +89,7 @@ const ProductDetailsPage = () => {
   //   token && axios.post(`${baseUrl}/customer/audit-log`, auditLog, config);
   // }, []);
 
+  let newId = parseInt(productDetail?.id);
   const cartItemsId = cartItems?.map((i) => i?.product_id);
   const addedItemId = cartItemsId?.find((i) => i == newId);
   const isItemExist = cartItems?.find((i) => i?.product_id == addedItemId);
@@ -475,8 +473,8 @@ const ProductDetailsPage = () => {
   return (
     <>
       <MetaData
-        title={productDetail.meta_title}
-        description={productDetail.meta_description}
+        title={productDetail?.meta_title}
+        description={productDetail?.meta_description}
       />
       {/* <div className="row">
         <div className="col-md-9"> */}
@@ -893,7 +891,7 @@ const ProductDetailsPage = () => {
 
       <ProductReview productDetail={productDetail} />
 
-      <RelatedProduct productId={id} setImg={setImg} />
+      <RelatedProduct productId={productDetail?.id} setImg={setImg} />
 
       <Modal
         isOpen={modalIsOpen}

@@ -52,7 +52,9 @@ const BrandProductDetails = () => {
   // const brandName = newLocation[2];
   const brandName =  localStorage.getItem("brandName")
 
-  let newId = parseInt(id);
+  // let newId = parseInt(id);
+  
+  // console.log(id);
 
   const [productDetail, setProductDetail] = useState([]);
   const [quantityCount, setQuantityCount] = useState(1);
@@ -78,15 +80,16 @@ const BrandProductDetails = () => {
   }, [id]);
 
   // Customer Audit log.........................
-  const auditLog = {
-    product_id: id,
-  };
-  const config = { headers: { Authorization: `Bearer ${token}` } };
+  // const auditLog = {
+  //   product_id: id,
+  // };
+  // const config = { headers: { Authorization: `Bearer ${token}` } };
 
   // useEffect(() => {
   //   token && axios.post(`${baseUrl}/customer/audit-log`, auditLog, config);
   // }, []);
 
+  let newId = parseInt(productDetail?.id);
   const cartItemsId = cartItems?.map((i) => i?.product_id);
   const addedItemId = cartItemsId?.find((i) => i == newId);
   const isItemExist = cartItems?.find((i) => i?.product_id == addedItemId);
@@ -882,7 +885,7 @@ const BrandProductDetails = () => {
       </div>
       {/* )} */}
       <ProductReview productDetail={productDetail} />
-      <RelatedProduct productId={id} setImg={setImg}/>
+      <RelatedProduct productId={productDetail.id} setImg={setImg}/>
 
       <Modal
         isOpen={modalIsOpen}

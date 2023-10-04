@@ -293,7 +293,8 @@ const DiscountProductCard = ({ product, setImg }) => {
               </div>
 
               <Link
-                to={`/discount-products/${id}`} addedItemId={addedItemId}
+                // to={`/discount-products/${id}`} addedItemId={addedItemId}
+                to={`/discount-products/${product.slug}`} addedItemId={addedItemId}
               >
                 {current_stock > 0 ? (
                   <div

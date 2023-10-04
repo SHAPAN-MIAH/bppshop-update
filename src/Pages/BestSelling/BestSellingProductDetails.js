@@ -47,8 +47,6 @@ const customStyles = {
 
 const BestSellingProductDetails = () => {
   const { slug, subSlug, subSubSlug, id } = useParams();
-
-  let newId = parseInt(id);
   const [productDetail, setProductDetail] = useState([]);
   const [quantityCount, setQuantityCount] = useState(1);
   const [variantRes, setVariantRes] = useState({});
@@ -80,6 +78,8 @@ const BestSellingProductDetails = () => {
   //   token && axios.post(`${baseUrl}/customer/audit-log`, auditLog, config);
   // }, []);
 
+
+  let newId = parseInt(productDetail?.id);
   const cartItemsId = cartItems?.map((i) => i?.product_id);
   const addedItemId = cartItemsId?.find((i) => i == newId);
   const isItemExist = cartItems?.find((i) => i?.product_id == addedItemId);
@@ -871,7 +871,7 @@ const BestSellingProductDetails = () => {
       </div> */}
 
       <ProductReview productDetail={productDetail} />
-      <RelatedProduct productId={id} setImg={setImg}/>
+      <RelatedProduct productId={productDetail.id} setImg={setImg}/>
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
