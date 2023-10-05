@@ -292,7 +292,7 @@ const NewArrivalProductCard = ({ product, setImg }) => {
               </div>
 
               {/* <Link to={`/new-arrival/${id}`} addedItemId={addedItemId}> */}
-              <Link to={`/new-arrival/${product.slug}`} addedItemId={addedItemId}>
+              <Link to={`/new-arrival/${product?.slug}`} addedItemId={addedItemId}>
               {current_stock > 0 ? (
                   <div
                     className="quickView_AddToCart_overlay"

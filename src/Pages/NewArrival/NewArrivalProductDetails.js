@@ -67,9 +67,9 @@ const NewArrivalProductDetails = () => {
 
   // Product Details............................
   useEffect(() => {
-    axios.get(`${baseUrl}/products/details/${id}`).then((res) => {
-      // setLoading(false);
-      setProductDetail(res.data.data);
+    axios.get(`${baseUrl}/products/details/${id}`)
+    .then((res) => {
+      setProductDetail(res?.data?.data);
     });
   }, [id]);
 
@@ -84,9 +84,9 @@ const NewArrivalProductDetails = () => {
   //   token && axios.post(`${baseUrl}/customer/audit-log`, auditLog, config);
   // }, []);
 
-  let newId = parseInt(productDetail?.id);
+  let productDetailId = parseInt(productDetail?.id);
   const cartItemsId = cartItems?.map((i) => i?.product_id);
-  const addedItemId = cartItemsId?.find((i) => i == newId);
+  const addedItemId = cartItemsId?.find((i) => i == productDetailId);
   const isItemExist = cartItems?.find((i) => i?.product_id == addedItemId);
   const paramId = subSubSlug;
   const productDetailsPathId = productDetail?.id?.toString();
@@ -150,7 +150,7 @@ const NewArrivalProductDetails = () => {
       });
     }
     const priceVariantDefaultOptionData = {
-      product_id: `${id}`,
+      product_id: `${productDetail?.id}`,
       color: `${colors[0]}`,
       quantity: `${newVarientQty ? newVarientQty : quantityCount}`,
     };
@@ -161,7 +161,7 @@ const NewArrivalProductDetails = () => {
       });
 
     const priceVariantDataWithSelectedOption = {
-      product_id: `${id}`,
+      product_id: `${productDetail?.id}`,
       quantity: `${newVarientQty ? newVarientQty : quantityCount}`,
     };
 
@@ -202,7 +202,7 @@ const NewArrivalProductDetails = () => {
     setActiveColor(index);
 
     const priceVariantDefaultColorData = {
-      product_id: `${id}`,
+      product_id: `${productDetail?.id}`,
       color: `${selectedColor ? selectedColor : colors[0]}`,
       quantity: `${quantityCount}`,
     };

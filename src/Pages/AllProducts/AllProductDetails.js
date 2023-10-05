@@ -77,9 +77,9 @@ const AllProductDetails = () => {
   // }, []);
 
 
-  let newId = parseInt(productDetail?.id);
+  let productDetailId = parseInt(productDetail?.id);
   const cartItemsId = cartItems?.map((i) => i?.product_id);
-  const addedItemId = cartItemsId?.find((i) => i == newId);
+  const addedItemId = cartItemsId?.find((i) => i == productDetailId);
   const isItemExist = cartItems?.find((i) => i?.product_id == addedItemId);
   const paramId = subSubSlug;
   const productDetailsPathId = productDetail?.id?.toString();
@@ -143,7 +143,7 @@ const AllProductDetails = () => {
       });
     }
     const priceVariantDefaultOptionData = {
-      product_id: `${id}`,
+      product_id: `${productDetail?.id}`,
       color: `${colors[0]}`,
       quantity: `${newVarientQty ? newVarientQty : quantityCount}`,
     };
@@ -154,7 +154,7 @@ const AllProductDetails = () => {
       });
 
     const priceVariantDataWithSelectedOption = {
-      product_id: `${id}`,
+      product_id: `${productDetail?.id}`,
       quantity: `${newVarientQty ? newVarientQty : quantityCount}`,
     };
 
@@ -195,7 +195,7 @@ const AllProductDetails = () => {
     setActiveColor(index);
 
     const priceVariantDefaultColorData = {
-      product_id: `${id}`,
+      product_id: `${productDetail?.id}`,
       color: `${selectedColor ? selectedColor : colors[0]}`,
       quantity: `${quantityCount}`,
     };
