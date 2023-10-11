@@ -122,7 +122,7 @@ const Brands = () => {
           ) : (
             brands &&
             brands?.map((brand, index) => (
-              <Link key={brand?.id} to={`/brands/${brand?.id}`}
+              <Link key={brand?.id} to={`/brands/${brand?.slug}`}
               onClick={(e) => {brandNameSave(brand.name)}}
               >
                 <div className="brand_content">
