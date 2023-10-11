@@ -125,9 +125,11 @@
   transition: all 0.5s;
 }
 
+
 .btn_before_add_cart,
 .quickViewBtn {
-  background: #ef8341;
+  /* background: #ef8341; */
+  background: #e77025;
   padding: 7px 20px;
 }
 .btn_before_add_cart_stockOut{

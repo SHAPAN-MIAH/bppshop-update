@@ -270,7 +270,8 @@ const BestSellingProductCard = ({ product, setImg }) => {
                 <small>({reviews_count})</small>
               </div>
 
-              <Link to={`/best-selling/${id}`} addedItemId={addedItemId}>
+              {/* <Link to={`/best-selling/${id}`} addedItemId={addedItemId}> */}
+              <Link to={`/best-selling/${product.slug}`} addedItemId={addedItemId}>
                 {current_stock > 0 ? (
                   <div
                     className="quickView_AddToCart_overlay"

@@ -15,6 +15,7 @@ import TopRatedProductCard from "../../Pages/TopRated/TopRatedProductCard";
 import SearchProductCard from "../../Pages/Search/SearchProductCard";
 
 const RelatedProduct = ({ productId , setImg }) => {
+
   let location = useLocation();
   const splitLocation = location?.pathname.split("/");
   const filterSplitLocation = splitLocation[1];
@@ -45,7 +46,7 @@ const RelatedProduct = ({ productId , setImg }) => {
     axios
       .get(`${baseUrl}/products/related-products/${productId}`)
       .then((res) => setRelatedProduct(res.data.data));
-  }, []);
+  }, [productId]);
 
   
   return (

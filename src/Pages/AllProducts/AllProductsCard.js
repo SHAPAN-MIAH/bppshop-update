@@ -276,7 +276,8 @@ const AllProductsCard = ({ product, setImg }) => {
                 <small>({reviews_count})</small>
               </div>
 
-              <Link to={`/all-products/${id}`} addedItemId={addedItemId}>
+              {/* <Link to={`/all-products/${id}`} addedItemId={addedItemId}> */}
+              <Link to={`/all-products/${product.slug}`} addedItemId={addedItemId}>
               {current_stock > 0 ? (
                   <div
                     className="quickView_AddToCart_overlay"

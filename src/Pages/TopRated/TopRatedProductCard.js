@@ -295,7 +295,8 @@ const TopRatedProductCard = ({ product, setImg }) => {
                 <small>({reviews_count? reviews_count : 0})</small>
               </div>
 
-              <Link to={`/top-rated/${id}`} addedItemId={addedItemId}>
+              {/* <Link to={`/top-rated/${id}`} addedItemId={addedItemId}> */}
+              <Link to={`/top-rated/${product.slug}`} addedItemId={addedItemId}>
               {current_stock > 0 ? (
                   <div
                     className="quickView_AddToCart_overlay"

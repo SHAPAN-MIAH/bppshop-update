@@ -52,12 +52,9 @@ const customStyles = {
 
 const ProductDetailsPage = () => {
   const { slug, subSlug, subSubSlug, id } = useParams();
-
-  console.log(slug, subSlug, subSubSlug, id)
-
-  let newId = parseInt(id);
   const [productDetail, setProductDetail] = useState([]);
   const [quantityCount, setQuantityCount] = useState(1);
+  
   // const [loading, setLoading] = useState(true);
   const [variantRes, setVariantRes] = useState({});
   const navigate = useNavigate();
@@ -74,26 +71,26 @@ const ProductDetailsPage = () => {
 
   // Product Details............................
   useEffect(() => {
-    axios.get(`${baseUrl}/products/details/${id}`).then((res) => {
-      // setLoading(false);
-      setProductDetail(res.data.data);
+    axios.get(`${baseUrl}/products/details/${id}`)
+    .then((res) => {
+      setProductDetail(res?.data?.data);
     });
   }, [id]);
 
-  // console.log(productDetail);
 
   // Customer Audit log.........................
-  const auditLog = {
-    product_id: id,
-  };
-  const config = { headers: { Authorization: `Bearer ${token}` } };
+  // const auditLog = {
+  //   product_id: id,
+  // };
+  // const config = { headers: { Authorization: `Bearer ${token}` } };
 
   // useEffect(() => {
   //   token && axios.post(`${baseUrl}/customer/audit-log`, auditLog, config);
   // }, []);
 
+  let productDetailId = parseInt(productDetail?.id);
   const cartItemsId = cartItems?.map((i) => i?.product_id);
-  const addedItemId = cartItemsId?.find((i) => i == newId);
+  const addedItemId = cartItemsId?.find((i) => i == productDetailId);
   const isItemExist = cartItems?.find((i) => i?.product_id == addedItemId);
   const paramId = subSubSlug;
   const productDetailsPathId = productDetail?.id?.toString();
@@ -162,7 +159,7 @@ const ProductDetailsPage = () => {
     }
 
     const priceVariantDefaultOptionData = {
-      product_id: `${id}`,
+      product_id: `${productDetail?.id}`,
       color: `${colors[0]}`,
       quantity: `${newVarientQty ? newVarientQty : quantityCount}`,
     };
@@ -173,7 +170,7 @@ const ProductDetailsPage = () => {
       });
 
     const priceVariantDataWithSelectedOption = {
-      product_id: `${id}`,
+      product_id: `${productDetail?.id}`,
       quantity: `${newVarientQty ? newVarientQty : quantityCount}`,
     };
 
@@ -214,7 +211,7 @@ const ProductDetailsPage = () => {
     setActiveColor(index);
 
     const priceVariantDefaultColorData = {
-      product_id: `${id}`,
+      product_id: `${productDetail?.id}`,
       color: `${selectedColor ? selectedColor : colors[0]}`,
       quantity: `${quantityCount}`,
     };
@@ -257,6 +254,7 @@ const ProductDetailsPage = () => {
   //     navigate("/404", { replace: true });
   //   }
   // }, [productDetailsPath, navigate]);
+
 
   // cart item increase decrease function..............................
   const increaseQuantityBeforeAddToCart = (quantity, stock) => {
@@ -475,8 +473,8 @@ const ProductDetailsPage = () => {
   return (
     <>
       <MetaData
-        title={productDetail.meta_title}
-        description={productDetail.meta_description}
+        title={productDetail?.meta_title}
+        description={productDetail?.meta_description}
       />
       {/* <div className="row">
         <div className="col-md-9"> */}
@@ -893,7 +891,7 @@ const ProductDetailsPage = () => {
 
       <ProductReview productDetail={productDetail} />
 
-      <RelatedProduct productId={productDetail.id} setImg={setImg} />
+      <RelatedProduct productId={productDetail?.id} setImg={setImg} />
 
       <Modal
         isOpen={modalIsOpen}

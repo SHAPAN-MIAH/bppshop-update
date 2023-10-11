@@ -227,7 +227,8 @@ const ProductCard = ({ product, setImg, allCategoryProductCard, allSubCategoryPr
               </div>
 
               <Link
-                to={allCategoryProductCard == true? `/${slug}/all/${product.slug}`: allSubCategoryProductCard == true? `/${slug}/${subSlug}/all/${product.id}` : `/${slug}/${subSlug}/${subSubSlug}/${product.id}`}
+                // to={allCategoryProductCard == true? `/${slug}/all/${id}`: allSubCategoryProductCard == true? `/${slug}/${subSlug}/all/${id}` : `/${slug}/${subSlug}/${subSubSlug}/${id}`}
+                to={allCategoryProductCard == true? `/${slug}/all/${product?.slug}`: allSubCategoryProductCard == true? `/${slug}/${subSlug}/all/${product?.slug}` : `/${slug}/${subSlug}/${subSubSlug}/${product?.slug}`}
                 // to={`/${slug}/${subSlug}/${subSubSlug}/${id}`}
                 // to={`/${slug}/${subSlug}/${subSubSlug}/${product.slug}`}
                 // to={`/products/${product.slug}`}
