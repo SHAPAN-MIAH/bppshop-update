@@ -108,8 +108,8 @@ const AllSubCategoryProductDetails = () => {
   // }, []);
 
   const cartItemsId = cartItems?.map((i) => i?.product_id);
-  const addedItemId = cartItemsId?.find((i) => i == newId);
-  const isItemExist = cartItems?.find((i) => i?.product_id == addedItemId);
+  const addeditemid = cartItemsId?.find((i) => i == newId);
+  const isItemExist = cartItems?.find((i) => i?.product_id == addeditemid);
   const paramId = subSubSlug;
   const productDetailsPathId = productDetail?.id?.toString();
   const productDetailsPath = productDetailsPathId == paramId;
@@ -801,7 +801,7 @@ const AllSubCategoryProductDetails = () => {
                   </div>
                 </div>
                 <div className="product_details_page_btn_container">
-                  {addedItemId ? (
+                  {addeditemid ? (
                     <button disabled className="btn_after_added_cart">
                       <i className="bi bi-cart-plus"></i> Added to Cart
                     </button>
@@ -909,9 +909,9 @@ const AllSubCategoryProductDetails = () => {
         
       </div> */}
 
-      <ProductReview productDetail={productDetail} />
+      <ProductReview productDetail={productDetail} key={productDetail?.name}/>
 
-      <RelatedProduct productId={id} setImg={setImg} />
+      <RelatedProduct productId={id} key={productDetail?.id} setImg={setImg} />
 
       <Modal
         isOpen={modalIsOpen}

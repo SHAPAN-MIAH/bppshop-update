@@ -68,7 +68,7 @@
 //   const dispatch = useDispatch();
 //   const cartItems = useSelector((state) => state.cart.cartItems);
 //   const cartItemsId = cartItems.map((i) => i.product.id);
-//   const addedItemId = cartItemsId.find((i) => i == id);
+//   const addeditemid = cartItemsId.find((i) => i == id);
 
 //   const addToCartHandler = (product, quantity) => {
 //     //default choise option
@@ -212,7 +212,7 @@
 //                 <small>({reviews_count})</small>
 //               </div>
 
-//               <Link to={`/flash-sale/${id}`} addedItemId={addedItemId}>
+//               <Link to={`/flash-sale/${id}`} addeditemid={addeditemid}>
 //               {current_stock > 0 ? (
 //                   <div
 //                     className="quickView_AddToCart_overlay"
@@ -234,7 +234,7 @@
 //               </Link>
 //             </div>
 //             <div className="card-footer product-card-footer">
-//               {addedItemId ? (
+//               {addeditemid ? (
 //                 <div className="cardFooterBtn">
 //                   <button disabled className="btn_after_added_cart">
 //                     <i className="bi bi-cart-plus"></i> Product in Cart

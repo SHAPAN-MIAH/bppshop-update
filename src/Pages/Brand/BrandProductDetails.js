@@ -2,7 +2,11 @@ import React, { useState, useRef } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 // import "./ProductDetailsPage.css";
 import { useParams } from "react-router-dom";
-import { baseUrl, imgBaseUrl, imgThumbnailBaseUrl } from "./../../BaseUrl/BaseUrl";
+import {
+  baseUrl,
+  imgBaseUrl,
+  imgThumbnailBaseUrl,
+} from "./../../BaseUrl/BaseUrl";
 import { useEffect } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
@@ -44,16 +48,15 @@ const customStyles = {
   },
 };
 
-
 const BrandProductDetails = () => {
   const { brandId, id } = useParams();
   const location = useLocation();
   const newLocation = location.pathname.split("/");
   // const brandName = newLocation[2];
-  const brandName =  localStorage.getItem("brandName")
+  const brandName = localStorage.getItem("brandName");
 
   // let newId = parseInt(id);
-  
+
   // console.log(id);
 
   const [productDetail, setProductDetail] = useState([]);
@@ -91,8 +94,8 @@ const BrandProductDetails = () => {
 
   let productDetailId = parseInt(productDetail?.id);
   const cartItemsId = cartItems?.map((i) => i?.product_id);
-  const addedItemId = cartItemsId?.find((i) => i == productDetailId);
-  const isItemExist = cartItems?.find((i) => i?.product_id == addedItemId);
+  const addeditemid = cartItemsId?.find((i) => i == productDetailId);
+  const isItemExist = cartItems?.find((i) => i?.product_id == addeditemid);
   // const paramId = subSubSlug;
   // const productDetailsPathId = productDetail?.id?.toString();
   // const productDetailsPath = productDetailsPathId == paramId;
@@ -251,7 +254,6 @@ const BrandProductDetails = () => {
   //   }
   // }, [productDetailsPath, navigate]);
 
-
   const increaseQuantityBeforeAddToCart = (quantity, stock) => {
     if (stock <= quantity) {
       toast.error("Sorry, Stock is limited!", {
@@ -268,7 +270,6 @@ const BrandProductDetails = () => {
     }
   };
 
-  
   // cart item increase decrease function..............................
   const increaseQuantity = (id, quantity, stock, defaultChoices) => {
     // console.log(defaultChoices);
@@ -314,8 +315,8 @@ const BrandProductDetails = () => {
   );
   const modalSignup = localStorage.getItem("modalSignup");
 
-   // add to cart after login res............
-   useEffect(() => {
+  // add to cart after login res............
+  useEffect(() => {
     if (isAuthenticated == true && token) {
       (loginRes?.status == "success") | (signupRes?.status == "success") &&
         closeModal();
@@ -424,16 +425,18 @@ const BrandProductDetails = () => {
   };
 
   const addToCartOverlyLoadingCloseHandler = () => {
-    const addToCartLoaderOverlay = document.querySelector(".addToCart_loader_overlay");
+    const addToCartLoaderOverlay = document.querySelector(
+      ".addToCart_loader_overlay"
+    );
     addToCartLoaderOverlay.style.display = "none";
   };
 
   if (AddToCartResponse[0]?.status == "success") {
-    addToCartOverlyLoadingCloseHandler()
+    addToCartOverlyLoadingCloseHandler();
   }
 
   useEffect(() => {
-    if( AddToCartResponse[0]?.status == "failed"){
+    if (AddToCartResponse[0]?.status == "failed") {
       addToCartOverlyLoadingCloseHandler();
       toast.error(`${AddToCartResponse[0]?.message}`, {
         duration: 2000,
@@ -446,10 +449,8 @@ const BrandProductDetails = () => {
         },
       });
     }
-  })
+  });
 
-
- 
   // youtube video embed code split function............
   const [isOpen, setOpen] = useState(false);
   let embed_video_url;
@@ -471,17 +472,15 @@ const BrandProductDetails = () => {
     youtube_url();
   }
 
-
   const SellerNameSave = (sellerName) => {
-    localStorage.setItem("sellerName", sellerName)
+    localStorage.setItem("sellerName", sellerName);
   };
 
   const pageMount = () => {
     setQuantityCount(1);
-    setVariantRes("")
-    setImg("")
+    setVariantRes("");
+    setImg("");
   };
-
 
   return (
     <>
@@ -536,7 +535,6 @@ const BrandProductDetails = () => {
                           }}
                         />
                       )}
-
                     </div>
 
                     <div className="left_1" id="productImgGallery">
@@ -745,10 +743,12 @@ const BrandProductDetails = () => {
                       >
                         <i
                           className="bi bi-plus-lg"
-                          onClick={() => increaseQuantityBeforeAddToCart(
-                            quantityCount,
-                            productDetail?.current_stock
-                          )}
+                          onClick={() =>
+                            increaseQuantityBeforeAddToCart(
+                              quantityCount,
+                              productDetail?.current_stock
+                            )
+                          }
                         ></i>
                       </span>
                     )}
@@ -783,7 +783,7 @@ const BrandProductDetails = () => {
                   </div>
                 </div>
                 <div className="product_details_page_btn_container">
-                  {addedItemId ? (
+                  {addeditemid ? (
                     <button disabled className="btn_after_added_cart">
                       <i className="bi bi-cart-plus"></i> Added to Cart
                     </button>
@@ -798,7 +798,7 @@ const BrandProductDetails = () => {
                     </button>
                   ) : (
                     <button className="btn_before_add_cart_stockOut">
-                      <i class="bi bi-cart-x"></i> Stock Out
+                      <i className="bi bi-cart-x"></i> Stock Out
                     </button>
                   )}
                   <button className="addWishListBtn">
@@ -852,7 +852,10 @@ const BrandProductDetails = () => {
                   <div className="seller-product-view-container ">
                     {productDetail?.seller?.product?.map((item) => (
                       <Link to={`/brand/${brandId}/${item.id}`}>
-                        <div className="seller_product_item" onClick={() => pageMount()}>
+                        <div
+                          className="seller_product_item"
+                          onClick={() => pageMount()}
+                        >
                           <div>
                             {item.thumbnail ? (
                               <img
@@ -884,8 +887,14 @@ const BrandProductDetails = () => {
         </div>
       </div>
       {/* )} */}
-      <ProductReview productDetail={productDetail} />
-      <RelatedProduct productId={productDetail.id} setImg={setImg}/>
+      <ProductReview productDetail={productDetail} key={productDetail?.name} />
+      {productDetail?.id && (
+        <RelatedProduct
+          productId={productDetail?.id}
+          key={productDetail?.id}
+          setImg={setImg}
+        />
+      )}
 
       <Modal
         isOpen={modalIsOpen}

@@ -88,8 +88,8 @@ const TopRatedProductDetails = () => {
 
   let productDetailId = parseInt(productDetail?.id);
   const cartItemsId = cartItems?.map((i) => i?.product_id);
-  const addedItemId = cartItemsId?.find((i) => i == productDetailId);
-  const isItemExist = cartItems?.find((i) => i?.product_id == addedItemId);
+  const addeditemid = cartItemsId?.find((i) => i == productDetailId);
+  const isItemExist = cartItems?.find((i) => i?.product_id == addeditemid);
   const paramId = subSubSlug;
   const productDetailsPathId = productDetail?.id?.toString();
   const productDetailsPath = productDetailsPathId == paramId;
@@ -763,7 +763,7 @@ const TopRatedProductDetails = () => {
                   </div>
                 </div>
                 <div className="product_details_page_btn_container">
-                  {addedItemId ? (
+                  {addeditemid ? (
                     <button disabled className="btn_after_added_cart">
                       <i className="bi bi-cart-plus"></i> Added to Cart
                     </button>
@@ -864,8 +864,8 @@ const TopRatedProductDetails = () => {
         </div>
       </div>
       {/* )} */}
-      <ProductReview productDetail={productDetail} />
-      <RelatedProduct productId={productDetail.id} setImg={setImg}/>
+      <ProductReview productDetail={productDetail} key={productDetail?.name}/>
+      <RelatedProduct productId={productDetail?.id} key={productDetail?.id} setImg={setImg}/>
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}

@@ -22,8 +22,8 @@ const QuickViewModal = ({ pid }) => {
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.cartItems);
   const cartItemsId = cartItems.map((i) => i.product.id);
-  const addedItemId = cartItemsId.find((i) => i == pid);
-  const isItemExist = cartItems.find((i) => i?.product?.id == addedItemId);
+  const addeditemid = cartItemsId.find((i) => i == pid);
+  const isItemExist = cartItems.find((i) => i?.product?.id == addeditemid);
 
   useEffect(() => {
     axios.get(`${baseUrl}/products/details/${pid}`).then((res) => {
@@ -523,7 +523,7 @@ const QuickViewModal = ({ pid }) => {
 
               <div className="col-md-8">
                 <div className="my-4">
-                  {addedItemId ? (
+                  {addeditemid ? (
                     <button disabled className="btn_after_added_cart">
                       <i className="bi bi-cart-plus"></i> Added to Cart
                     </button>

@@ -315,6 +315,7 @@ const Sidebar = () => {
   const activeViewHandler = () => {
     setActiveSubSubMenu("")
   }
+
   return (
     <>
       <div className="sidebar-section">
@@ -349,7 +350,7 @@ const Sidebar = () => {
                         <img
                           width="15"
                           className="sidebar-Icon"
-                          src={categoryBaseUrl + `/${categoryItem.icon}`}
+                          src={categoryBaseUrl + `/${categoryItem?.icon}`}
                           alt=""
                         />
                         {categoryItem?.name}

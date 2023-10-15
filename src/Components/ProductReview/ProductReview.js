@@ -105,15 +105,15 @@ const ProductReview = ({ productDetail }) => {
                 <div className="star-progress-container">
                   {(() => {
                     let userReviewTag = [];
-                    let reviewCouter = [0, 0, 0, 0, 0];
+                    let reviewCounter = [0, 0, 0, 0, 0];
                     reversedReviews?.map(
                       (review) =>
-                        (reviewCouter[parseInt(review?.rating) - 1] += 1)
+                        (reviewCounter[parseInt(review?.rating) - 1] += 1)
                     );
                     let reviewPercent = 0;
-                    for (let i = 0; i < reviewCouter.length; i++) {
+                    for (let i = 0; i < reviewCounter.length; i++) {
                       reviewPercent =
-                        (reviewCouter[i] / productDetail?.reviews_count) * 100;
+                        (reviewCounter[i] / productDetail?.reviews_count) * 100;
                       userReviewTag.push(
                         <div className="star-progress">
                           <p>{i + 1} Star </p>

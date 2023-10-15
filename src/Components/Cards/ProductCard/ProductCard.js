@@ -85,7 +85,7 @@ const ProductCard = ({ product, setImg, allCategoryProductCard, allSubCategoryPr
   const cartItems = useSelector((state) => state.cart.cartItems?.[0]?.data);
   const cartGroupItems = useSelector((state) => state.cartGroup.cartGroupItems);
   const cartItemsId = cartItems?.map((i) => i?.product_id);
-  const addedItemId = cartItemsId?.find((i) => i == id);
+  const addeditemid = cartItemsId?.find((i) => i == id);
 
   const { isAuthenticated } = useSelector((state) => state.user);
   const { loginRes } = useSelector((state) => state.loginRes);
@@ -160,7 +160,7 @@ const ProductCard = ({ product, setImg, allCategoryProductCard, allSubCategoryPr
   };
 
 
-  if (addedItemId) {
+  if (addeditemid) {
     const addToCartLoaderOverlay = document.querySelector(
       ".addToCart_loader_overlay"
     );
@@ -232,7 +232,7 @@ const ProductCard = ({ product, setImg, allCategoryProductCard, allSubCategoryPr
                 // to={`/${slug}/${subSlug}/${subSubSlug}/${id}`}
                 // to={`/${slug}/${subSlug}/${subSubSlug}/${product.slug}`}
                 // to={`/products/${product.slug}`}
-                addedItemId={addedItemId}
+                addeditemid={addeditemid}
               >
                 {current_stock > 0 ? (
                   <div
@@ -255,7 +255,7 @@ const ProductCard = ({ product, setImg, allCategoryProductCard, allSubCategoryPr
               </Link>
             </div>
             <div className="card-footer product-card-footer">
-              {addedItemId ? (
+              {addeditemid ? (
                 <div className="cardFooterBtn">
                   <button disabled className="btn_after_added_cart">
                     <i className="bi bi-cart-plus"></i> Product in Cart

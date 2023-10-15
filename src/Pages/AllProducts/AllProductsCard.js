@@ -84,7 +84,7 @@ const AllProductsCard = ({ product, setImg }) => {
   const cartItems = useSelector((state) => state.cart.cartItems?.[0]?.data);
   const cartGroupItems = useSelector((state) => state.cartGroup.cartGroupItems);
   const cartItemsId = cartItems?.map((i) => i?.product_id);
-  const addedItemId = cartItemsId?.find((i) => i == id);
+  const addeditemid = cartItemsId?.find((i) => i == id);
 
   const { isAuthenticated } = useSelector((state) => state.user);
   const { loginRes } = useSelector((state) => state.loginRes);
@@ -204,7 +204,7 @@ const AllProductsCard = ({ product, setImg }) => {
     addToCartLoaderOverlay.style.display = "block";
   };
 
-  if (addedItemId) {
+  if (addeditemid) {
     const addToCartLoaderOverlay = document.querySelector(
       ".addToCart_loader_overlay"
     );
@@ -276,8 +276,8 @@ const AllProductsCard = ({ product, setImg }) => {
                 <small>({reviews_count})</small>
               </div>
 
-              {/* <Link to={`/all-products/${id}`} addedItemId={addedItemId}> */}
-              <Link to={`/all-products/${product.slug}`} addedItemId={addedItemId}>
+              {/* <Link to={`/all-products/${id}`} addeditemid={addeditemid}> */}
+              <Link to={`/all-products/${product.slug}`} addeditemid={addeditemid}>
               {current_stock > 0 ? (
                   <div
                     className="quickView_AddToCart_overlay"
@@ -299,7 +299,7 @@ const AllProductsCard = ({ product, setImg }) => {
               </Link>
             </div>
             <div className="card-footer product-card-footer">
-              {addedItemId ? (
+              {addeditemid ? (
                 <div className="cardFooterBtn">
                   <button disabled className="btn_after_added_cart">
                     <i className="bi bi-cart-plus"></i> Product in Cart

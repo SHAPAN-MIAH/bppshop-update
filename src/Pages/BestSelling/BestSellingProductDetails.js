@@ -22,7 +22,7 @@ import toast from "react-hot-toast";
 import defaultProImg from "../../Assets/Images/defaultImg.jpg";
 import ModalVideo from "react-modal-video";
 import "react-modal-video/scss/modal-video.scss";
-import {AiFillPlayCircle } from "react-icons/ai";
+import { AiFillPlayCircle } from "react-icons/ai";
 import MetaData from "../Layout/MetaData";
 import Modal from "react-modal";
 import LoginModal from "../User/Login/LoginModal";
@@ -67,7 +67,6 @@ const BestSellingProductDetails = () => {
     });
   }, [id]);
 
-
   // Customer Audit log.........................
   // const auditLog = {
   //   product_id: id,
@@ -78,11 +77,10 @@ const BestSellingProductDetails = () => {
   //   token && axios.post(`${baseUrl}/customer/audit-log`, auditLog, config);
   // }, []);
 
-
   let productDetailId = parseInt(productDetail?.id);
   const cartItemsId = cartItems?.map((i) => i?.product_id);
-  const addedItemId = cartItemsId?.find((i) => i == productDetailId);
-  const isItemExist = cartItems?.find((i) => i?.product_id == addedItemId);
+  const addeditemid = cartItemsId?.find((i) => i == productDetailId);
+  const isItemExist = cartItems?.find((i) => i?.product_id == addeditemid);
   const paramId = subSubSlug;
   const productDetailsPathId = productDetail?.id?.toString();
   const productDetailsPath = productDetailsPathId == paramId;
@@ -300,8 +298,8 @@ const BestSellingProductDetails = () => {
     (state) => state.cartItemBeforeLogin.cartItem[0]
   );
 
-   // add to cart after login res............
-   useEffect(() => {
+  // add to cart after login res............
+  useEffect(() => {
     if (isAuthenticated == true && token) {
       (loginRes?.status == "success") | (signupRes?.status == "success") &&
         closeModal();
@@ -383,7 +381,7 @@ const BestSellingProductDetails = () => {
 
         addToCartOverlyLoading();
       }
-   
+
       dispatch(ClearAddToCartRes());
     }
   };
@@ -408,7 +406,7 @@ const BestSellingProductDetails = () => {
   }
 
   useEffect(() => {
-    if( AddToCartResponse[0]?.status == "failed"){
+    if (AddToCartResponse[0]?.status == "failed") {
       addToCartOverlyLoadingCloseHandler();
       toast.error(`${AddToCartResponse[0]?.message}`, {
         duration: 2000,
@@ -421,8 +419,7 @@ const BestSellingProductDetails = () => {
         },
       });
     }
-  })
-
+  });
 
   // youtube video embed code split function............
   const [isOpen, setOpen] = useState(false);
@@ -451,8 +448,8 @@ const BestSellingProductDetails = () => {
 
   const pageMount = () => {
     setQuantityCount(1);
-    setVariantRes("")
-    setImg("")
+    setVariantRes("");
+    setImg("");
   };
 
   return (
@@ -765,7 +762,7 @@ const BestSellingProductDetails = () => {
                   </div>
                 </div>
                 <div className="product_details_page_btn_container">
-                  {addedItemId ? (
+                  {addeditemid ? (
                     <button disabled className="btn_after_added_cart">
                       <i className="bi bi-cart-plus"></i> Added to Cart
                     </button>
@@ -780,7 +777,7 @@ const BestSellingProductDetails = () => {
                     </button>
                   ) : (
                     <button className="btn_before_add_cart_stockOut">
-                      <i class="bi bi-cart-x"></i> Stock Out
+                      <i className="bi bi-cart-x"></i> Stock Out
                     </button>
                   )}
                   <button className="addWishListBtn">
@@ -834,7 +831,10 @@ const BestSellingProductDetails = () => {
                   <div className="seller-product-view-container ">
                     {productDetail?.seller?.product?.map((item) => (
                       <Link to={`/best-selling/${item.id}`}>
-                        <div className="seller_product_item" onClick={() => pageMount()}>
+                        <div
+                          className="seller_product_item"
+                          onClick={() => pageMount()}
+                        >
                           <div>
                             {item.thumbnail ? (
                               <img
@@ -870,8 +870,15 @@ const BestSellingProductDetails = () => {
         
       </div> */}
 
-      <ProductReview productDetail={productDetail} />
-      <RelatedProduct productId={productDetail.id} setImg={setImg}/>
+      <ProductReview productDetail={productDetail} key={productDetail?.name} />
+      {productDetail?.id && (
+        <RelatedProduct
+          productId={productDetail?.id}
+          key={productDetail?.id}
+          setImg={setImg}
+        />
+      )}
+
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}

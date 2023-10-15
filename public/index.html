@@ -39,7 +39,7 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <title>BPPShop</title>
-    
+
     <!-- Meta Pixel Code -->
     <script>
       !(function (f, b, e, v, n, t, s) {
@@ -77,10 +77,6 @@
     /></noscript>
 
     <!-- End Meta Pixel Code -->
-
-
-
-
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
@@ -93,6 +89,10 @@
     <!-- Google tag (gtag.js) -->
     <script
       async
+      src="https://www.googletagmanager.com/gtag/js?id=G-4CJ6P47SHR"
+    ></script>
+    <script
+      async
       src="https://www.googletagmanager.com/gtag/js?id=GTM-5D7VZ67M"
     ></script>
     <script>
@@ -103,7 +103,15 @@
       gtag("js", new Date());
 
       gtag("config", "GTM-5D7VZ67M");
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
+      gtag("config", "G-4CJ6P47SHR");
 
       // gtag("config", "G-4CJ6P47SHR");
       // gtag('config', 'TAG_ID', {

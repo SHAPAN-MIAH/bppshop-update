@@ -77,7 +77,7 @@ const BrandsProductsCard = ({ product, setImg }) => {
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.cartItems?.[0]?.data);
   const cartItemsId = cartItems?.map((i) => i?.product_id);
-  const addedItemId = cartItemsId?.find((i) => i == id);
+  const addeditemid = cartItemsId?.find((i) => i == id);
 
   const { isAuthenticated } = useSelector((state) => state.user);
   const { loginRes } = useSelector((state) => state.loginRes);
@@ -201,7 +201,7 @@ const BrandsProductsCard = ({ product, setImg }) => {
     addToCartLoaderOverlay.style.display = "block";
   };
 
-  if (addedItemId) {
+  if (addeditemid) {
     const addToCartLoaderOverlay = document.querySelector(
       ".addToCart_loader_overlay"
     );
@@ -269,8 +269,8 @@ const BrandsProductsCard = ({ product, setImg }) => {
                 <small>({reviews_count})</small>
               </div>
 
-              {/* <Link to={`/brand/${brandId}/${id}`} addedItemId={addedItemId}> */}
-              <Link to={`/brand/${brandId}/${product.slug}`} addedItemId={addedItemId}>
+              {/* <Link to={`/brand/${brandId}/${id}`} addeditemid={addeditemid}> */}
+              <Link to={`/brand/${brandId}/${product.slug}`} addeditemid={addeditemid}>
                 {current_stock > 0 ? (
                   <div
                     className="quickView_AddToCart_overlay"
@@ -278,7 +278,7 @@ const BrandsProductsCard = ({ product, setImg }) => {
                   >
                     <div className="overlayViewCartBtn">
                       <span>
-                        <i class="bi bi-eye-fill"></i> <br /> View Details
+                        <i className="bi bi-eye-fill"></i> <br /> View Details
                       </span>
                     </div>
                   </div>
@@ -292,7 +292,7 @@ const BrandsProductsCard = ({ product, setImg }) => {
               </Link>
             </div>
             <div className="card-footer product-card-footer">
-              {addedItemId ? (
+              {addeditemid ? (
                 <div className="cardFooterBtn">
                   <button disabled className="btn_after_added_cart">
                     <i className="bi bi-cart-plus"></i> Product in Cart
@@ -309,7 +309,7 @@ const BrandsProductsCard = ({ product, setImg }) => {
                     </button>
                   ) : (
                     <button className="btn_before_add_cart_stockOut">
-                      <i class="bi bi-cart-x"></i> Stock Out
+                      <i className="bi bi-cart-x"></i> Stock Out
                     </button>
                   )}
                 </div>

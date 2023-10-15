@@ -52,8 +52,8 @@
 //   // }, []);
 
 //   const cartItemsId = cartItems.map((i) => i?.product?.id);
-//   const addedItemId = cartItemsId.find((i) => i == newId);
-//   const isItemExist = cartItems.find((i) => i?.product?.id == addedItemId);
+//   const addeditemid = cartItemsId.find((i) => i == newId);
+//   const isItemExist = cartItems.find((i) => i?.product?.id == addeditemid);
 //   const paramId = id;
 //   const productDetailsPathId = productDetail?.id?.toString();
 //   const productDetailsPath = productDetailsPathId == paramId;
@@ -638,7 +638,7 @@
 //                     </div>
 //                   </div>
 //                   <div className="product_details_page_btn_container">
-//                     {addedItemId ? (
+//                     {addeditemid ? (
 //                       <button disabled className="btn_after_added_cart">
 //                         <i className="bi bi-cart-plus"></i> Added to Cart
 //                       </button>
