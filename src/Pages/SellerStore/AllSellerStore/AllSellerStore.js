@@ -6,6 +6,8 @@ import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "../SellerStore.css";
 import { Link } from "react-router-dom";
 import InfiniteScroll from "react-infinite-scroll-component";
+import downArrow from "../../../Assets/Images/arrow-down.gif.c819a92ab7162c828e944727a545dcd7.gif"
+
 
 const AllSellerStore = () => {
   const [allSellerStore, setAllSellerStore] = useState([]);
@@ -137,7 +139,7 @@ const AllSellerStore = () => {
         dataLength={allSellerStore?.length}
         next={fetchData}
         hasMore={hasMore}
-        loader={<h4 style={{textAlign: "center", padding: "10px 0px"}}>Loading...</h4>}
+        loader={<h4 style={{textAlign: "center", padding: "10px 0px"}}><img width={70} src={downArrow} alt=""/></h4>}
       >
         <div className="all-seller-store-container mt-4 ">
           <SkeletonTheme baseColor="#DDDDDD" highlightColor="#e3e3e3">

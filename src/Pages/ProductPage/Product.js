@@ -9,6 +9,8 @@ import { baseUrl } from "../../BaseUrl/BaseUrl";
 import MetaData from "./../Layout/MetaData";
 import { useSelector } from "react-redux";
 import InfiniteScroll from "react-infinite-scroll-component";
+import downArrow from "../../Assets/Images/arrow-down.gif.c819a92ab7162c828e944727a545dcd7.gif"
+
 
 const Product = () => {
   const allCategories = useSelector(
@@ -234,7 +236,7 @@ const Product = () => {
           hasMore={hasMore}
           loader={
             <h4 style={{ textAlign: "center", padding: "10px 0px" }}>
-              Loading...
+              <img width={70} src={downArrow} alt=""/>
             </h4>
           }
         >

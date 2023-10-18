@@ -7,6 +7,7 @@ import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import { useRef } from "react";
 import AllProductsCard from "./AllProductsCard";
 import InfiniteScroll from "react-infinite-scroll-component";
+import downArrow from "../../Assets/Images/arrow-down.gif.c819a92ab7162c828e944727a545dcd7.gif"
 
 const AllProducts = () => {
   const [updateAllProduct, setUpdateAllProduct] = useState([]);
@@ -107,7 +108,7 @@ const AllProducts = () => {
           dataLength={updateAllProduct?.length}
           next={fetchData}
           hasMore={hasMore}
-          loader={<h4 style={{textAlign: "center", padding: "10px 0px"}}>Loading...</h4>}
+          loader={<h4 style={{textAlign: "center", padding: "10px 0px"}}><img width={70} src={downArrow} alt=""/></h4>}
         >
           <div className="product-container mt-3">
             <SkeletonTheme baseColor="#DDDDDD" highlightColor="#e3e3e3">

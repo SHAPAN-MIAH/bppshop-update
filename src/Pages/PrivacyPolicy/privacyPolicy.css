@@ -1,0 +1,10 @@
+.privacy_policy_container{
+  /* height: 100Vh; */
+  /* width: 100%; */
+  margin-bottom: 50px;
+}
+#banglaTransBtn{
+  border: 1px solid gainsboro;
+  padding: 5px 10px;
+  background: none;
+}

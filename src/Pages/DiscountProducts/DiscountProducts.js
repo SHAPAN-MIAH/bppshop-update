@@ -6,6 +6,8 @@ import { baseUrl } from "./../../BaseUrl/BaseUrl";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import DiscountProductCard from "./DiscountProductCard";
 import InfiniteScroll from "react-infinite-scroll-component";
+import downArrow from "../../Assets/Images/arrow-down.gif.c819a92ab7162c828e944727a545dcd7.gif"
+
 
 const DiscountProducts = () => {
   //onscrool paginations
@@ -74,7 +76,7 @@ const DiscountProducts = () => {
         hasMore={hasMore}
         loader={
           <h4 style={{ textAlign: "center", padding: "10px 0px" }}>
-            Loading...
+           <img width={70} src={downArrow} alt=""/>
           </h4>
         }
       >
