@@ -8,10 +8,10 @@ import { Link } from "react-router-dom";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import { useRef } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
-import downArrow from "../../../Assets/Images/arrow-down.gif.c819a92ab7162c828e944727a545dcd7.gif"
+import downArrow from "../../../Assets/Images/arrow-down.gif.c819a92ab7162c828e944727a545dcd7.gif";
+import defaultImg from "../../../Assets/Images/defaultImg.jpg";
 
 const Brands = () => {
-  
   //onscrool paginations
   const [brands, setBrands] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -59,10 +59,7 @@ const Brands = () => {
       .get(`${baseUrl}/brands?limit=${25}&offset=${page}`)
       .then((response) => {
         response && setLoading(false);
-        setBrands([
-          ...brands,
-          ...response?.data?.data?.data,
-        ]);
+        setBrands([...brands, ...response?.data?.data?.data]);
         setHasMore(response?.data?.data?.data?.length > 0);
         setPage(page + 1);
       })
@@ -72,72 +69,78 @@ const Brands = () => {
   };
 
   const brandNameSave = (brandName) => {
-    localStorage.setItem("brandName", brandName)
+    localStorage.setItem("brandName", brandName);
   };
 
   return (
     <>
       <h4>Brands:</h4>
       <InfiniteScroll
-          dataLength={brands?.length}
-          next={fetchData}
-          hasMore={hasMore}
-          loader={
-            <h4 style={{ textAlign: "center", padding: "10px 0px" }}>
-              <img width={70} src={downArrow} alt=""/>
-            </h4>
-          }
-        >
-      <div
-        className="brand_container mt-3"
+        dataLength={brands?.length}
+        next={fetchData}
+        hasMore={hasMore}
+        loader={
+          <h4 style={{ textAlign: "center", padding: "10px 0px" }}>
+            <img width={60} src={downArrow} alt="" />
+          </h4>
+        }
       >
-        <SkeletonTheme baseColor="#DDDDDD" highlightColor="#e3e3e3">
-          {loading ? (
-            <>
-              <Skeleton height="250px" borderRadius="10px" count={1} />
-              <Skeleton height="250px" borderRadius="10px" count={1} />
-              <Skeleton height="250px" borderRadius="10px" count={1} />
-              <Skeleton height="250px" borderRadius="10px" count={1} />
-              <Skeleton height="250px" borderRadius="10px" count={1} />
-              <Skeleton height="250px" borderRadius="10px" count={1} />
-              <Skeleton height="250px" borderRadius="10px" count={1} />
-              <Skeleton height="250px" borderRadius="10px" count={1} />
-              <Skeleton height="250px" borderRadius="10px" count={1} />
-              <Skeleton height="250px" borderRadius="10px" count={1} />
-              <Skeleton height="250px" borderRadius="10px" count={1} />
-              <Skeleton height="250px" borderRadius="10px" count={1} />
-              <Skeleton height="250px" borderRadius="10px" count={1} />
-              <Skeleton height="250px" borderRadius="10px" count={1} />
-              <Skeleton height="250px" borderRadius="10px" count={1} />
-              <Skeleton height="250px" borderRadius="10px" count={1} />
-              <Skeleton height="250px" borderRadius="10px" count={1} />
-              <Skeleton height="250px" borderRadius="10px" count={1} />
-              <Skeleton height="250px" borderRadius="10px" count={1} />
-              <Skeleton height="250px" borderRadius="10px" count={1} />
-              <Skeleton height="250px" borderRadius="10px" count={1} />
-              <Skeleton height="250px" borderRadius="10px" count={1} />
-              <Skeleton height="250px" borderRadius="10px" count={1} />
-              <Skeleton height="250px" borderRadius="10px" count={1} />
-              <Skeleton height="250px" borderRadius="10px" count={1} />
-            </>
-          ) : (
-            brands &&
-            brands?.map((brand, index) => (
-              <Link key={brand?.id} to={`/brands/${brand?.slug}`}
-              onClick={(e) => {brandNameSave(brand.name)}}
-              >
-                <div className="brand_content">
-                  <img
-                    src={`https://backend.bppshop.com.bd/storage/brand/${brand?.image}`}
-                    alt=""
-                  />
-                  <p>{brand?.name}</p>
-                </div>
-              </Link>
-            ))
-          )}
-        </SkeletonTheme>
-      </div>
+        <div className="brand_container mt-3">
+          <SkeletonTheme baseColor="#DDDDDD" highlightColor="#e3e3e3">
+            {loading ? (
+              <>
+                <Skeleton height="250px" borderRadius="10px" count={1} />
+                <Skeleton height="250px" borderRadius="10px" count={1} />
+                <Skeleton height="250px" borderRadius="10px" count={1} />
+                <Skeleton height="250px" borderRadius="10px" count={1} />
+                <Skeleton height="250px" borderRadius="10px" count={1} />
+                <Skeleton height="250px" borderRadius="10px" count={1} />
+                <Skeleton height="250px" borderRadius="10px" count={1} />
+                <Skeleton height="250px" borderRadius="10px" count={1} />
+                <Skeleton height="250px" borderRadius="10px" count={1} />
+                <Skeleton height="250px" borderRadius="10px" count={1} />
+                <Skeleton height="250px" borderRadius="10px" count={1} />
+                <Skeleton height="250px" borderRadius="10px" count={1} />
+                <Skeleton height="250px" borderRadius="10px" count={1} />
+                <Skeleton height="250px" borderRadius="10px" count={1} />
+                <Skeleton height="250px" borderRadius="10px" count={1} />
+                <Skeleton height="250px" borderRadius="10px" count={1} />
+                <Skeleton height="250px" borderRadius="10px" count={1} />
+                <Skeleton height="250px" borderRadius="10px" count={1} />
+                <Skeleton height="250px" borderRadius="10px" count={1} />
+                <Skeleton height="250px" borderRadius="10px" count={1} />
+                <Skeleton height="250px" borderRadius="10px" count={1} />
+                <Skeleton height="250px" borderRadius="10px" count={1} />
+                <Skeleton height="250px" borderRadius="10px" count={1} />
+                <Skeleton height="250px" borderRadius="10px" count={1} />
+                <Skeleton height="250px" borderRadius="10px" count={1} />
+              </>
+            ) : (
+              brands &&
+              brands?.map((brand, index) => (
+                <Link
+                  key={brand?.id}
+                  to={`/brands/${brand?.slug}`}
+                  onClick={(e) => {
+                    brandNameSave(brand.name);
+                  }}
+                >
+                  <div className="brand_content">
+                    {brand.image == "def.png" ? (
+                      <img src={defaultImg} alt="" />
+                    ) : (
+                      <img
+                        src={`https://backend.bppshop.com.bd/storage/brand/${brand?.image}`}
+                        alt=""
+                      />
+                    )}
+                    <p>{brand?.name}</p>
+                  </div>
+                </Link>
+              ))
+            )}
+          </SkeletonTheme>
+        </div>
       </InfiniteScroll>
       {/* <div
         onScroll={onScroll}

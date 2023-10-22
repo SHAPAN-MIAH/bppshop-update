@@ -7,6 +7,8 @@ import { useSelector } from "react-redux";
 import ProductCard from "../../../Components/Cards/ProductCard/ProductCard";
 import { baseUrl } from "../../../BaseUrl/BaseUrl";
 import InfiniteScroll from "react-infinite-scroll-component";
+import downArrow from "../../../Assets/Images/arrow-down.gif.c819a92ab7162c828e944727a545dcd7.gif"
+
 
 const AllSubCategoryProduct = () => {
   const allCategories = useSelector(
@@ -111,7 +113,7 @@ const AllSubCategoryProduct = () => {
             hasMore={hasMore}
             loader={
               <h4 style={{ textAlign: "center", padding: "10px 0px" }}>
-                Loading...
+                 <img width={60} src={downArrow} alt=""/>
               </h4>
             }
           >

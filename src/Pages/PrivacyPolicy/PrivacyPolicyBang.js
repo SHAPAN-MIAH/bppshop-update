@@ -10,8 +10,7 @@ const PrivacyPolicyBang = () => {
           <div>
             <Link to="/privacy-policy-english">
               <button id="banglaTransBtn" type="">
-                {/* বাংলা অনুবাদ */}
-                English translation
+                English
               </button>
             </Link>
           </div>

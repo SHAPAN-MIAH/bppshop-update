@@ -77,7 +77,7 @@ const TopRated = () => {
           hasMore={hasMore}
           loader={
             <h4 style={{ textAlign: "center", padding: "10px 0px" }}>
-              <img width={70} src={downArrow} alt=""/>
+              <img width={60} src={downArrow} alt=""/>
             </h4>
           }
         >
