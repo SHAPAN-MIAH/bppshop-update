@@ -246,43 +246,67 @@ const DiscountProductDetails = () => {
   //   }
   // }, [productDetailsPath, navigate]);
 
-  const increaseQuantityBeforeAddToCart = (quantity, stock) => {
-    if (stock <= quantity) {
-      toast.error("Sorry, Stock is limited!", {
-        duration: 2000,
-        style: {
-          width: "100%",
-          height: "80px",
-          padding: "0px 20px",
-          background: "#86bc19",
-          color: "#fff",
-        },
-      });
-      return;
-    }
-  };
-  
-  // cart item increase decrease function..............................
-  const increaseQuantity = (id, quantity, stock, defaultChoices) => {
-    // console.log(defaultChoices);
+ // cart item increase decrease function..............................
+ const increaseQuantityBeforeAddToCart = (quantity, stock, maxOrderQty) => {
+  if (stock <= quantity) {
+    toast.error("Sorry, Stock is limited!", {
+      duration: 2000,
+      style: {
+        width: "100%",
+        height: "80px",
+        padding: "0px 20px",
+        background: "#86bc19",
+        color: "#fff",
+      },
+    });
+    return ;
+  }
+  if (maxOrderQty > 1 && maxOrderQty <= quantity) {
+    toast.error("Sorry! Stock limited!", {
+      duration: 2000,
+      style: {
+        width: "100%",
+        height: "80px",
+        padding: "0px 20px",
+        background: "#86bc19",
+        color: "#fff",
+      },
+    });
+    return ;
+  }
+};
 
-    const newQty = quantity + 1;
-    if (stock <= quantity) {
-      toast.error("Stock Limited.", {
-        duration: 3000,
-        style: {
-          width: "100%",
-          height: "80px",
-          padding: "0px 20px",
-          background: "#86bc19",
-          color: "#fff",
-        },
-      });
-      return;
-    }
-    // dispatch(addItemsToCart(id, newQty, defaultChoices));
-    dispatch(updateItemsToCart(id, newQty, defaultChoices));
-  };
+const increaseQuantity = (id, quantity, stock, maxOrderQty) => {
+  const newQty = quantity + 1;
+  if (stock <= quantity) {
+    toast.error("Sorry, Stock is limited!", {
+      duration: 2000,
+      style: {
+        width: "100%",
+        height: "80px",
+        padding: "0px 20px",
+        background: "#86bc19",
+        color: "#fff",
+      },
+    });
+    return;
+  }
+  if (maxOrderQty > 1 && maxOrderQty <= quantity) {
+    toast.error("Sorry! Stock is limited!", {
+      duration: 2000,
+      style: {
+        width: "100%",
+        height: "80px",
+        padding: "0px 20px",
+        background: "#86bc19",
+        color: "#fff",
+      },
+    });
+    return ;
+  }
+  // dispatch(addItemsToCart(id, newQty, defaultChoices));
+  dispatch(updateItemsToCart(id, newQty));
+};
 
   const decreaseQuantity = (id, quantity, defaultChoices) => {
     const newQty = quantity - 1;
@@ -705,7 +729,8 @@ const DiscountProductDetails = () => {
                             isItemExist.id,
                             isItemExist?.quantity,
                             productDetail?.current_stock,
-                            defaultChoices
+                            productDetail?.max_order_qty
+                            // defaultChoices
                             // productDetail?.choice_options
                           )
                         }
@@ -717,9 +742,12 @@ const DiscountProductDetails = () => {
                       <span
                         onClick={() => {
                           setQuantityCount(
-                            productDetail?.current_stock > quantityCount
+                            productDetail?.max_order_qty ? (productDetail?.max_order_qty >= quantityCount + 1
                               ? quantityCount + 1
-                              : quantityCount
+                              : quantityCount ) :
+                              ( productDetail?.current_stock >= quantityCount + 1
+                              ? quantityCount + 1
+                              : quantityCount)
                           );
                           priceVariantHandlerByChoiceOption(
                             productDetail?.current_stock >= quantityCount + 1
@@ -733,7 +761,8 @@ const DiscountProductDetails = () => {
                           className="bi bi-plus-lg"
                           onClick={() => increaseQuantityBeforeAddToCart(
                             quantityCount,
-                            productDetail?.current_stock
+                            productDetail?.current_stock,
+                            productDetail?.max_order_qty
                           )}
                         ></i>
                       </span>

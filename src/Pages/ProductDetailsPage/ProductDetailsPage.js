@@ -257,7 +257,7 @@ const ProductDetailsPage = () => {
 
 
   // cart item increase decrease function..............................
-  const increaseQuantityBeforeAddToCart = (quantity, stock) => {
+  const increaseQuantityBeforeAddToCart = (quantity, stock, maxOrderQty) => {
     if (stock <= quantity) {
       toast.error("Sorry, Stock is limited!", {
         duration: 2000,
@@ -269,11 +269,24 @@ const ProductDetailsPage = () => {
           color: "#fff",
         },
       });
-      return;
+      return ;
+    }
+    if (maxOrderQty > 1 && maxOrderQty <= quantity) {
+      toast.error("Sorry! Stock is limited!", {
+        duration: 2000,
+        style: {
+          width: "100%",
+          height: "80px",
+          padding: "0px 20px",
+          background: "#86bc19",
+          color: "#fff",
+        },
+      });
+      return ;
     }
   };
 
-  const increaseQuantity = (id, quantity, stock) => {
+  const increaseQuantity = (id, quantity, stock, maxOrderQty) => {
     const newQty = quantity + 1;
     if (stock <= quantity) {
       toast.error("Sorry, Stock is limited!", {
@@ -287,6 +300,19 @@ const ProductDetailsPage = () => {
         },
       });
       return;
+    }
+    if (maxOrderQty > 0 && maxOrderQty <= quantity) {
+      toast.error("Sorry! Stock limited!", {
+        duration: 2000,
+        style: {
+          width: "100%",
+          height: "80px",
+          padding: "0px 20px",
+          background: "#86bc19",
+          color: "#fff",
+        },
+      });
+      return ;
     }
     // dispatch(addItemsToCart(id, newQty, defaultChoices));
     dispatch(updateItemsToCart(id, newQty));
@@ -713,7 +739,8 @@ const ProductDetailsPage = () => {
                           increaseQuantity(
                             isItemExist.id,
                             isItemExist?.quantity,
-                            productDetail?.current_stock
+                            productDetail?.current_stock,
+                            productDetail?.max_order_qty
                             // defaultChoices
                             // productDetail?.choice_options
                           )
@@ -726,9 +753,12 @@ const ProductDetailsPage = () => {
                       <span
                         onClick={() => {
                           setQuantityCount(
-                            productDetail?.current_stock >= quantityCount + 1
+                            productDetail?.max_order_qty ? (productDetail?.max_order_qty >= quantityCount + 1
                               ? quantityCount + 1
-                              : quantityCount
+                              : quantityCount ) :
+                              ( productDetail?.current_stock >= quantityCount + 1
+                              ? quantityCount + 1
+                              : quantityCount)
                           );
                           priceVariantHandlerByChoiceOption(
                             productDetail?.current_stock >= quantityCount + 1
@@ -743,7 +773,8 @@ const ProductDetailsPage = () => {
                           onClick={() =>
                             increaseQuantityBeforeAddToCart(
                               quantityCount,
-                              productDetail?.current_stock
+                              productDetail?.current_stock,
+                              productDetail?.max_order_qty
                             )
                           }
                         ></i>

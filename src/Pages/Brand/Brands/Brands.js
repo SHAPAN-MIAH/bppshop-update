@@ -9,7 +9,7 @@ import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import { useRef } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import downArrow from "../../../Assets/Images/arrow-down.gif.c819a92ab7162c828e944727a545dcd7.gif";
-import defaultImg from "../../../Assets/Images/defaultImg.jpg";
+import defaultImg from "../../../Assets/Images/istockphoto-1357365823-612x612.jpg";
 
 const Brands = () => {
   //onscrool paginations
@@ -127,7 +127,7 @@ const Brands = () => {
                 >
                   <div className="brand_content">
                     {brand.image == "def.png" ? (
-                      <img src={defaultImg} alt="" />
+                      <img width={260} src={defaultImg} alt="" />
                     ) : (
                       <img
                         src={`https://backend.bppshop.com.bd/storage/brand/${brand?.image}`}

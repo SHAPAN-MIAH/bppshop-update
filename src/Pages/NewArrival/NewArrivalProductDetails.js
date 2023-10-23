@@ -2,7 +2,11 @@ import React, { useState, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 // import "./ProductDetailsPage.css";
 import { useParams } from "react-router-dom";
-import { baseUrl, imgBaseUrl, imgThumbnailBaseUrl } from "./../../BaseUrl/BaseUrl";
+import {
+  baseUrl,
+  imgBaseUrl,
+  imgThumbnailBaseUrl,
+} from "./../../BaseUrl/BaseUrl";
 import { useEffect } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
@@ -28,7 +32,6 @@ import ModalVideo from "react-modal-video";
 import "react-modal-video/scss/modal-video.scss";
 import RelatedProduct from "../../Components/RelatedProduct/RelatedProduct";
 
-
 Modal.setAppElement("#root");
 
 const customStyles = {
@@ -45,12 +48,11 @@ const customStyles = {
   },
 };
 
-
 const NewArrivalProductDetails = () => {
   const { slug, subSlug, subSubSlug, id } = useParams();
   const [productDetail, setProductDetail] = useState([]);
   const [quantityCount, setQuantityCount] = useState(1);
-  
+
   const [loading, setLoading] = useState(true);
   const [variantRes, setVariantRes] = useState({});
   const navigate = useNavigate();
@@ -67,12 +69,10 @@ const NewArrivalProductDetails = () => {
 
   // Product Details............................
   useEffect(() => {
-    axios.get(`${baseUrl}/products/details/${id}`)
-    .then((res) => {
+    axios.get(`${baseUrl}/products/details/${id}`).then((res) => {
       setProductDetail(res?.data?.data);
     });
   }, [id]);
-
 
   // Customer Audit log.........................
   // const auditLog = {
@@ -246,7 +246,13 @@ const NewArrivalProductDetails = () => {
   //   }
   // }, [productDetailsPath, navigate]);
 
-  const increaseQuantityBeforeAddToCart = (quantity, stock) => {
+  const ItemQtyUpdateRes = useSelector(
+    (state) => state.ItemQtyUpdateRes.ItemQtyUpdateRes
+  );
+
+  // cart item increase decrease function..............................
+  const increaseQuantityBeforeAddToCart = (quantity, stock, maxOrderQty) => {
+    console.log("maxOrderQty");
     if (stock <= quantity) {
       toast.error("Sorry, Stock is limited!", {
         duration: 2000,
@@ -260,16 +266,27 @@ const NewArrivalProductDetails = () => {
       });
       return;
     }
-  };
-  
-  // cart item increase decrease function..............................
-  const increaseQuantity = (id, quantity, stock, defaultChoices) => {
-    // console.log(defaultChoices);
+    // if (maxOrderQty > 1) {
+    //   if (maxOrderQty <= quantity) {
+    //     toast.error("Sorry! Stock limited!", {
+    //       duration: 2000,
+    //       style: {
+    //         width: "100%",
+    //         height: "80px",
+    //         padding: "0px 20px",
+    //         background: "#86bc19",
+    //         color: "#fff",
+    //       },
+    //     });
+    //     return;
+    //   }
+    // }
 
-    const newQty = quantity + 1;
-    if (stock <= quantity) {
-      toast.error("Stock Limited.", {
-        duration: 3000,
+    if (maxOrderQty == null) {
+      console.log();
+    } else if (maxOrderQty >= quantity) {
+      toast.error("Sorry! Stock is limited!", {
+        duration: 2000,
         style: {
           width: "100%",
           height: "80px",
@@ -280,8 +297,43 @@ const NewArrivalProductDetails = () => {
       });
       return;
     }
+  };
+
+  const increaseQuantity = (id, quantity, stock, maxOrderQty) => {
+    console.log("stock");
+    const newQty = quantity + 1;
+    if (stock <= quantity) {
+      toast.error("Sorry, Stock is limited!", {
+        duration: 2000,
+        style: {
+          width: "100%",
+          height: "80px",
+          padding: "0px 20px",
+          background: "#86bc19",
+          color: "#fff",
+        },
+      });
+      return;
+    }
+    if (maxOrderQty == null) {
+      console.log();
+    } else {
+      if (maxOrderQty <= quantity) {
+        toast.error("Sorry! Stock is limited!", {
+          duration: 2000,
+          style: {
+            width: "100%",
+            height: "80px",
+            padding: "0px 20px",
+            background: "#86bc19",
+            color: "#fff",
+          },
+        });
+        return;
+      }
+    }
     // dispatch(addItemsToCart(id, newQty, defaultChoices));
-    dispatch(updateItemsToCart(id, newQty, defaultChoices));
+    dispatch(updateItemsToCart(id, newQty));
   };
 
   const decreaseQuantity = (id, quantity, defaultChoices) => {
@@ -307,8 +359,8 @@ const NewArrivalProductDetails = () => {
     (state) => state.cartItemBeforeLogin.cartItem[0]
   );
 
-   // add to cart after login res............
-   useEffect(() => {
+  // add to cart after login res............
+  useEffect(() => {
     if (isAuthenticated == true && token) {
       (loginRes?.status == "success") | (signupRes?.status == "success") &&
         closeModal();
@@ -390,7 +442,7 @@ const NewArrivalProductDetails = () => {
 
         addToCartOverlyLoading();
       }
- 
+
       dispatch(ClearAddToCartRes());
     }
   };
@@ -404,16 +456,18 @@ const NewArrivalProductDetails = () => {
   };
 
   const addToCartOverlyLoadingCloseHandler = () => {
-    const addToCartLoaderOverlay = document.querySelector(".addToCart_loader_overlay");
+    const addToCartLoaderOverlay = document.querySelector(
+      ".addToCart_loader_overlay"
+    );
     addToCartLoaderOverlay.style.display = "none";
   };
 
   if (AddToCartResponse[0]?.status == "success") {
-    addToCartOverlyLoadingCloseHandler()
+    addToCartOverlyLoadingCloseHandler();
   }
 
   useEffect(() => {
-    if( AddToCartResponse[0]?.status == "failed"){
+    if (AddToCartResponse[0]?.status == "failed") {
       addToCartOverlyLoadingCloseHandler();
       toast.error(`${AddToCartResponse[0]?.message}`, {
         duration: 2000,
@@ -426,10 +480,9 @@ const NewArrivalProductDetails = () => {
         },
       });
     }
-  })
+  });
 
   const [isOpen, setOpen] = useState(false);
-
 
   // youtube video embed code split function............
   let embed_video_url;
@@ -455,14 +508,12 @@ const NewArrivalProductDetails = () => {
     localStorage.setItem("sellerName", sellerName);
   };
 
-
   const pageMount = () => {
     setQuantityCount(1);
-    setVariantRes("")
-    setImg("")
+    setVariantRes("");
+    setImg("");
   };
 
-  
   return (
     <>
       <h4>New Arrival Products:</h4>
@@ -479,9 +530,8 @@ const NewArrivalProductDetails = () => {
       </nav>
       <br />
       {/* {productDetailsPath == true && ( */}
-       
 
-        <div className="product_details_page_container">
+      <div className="product_details_page_container">
         <div className="container-fluid">
           <div className="row">
             <div className="col-md-4">
@@ -515,7 +565,6 @@ const NewArrivalProductDetails = () => {
                           }}
                         />
                       )}
-
                     </div>
 
                     <div className="left_1" id="productImgGallery">
@@ -698,7 +747,8 @@ const NewArrivalProductDetails = () => {
                             isItemExist.id,
                             isItemExist?.quantity,
                             productDetail?.current_stock,
-                            defaultChoices
+                            productDetail?.max_order_qty
+                            // defaultChoices
                             // productDetail?.choice_options
                           )
                         }
@@ -710,7 +760,13 @@ const NewArrivalProductDetails = () => {
                       <span
                         onClick={() => {
                           setQuantityCount(
-                            productDetail?.current_stock > quantityCount
+                            productDetail?.max_order_qty
+                              ? productDetail?.max_order_qty >=
+                                quantityCount + 1
+                                ? quantityCount + 1
+                                : quantityCount
+                              : productDetail?.current_stock >=
+                                quantityCount + 1
                               ? quantityCount + 1
                               : quantityCount
                           );
@@ -724,10 +780,13 @@ const NewArrivalProductDetails = () => {
                       >
                         <i
                           className="bi bi-plus-lg"
-                          onClick={() => increaseQuantityBeforeAddToCart(
-                            quantityCount,
-                            productDetail?.current_stock
-                          )}
+                          onClick={() =>
+                            increaseQuantityBeforeAddToCart(
+                              quantityCount,
+                              productDetail?.current_stock,
+                              productDetail?.max_order_qty
+                            )
+                          }
                         ></i>
                       </span>
                     )}
@@ -831,7 +890,10 @@ const NewArrivalProductDetails = () => {
                   <div className="seller-product-view-container ">
                     {productDetail?.seller?.product?.map((item) => (
                       <Link to={`/new-arrival/${item.id}`}>
-                        <div className="seller_product_item" onClick={() => pageMount()}>
+                        <div
+                          className="seller_product_item"
+                          onClick={() => pageMount()}
+                        >
                           <div>
                             {item.thumbnail ? (
                               <img
@@ -863,8 +925,14 @@ const NewArrivalProductDetails = () => {
         </div>
       </div>
       {/* )} */}
-      <ProductReview productDetail={productDetail} key={productDetail?.name}/>
-      {productDetail?.id && <RelatedProduct key={productDetail?.id} productId={productDetail?.id} setImg={setImg}/>}
+      <ProductReview productDetail={productDetail} key={productDetail?.name} />
+      {productDetail?.id && (
+        <RelatedProduct
+          key={productDetail?.id}
+          productId={productDetail?.id}
+          setImg={setImg}
+        />
+      )}
 
       <Modal
         isOpen={modalIsOpen}
