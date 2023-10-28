@@ -141,7 +141,7 @@ const Footer = () => {
         <div className="bottom_footer_content">
           <div className="bottom_footer_left">© All Right Reserved BPPSHOP</div>
           <div className="bottom_footer_right">
-            <div className="bottom_term_text">Terms & conditions</div>
+            <div className="bottom_term_text"><Link to="/terms-condition-english">Terms & conditions</Link></div>
             <div className="bottom_privacy_text"><Link to="/privacy-policy-english">Privacy Policy</Link></div>
           </div>
         </div>

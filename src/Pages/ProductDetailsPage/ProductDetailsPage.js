@@ -147,7 +147,7 @@ const ProductDetailsPage = () => {
   const priceVariantHandlerByChoiceOption = (newVarientQty) => {
     if (productDetail.current_stock <= newVarientQty) {
       toast.error("Stock Limited.", {
-        duration: 3000,
+        duration: 2000,
         style: {
           width: "100%",
           height: "80px",
@@ -302,7 +302,7 @@ const ProductDetailsPage = () => {
       return;
     }
     if (maxOrderQty > 0 && maxOrderQty <= quantity) {
-      toast.error("Sorry! Stock limited!", {
+      toast.error("Sorry! Stock is limited!", {
         duration: 2000,
         style: {
           width: "100%",

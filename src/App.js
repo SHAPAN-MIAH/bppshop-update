@@ -65,6 +65,8 @@ import AllSubCategoryProduct from "./Pages/ProductPage/AllSubCategoryProductPage
 import AllSubCategoryProductDetails from "./Pages/ProductPage/AllSubCategoryProductPage/AllSubCategoryProductDetails";
 import PrivacyPolicyEng from "./Pages/PrivacyPolicy/PrivacyPolicyEng";
 import PrivacyPolicyBang from "./Pages/PrivacyPolicy/PrivacyPolicyBang";
+import TermsConditionEng from "./Pages/TermsAndCondition/TermsConditionEng";
+import TermsConditionBang from "./Pages/TermsAndCondition/TermsConditionBang";
 
 
 function App() {
@@ -153,6 +155,8 @@ function App() {
 
           <Route path="/forceLoginByAdmin/:adminToken" element={<AdminLandOnBehalfCustomer/>} />
           <Route path="/customer/force-login-by-agent/:agentToken" element={<AgentLand />} />
+          <Route path="/terms-condition-english" element={<TermsConditionEng />} />
+          <Route path="/terms-condition-bangla" element={<TermsConditionBang />} />
           <Route path="/privacy-policy-english" element={<PrivacyPolicyEng />} />
           <Route path="/privacy-policy-bangla" element={<PrivacyPolicyBang />} />
         </Routes>
