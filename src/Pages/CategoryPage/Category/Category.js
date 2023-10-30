@@ -9,6 +9,8 @@ const Category = ({ allCategory, loading }) => {
     <>
       <MetaData title="Bppshop Categories" />
       <div className="categoryView-section">
+        <h4>Categories</h4>
+        
         <div className="categoryView-container">
           <div className="category_content">
             <SkeletonTheme baseColor="#DDDDDD" highlightColor="#e3e3e3">

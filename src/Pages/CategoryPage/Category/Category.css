@@ -7,18 +7,18 @@
 .category_content {
   margin: auto;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   grid-gap: 15px;
 }
 
 .card {
-  height: 345px;
-  /* height: auto; */
+  /* height: 345px; */
+  height: auto;
   border: none;
-  border-radius: 7px;
+  border-radius: 5px;
   cursor: pointer;
   font-family: "Kanit", sans-serif;
-  border: 1px solid gainsboro;
+  border: 1px solid rgb(230, 230, 230);
   overflow: hidden;
   transition: all 0.3s;
 }
@@ -28,7 +28,7 @@
 }
 
 .card-body , .category_card-body{
-  height: 300px;
+  /* height: 300px; */
   border: none;
 }
 .card-body img , .category_card-body img{
@@ -39,7 +39,7 @@
 .card-footer {
   background: #f2f2f2;
   color: #333333;
-  font-size: 16px;
+  font-size: 12px;
   text-align: center;
   padding: 12px 0px;
   border-top: 1px solid gainsboro;

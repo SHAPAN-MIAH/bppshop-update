@@ -1,0 +1,31 @@
+.deal_of_the_day_container {
+  gap: 20px;
+  margin: 50px 0px;
+}
+.deal_of_the_day_banner {
+  width: 290px;
+  overflow: hidden;
+}
+.deal_of_the_day_banner img {
+  width: 100%;
+}
+.deal_of_the_day_product_content {
+  padding: 0px 0px 0px 40px;
+  margin: 0px 0px 0px 45px;
+}
+.deal_of_the_day_product_content_header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid gainsboro;
+  margin: 8px 0px;
+}
+.deal_of_the_day_product_view_more_btn {
+  border: none;
+  background: none;
+  font-size: 14px;
+  font-weight: 600;
+  color: #e77025;
+}
+.deal_of_the_day_product_view_more_btn:hover {
+  color: #7e7e7e;
+}
