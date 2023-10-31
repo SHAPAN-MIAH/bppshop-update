@@ -249,19 +249,40 @@ const NewArrivalSectionProductCard = ({ product, setImg }) => {
                 ) : (
                   <img src={defaultProImg} alt="" />
                 )}
+
+                <Link
+                  to={`/new-arrival/${product?.slug}`}
+                  addeditemid={addeditemid}
+                >
+                  {current_stock > 0 ? (
+                    <div
+                      className="new_arrival_section_quickView_AddToCart_overlay"
+                      onClick={scrollTop}
+                    >
+                      <div className="new_arrival_section_overlayViewCartBtn">
+                        <span>
+                          <i className="bi bi-eye-fill"></i> <br /> View Details
+                        </span>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="new_arrival_section_product_stock_out_overlay d-flex justify-content-center align-items-center">
+                      <span className="text-center">Stock Out</span>
+                    </div>
+                  )}
+                </Link>
               </div>
 
               <div className="new_arrival_section_product-card-body-content">
-                <small>{name.toString().substring(0, 26)}...</small>
-                <br />
-                <small>
+                <h6>{name.toString().substring(0, 26)}...</h6>
+                <small className="">
                   {newChoiceOption && (
-                    <span className="unitPrice_view">
+                    <span className="new_arrival_section_unitPrice_view">
                       {newChoiceOption?.options[0]} : {newChoiceOption?.title}
                     </span>
                   )}
                 </small>
-                <div className="product-card-body-content-unit-price">
+                <div className="product-card-body-content-unit-price mt-2">
                   {discount ? (
                     <span>
                       <b> &#2547; {unit_price - discount} </b>
@@ -282,12 +303,10 @@ const NewArrivalSectionProductCard = ({ product, setImg }) => {
                   size={14}
                 />{" "}
                 <small>({reviews_count})</small>
-
-                
-                <div className="">
+                <div className="mt-3">
                   {addeditemid ? (
                     <div className="newArrivalSectionCardFooterBtn">
-                      <button disabled className="btn_after_added_cart">
+                      <button disabled className="new_arrival_section_btn_after_added_cart">
                         <i className="bi bi-cart-plus"></i> Product in Cart
                       </button>
                     </div>
@@ -311,29 +330,6 @@ const NewArrivalSectionProductCard = ({ product, setImg }) => {
               </div>
 
               {/* <Link to={`/new-arrival/${id}`} addeditemid={addeditemid}> */}
-              <Link
-                to={`/new-arrival/${product?.slug}`}
-                addeditemid={addeditemid}
-              >
-                {current_stock > 0 ? (
-                  <div
-                    className="quickView_AddToCart_overlay"
-                    onClick={scrollTop}
-                  >
-                    <div className="overlayViewCartBtn">
-                      <span>
-                        <i className="bi bi-eye-fill"></i> <br /> View Details
-                      </span>
-                    </div>
-                  </div>
-                ) : (
-                  <div className="product_stock_out_overlay d-flex justify-content-center align-items-center">
-                    <h3 className="text-center">
-                      Stock <br /> Out
-                    </h3>
-                  </div>
-                )}
-              </Link>
             </div>
           </>
         </div>
