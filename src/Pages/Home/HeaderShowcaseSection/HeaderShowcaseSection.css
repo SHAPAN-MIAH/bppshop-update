@@ -1,0 +1,16 @@
+.sidebar_container{
+  width: 100%;
+  height: 450px;
+  border: 1px solid gainsboro;
+  overflow-y: scroll;
+  padding: 5px 0px;
+}
+
+.sidebar_container::-webkit-scrollbar {
+  display: none;
+}
+
+.sidebar_container {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

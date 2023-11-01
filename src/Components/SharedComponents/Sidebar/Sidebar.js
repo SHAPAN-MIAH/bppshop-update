@@ -328,16 +328,16 @@ const Sidebar = () => {
 
         <div id="sidebarMenu">
           <ul className="menu">
-            <Link to="/">
+            {/* <Link to="/">
               <li className="homeIcon">
                 <i className="bi bi-house-door-fill"></i>
               </li>
             </Link>
-            <hr />
+            <hr /> */}
             {allCategory?.map((categoryItem, categoryIndex) => {
               return (
                 <ul key={categoryIndex} className="categoryMenu">
-                  <li onClick={() => handleMenuClick(categoryItem.id)}>
+                  <li onMouseEnter={() => handleMenuClick(categoryItem.id)}>
                     <Link
                       to={`/${categoryItem?.slug}`}
                       className={
@@ -364,7 +364,7 @@ const Sidebar = () => {
                     <div>
                       <Link to={`/${categoryItem?.slug}/all`}>
                         <p
-                         onClick={() => activeViewHandler()}
+                         onMouseEnter={() => activeViewHandler()}
                           style={{
                             borderBottom: "1px solid rgb(216, 216, 216)",
                             paddingL: "10px 0px",
@@ -385,7 +385,7 @@ const Sidebar = () => {
                               className="subMenu"
                               id={`subSubCategoryItem ${subcategoryIndex}`}
                             >
-                              <li onClick={() => handleSubMenuClick(subcategory.id)}>
+                              <li onMouseEnter={() => handleSubMenuClick(subcategory.id)}>
                                 <Link
                                   to={`/${categoryItem?.slug}/${subcategory?.slug}`}
                                   className={
@@ -404,7 +404,7 @@ const Sidebar = () => {
                                     to={`/${categoryItem?.slug}/${subcategory?.slug}/all`}
                                   >
                                     <p
-                                    onClick={() => activeViewHandler()}
+                                    onMouseEnter={() => activeViewHandler()}
                                       style={{
                                         borderBottom:
                                           "1px solid rgb(216, 216, 216)",
@@ -422,7 +422,7 @@ const Sidebar = () => {
                                     {subcategory?.childes?.map(
                                       (subsubcategory, subsubcategoryIndex) => {
                                         return (
-                                          <li key={subsubcategoryIndex} onClick={() => handleSubSubMenuClick(subsubcategory.id)}>
+                                          <li key={subsubcategoryIndex} onMouseEnter={() => handleSubSubMenuClick(subsubcategory.id)}>
                                             <Link
                                               to={`/${categoryItem?.slug}/${subcategory?.slug}/${subsubcategory?.slug}`}
                                               className={

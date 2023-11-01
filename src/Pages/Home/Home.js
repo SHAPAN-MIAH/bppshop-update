@@ -5,6 +5,7 @@ import MetaData from "../Layout/MetaData";
 import { useSelector } from "react-redux";
 import DealOfTheDay from "./DealOfTheDaySection/DealOfTheDay";
 import NewArrivalSection from "./NewArrivalSection/NewArrivalSection";
+import HeaderShowcaseSection from "./HeaderShowcaseSection/HeaderShowcaseSection";
 
 const Home = () => {
   const allCategories = useSelector((state) => state.allCategories.categories.data);
@@ -14,6 +15,7 @@ const Home = () => {
     <>
       <div className="home_container">
         <MetaData title="BPPShop" description=""/>
+        <HeaderShowcaseSection/>
         <DealOfTheDay/>
         <Category allCategory={allCategories} loading={loading}/>
         <NewArrivalSection/>

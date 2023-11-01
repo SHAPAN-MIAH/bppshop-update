@@ -7,6 +7,7 @@ import Cart from "../../Components/Cart/Cart";
 import CartDetailsView from "./../../Components/Cart/CartDetailsView/CartDetailsView";
 import { Toaster } from "react-hot-toast";
 import preloader from "../../Assets/Images/loading.gif";
+import Sidebar from "../../Components/SharedComponents/Sidebar/Sidebar";
 
 const Layout = ({ children }) => {
   const suggestedItemContainer = document.querySelector(
@@ -58,8 +59,8 @@ const Layout = ({ children }) => {
       <Nav />
       <div onClick={searchSuggestionCloseHandler}>
         <div onClick={sidebarCloseHandler}>
-          <HomeFilterBtnHeader />
-          <main className="layout_container ">{children}</main>
+          {/* <HomeFilterBtnHeader /> */}
+          <main className="layout_container">{children}</main>
           <CartDetailsView />
           <Cart />
           <Footer />

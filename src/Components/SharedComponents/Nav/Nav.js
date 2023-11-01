@@ -206,7 +206,7 @@ const Nav = () => {
     <>
       <div className="navbar-section">
         <nav className="nav">
-          <Sidebar />
+          {/* <Sidebar /> */}
           <div className="nav-content">
             <div className="logo">
               <Link to="/">
