@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Nav.css";
 import defaultAvatar from "../../../Assets/Images/default-avatar.jpg";
-import bppShopsLogo from "../../../Assets/Images/bpp shop logo 01.png";
+import bppShopsLogo from "../../../Assets/Images/Currection logo-02-01.png";
 import bppShopshortLogo from "../../../Assets/Images/bpp shop logo 02-01-01.png";
 import Sidebar from "../Sidebar/Sidebar";
 import { useDispatch, useSelector } from "react-redux";

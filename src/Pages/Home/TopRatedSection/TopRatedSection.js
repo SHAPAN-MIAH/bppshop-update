@@ -1,19 +1,21 @@
+
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { baseUrl } from "../../../BaseUrl/BaseUrl";
-import NewArrivalSectionProductCard from "./NewArrivalSectionProductCard";
-import "./NewArrivalSection.css";
+import "../NewArrivalSection/NewArrivalSection.css";
 import Slider from "react-slick";
 import newArrivalBanner from "../../../Assets/Images/newArrivalBanner.jpg";
 import { Link } from "react-router-dom";
+import TopRatedProductCard from "../../TopRated/TopRatedProductCard";
+import NewArrivalSectionProductCard from "../NewArrivalSection/NewArrivalSectionProductCard";
 
-const NewArrivalSection = () => {
+const TopRatedSection = () => {
   const [newArrivalProduct, setNewArrivalProduct] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     axios
-      .get(`${baseUrl}/products/latest?limit=${16}&offset=${1}`)
+      .get(`${baseUrl}/products/top-rated?limit=${16}&offset=${1}`)
       .then((response) => {
         response && setLoading(false);
         setNewArrivalProduct(response.data.products);
@@ -80,8 +82,8 @@ const NewArrivalSection = () => {
             <div className="col-md-9">
               <div>
                 <div className="new_arrival_section_product_content_header">
-                  <h4>New Arrival</h4>
-                  <Link to="/new-arrival">
+                  <h4>Top Rated</h4>
+                  <Link to="/top-rated">
                     <button
                       className="new_arrival_section_product_view_more_btn"
                       type=""
@@ -109,4 +111,4 @@ const NewArrivalSection = () => {
   );
 };
 
-export default NewArrivalSection;
+export default TopRatedSection;

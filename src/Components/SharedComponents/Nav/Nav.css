@@ -54,7 +54,7 @@
   width: 11em;
   cursor: pointer;
   transition: all 1s;
-  border-radius: 30px;
+  /* border-radius: 30px; */
 }
 .bppshopShortLogo {
   width: 40px;
