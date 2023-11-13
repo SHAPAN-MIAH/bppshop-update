@@ -103,8 +103,18 @@
 .sidebar-Icon {
   border-radius: 2px;
 }
+.categoryMenu{
+  position: relative;
+}
 .categoryMenuActive{
   /* display: none; */
+}
+.submenu_container{
+  width: 100%;
+  position: absolute;
+  background: #fff;
+  margin-left: 40%;
+  /* z-index: 9999999 !important; */
 }
 .subMenu {
   border-left: 1px solid rgb(216, 216, 216);

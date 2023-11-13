@@ -9,6 +9,9 @@ import HeaderShowcaseSection from "./HeaderShowcaseSection/HeaderShowcaseSection
 import BestSellingSection from "./BestSellingSection/BestSellingSection";
 import DiscountProductSection from "./DiscountProductSection/DiscountProductSection";
 import TopRatedSection from "./TopRatedSection/TopRatedSection";
+import BrandSection from "./BrandSection/BrandSection";
+import StoreSection from "./StoreSection/StoreSection";
+import OfferBrandingSection from "./OfferBrandingSection/OfferBrandingSection";
 
 const Home = () => {
   const allCategories = useSelector((state) => state.allCategories.categories.data);
@@ -22,8 +25,11 @@ const Home = () => {
         <DealOfTheDay/>
         <Category allCategory={allCategories} loading={loading}/>
         <NewArrivalSection/>
+        <BrandSection/>
         <BestSellingSection/>
+        <StoreSection/>
         <TopRatedSection/>
+        <OfferBrandingSection/>
         <DiscountProductSection/>
       </div>
     </>

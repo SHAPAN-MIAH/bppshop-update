@@ -563,7 +563,7 @@ const Sidebar = () => {
             {allCategory?.map((categoryItem, categoryIndex) => {
               return (
                 <ul key={categoryIndex} className="categoryMenu">
-                  <li onMouseEnter={() => handleMenuClick(categoryItem.id)}>
+                  <li onMouseOver={() => handleMenuClick(categoryItem.id)}>
                     <Link
                       to={`/${categoryItem?.slug}`}
                       className={

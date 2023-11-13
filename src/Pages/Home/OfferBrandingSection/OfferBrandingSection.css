@@ -1,0 +1,10 @@
+.offer_branding_section {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+.offer_branding_section img {
+  width: 100%;
+}
+ 

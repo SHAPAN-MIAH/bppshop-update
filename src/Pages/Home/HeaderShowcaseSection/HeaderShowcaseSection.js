@@ -25,6 +25,7 @@ const HeaderShowcaseSection = () => {
         <div className="header_showcase_section_container">
           <div className="row">
             <div className="col-md-3">
+              {/* <div className="header_showcase_section_sidebar"></div> */}
               <div className="sidebar_container">
                 <Sidebar />
               </div>

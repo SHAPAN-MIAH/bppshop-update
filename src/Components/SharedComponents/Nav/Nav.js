@@ -2,7 +2,8 @@ import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Nav.css";
 import defaultAvatar from "../../../Assets/Images/default-avatar.jpg";
-import bppShopsLogo from "../../../Assets/Images/Currection logo-02-01.png";
+// import bppShopsLogo from "../../../Assets/Images/Currection logo-02-01.png";
+import bppShopsLogo from "../../../Assets/Images/Orenge logo.png";
 import bppShopshortLogo from "../../../Assets/Images/bpp shop logo 02-01-01.png";
 import Sidebar from "../Sidebar/Sidebar";
 import { useDispatch, useSelector } from "react-redux";
@@ -264,6 +265,28 @@ const Nav = () => {
             {/* <div className="helpLine"> 
             Help Line <i className="bi bi-headset"></i> <span> 0177775467</span>
             </div> */}
+
+            <div className="partner_zone">
+              <div
+                className="partner_zone_dropdown_btn"
+                type="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Partner Zone <i className="bi bi-chevron-down"></i>
+              </div>
+                <div className="dropdown-menu partner_zone_dropdown">
+                 
+                  <Link to="/">
+                    <li className="dropdown-item mt-1">Become a Seller</li>
+                  </Link>
+                  <Link to="/">
+                    <li className="dropdown-item mt-1">Become a Agent</li>
+                  </Link>
+                </div>
+            </div>
+
+
 
             <div className="userProfileTab">
               <div
