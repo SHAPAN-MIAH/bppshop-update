@@ -12,6 +12,8 @@ import TopRatedSection from "./TopRatedSection/TopRatedSection";
 import BrandSection from "./BrandSection/BrandSection";
 import StoreSection from "./StoreSection/StoreSection";
 import OfferBrandingSection from "./OfferBrandingSection/OfferBrandingSection";
+import AppBrandingSection from "./AppBrandingSection/AppBrandingSection";
+import AllProductSection from "./AllProductSection/AllProductSection";
 
 const Home = () => {
   const allCategories = useSelector((state) => state.allCategories.categories.data);
@@ -31,6 +33,8 @@ const Home = () => {
         <TopRatedSection/>
         <OfferBrandingSection/>
         <DiscountProductSection/>
+        <AppBrandingSection/>
+        <AllProductSection/>
       </div>
     </>
   );

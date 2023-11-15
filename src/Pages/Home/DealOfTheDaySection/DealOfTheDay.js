@@ -67,6 +67,8 @@ const DealOfTheDay = () => {
           ...style,
           display: "block",
           background: "gray",
+          width: "25px",
+          height: "25px",
           borderRadius: "50px",
         }}
         onClick={onClick}
@@ -83,7 +85,9 @@ const DealOfTheDay = () => {
           ...style,
           display: "block",
           background: "gray",
-          borderRadius: "50px",
+          width: "25px",
+          height: "25px",
+          borderRadius: "50px"
         }}
         onClick={onClick}
       />

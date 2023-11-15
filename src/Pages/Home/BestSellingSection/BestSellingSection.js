@@ -68,6 +68,8 @@ const BestSellingSection = () => {
           ...style,
           display: "block",
           background: "gray",
+          width: "27px",
+          height: "27px",
           borderRadius: "50px",
         }}
         onClick={onClick}
@@ -84,6 +86,8 @@ const BestSellingSection = () => {
           ...style,
           display: "block",
           background: "gray",
+          width: "27px",
+          height: "27px",
           borderRadius: "50px",
         }}
         onClick={onClick}

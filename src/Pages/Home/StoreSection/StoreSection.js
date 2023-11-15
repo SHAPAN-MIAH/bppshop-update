@@ -1,5 +1,3 @@
-
-
 import React from "react";
 import adBanner from "../../../Assets/Images/8487798 2 (1).png";
 import { useState } from "react";
@@ -9,6 +7,7 @@ import { baseUrl } from "./../../../BaseUrl/BaseUrl";
 import { Link } from "react-router-dom";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import defaultImg from "../../../Assets/Images/noImg-default.png";
+import "./StoreSection.css";
 
 const StoreSection = () => {
   const [allSellerStore, setAllSellerStore] = useState([]);
@@ -20,11 +19,11 @@ const StoreSection = () => {
 
   const fetchData = () => {
     axios
-    .get(`${baseUrl}/seller/all?limit=${16}&offset=${1}`)
-    .then((response) => {
-      response && setLoading(false);
-      setAllSellerStore(response?.data?.data);
-    })
+      .get(`${baseUrl}/seller/all?limit=${16}&offset=${1}`)
+      .then((response) => {
+        response && setLoading(false);
+        setAllSellerStore(response?.data?.data);
+      })
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
@@ -49,26 +48,26 @@ const StoreSection = () => {
             View More
           </button>
         </div>
-        <div className="brand_section_content_container mt-2">
+        <div className="store_section_content_container mt-2">
           <SkeletonTheme baseColor="#DDDDDD" highlightColor="#e3e3e3">
             {loading ? (
               <>
-                <Skeleton height="250px" borderRadius="10px" count={1} />
-                <Skeleton height="250px" borderRadius="10px" count={1} />
-                <Skeleton height="250px" borderRadius="10px" count={1} />
-                <Skeleton height="250px" borderRadius="10px" count={1} />
-                <Skeleton height="250px" borderRadius="10px" count={1} />
-                <Skeleton height="250px" borderRadius="10px" count={1} />
-                <Skeleton height="250px" borderRadius="10px" count={1} />
-                <Skeleton height="250px" borderRadius="10px" count={1} />
-                <Skeleton height="250px" borderRadius="10px" count={1} />
-                <Skeleton height="250px" borderRadius="10px" count={1} />
-                <Skeleton height="250px" borderRadius="10px" count={1} />
-                <Skeleton height="250px" borderRadius="10px" count={1} />
-                <Skeleton height="250px" borderRadius="10px" count={1} />
-                <Skeleton height="250px" borderRadius="10px" count={1} />
-                <Skeleton height="250px" borderRadius="10px" count={1} />
-                <Skeleton height="250px" borderRadius="10px" count={1} />
+                <Skeleton height="130px" borderRadius="10px" count={1} />
+                <Skeleton height="130px" borderRadius="10px" count={1} />
+                <Skeleton height="130px" borderRadius="10px" count={1} />
+                <Skeleton height="130px" borderRadius="10px" count={1} />
+                <Skeleton height="130px" borderRadius="10px" count={1} />
+                <Skeleton height="130px" borderRadius="10px" count={1} />
+                <Skeleton height="130px" borderRadius="10px" count={1} />
+                <Skeleton height="130px" borderRadius="10px" count={1} />
+                <Skeleton height="130px" borderRadius="10px" count={1} />
+                <Skeleton height="130px" borderRadius="10px" count={1} />
+                <Skeleton height="130px" borderRadius="10px" count={1} />
+                <Skeleton height="130px" borderRadius="10px" count={1} />
+                <Skeleton height="130px" borderRadius="10px" count={1} />
+                <Skeleton height="130px" borderRadius="10px" count={1} />
+                <Skeleton height="130px" borderRadius="10px" count={1} />
+                <Skeleton height="130px" borderRadius="10px" count={1} />
               </>
             ) : (
               allSellerStore &&
@@ -80,22 +79,17 @@ const StoreSection = () => {
                     SellerNameSave(sellerStore?.name);
                   }}
                 >
-                  <div className="seller-store-content">
-                    <div className="seller-store-banner">
+                  <div className="seller_store_section_content">
+                    <img
+                      src={`https://backend.bppshop.com.bd/storage/shop/banner/${sellerStore?.banner}`}
+                      alt=""
+                    />
+                    <div className="seller_store_profile">
                       <img
-                        src={`https://backend.bppshop.com.bd/storage/shop/banner/${sellerStore?.banner}`}
+                        src={`https://backend.bppshop.com.bd/storage/shop/${sellerStore?.image}`}
                         alt=""
                       />
-
-                      <div className="seller-store-profile-container">
-                        <div className="seller-profile-image">
-                          <img
-                            src={`https://backend.bppshop.com.bd/storage/shop/${sellerStore?.image}`}
-                            alt=""
-                          />
-                        </div>
-                        <p className="sellerName">{sellerStore?.name}</p>
-                      </div>
+                      <p className="seller_store_profile_name">{sellerStore?.name}</p>
                     </div>
                   </div>
                 </Link>

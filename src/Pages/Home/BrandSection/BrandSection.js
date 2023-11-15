@@ -54,22 +54,22 @@ const BrandSection = () => {
           <SkeletonTheme baseColor="#DDDDDD" highlightColor="#e3e3e3">
             {loading ? (
               <>
-                <Skeleton height="250px" borderRadius="10px" count={1} />
-                <Skeleton height="250px" borderRadius="10px" count={1} />
-                <Skeleton height="250px" borderRadius="10px" count={1} />
-                <Skeleton height="250px" borderRadius="10px" count={1} />
-                <Skeleton height="250px" borderRadius="10px" count={1} />
-                <Skeleton height="250px" borderRadius="10px" count={1} />
-                <Skeleton height="250px" borderRadius="10px" count={1} />
-                <Skeleton height="250px" borderRadius="10px" count={1} />
-                <Skeleton height="250px" borderRadius="10px" count={1} />
-                <Skeleton height="250px" borderRadius="10px" count={1} />
-                <Skeleton height="250px" borderRadius="10px" count={1} />
-                <Skeleton height="250px" borderRadius="10px" count={1} />
-                <Skeleton height="250px" borderRadius="10px" count={1} />
-                <Skeleton height="250px" borderRadius="10px" count={1} />
-                <Skeleton height="250px" borderRadius="10px" count={1} />
-                <Skeleton height="250px" borderRadius="10px" count={1} />
+                <Skeleton height="120px" borderRadius="10px" count={1} />
+                <Skeleton height="120px" borderRadius="10px" count={1} />
+                <Skeleton height="120px" borderRadius="10px" count={1} />
+                <Skeleton height="120px" borderRadius="10px" count={1} />
+                <Skeleton height="120px" borderRadius="10px" count={1} />
+                <Skeleton height="120px" borderRadius="10px" count={1} />
+                <Skeleton height="120px" borderRadius="10px" count={1} />
+                <Skeleton height="120px" borderRadius="10px" count={1} />
+                <Skeleton height="120px" borderRadius="10px" count={1} />
+                <Skeleton height="120px" borderRadius="10px" count={1} />
+                <Skeleton height="120px" borderRadius="10px" count={1} />
+                <Skeleton height="120px" borderRadius="10px" count={1} />
+                <Skeleton height="120px" borderRadius="10px" count={1} />
+                <Skeleton height="120px" borderRadius="10px" count={1} />
+                <Skeleton height="120px" borderRadius="10px" count={1} />
+                <Skeleton height="120px" borderRadius="10px" count={1} />
               </>
             ) : (
               brands &&
@@ -83,7 +83,7 @@ const BrandSection = () => {
                 >
                   <div className="brand_section_content">
                     {brand.image == "def.png" ? (
-                      <img width={100} src={defaultImg} alt="" />
+                      <img src={defaultImg} alt="" />
                     ) : (
                       <img
                         src={`https://backend.bppshop.com.bd/storage/brand/${brand?.image}`}

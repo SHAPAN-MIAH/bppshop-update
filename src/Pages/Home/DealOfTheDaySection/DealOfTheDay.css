@@ -29,3 +29,14 @@
 .deal_of_the_day_product_view_more_btn:hover {
   color: #7e7e7e;
 }
+
+.slick-prev{
+  left: -30px;
+}
+.slick-next:before, .slick-prev:before {
+  font-size: 35px;
+  line-height: .9;
+  margin-left: -3px;
+  opacity: 1;
+  color: #fff;
+}

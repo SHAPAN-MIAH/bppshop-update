@@ -5,22 +5,25 @@
 .brand_section_content_container{
   display: grid;
   grid-template-columns: repeat(8, 1fr);
-  grid-gap: 10px ;
+  grid-gap: 12px ;
 }
 
 .brand_section_content{
   width: 100%;
+  height: 120px;
   border: 1px solid gainsboro;
   border-radius: 5px;
   font-size: 14px;
   text-align: center;
+  color: #6e6e6e;
 
 }
 .brand_section_content:hover{
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 .brand_section_content img{
-  width: 100px;
+  width: 70px;
+  /* margin-top: 20px; */
 }
 
 .brand_section_content_container_header{
