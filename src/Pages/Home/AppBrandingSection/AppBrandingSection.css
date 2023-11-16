@@ -1,8 +1,9 @@
 .app_branding_section{
-  padding: 60px 0px 80px 0px;
+  /* padding: 50px 0px; */
+  margin-bottom: 50px;
 }
 .app_branding_section_container{
-  height: 270px;
+  height: 250px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   /* background: #f0f0f0; */
@@ -11,9 +12,7 @@
   position: relative;
 }
 .app_branding_content_one img {
-  width: 200px;
-  position: absolute;
-  margin-top: -10px;
+  width: 100px;
 }
 .app_branding_content{
   display: flex;

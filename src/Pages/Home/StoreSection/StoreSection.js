@@ -19,7 +19,7 @@ const StoreSection = () => {
 
   const fetchData = () => {
     axios
-      .get(`${baseUrl}/seller/all?limit=${16}&offset=${1}`)
+      .get(`${baseUrl}/seller/all?limit=${12}&offset=${1}`)
       .then((response) => {
         response && setLoading(false);
         setAllSellerStore(response?.data?.data);
@@ -34,12 +34,11 @@ const StoreSection = () => {
   };
 
   return (
-    <div className="brand_section mt-5">
+    <div className="store_section ">
       <div className="brand_section_container">
         <div className="brand_section_ad_banner">
           <img src={adBanner} alt="" />
         </div>
-        <br />
         <br />
 
         <div className="brand_section_content_container_header">
@@ -52,22 +51,18 @@ const StoreSection = () => {
           <SkeletonTheme baseColor="#DDDDDD" highlightColor="#e3e3e3">
             {loading ? (
               <>
-                <Skeleton height="130px" borderRadius="10px" count={1} />
-                <Skeleton height="130px" borderRadius="10px" count={1} />
-                <Skeleton height="130px" borderRadius="10px" count={1} />
-                <Skeleton height="130px" borderRadius="10px" count={1} />
-                <Skeleton height="130px" borderRadius="10px" count={1} />
-                <Skeleton height="130px" borderRadius="10px" count={1} />
-                <Skeleton height="130px" borderRadius="10px" count={1} />
-                <Skeleton height="130px" borderRadius="10px" count={1} />
-                <Skeleton height="130px" borderRadius="10px" count={1} />
-                <Skeleton height="130px" borderRadius="10px" count={1} />
-                <Skeleton height="130px" borderRadius="10px" count={1} />
-                <Skeleton height="130px" borderRadius="10px" count={1} />
-                <Skeleton height="130px" borderRadius="10px" count={1} />
-                <Skeleton height="130px" borderRadius="10px" count={1} />
-                <Skeleton height="130px" borderRadius="10px" count={1} />
-                <Skeleton height="130px" borderRadius="10px" count={1} />
+                <Skeleton height="150px" borderRadius="10px" count={1} />
+                <Skeleton height="150px" borderRadius="10px" count={1} />
+                <Skeleton height="150px" borderRadius="10px" count={1} />
+                <Skeleton height="150px" borderRadius="10px" count={1} />
+                <Skeleton height="150px" borderRadius="10px" count={1} />
+                <Skeleton height="150px" borderRadius="10px" count={1} />
+                <Skeleton height="150px" borderRadius="10px" count={1} />
+                <Skeleton height="150px" borderRadius="10px" count={1} />
+                <Skeleton height="150px" borderRadius="10px" count={1} />
+                <Skeleton height="150px" borderRadius="10px" count={1} />
+                <Skeleton height="150px" borderRadius="10px" count={1} />
+                <Skeleton height="150px" borderRadius="10px" count={1} />
               </>
             ) : (
               allSellerStore &&

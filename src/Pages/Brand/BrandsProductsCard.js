@@ -237,7 +237,7 @@ const BrandsProductsCard = ({ product, setImg }) => {
                 )}
               </div>
               <div className="product-card-body-content">
-                <small>{name.toString().substring(0, 26)}...</small>
+                {/* <small>{name.toString().substring(0, 10)}...</small> */}
                 <br />
                 <small>
                   {newChoiceOption && (

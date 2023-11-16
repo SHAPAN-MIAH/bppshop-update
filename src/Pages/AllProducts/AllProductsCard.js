@@ -143,11 +143,9 @@ const AllProductsCard = ({ product, setImg }) => {
 
   // Add to cart functionality.............................
   const addToCartHandler = (product, quantity) => {
-
     if (!token) {
       dispatch(addItemsToCart(product, quantity));
       openModal();
-
     }
 
     if (isAuthenticated == true && token) {
@@ -190,13 +188,11 @@ const AllProductsCard = ({ product, setImg }) => {
           : dispatch(addItemsToCartAfterLogin(addItemsToCartDataWithoutColor));
       }
 
-      addToCartOverlyLoading()
+      addToCartOverlyLoading();
     }
-    
   };
 
   const addToCartOverlyLoading = () => {
-    
     const addToCartLoaderOverlay = document.querySelector(
       ".addToCart_loader_overlay"
     );
@@ -210,10 +206,7 @@ const AllProductsCard = ({ product, setImg }) => {
     );
 
     addToCartLoaderOverlay.style.display = "none";
-
   }
-
-  
 
   const scrollTop = () => {
     document.body.scrollTop = 0;
@@ -221,8 +214,8 @@ const AllProductsCard = ({ product, setImg }) => {
   };
 
   const imgReset = () => {
-    setImg("")
-  }
+    setImg("");
+  };
 
   return (
     <>
@@ -243,23 +236,23 @@ const AllProductsCard = ({ product, setImg }) => {
                 )}
               </div>
               <div className="product-card-body-content">
-                
-                <small>{name.toString().substring(0, 30)}...</small>
+                <small>{name.toString().substring(0, 25)}..</small>
                 <br />
-                <small>
-                  {newChoiceOption && (
-                    <span className="unitPrice_view">
-                      {newChoiceOption?.options[0]} : {newChoiceOption?.title}
-                    </span>
-                  )}
-                </small>
                 <div className="product-card-body-content-unit-price">
+                  <small>
+                    {newChoiceOption && (
+                      <span className="unitPrice_view">
+                        {newChoiceOption?.options[0]} {newChoiceOption?.title}
+                      </span>
+                    )}
+
+                  </small>
+                  <span> --</span>
                   {discount ? (
                     <span>
-                      <b> &#2547; {unit_price - discount} </b>
+                      <b>&#2547; {unit_price - discount}</b>
                       <del>
                         <b className="text-danger ms-2">
-                          {" "}
                           &#2547; {unit_price}
                         </b>
                       </del>
@@ -277,8 +270,11 @@ const AllProductsCard = ({ product, setImg }) => {
               </div>
 
               {/* <Link to={`/all-products/${id}`} addeditemid={addeditemid}> */}
-              <Link to={`/all-products/${product.slug}`} addeditemid={addeditemid}>
-              {current_stock > 0 ? (
+              <Link
+                to={`/all-products/${product.slug}`}
+                addeditemid={addeditemid}
+              >
+                {current_stock > 0 ? (
                   <div
                     className="quickView_AddToCart_overlay"
                     onClick={scrollTop}

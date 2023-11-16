@@ -274,7 +274,7 @@ const NewArrivalSectionProductCard = ({ product, setImg }) => {
               </div>
 
               <div className="new_arrival_section_product-card-body-content">
-                <h6>{name.toString().substring(0, 26)}...</h6>
+                <h6>{name.toString().substring(0, 20)}...</h6>
                 <small className="">
                   {newChoiceOption && (
                     <span className="new_arrival_section_unitPrice_view">

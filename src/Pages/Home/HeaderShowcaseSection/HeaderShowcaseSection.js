@@ -23,25 +23,25 @@ const HeaderShowcaseSection = () => {
     <>
       <div className="header_showcase_section">
         <div className="header_showcase_section_container">
-          <div className="row">
-            <div className="col-md-3">
+          {/* <div className="row"> */}
+            {/* <div className="col-md-2"> */}
               {/* <div className="header_showcase_section_sidebar"></div> */}
               <div className="sidebar_container">
                 <Sidebar />
               </div>
-            </div>
-            <div className="col-md-9">
+            {/* </div> */}
+            {/* <div className="col-md-10"> */}
               <div className="header_showcase_section_banner">
                 <Slider {...settings}>
-                  <img height={450} src={banner1} alt="" />
-                  <img height={450} src={banner2} alt="" />
-                  <img height={450} src={banner3} alt="" />
-                  <img height={450} src={banner4} alt="" />
-                  <img height={450} src={banner5} alt="" />
+                  <img height={400} src={banner1} alt="" />
+                  <img height={400} src={banner2} alt="" />
+                  <img height={400} src={banner3} alt="" />
+                  <img height={400} src={banner4} alt="" />
+                  <img height={400} src={banner5} alt="" />
                 </Slider>
               </div>
-            </div>
-          </div>
+            {/* </div> */}
+          {/* </div> */}
         </div>
       </div>
     </>

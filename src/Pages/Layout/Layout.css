@@ -19,7 +19,8 @@
   display: none;
 }
 .layout_container {
-  width: 75%;
+  /* width: 75%; */
+  width: 1320px;
   margin: auto;
   min-height: 30vh;
   padding-top: 100px;

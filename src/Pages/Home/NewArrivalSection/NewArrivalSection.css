@@ -14,30 +14,21 @@
   display: flex;
   justify-content: space-between;
   border-bottom: 2px solid gainsboro;
-  margin: 7px 0px;
+  margin: 0px 0px 5px 0px;
 }
 .new_arrival_section_product_view_more_btn {
   border: none;
   background: none;
   font-size: 14px;
   font-weight: 600;
-  color: #e77025;
+  color: #ff8800;
 }
 .new_arrival_section_product_view_more_btn:hover {
   color: #7e7e7e;
 }
-
-
-.new_arrival_section_productImg_container {
-  width: 220px;
-  height: 100%;
-  border-right: 1px solid rgb(236, 236, 236);
-  position: relative;
-}
-
-.new_arrival_banner{
-  width: 322px;
-  height: 520px;
+.new_arrival_banner {
+  width: 305px;
+  height: 460px;
   overflow: hidden;
   border-radius: 10px;
 }
@@ -45,14 +36,28 @@
   width: 100%;
   height: 100%;
 }
+.new_arrival_section_product_slider{
+  padding-top: 7px;
+}
+.new_arrival_section_productImg_container {
+  width: 200px;
+  height: 100%;
+  border-right: 1px solid rgb(236, 236, 236);
+  position: relative;
+}
 
 .new_arrival_section_product-card-body-content {
   padding: 20px;
 }
+.new_arrival_section_product-card-body-content
+  .product-card-body-content-unit-price {
+  display: flex;
+  justify-content: left;
+}
 .new_arrival_section_unitPrice_view {
   font-size: 15px;
   font-weight: 600;
-  color: #e77025;
+  color: #ff8800;
 }
 .new_arrival_section_btn_before_add_cart,
 .new_arrival_section_btn_before_add_cart_stockOut,
@@ -68,7 +73,7 @@
 
 .new_arrival_section_btn_before_add_cart {
   /* background: #ef8341; */
-  background: #e77025;
+  background: #ff8800;
   padding: 7px 12px;
 }
 .new_arrival_section_btn_before_add_cart_stockOut {

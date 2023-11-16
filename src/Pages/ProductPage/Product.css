@@ -1,8 +1,8 @@
 
 .product-content {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-gap: 15px;
+  grid-template-columns: repeat(6, 1fr);
+  grid-gap: 10px;
   min-height: 30vh;
   /* position: relative; */
 }

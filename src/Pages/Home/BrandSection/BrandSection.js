@@ -19,7 +19,7 @@ const BrandSection = () => {
 
   const fetchData = () => {
     axios
-      .get(`${baseUrl}/brands?limit=${16}&offset=${1}`)
+      .get(`${baseUrl}/brands?limit=${12}&offset=${1}`)
       .then((response) => {
         response && setLoading(false);
         setBrands(response?.data?.data?.data);
@@ -36,10 +36,9 @@ const BrandSection = () => {
   return (
     <div className="brand_section">
       <div className="brand_section_container">
-        <div className="brand_section_ad_banner">
+        <div className="brand_section_ad_banner ">
           <img src={adBanner} alt="" />
         </div>
-        <br />
         <br />
 
         <div className="brand_section_content_container_header">
@@ -54,22 +53,18 @@ const BrandSection = () => {
           <SkeletonTheme baseColor="#DDDDDD" highlightColor="#e3e3e3">
             {loading ? (
               <>
-                <Skeleton height="120px" borderRadius="10px" count={1} />
-                <Skeleton height="120px" borderRadius="10px" count={1} />
-                <Skeleton height="120px" borderRadius="10px" count={1} />
-                <Skeleton height="120px" borderRadius="10px" count={1} />
-                <Skeleton height="120px" borderRadius="10px" count={1} />
-                <Skeleton height="120px" borderRadius="10px" count={1} />
-                <Skeleton height="120px" borderRadius="10px" count={1} />
-                <Skeleton height="120px" borderRadius="10px" count={1} />
-                <Skeleton height="120px" borderRadius="10px" count={1} />
-                <Skeleton height="120px" borderRadius="10px" count={1} />
-                <Skeleton height="120px" borderRadius="10px" count={1} />
-                <Skeleton height="120px" borderRadius="10px" count={1} />
-                <Skeleton height="120px" borderRadius="10px" count={1} />
-                <Skeleton height="120px" borderRadius="10px" count={1} />
-                <Skeleton height="120px" borderRadius="10px" count={1} />
-                <Skeleton height="120px" borderRadius="10px" count={1} />
+                <Skeleton height="150px" borderRadius="10px" count={1} />
+                <Skeleton height="150px" borderRadius="10px" count={1} />
+                <Skeleton height="150px" borderRadius="10px" count={1} />
+                <Skeleton height="150px" borderRadius="10px" count={1} />
+                <Skeleton height="150px" borderRadius="10px" count={1} />
+                <Skeleton height="150px" borderRadius="10px" count={1} />
+                <Skeleton height="150px" borderRadius="10px" count={1} />
+                <Skeleton height="150px" borderRadius="10px" count={1} />
+                <Skeleton height="150px" borderRadius="10px" count={1} />
+                <Skeleton height="150px" borderRadius="10px" count={1} />
+                <Skeleton height="150px" borderRadius="10px" count={1} />
+                <Skeleton height="150px" borderRadius="10px" count={1} />
               </>
             ) : (
               brands &&
@@ -81,7 +76,7 @@ const BrandSection = () => {
                     brandNameSave(brand.name);
                   }}
                 >
-                  <div className="brand_section_content">
+                  <div className="brand_section_content pt-3">
                     {brand.image == "def.png" ? (
                       <img src={defaultImg} alt="" />
                     ) : (

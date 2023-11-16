@@ -44,8 +44,8 @@ const NewArrivalSection = () => {
           ...style,
           display: "block",
           background: "gray",
-          width: "27px",
-          height: "27px",
+          width: "22px",
+          height: "25px",
           borderRadius: "50px",
         }}
         onClick={onClick}
@@ -62,8 +62,8 @@ const NewArrivalSection = () => {
           ...style,
           display: "block",
           background: "gray",
-          width: "27px",
-          height: "27px",
+          width: "22px",
+          height: "25px",
           borderRadius: "50px",
         }}
         onClick={onClick}
@@ -94,9 +94,9 @@ const NewArrivalSection = () => {
                     </button>
                   </Link>
                 </div>
-                <Slider {...settings}>
+                <Slider {...settings} className="new_arrival_section_product_slider">
                   {newArrivalProduct?.map((product) => (
-                    <div className="new_arrival_section_product_content p-2">
+                    <div className="new_arrival_section_product_content px-1">
                       <NewArrivalSectionProductCard
                         key={product?.id}
                         product={product}

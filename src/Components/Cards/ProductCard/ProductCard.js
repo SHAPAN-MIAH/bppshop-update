@@ -205,9 +205,9 @@ const ProductCard = ({ product, setImg, allCategoryProductCard, allSubCategoryPr
                 <div className="product-card-body-content-unit-price">
                   {discount ? (
                     <span>
-                      <b> &#2547; {unit_price - discount} </b>
+                      <b> &#2547; {unit_price - discount} -</b>
                       <del>
-                        <b className="text-danger ms-2">
+                        <b className="text-danger ">
                           {" "}
                           &#2547; {unit_price}
                         </b>

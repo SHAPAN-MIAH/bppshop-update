@@ -28,7 +28,7 @@ const DiscountProductSection = () => {
   const settings = {
     // dots: true,
     infinite: true,
-    slidesToShow: 4,
+    slidesToShow: 5,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3000,
@@ -72,8 +72,8 @@ const DiscountProductSection = () => {
           ...style,
           display: "block",
           background: "gray",
-          width: "27px",
-          height: "27px",
+          width: "22px",
+          height: "25px",
           borderRadius: "50px",
         }}
         onClick={onClick}
@@ -90,8 +90,8 @@ const DiscountProductSection = () => {
           ...style,
           display: "block",
           background: "gray",
-          width: "27px",
-          height: "27px",
+          width: "20px",
+          height: "25px",
           borderRadius: "50px",
         }}
         onClick={onClick}
@@ -116,7 +116,7 @@ const DiscountProductSection = () => {
               </div>
               <Slider {...settings}>
                 {dealOfDayProduct?.map((product) => (
-                  <div className="p-2">
+                  <div className="p-1">
                     <AllProductsCard key={product?.id} product={product} />
                   </div>
                 ))}

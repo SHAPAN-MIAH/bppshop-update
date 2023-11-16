@@ -23,7 +23,7 @@ const DealOfTheDay = () => {
   const settings = {
     // dots: true,
     infinite: true,
-    slidesToShow: 4,
+    slidesToShow: 5,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3000,
@@ -67,9 +67,10 @@ const DealOfTheDay = () => {
           ...style,
           display: "block",
           background: "gray",
-          width: "25px",
+          width: "22px",
           height: "25px",
           borderRadius: "50px",
+          textAlign: "center"
         }}
         onClick={onClick}
       />
@@ -85,7 +86,7 @@ const DealOfTheDay = () => {
           ...style,
           display: "block",
           background: "gray",
-          width: "25px",
+          width: "20px",
           height: "25px",
           borderRadius: "50px"
         }}
@@ -111,7 +112,7 @@ const DealOfTheDay = () => {
               </div>
               <Slider {...settings}>
                 {dealOfDayProduct?.map((product) => (
-                  <div className="p-2">
+                  <div className="p-1">
                     <AllProductsCard key={product?.id} product={product} />
                   </div>
                 ))}
