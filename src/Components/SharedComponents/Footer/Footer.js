@@ -1,6 +1,6 @@
 import React from "react";
 import "./Footer.css";
-import logo from "../../../Assets/Images/bpp shop logo fainal.png";
+import logo from "../../../Assets/Images/Orenge logo.png";
 import playstoreIcon from "../../../Assets/Images/images-1.webp";
 import appleIcon from "../../../Assets/Images/Apple-logo-1A9B9F20EA-seeklogo.com.png";
 import { Link } from "react-router-dom";
@@ -11,37 +11,44 @@ const Footer = () => {
       <div className="footer_container_section">
         <div className="footer-content">
           <div className="brand_address_container">
-            <div className="footer_logo">
-              <img src={logo} alt="" />
-            </div>
             <div className="address">
-              <br />
               <h5>Address</h5>
               <p className="address_footer">
-              House 56, Road 1, Block A, Jahurul Islam City, Aftabnagar, Dhaka, Bangladesh
+                House 56, Road 1, Block A, Jahurul Islam City, Aftabnagar,
+                Dhaka, Bangladesh
               </p>
             </div>
 
             <div className="get_in_touch_container">
-              <h5>Start a Conversation__</h5>
+              <h5>Helpline</h5>
               <div className="contact_content">
                 <p>
-                  <i className="bi bi-telephone-fill"></i> +8809610970706
+                  <i className="bi bi-headset"></i> +8809610970706
                 </p>
                 <p>
                   <i className="bi bi-envelope-fill"></i> support@bppshop.com.bd
                 </p>
-                <p>
-                  <i className="bi bi-headset"></i> Support Ticket
-                </p>
               </div>
             </div>
+
+            <div className="social_content">
+                <h5>Join us on</h5>
+                <a href="https://www.facebook.com/bppshopofficial">
+                  <i className="bi bi-facebook"></i>
+                </a>
+                <a href="https://www.youtube.com/@bppshopofficial">
+                  <i className="bi bi-youtube"></i>
+                </a>
+                <i className="bi bi-instagram"></i>
+                <i className="bi bi-twitter"></i>
+              </div>
           </div>
           <div className="special_container">
-            <h5>SPECIAL</h5>
+            <h5>Special Links</h5>
             <div className="special_content_list">
               <ul>
-              <Link to="/new-arrival">
+
+                <Link to="/new-arrival">
                   <li>New Arrival Products</li>
                 </Link>
                 <Link to="/best-selling">
@@ -56,26 +63,42 @@ const Footer = () => {
                 <Link to="/flash-sale">
                   <li>Flash Sale Products</li>
                 </Link>
-                
+
+                <Link to="/">
+                  <li>Daily Deals</li>
+                </Link>
+
+                <Link to="/">
+                  <li>Hot Deals</li>
+                </Link>
+                {/* <Link to="/">
+                  <li>Brands</li>
+                </Link>
+                <Link to="/">
+                  <li>Store</li>
+                </Link> */}
               </ul>
             </div>
           </div>
           <div className="account_shipping_info_container">
-            <h5>ACCOUNT & SHIPPING INFO</h5>
+            <h5>Useful Links</h5>
             <div className="account_shipping_info_list">
               <ul>
-                <Link to="/profile">
-                <li>Profile Info</li>
+                <li>About BppShop</li>
+                <Link to="/terms-condition-english">
+                  <li>Terms & Conditions</li>
                 </Link>
-                <Link to="/profile/orders">
-                <li>Order Info</li>
+                <Link to="/privacy-policy-english">
+                  <li>Privacy Policy</li>
                 </Link>
-                <li>Track order</li>
+                <li>Return & Refund Policy</li>
+                <li>FAQ</li>
               </ul>
             </div>
           </div>
+
           <div className="downloadApp_newsletter_container">
-            <h5>DOWNLOAD OUR APP</h5>
+            <h5>Download App</h5>
             <div className="downloadApp_content">
               <button type="">
                 <img className="appleIcon" width={25} src={appleIcon} alt="" />
@@ -97,53 +120,24 @@ const Footer = () => {
             </div>
             <div className="newsletter_container">
               <h6>NEWSLETTER</h6>
-              <small>
-                Subscribe to our new channel to get latest updates.
-              </small>
+              <small>Subscribe to our new channel to get latest updates.</small>
               <div className="d-flex mt-3">
                 <input type="email" name="" placeholder="Enter Your Email" />
                 <button type="">Subscribe</button>
               </div>
 
-              <div className="social_content">
-                <a href="https://www.facebook.com/bppshopofficial">
-                <i className="bi bi-facebook"></i>
-                </a>
-                <a href="https://www.youtube.com/@bppshopofficial">
-                <i className="bi bi-youtube"></i>
-                </a>
-                <i className="bi bi-instagram"></i>
-                <i className="bi bi-twitter"></i>
-              </div>
+              
             </div>
           </div>
         </div>
-
-        {/* <div className="get_in_touch_container">
-          
-          <h5>--Start a Conversation--</h5>
-          <div className="contact_content">
-            <p>
-              <i className="bi bi-telephone-fill"></i> 01911655303
-            </p>
-            <p>
-              <i className="bi bi-envelope-fill"></i> support@bppshop.com.bd
-            </p>
-            <p>
-              <i className="bi bi-headset"></i> Support Ticket
-            </p>
-          </div>
-        </div> */}
       </div>
 
-      {/* </div> */}
       <div className="bottom_footer_container_section">
         <div className="bottom_footer_content">
-          <div className="bottom_footer_left">© All Right Reserved BPPSHOP</div>
-          <div className="bottom_footer_right">
-            <div className="bottom_term_text"><Link to="/terms-condition-english">Terms & conditions</Link></div>
-            <div className="bottom_privacy_text"><Link to="/privacy-policy-english">Privacy Policy</Link></div>
+          <div className="footer_logo">
+            <img src={logo} alt="" />
           </div>
+          <div className="bottom_footer_left">© All Right Reserved BPPSHOP</div>
         </div>
       </div>
     </>

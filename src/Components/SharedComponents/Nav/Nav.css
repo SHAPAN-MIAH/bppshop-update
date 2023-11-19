@@ -179,12 +179,18 @@
 
 .partner_zone{
   background: #fff;
-  color: #e77025;
+  color: #727272;
   border: 1px solid gainsboro;
   border-radius: 5px;
   padding: 6px 10px ;
 }
-
+.partner_zone_dropdown{
+  margin-top: 8px !important;
+  margin-left: -11px !important;
+}
+.partner_zone_dropdown .dropdown-item {
+  padding: 0px 10px!important;
+}
 .user-profile {
   width: 40px;
   height: 40px;
@@ -193,6 +199,10 @@
 }
 .user-profile img {
   width: 100%;
+}
+.profile_dropdown{
+  width: 250px;
+  margin-left: -209px !important;
 }
 .dropdown-item {
   cursor: pointer;

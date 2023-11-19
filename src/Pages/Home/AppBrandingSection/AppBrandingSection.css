@@ -1,14 +1,13 @@
 .app_branding_section{
-  /* padding: 50px 0px; */
   margin-bottom: 50px;
 }
 .app_branding_section_container{
   height: 250px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  /* background: #f0f0f0; */
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+  background: #f0f0f0;
   border-radius: 15px;
+  border: 1px solid gainsboro;
   position: relative;
 }
 .app_branding_content_one img {
@@ -35,7 +34,7 @@
 .app_branding_content_social_content a{
   width: 30px;
   padding: 0px !important;
-  color: #e77025;
+  color: #ff8800;
   font-size: 20px;
   background: gainsboro;
   border-radius: 50px;
