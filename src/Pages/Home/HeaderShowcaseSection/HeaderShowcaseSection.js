@@ -23,14 +23,9 @@ const HeaderShowcaseSection = () => {
     <>
       <div className="header_showcase_section">
         <div className="header_showcase_section_container">
-          {/* <div className="row"> */}
-            {/* <div className="col-md-2"> */}
-              {/* <div className="header_showcase_section_sidebar"></div> */}
               <div className="sidebar_container">
                 <Sidebar />
               </div>
-            {/* </div> */}
-            {/* <div className="col-md-10"> */}
               <div className="header_showcase_section_banner">
                 <Slider {...settings}>
                   <img height={400} src={banner1} alt="" />
@@ -40,8 +35,6 @@ const HeaderShowcaseSection = () => {
                   <img height={400} src={banner5} alt="" />
                 </Slider>
               </div>
-            {/* </div> */}
-          {/* </div> */}
         </div>
       </div>
     </>

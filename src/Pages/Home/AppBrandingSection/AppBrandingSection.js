@@ -49,7 +49,7 @@ const AppBrandingSection = () => {
         </div>
         <div className="app_branding_content app_branding_content_last">
           <div className="">
-            <h4>Help Line</h4>
+            <h4>Helpline</h4>
             <p>
               {" "}
               <i className="bi bi-telephone-fill"></i> 8809610970706

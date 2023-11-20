@@ -54,6 +54,8 @@ const ProductDetailsPage = () => {
   const { slug, subSlug, subSubSlug, id } = useParams();
   const [productDetail, setProductDetail] = useState([]);
   const [quantityCount, setQuantityCount] = useState(1);
+
+  console.log(quantityCount);
   
   // const [loading, setLoading] = useState(true);
   const [variantRes, setVariantRes] = useState({});
@@ -802,9 +804,11 @@ const ProductDetailsPage = () => {
                     ) : (
                       <h5>
                         Total Price: &#2547;{" "}
-                        {variantRes?.price
-                          ? variantRes?.price
-                          : quantityCount *
+                        {
+                        // variantRes?.price
+                        //   ? variantRes?.price
+                        //   : 
+                          quantityCount *
                             (productDetail?.unit_price -
                               productDetail?.discount)}
                       </h5>

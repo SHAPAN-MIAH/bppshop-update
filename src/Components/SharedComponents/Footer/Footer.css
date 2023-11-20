@@ -96,6 +96,8 @@
   outline: none;
   padding: 10px 35px 10px 15px;
   font-size: 15px;
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
 }
 .newsletter_container button{
   border: none;
@@ -104,6 +106,8 @@
   font-size: 15px;
   color: #ffffff;
   background: #ff8800;
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
 }
 .newsletter_container button:hover{
   background: #0c9ed8;
