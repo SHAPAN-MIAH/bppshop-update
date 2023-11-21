@@ -55,6 +55,9 @@ const AllProductSection = () => {
               <Skeleton height="335px" borderRadius="10px" count={1} />
               <Skeleton height="335px" borderRadius="10px" count={1} />
               <Skeleton height="335px" borderRadius="10px" count={1} />
+              <Skeleton height="335px" borderRadius="10px" count={1} />
+              <Skeleton height="335px" borderRadius="10px" count={1} />
+              <Skeleton height="335px" borderRadius="10px" count={1} />
             </>
           ) : (
             updateAllProduct?.map((product) => (

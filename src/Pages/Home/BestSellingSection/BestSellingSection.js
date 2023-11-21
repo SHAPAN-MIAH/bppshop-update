@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import img from "../../../Assets/Images/dealoftheday.png";
 // import "./DealOfTheDay.css";
@@ -38,25 +37,25 @@ const BestSellingSection = () => {
           slidesToShow: 3,
           slidesToScroll: 3,
           infinite: true,
-          dots: true
-        }
+          dots: true,
+        },
       },
       {
         breakpoint: 600,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
-          initialSlide: 2
-        }
+          initialSlide: 2,
+        },
       },
       {
         breakpoint: 480,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
-    ]
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   function SampleNextArrow(props) {
@@ -98,28 +97,99 @@ const BestSellingSection = () => {
   return (
     <>
       <div className="deal_of_the_day_container">
-        <div className="row">
-          <div className="col-md-2">
-            <div className="deal_of_the_day_banner">
-              <img src={img} alt="" />
-            </div>
-          </div>
-          <div className="col-md-10">
-            <div className="deal_of_the_day_product_content">
-              <div className="deal_of_the_day_product_content_header">
-                <h4>Best Selling Product</h4>
-                <button className="deal_of_the_day_product_view_more_btn" type="">View More</button>
+        <SkeletonTheme baseColor="rgb(220, 220, 220)" highlightColor="#e3e3e3">
+          {loading ? (
+            <div className=" d-flex">
+              <Skeleton
+                height="335px"
+                width="250px"
+                borderRadius="10px"
+                count={1}
+              />
+              <div style={{ marginLeft: "22px" }}>
+                <div className="d-flex justify-content-between">
+                  <Skeleton
+                    height="40px"
+                    width="410px"
+                    borderRadius="5px"
+                    count={1}
+                  />
+                  <Skeleton
+                    height="40px"
+                    width="120px"
+                    borderRadius="5px"
+                    count={1}
+                  />
+                </div>
+                <div className="d-flex justify-content-between">
+                  <Skeleton
+                    height="280px"
+                    width="200px"
+                    style={{ marginTop: "15px" }}
+                    borderRadius="10px"
+                    count={1}
+                  />
+                  <Skeleton
+                    height="280px"
+                    width="200px"
+                    style={{ marginTop: "15px", marginLeft: "12px" }}
+                    borderRadius="10px"
+                    count={1}
+                  />
+                  <Skeleton
+                    height="280px"
+                    width="200px"
+                    style={{ marginTop: "15px", marginLeft: "12px" }}
+                    borderRadius="10px"
+                    count={1}
+                  />
+                  <Skeleton
+                    height="280px"
+                    width="200px"
+                    style={{ marginTop: "15px", marginLeft: "12px" }}
+                    borderRadius="10px"
+                    count={1}
+                  />
+                  <Skeleton
+                    height="280px"
+                    width="200px"
+                    style={{ marginTop: "15px", marginLeft: "12px" }}
+                    borderRadius="10px"
+                    count={1}
+                  />
+                </div>
               </div>
-              <Slider {...settings}>
-                {dealOfDayProduct?.map((product) => (
-                  <div className="p-1">
-                    <AllProductsCard key={product?.id} product={product} />
-                  </div>
-                ))}
-              </Slider>
             </div>
-          </div>
-        </div>
+          ) : (
+            <div className="row">
+              <div className="col-md-2">
+                <div className="deal_of_the_day_banner">
+                  <img src={img} alt="" />
+                </div>
+              </div>
+              <div className="col-md-10">
+                <div className="deal_of_the_day_product_content">
+                  <div className="deal_of_the_day_product_content_header">
+                    <h4>Best Selling Product</h4>
+                    <button
+                      className="deal_of_the_day_product_view_more_btn"
+                      type=""
+                    >
+                      View More
+                    </button>
+                  </div>
+                  <Slider {...settings}>
+                    {dealOfDayProduct?.map((product) => (
+                      <div className="p-1">
+                        <AllProductsCard key={product?.id} product={product} />
+                      </div>
+                    ))}
+                  </Slider>
+                </div>
+              </div>
+            </div>
+          )}
+        </SkeletonTheme>
       </div>
     </>
   );

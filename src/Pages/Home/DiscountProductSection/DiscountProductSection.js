@@ -102,7 +102,70 @@ const DiscountProductSection = () => {
   return (
     <>
       <div className="deal_of_the_day_container">
-        <div className="row">
+      <SkeletonTheme baseColor="rgb(220, 220, 220)" highlightColor="#e3e3e3">
+          {loading ? (
+            <div className=" d-flex">
+              <Skeleton
+                height="335px"
+                width="250px"
+                borderRadius="10px"
+                count={1}
+              />
+              <div style={{ marginLeft: "22px" }}>
+                <div className="d-flex justify-content-between">
+                  <Skeleton
+                    height="40px"
+                    width="410px"
+                    borderRadius="5px"
+                    count={1}
+                  />
+                  <Skeleton
+                    height="40px"
+                    width="120px"
+                    borderRadius="5px"
+                    count={1}
+                  />
+                </div>
+                <div className="d-flex justify-content-between">
+                  <Skeleton
+                    height="280px"
+                    width="200px"
+                    style={{ marginTop: "15px" }}
+                    borderRadius="10px"
+                    count={1}
+                  />
+                  <Skeleton
+                    height="280px"
+                    width="200px"
+                    style={{ marginTop: "15px", marginLeft: "12px" }}
+                    borderRadius="10px"
+                    count={1}
+                  />
+                  <Skeleton
+                    height="280px"
+                    width="200px"
+                    style={{ marginTop: "15px", marginLeft: "12px" }}
+                    borderRadius="10px"
+                    count={1}
+                  />
+                  <Skeleton
+                    height="280px"
+                    width="200px"
+                    style={{ marginTop: "15px", marginLeft: "12px" }}
+                    borderRadius="10px"
+                    count={1}
+                  />
+                  <Skeleton
+                    height="280px"
+                    width="200px"
+                    style={{ marginTop: "15px", marginLeft: "12px" }}
+                    borderRadius="10px"
+                    count={1}
+                  />
+                </div>
+              </div>
+            </div>
+          ) : (<div className="row">
           <div className="col-md-2">
             <div className="deal_of_the_day_banner">
               <img src={img} alt="" />
@@ -123,7 +186,8 @@ const DiscountProductSection = () => {
               </Slider>
             </div>
           </div>
-        </div>
+        </div>)}</SkeletonTheme>
+        
       </div>
     </>
   );

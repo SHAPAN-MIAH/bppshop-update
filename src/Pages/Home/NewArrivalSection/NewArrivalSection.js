@@ -6,6 +6,7 @@ import "./NewArrivalSection.css";
 import Slider from "react-slick";
 import newArrivalBanner from "../../../Assets/Images/newArrivalBanner.jpg";
 import { Link } from "react-router-dom";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
 const NewArrivalSection = () => {
   const [newArrivalProduct, setNewArrivalProduct] = useState([]);
@@ -75,38 +76,100 @@ const NewArrivalSection = () => {
     <>
       <div className="new_arrival_section">
         <div className="new_arrival_section_container">
-          <div className="row">
-            <div className="col-md-3">
-              <div className="new_arrival_banner">
-                <img src={newArrivalBanner} alt="" />
+        <SkeletonTheme baseColor="rgb(220, 220, 220)" highlightColor="#e3e3e3">
+          {loading ? (
+            <div className=" d-flex">
+              <Skeleton
+                height="430px"
+                width="300px"
+                borderRadius="10px"
+                count={1}
+              />
+              <div style={{ marginLeft: "24px" }}>
+                <div className="d-flex justify-content-between">
+                  <Skeleton
+                    height="40px"
+                    width="410px"
+                    borderRadius="5px"
+                    count={1}
+                  />
+                  <Skeleton
+                    height="40px"
+                    width="120px"
+                    borderRadius="5px"
+                    count={1}
+                  />
+                </div>
+                <div className="d-flex justify-content-between">
+                  <div>
+                  <Skeleton
+                    height="180px"
+                    width="490px"
+                    style={{ marginTop: "15px" }}
+                    borderRadius="10px"
+                    count={1}
+                  />
+                  <Skeleton
+                    height="180px"
+                    width="490px"
+                    style={{ marginTop: "15px" }}
+                    borderRadius="10px"
+                    count={1}
+                  />
+                  </div>
+                 <div>
+                 <Skeleton
+                    height="180px"
+                    width="490px"
+                    style={{ marginTop: "15px", marginLeft: "15px" }}
+                    borderRadius="10px"
+                    count={1}
+                  />
+                  <Skeleton
+                    height="180px"
+                    width="490px"
+                    style={{ marginTop: "15px", marginLeft: "15px" }}
+                    borderRadius="10px"
+                    count={1}
+                  />
+                 </div>
+                  
+                </div>
               </div>
             </div>
-            <div className="col-md-9">
-              <div>
-                <div className="new_arrival_section_product_content_header">
-                  <h4>New Arrival</h4>
-                  <Link to="/new-arrival">
-                    <button
-                      className="new_arrival_section_product_view_more_btn"
-                      type=""
-                    >
-                      View More
-                    </button>
-                  </Link>
-                </div>
-                <Slider {...settings} className="new_arrival_section_product_slider">
-                  {newArrivalProduct?.map((product) => (
-                    <div className="new_arrival_section_product_content px-1">
-                      <NewArrivalSectionProductCard
-                        key={product?.id}
-                        product={product}
-                      />
-                    </div>
-                  ))}
-                </Slider>
-              </div>
+          ) : (<div className="row">
+          <div className="col-md-3">
+            <div className="new_arrival_banner">
+              <img src={newArrivalBanner} alt="" />
             </div>
           </div>
+          <div className="col-md-9">
+            <div>
+              <div className="new_arrival_section_product_content_header">
+                <h4>New Arrival</h4>
+                <Link to="/new-arrival">
+                  <button
+                    className="new_arrival_section_product_view_more_btn"
+                    type=""
+                  >
+                    View More
+                  </button>
+                </Link>
+              </div>
+              <Slider {...settings} className="new_arrival_section_product_slider">
+                {newArrivalProduct?.map((product) => (
+                  <div className="new_arrival_section_product_content px-1">
+                    <NewArrivalSectionProductCard
+                      key={product?.id}
+                      product={product}
+                    />
+                  </div>
+                ))}
+              </Slider>
+            </div>
+          </div>
+        </div>)}</SkeletonTheme>
+          
         </div>
       </div>
     </>
