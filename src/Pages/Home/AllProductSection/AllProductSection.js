@@ -34,7 +34,7 @@ const AllProductSection = () => {
 
   return (
     <div className="all_product_section mt-4">
-      <h4>Recommend For You</h4>
+      <h4>Recommend for You</h4>
 
       <div className="product-container mt-3">
         <SkeletonTheme baseColor="#DDDDDD" highlightColor="#e3e3e3">

@@ -1,8 +1,7 @@
-#sidebarMenu {
+/* #sidebarMenu {
   width: 100%;
   background: #ffffff;
   transition: transform 250ms ease-in-out;
-  /* overflow: scroll; */
   padding: 2px;
 }
 
@@ -102,9 +101,7 @@
 .subMenu {
   border-left: 1px solid rgb(216, 216, 216);
 }
-.subSubMenu {
-  /* border-left: 1px solid rgb(216, 216, 216); */
-}
+
 .subMenu li,
 .subSubMenu li {
   width: 260px;
@@ -145,28 +142,13 @@
   margin-top: -53px !important;
   padding: 5px 10px;
   z-index: 999;
-}
-.subSubMenu {
-}
+} */
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* new */
+/* new css*/
 
 /* Designing for scroll-bar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 5px;
 }
 
 /* Track */
@@ -178,170 +160,180 @@
 /* Handle */
 ::-webkit-scrollbar-thumb {
   border-radius: 4px;
-  background: #f85606;
+  background: #ff8800;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: #858585;
+}
+.hero_menu {
+  position: relative;
+  z-index: 10;
 }
 .hero_content {
   height: 400px;
   overflow-y: auto;
   direction: rtl;
   border-radius: 5px;
+  padding-left: 0rem;
+  padding-top: 4px;
 }
 
-
-.menu-list {
+.menu_list {
   display: flex;
   align-items: center;
   cursor: pointer;
   width: 273px;
-  padding: 0px 10px;
+  padding: 0px 5px;
   font-size: 10px;
 }
-.side-menu{
-  position: relative;
-}
-.hero_menu {
-  position: relative;
-  z-index: 10;
-}
+
+
 .menu_item {
   display: flex;
   margin-left: 10px;
+  margin-top: 5px;
   flex: 1;
   align-items: center;
   justify-content: space-between;
 }
-.category_icon img {
+.category_icon {
   width: 20px;
-  /* height: 24px; */
+  border: 1px solid gainsboro;
+  border-radius: 3px;
+  margin-bottom: 5px;
+}
+.category_icon img {
+  width: 100%;
 }
 
-.menu_item p{
+.menu_item p {
   font-size: 14px;
+  margin-bottom: 0px;
 }
 
 .hero_content {
   direction: ltr;
   list-style: none;
-  border: 1px solid #e8e8e8;
+  border: 1px solid gainsboro;
 }
 
-.dropdown-menu {
+.dropdown_menu {
   display: none;
+  border: none;
   padding-left: 10px;
+  margin-bottom: 5px;
   background-color: transparent;
-  
 }
-.sub-menu {
+.dropdown_menu p {
+  font-size: 14px;
+  margin-bottom: 0px;
+}
+.sub_menu {
+  height: 400px;
   list-style: none;
   border-radius: 5px;
-  border: 1px solid gray;
+  border: 1px solid gainsboro;
   background-color: rgb(255, 255, 255);
-  margin-left: 10px;
-  height: 395px;
+  margin-left: 5px;
   padding-top: 5px;
- 
+  overflow-y: auto;
 }
-
-.menu-list:hover {
-  color: #f85606;
+.sub_menu_list{
+  display: flex;
+  padding-left: 5px;
 }
-.menu-list:hover .dropdown-menu {
+.menu_list:hover {
+  color: #ff8800;
+}
+.menu_list:hover .dropdown_menu {
   display: block;
   position: absolute;
   top: 0;
   left: 96%;
   z-index: 20;
 }
-
-/* .menu-list:hover .dropdown-menu {
-  display: block;
-  position: absolute;
-  margin-left: 10px;
-  min-height: 400px;
-  top: 0;
-  left: 96%;
-  z-index: 20;
-  border-radius: 10px;
-  border: 1px solid gray;
-  background-color: rgb(255, 255, 255);
-} */
-
 
 .sub_menu_item {
   display: flex;
   justify-content: space-between;
   width: 273px;
-  padding: 2px 10px;
+  padding: 2px 5px 2px 10px;
   font-size: 14px;
-  color: black;
+  color: rgb(65, 65, 65);
+}
+.sub_menu_item i{
+  font-size: 12px;
 }
 
-.dropdown-menu-1 {
+.dropdown_menu_1 {
   display: none;
   padding-left: 0px;
   background-color: transparent;
   height: 400px;
 }
-.sub-menu-1 {
-  height: 385px;
-  overflow-y: auto;
+.sub_menu_1 {
   width: 700px;
+  height: 400px;
   padding: 10px 20px;
-  list-style: none;
+  border: 1px solid gainsboro;
   border-radius: 5px;
-  border: 1px solid gray;
   background-color: rgb(255, 255, 255);
   padding-top: 5px;
-
+  list-style: none;
+  overflow-y: auto;
 }
-.mega-sub-menu{
+.mega_sub_menu {
   display: grid;
-  grid-template-columns: auto auto auto auto;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px 10px;
   padding-top: 10px;
-  gap: 10px;
   margin-top: 10px;
 }
-.mega-sub-menu-item{
+.mega_sub_menu_item {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.mega-sub-menu-item img{
- width: 100px;
- border-radius: 50%;
- border:1px solid orangered;
+.mega_sub_menu_item img {
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  border: 1px solid gainsboro;
 }
-.mega-sub-menu-item p{
-  color: black;
-  font-size: 14px;
+.mega_sub_menu_item p {
+  color: rgb(48, 48, 48);
+  font-size: 12px;
   margin-top: 5px;
   text-align: center;
 }
-.sub-menu-1 .sub_menu_item {
+.sub_menu_1 .sub_menu_item {
   font-size: 14px;
   color: #555;
 }
+.sub_menu_1 h5 {
+  color: #555;
+}
 
-.sub-menu-list:hover .dropdown-menu-1 {
+.sub_menu_list:hover .dropdown_menu_1 {
   display: block;
   position: absolute;
   top: 0;
   left: 100%;
   width: 100%;
   z-index: 20;
- 
 }
-.error-msg p{
+.error_msg p {
   color: black;
-  font-size: 50px;
+  font-size: 20px;
   text-align: center;
 }
 .sub_menu_item:hover {
-  color:#f85606
+  color: #ff8800;
+}
+
+ul {
+  padding-left: 0rem;
 }

@@ -3,7 +3,7 @@ import "./Sidebar.css";
 import { Link } from "react-router-dom";
 import { categoryBaseUrl } from "./../../../BaseUrl/BaseUrl";
 import { useSelector } from "react-redux";
-
+import noImg from "../../../Assets/Images/noImg-default.png";
 const Sidebar = () => {
   const allCategory = useSelector(
     (state) => state.allCategories.categories.data
@@ -74,13 +74,13 @@ const Sidebar = () => {
 
   return (
     <>
-      <div className="sidebar-section">
-        {/* <span className="openSidebarIconToggle" onClick={sidebarOpenHandler}>
+      {/* <div className="sidebar-section">
+        <span className="openSidebarIconToggle" onClick={sidebarOpenHandler}>
           <i className="bi bi-list"></i>
         </span>
         <span className="closeSidebarIconToggle" onClick={sidebarCloseHandler}>
           <i className="bi bi-list"></i>
-        </span> */}
+        </span>
 
         <div id="sidebarMenu">
           <ul className="menu">
@@ -188,7 +188,6 @@ const Sidebar = () => {
                                             <Link
                                               to={`/${categoryItem?.slug}/${subcategory?.slug}/${subsubcategory?.slug}`}
                                               className={
-                                                // isSubSubMenuExpanded(subsubcategory.id)
                                                 activeSubSubMenu ===
                                                 subsubcategory.id
                                                   ? "subSubMenuActive"
@@ -215,132 +214,101 @@ const Sidebar = () => {
             })}
           </ul>
         </div>
+      </div> */}
+
+      <div className="hero_menu">
+        <ul className="hero_content">
+          {allCategory?.map((category, index) => {
+            return (
+              <li key={index} className="menu_list">
+                <div className="category_icon">
+                  {category?.icon ? (
+                    <img
+                      width="15"
+                      className="sidebar_icon"
+                      src={categoryBaseUrl + `/${category?.icon}`}
+                      alt=""
+                    />
+                  ) : (
+                    <img src={noImg} alt="" />
+                  )}
+                </div>
+                <div className="menu_item">
+                  <p>{category?.name}</p>
+                  <i className="bi bi-chevron-right chevronRight"></i>
+                </div>
+
+                <div className="dropdown_menu">
+                  <ul className="sub_menu">
+                    {category?.childes?.map((subMenu) => {
+                      return (
+                        <>
+                          <li className="sub_menu_list">
+                            <div className="category_icon">
+                              {subMenu?.icon ? (
+                                <img
+                                  width="15"
+                                  className="sidebar_icon"
+                                  src={categoryBaseUrl + `/${subMenu?.icon}`}
+                                  alt=""
+                                />
+                              ) : (
+                                <img src={noImg} alt="" />
+                              )}
+                            </div>
+                            <div className="sub_menu_item">
+                              <p>{subMenu?.name}</p>
+                              <i className="bi bi-chevron-right chevronRight"></i>
+                            </div>
+                            <div className="dropdown_menu_1">
+                              <ul className="sub_menu_1">
+                                <h5>{subMenu?.name}</h5>
+
+                                {subMenu?.childes[0] ? (
+                                  <div className="mega_sub_menu">
+                                    {subMenu?.childes?.map((subSubMenu) => {
+                                      return (
+                                        <>
+                                          <Link
+                                            to={`/${category?.slug}/${subMenu?.slug}/${subSubMenu?.slug}`}
+                                          >
+                                            <div className="mega_sub_menu_item">
+                                              {!subSubMenu?.icon ? (
+                                                <img src={noImg} />
+                                              ) : (
+                                                <img
+                                                  src={`https://backend.bppshop.com.bd/storage/category/${subSubMenu?.icon}`}
+                                                  alt=""
+                                                />
+                                              )}
+
+                                              <p>{subSubMenu?.name}</p>
+                                            </div>
+                                          </Link>
+                                        </>
+                                      );
+                                    })}
+                                  </div>
+                                ) : (
+                                  <div className="error_msg">
+                                    <p>Product Not Found</p>
+                                  </div>
+                                )}
+                              </ul>
+                            </div>
+                          </li>
+                        </>
+                      );
+                    })}
+                  </ul>
+                </div>
+              </li>
+            );
+          })}
+        </ul>
       </div>
     </>
   );
 };
 
 export default Sidebar;
-
-
-
-
-
-// import "./CategoryMenu.css";
-
-// import { useEffect, useState } from "react";
-
-// const CategoryMenu = () => {
-//   const [categoriesMenu, setCategoriesMenu] = useState([]);
-//   useEffect(() => {
-//     fetch(`https://backend.bppshop.com.bd/api/v1/categories`)
-//       .then((res) => res.json())
-//       .then((data) => {
-//         console.log(data.data[0].icon);
-//         setCategoriesMenu(data.data);
-//       });
-//   }, []);
-//   return (
-//     <div className="hero_menu">
-//       <ul className="hero_content">
-//         {categoriesMenu.map((category, index) => {
-//           return (
-//             <li key={index} className="menu-list">
-//               <div className="category_icon">
-//                 <img
-//                   src={`https://backend.bppshop.com.bd/storage/category/${category?.icon}`}
-//                   alt=""
-//                 />
-//               </div>
-//               <div className="menu_item">
-//                 <p>{category.name}</p>
-//                 <svg
-//                   xmlns="http://www.w3.org/2000/svg"
-//                   width="16"
-//                   height="16"
-//                   viewBox="0 0 16 16"
-//                   fill="none"
-//                 >
-//                   <path
-//                     d="M6 12L10 8L6 4"
-//                     stroke="#8A8A8A"
-//                     stroke-width="2"
-//                     stroke-linecap="round"
-//                     stroke-linejoin="round"
-//                   />
-//                 </svg>
-//               </div>
-
-//               <div className="dropdown-menu">
-//                 <ul className="sub-menu">
-//                   {category.childes.map((subMenu) => {
-//                     // console.log(subMenu);
-//                     return (
-//                       <>
-//                         <li className="sub-menu-list">
-//                           <div className="sub_menu_item">
-//                             <p>{subMenu.name}</p>
-//                             <svg
-//                               xmlns="http://www.w3.org/2000/svg"
-//                               width="16"
-//                               height="16"
-//                               viewBox="0 0 16 16"
-//                               fill="none"
-//                             >
-//                               <path
-//                                 d="M6 12L10 8L6 4"
-//                                 stroke="#8A8A8A"
-//                                 stroke-width="2"
-//                                 stroke-linecap="round"
-//                                 stroke-linejoin="round"
-//                               />
-//                             </svg>
-//                           </div>
-//                           <div className="dropdown-menu-1">
-//                             <ul className="sub-menu-1">
-//                               <h1>{subMenu.name}</h1>
-                            
-//                             {
-//                               subMenu.childes[0] ? <div className="mega-sub-menu">
-//                               {subMenu?.childes?.map((subSubMenu) => {
-//                                 console.log("a",subSubMenu);
-//                                 return (
-//                                   <>
-                        
-                                 
-//                                       <div className="mega-sub-menu-item">
-//                                         {!subSubMenu?.icon ? (
-//                                           <img src="../../../public/No-image-found.jpg" />
-//                                         ) : (
-//                                           <img
-//                                             src={`https://backend.bppshop.com.bd/storage/category/${subSubMenu?.icon}`}
-//                                             alt=""
-//                                           />
-//                                         )}
-
-//                                         <p>{subSubMenu.name}</p>
-//                                       </div>
-                                   
-//                                   </>
-//                                 );
-//                               })}
-//                             </div> : <div className="error-msg"><p>Not Found</p></div>
-//                             }
-                              
-//                             </ul>
-//                           </div>
-//                         </li>
-//                       </>
-//                     );
-//                   })}
-//                 </ul>
-//               </div>
-//             </li>
-//           );
-//         })}
-//       </ul>
-//     </div>
-//   );
-// };
-
-// export default CategoryMenu;
