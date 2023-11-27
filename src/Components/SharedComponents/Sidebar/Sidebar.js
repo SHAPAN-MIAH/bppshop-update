@@ -262,38 +262,40 @@ const Sidebar = () => {
                             </div>
                             <div className="dropdown_menu_1">
                               <ul className="sub_menu_1">
-                                <h5>{subMenu?.name}</h5>
+                                <div className="sub_menu_1_content">
+                                  <h5>{subMenu?.name}</h5>
 
-                                {subMenu?.childes[0] ? (
-                                  <div className="mega_sub_menu">
-                                    {subMenu?.childes?.map((subSubMenu) => {
-                                      return (
-                                        <>
-                                          <Link
-                                            to={`/${category?.slug}/${subMenu?.slug}/${subSubMenu?.slug}`}
-                                          >
-                                            <div className="mega_sub_menu_item">
-                                              {!subSubMenu?.icon ? (
-                                                <img src={noImg} />
-                                              ) : (
-                                                <img
-                                                  src={`https://backend.bppshop.com.bd/storage/category/${subSubMenu?.icon}`}
-                                                  alt=""
-                                                />
-                                              )}
+                                  {subMenu?.childes[0] ? (
+                                    <div className="mega_sub_menu">
+                                      {subMenu?.childes?.map((subSubMenu) => {
+                                        return (
+                                          <>
+                                            <Link
+                                              to={`/${category?.slug}/${subMenu?.slug}/${subSubMenu?.slug}`}
+                                            >
+                                              <div className="mega_sub_menu_item">
+                                                {!subSubMenu?.icon ? (
+                                                  <img src={noImg} />
+                                                ) : (
+                                                  <img
+                                                    src={`https://backend.bppshop.com.bd/storage/category/${subSubMenu?.icon}`}
+                                                    alt=""
+                                                  />
+                                                )}
 
-                                              <p>{subSubMenu?.name}</p>
-                                            </div>
-                                          </Link>
-                                        </>
-                                      );
-                                    })}
-                                  </div>
-                                ) : (
-                                  <div className="error_msg">
-                                    <p>Product Not Found</p>
-                                  </div>
-                                )}
+                                                <p>{subSubMenu?.name}</p>
+                                              </div>
+                                            </Link>
+                                          </>
+                                        );
+                                      })}
+                                    </div>
+                                  ) : (
+                                    <div className="error_msg">
+                                      <p>Product Not Found</p>
+                                    </div>
+                                  )}
+                                </div>
                               </ul>
                             </div>
                           </li>

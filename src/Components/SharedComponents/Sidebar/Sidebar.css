@@ -225,6 +225,7 @@
   padding-left: 10px;
   margin-bottom: 5px;
   background-color: transparent;
+  /* border: 1px solid gainsboro; */
 }
 .dropdown_menu p {
   font-size: 14px;
@@ -268,19 +269,19 @@
 }
 
 .dropdown_menu_1 {
+  height: 400px;
   display: none;
   padding-left: 0px;
+  margin-left: -6px;
   background-color: transparent;
-  height: 400px;
 }
 .sub_menu_1 {
   width: 700px;
   height: 400px;
-  padding: 10px 20px;
+  background-color: rgb(255, 255, 255);
   border: 1px solid gainsboro;
   border-radius: 5px;
-  background-color: rgb(255, 255, 255);
-  padding-top: 5px;
+  padding: 5px 20px 10px 20px;
   list-style: none;
   overflow-y: auto;
 }

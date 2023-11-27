@@ -34,10 +34,18 @@
 .app_branding_content_social_content a{
   width: 30px;
   padding: 0px !important;
-  color: #ff8800;
-  font-size: 20px;
-  background: gainsboro;
-  border-radius: 50px;
+  color: #6d6d6d;
+  font-size: 22px;
+  background: rgb(255, 255, 255);
+  border-radius: 7px;
   padding: 5px 10px;
   text-align: center;
+  transition: all .3s;
+  
+}
+
+.app_branding_content_social_content a:hover{
+  color: #ff8800;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
