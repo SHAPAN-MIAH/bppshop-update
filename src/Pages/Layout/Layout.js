@@ -1,6 +1,5 @@
 import React from "react";
 import Nav from "./../../Components/SharedComponents/Nav/Nav";
-import HomeFilterBtnHeader from "./../../Components/HomeFilterBtnHeader/HomeFilterBtnHeader";
 import Footer from "./../../Components/SharedComponents/Footer/Footer";
 import "./Layout.css";
 import Cart from "../../Components/Cart/Cart";
@@ -8,6 +7,7 @@ import CartDetailsView from "./../../Components/Cart/CartDetailsView/CartDetails
 import { Toaster } from "react-hot-toast";
 import preloader from "../../Assets/Images/loading.gif";
 import Sidebar from "../../Components/SharedComponents/Sidebar/Sidebar";
+import CategoryAfterScroll from "../../Components/SharedComponents/CategoryAfterScroll/CategoryAfterScroll";
 
 const Layout = ({ children }) => {
   const suggestedItemContainer = document.querySelector(
@@ -54,12 +54,14 @@ const Layout = ({ children }) => {
     }
   };
 
+  
+
   return (
     <div>
       <Nav />
       <div onClick={searchSuggestionCloseHandler}>
         <div onClick={sidebarCloseHandler}>
-          {/* <HomeFilterBtnHeader /> */}
+          <CategoryAfterScroll/>
           <main className="layout_container">{children}</main>
           <CartDetailsView />
           <Cart />

@@ -216,8 +216,8 @@ const Sidebar = () => {
         </div>
       </div> */}
 
-      <div className="hero_menu">
-        <ul className="hero_content">
+      <div className="category_menu">
+        <ul className="category_menu_content">
           {allCategory?.map((category, index) => {
             return (
               <li key={index} className="menu_list">

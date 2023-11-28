@@ -1,7 +1,7 @@
 .header_showcase_section_container {
   display: grid;
   grid-template-columns: repeat(4, minmax(20%, auto));
-  grid-gap: 20px;
+  grid-gap: 15px;
   overflow: hidden;
 }
 .header_showcase_section_container > *:first-child {
