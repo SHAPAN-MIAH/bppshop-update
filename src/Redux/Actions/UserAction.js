@@ -92,9 +92,11 @@ export const userLogin = (loginData, addToCartAfterLoginRes) => async (dispatch,
       const productCartLoginAddItem = localStorage.getItem("productCartLoginAddItem");
       // const productCartLoginAddItem = localStorage.getItem("productDetailsPageLoginSignupAddItem");
 
-      if(modalLogin == "true" && productCartLoginAddItem){
-        addToCartAfterLoginRes()
-      }
+      addToCartAfterLoginRes();
+
+      // if(modalLogin == "true" && productCartLoginAddItem){
+      //   localStorage.removeItem("modalLogin");
+      // }
       dispatch(getCartData());
     } else {
       dispatch({ type: LOGIN_FAIL, payload: data });
