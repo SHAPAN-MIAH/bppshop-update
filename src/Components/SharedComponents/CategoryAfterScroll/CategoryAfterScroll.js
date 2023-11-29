@@ -1,6 +1,7 @@
 import React from "react";
 import "./CategoryAfterScroll.css";
 import Sidebar from "../Sidebar/Sidebar";
+import { Link } from "react-router-dom";
 
 const CategoryAfterScroll = () => {
   window.onscroll = function () {
@@ -64,12 +65,24 @@ const CategoryAfterScroll = () => {
             </div>
           </div>
           <ul className="after_scroll_category_nav">
-            <li>New Arrival</li>
-            <li>Top Rated</li>
-            <li>Discount Product</li>
-            <li>Best Selling</li>
-            <li>Store</li>
-            <li>Brands</li>
+            <Link to="/new-arrival">
+              <li>New Arrival Product</li>
+            </Link>
+            <Link to="/top-rated">
+              <li>Top Rated Product</li>
+            </Link>
+            <Link to="/discount-products">
+              <li>Discount Product</li>
+            </Link>
+            <Link to="/best-selling">
+              <li>Best Selling Product</li>
+            </Link>
+            <Link to="/sellers-store">
+              <li>Store</li>
+            </Link>
+            <Link to="/brands">
+              <li>Brands</li>
+            </Link>
           </ul>
         </div>
       </div>

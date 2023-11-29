@@ -2,31 +2,7 @@
 .navbar-section{
   top: 0;
 }
-/* .topBar_container{
-  height: 40px;
-  width: 100%;
-  background: #ef8341;
-  position: fixed;
-  top: 0;
-  transition: all 1s;
-  z-index: 9999;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  padding-top: 7px;
-  color: #f1f1f1;
-}
-.topBar_container p{
-  margin-top: 10px;
-}
-.topBar_container i{
-  background: #fff;
-  color: #ef8341;
-  border-radius: 100px;
-  padding: 3px 5px;
 
-} */
 .nav {
   background: rgb(247, 247, 247);
   border-bottom: 1px solid rgb(235, 235, 235);
@@ -47,7 +23,6 @@
   align-items: center;
 }
 .logo {
-  /* margin-left: 15px; */
   width: 200px;
 }
 
@@ -213,9 +188,9 @@
 }
 
 /* responsive css */
-@media only screen and (max-width: 1550px) {
-  .search {
-    margin-left: -15%;
+@media only screen and (max-width: 1200px) {
+  .nav-content {
+    width: 1140px;
   }
 }
 @media only screen and (max-width: 768px) {

@@ -28,39 +28,13 @@
 
 
 
-@media screen and (max-width: 1600px) {
+
+
+
+
+@media screen and (max-width: 1200px) {
   .layout_container {
-    width: 80%;
-    margin: auto;
-  }
-}
-@media screen and (max-width: 1500px) {
-  .layout_container {
-    width: 82%;
-    margin: auto;
-  }
-}
-@media screen and (max-width: 1400px) {
-  .layout_container {
-    width: 90%;
-    margin: auto;
-  }
-}
-@media screen and (max-width: 1350px) {
-  .layout_container {
-    width: 92%;
-    margin: auto;
-  }
-}
-@media screen and (max-width: 1300px) {
-  .layout_container {
-    width: 95%;
-    margin: auto;
-  }
-}
-@media screen and (max-width: 1250px) {
-  .layout_container {
-    width: 97%;
+    width: 1140px;
     margin: auto;
   }
 }

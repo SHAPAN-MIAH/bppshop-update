@@ -20,3 +20,6 @@
   box-sizing: border-box;
   scroll-behavior: smooth;
 }
+hr {
+  margin: 0rem ;
+}

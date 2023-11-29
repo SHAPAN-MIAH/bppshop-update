@@ -262,9 +262,7 @@ const Nav = () => {
               )}
             </div>
 
-            {/* <div className="helpLine"> 
-            Help Line <i className="bi bi-headset"></i> <span> 0177775467</span>
-            </div> */}
+           
 
             <div className="partner_zone">
               <div
@@ -359,7 +357,6 @@ const Nav = () => {
               )}
             </div>
           </div>
-          {/* </div> */}
         </nav>
       </div>
 

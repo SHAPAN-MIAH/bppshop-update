@@ -42,8 +42,15 @@
   height: 50px;
   align-items: center;
 }
+.after_scroll_category_nav a{
+  color: #333333;
+}
 .after_scroll_category_nav li{
   list-style: none;
   padding: 0px 0px 0px 30px;
   cursor: pointer;
+  font-size: 15px;
+}
+.after_scroll_category_nav li:hover{
+  color: #ff8800;
 }
