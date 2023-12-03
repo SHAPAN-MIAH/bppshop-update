@@ -6,8 +6,8 @@ import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "../SellerStore.css";
 import { Link } from "react-router-dom";
 import InfiniteScroll from "react-infinite-scroll-component";
-import downArrow from "../../../Assets/Images/arrow-down.gif.c819a92ab7162c828e944727a545dcd7.gif"
-
+import downArrow from "../../../Assets/Images/arrow-down.gif.c819a92ab7162c828e944727a545dcd7.gif";
+import coverImg from "../../../Assets/Images/pexels-evie-shaffer-2512282.jpg";
 
 const AllSellerStore = () => {
   const [allSellerStore, setAllSellerStore] = useState([]);
@@ -139,7 +139,11 @@ const AllSellerStore = () => {
         dataLength={allSellerStore?.length}
         next={fetchData}
         hasMore={hasMore}
-        loader={<h4 style={{textAlign: "center", padding: "10px 0px"}}><img width={60} src={downArrow} alt=""/></h4>}
+        loader={
+          <h4 style={{ textAlign: "center", padding: "10px 0px" }}>
+            <img width={60} src={downArrow} alt="" />
+          </h4>
+        }
       >
         <div className="all-seller-store-container mt-4 ">
           <SkeletonTheme baseColor="#DDDDDD" highlightColor="#e3e3e3">
@@ -181,22 +185,24 @@ const AllSellerStore = () => {
                     SellerNameSave(sellerStore?.name);
                   }}
                 >
-                  <div className="seller-store-content">
-                    <div className="seller-store-banner">
+                  <div className="seller_store_content">
+                    {sellerStore?.banner == "def.png" ? (
+                      <img src={coverImg} alt="" />
+                    ) : (
                       <img
                         src={`https://backend.bppshop.com.bd/storage/shop/banner/${sellerStore?.banner}`}
                         alt=""
                       />
-
-                      <div className="seller-store-profile-container">
-                        <div className="seller-profile-image">
-                          <img
-                            src={`https://backend.bppshop.com.bd/storage/shop/${sellerStore?.image}`}
-                            alt=""
-                          />
-                        </div>
-                        <p className="sellerName">{sellerStore?.name}</p>
-                      </div>
+                      
+                    )}
+                    <div className="seller_store_profile">
+                      <img
+                        src={`https://backend.bppshop.com.bd/storage/shop/${sellerStore?.image}`}
+                        alt=""
+                      />
+                      <p className="seller_store_profile_name">
+                        {sellerStore?.name}
+                      </p>
                     </div>
                   </div>
                 </Link>

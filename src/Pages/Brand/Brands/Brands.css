@@ -1,6 +1,6 @@
 .brand_container {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   grid-gap: 15px;
 }
 .brand_container::-webkit-scrollbar {
@@ -14,7 +14,7 @@
 .brand_content {
   border: 1px solid gainsboro;
   border-radius: 7px;
-  padding: 20px;
+  padding: 10px;
   text-align: center;
   cursor: pointer;
   transition: all 0.3s;

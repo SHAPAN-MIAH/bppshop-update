@@ -21,6 +21,7 @@ import ReactImageMagnify from "react-image-magnify";
 import toast from "react-hot-toast";
 import { AiFillPlayCircle } from "react-icons/ai";
 import defaultProImg from "../../Assets/Images/defaultImg.jpg";
+import coverImg from "../../Assets/Images/pexels-evie-shaffer-2512282.jpg";
 import Modal from "react-modal";
 import LoginModal from "../User/Login/LoginModal";
 import SignUpModal from "../User/SignUp/SignUpModal";
@@ -819,7 +820,7 @@ const AllProductDetails = () => {
             <div className="col-md-3">
               {productDetail?.seller && (
                 <div className="seller-product-suggestion-container">
-                  <div className="seller-store-content">
+                  {/* <div className="seller-store-content">
                     <Link
                       to={`/sellers-store/${productDetail?.seller?.id}`}
                       onClick={(e) => {
@@ -845,8 +846,36 @@ const AllProductDetails = () => {
                         </div>
                       </div>
                     </Link>
-                  </div>
-
+                  </div> */}
+<Link
+                    to={`/sellers-store/${productDetail?.seller?.id}`}
+                    onClick={(e) => {
+                      SellerNameSave(productDetail?.seller?.shop_name);
+                    }}
+                  >
+                    <div
+                      className="seller_store_section_content"
+                      style={{ height: "160px" }}
+                    >
+                      {productDetail?.seller?.banner == "def.png" ? (
+                        <img src={coverImg} alt="" />
+                      ) : (
+                        <img
+                          src={`https://backend.bppshop.com.bd/storage/shop/banner/${productDetail?.seller?.banner}`}
+                          alt=""
+                        />
+                      )}
+                      <div className="seller_store_profile">
+                        <img
+                          src={`https://backend.bppshop.com.bd/storage/shop/${productDetail?.seller?.image}`}
+                          alt=""
+                        />
+                        <p className="seller_store_profile_name">
+                          {productDetail?.seller?.shop_name}
+                        </p>
+                      </div>
+                    </div>
+                  </Link>
                   <h4 className="seller-product-view-title mt-3">
                     Seller Products
                   </h4>

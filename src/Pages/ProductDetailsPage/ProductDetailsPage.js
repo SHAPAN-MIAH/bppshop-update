@@ -22,6 +22,7 @@ import ProductReview from "./../../Components/ProductReview/ProductReview";
 import ReactImageMagnify from "react-image-magnify";
 import toast from "react-hot-toast";
 import defaultProImg from "../../Assets/Images/defaultImg.jpg";
+import coverImg from "../../Assets/Images/pexels-evie-shaffer-2512282.jpg";
 import ModalVideo from "react-modal-video";
 import "react-modal-video/scss/modal-video.scss";
 
@@ -56,7 +57,7 @@ const ProductDetailsPage = () => {
   const [quantityCount, setQuantityCount] = useState(1);
 
   console.log(quantityCount);
-  
+
   // const [loading, setLoading] = useState(true);
   const [variantRes, setVariantRes] = useState({});
   const navigate = useNavigate();
@@ -73,12 +74,10 @@ const ProductDetailsPage = () => {
 
   // Product Details............................
   useEffect(() => {
-    axios.get(`${baseUrl}/products/details/${id}`)
-    .then((res) => {
+    axios.get(`${baseUrl}/products/details/${id}`).then((res) => {
       setProductDetail(res?.data?.data);
     });
   }, [id]);
-
 
   // Customer Audit log.........................
   // const auditLog = {
@@ -257,7 +256,6 @@ const ProductDetailsPage = () => {
   //   }
   // }, [productDetailsPath, navigate]);
 
-
   // cart item increase decrease function..............................
   const increaseQuantityBeforeAddToCart = (quantity, stock, maxOrderQty) => {
     if (stock <= quantity) {
@@ -271,7 +269,7 @@ const ProductDetailsPage = () => {
           color: "#fff",
         },
       });
-      return ;
+      return;
     }
     if (maxOrderQty > 1 && maxOrderQty <= quantity) {
       toast.error("Sorry! Stock is limited!", {
@@ -284,7 +282,7 @@ const ProductDetailsPage = () => {
           color: "#fff",
         },
       });
-      return ;
+      return;
     }
   };
 
@@ -314,7 +312,7 @@ const ProductDetailsPage = () => {
           color: "#fff",
         },
       });
-      return ;
+      return;
     }
     // dispatch(addItemsToCart(id, newQty, defaultChoices));
     dispatch(updateItemsToCart(id, newQty));
@@ -494,8 +492,7 @@ const ProductDetailsPage = () => {
     setQuantityCount(1);
     setVariantRes("");
     setSelectedOption("");
-    setImg("")
-
+    setImg("");
   };
 
   return (
@@ -755,12 +752,15 @@ const ProductDetailsPage = () => {
                       <span
                         onClick={() => {
                           setQuantityCount(
-                            productDetail?.max_order_qty ? (productDetail?.max_order_qty >= quantityCount + 1
+                            productDetail?.max_order_qty
+                              ? productDetail?.max_order_qty >=
+                                quantityCount + 1
+                                ? quantityCount + 1
+                                : quantityCount
+                              : productDetail?.current_stock >=
+                                quantityCount + 1
                               ? quantityCount + 1
-                              : quantityCount ) :
-                              ( productDetail?.current_stock >= quantityCount + 1
-                              ? quantityCount + 1
-                              : quantityCount)
+                              : quantityCount
                           );
                           priceVariantHandlerByChoiceOption(
                             productDetail?.current_stock >= quantityCount + 1
@@ -805,12 +805,13 @@ const ProductDetailsPage = () => {
                       <h5>
                         Total Price: &#2547;{" "}
                         {
-                        // variantRes?.price
-                        //   ? variantRes?.price
-                        //   : 
+                          // variantRes?.price
+                          //   ? variantRes?.price
+                          //   :
                           quantityCount *
                             (productDetail?.unit_price -
-                              productDetail?.discount)}
+                              productDetail?.discount)
+                        }
                       </h5>
                     )}
                   </div>
@@ -851,7 +852,7 @@ const ProductDetailsPage = () => {
             <div className="col-md-3">
               {productDetail?.seller && (
                 <div className="seller-product-suggestion-container">
-                  <div className="seller-store-content">
+                  {/* <div className="seller-store-content">
                     <Link
                       to={`/sellers-store/${productDetail?.seller?.id}`}
                       onClick={(e) => {
@@ -877,7 +878,37 @@ const ProductDetailsPage = () => {
                         </div>
                       </div>
                     </Link>
-                  </div>
+                  </div> */}
+
+                  <Link
+                    to={`/sellers-store/${productDetail?.seller?.id}`}
+                    onClick={(e) => {
+                      SellerNameSave(productDetail?.seller?.shop_name);
+                    }}
+                  >
+                    <div
+                      className="seller_store_section_content"
+                      style={{ height: "160px" }}
+                    >
+                      {productDetail?.seller?.banner == "def.png" ? (
+                        <img src={coverImg} alt="" />
+                      ) : (
+                        <img
+                          src={`https://backend.bppshop.com.bd/storage/shop/banner/${productDetail?.seller?.banner}`}
+                          alt=""
+                        />
+                      )}
+                      <div className="seller_store_profile">
+                        <img
+                          src={`https://backend.bppshop.com.bd/storage/shop/${productDetail?.seller?.image}`}
+                          alt=""
+                        />
+                        <p className="seller_store_profile_name">
+                          {productDetail?.seller?.shop_name}
+                        </p>
+                      </div>
+                    </div>
+                  </Link>
 
                   <h4 className="seller-product-view-title mt-3">
                     Seller Products
@@ -924,9 +955,15 @@ const ProductDetailsPage = () => {
         
       </div> */}
 
-      <ProductReview productDetail={productDetail} key={productDetail?.name}/>
+      <ProductReview productDetail={productDetail} key={productDetail?.name} />
 
-      {productDetail?.id && <RelatedProduct productId={productDetail?.id} key={productDetail?.id} setImg={setImg} />}
+      {productDetail?.id && (
+        <RelatedProduct
+          productId={productDetail?.id}
+          key={productDetail?.id}
+          setImg={setImg}
+        />
+      )}
 
       <Modal
         isOpen={modalIsOpen}

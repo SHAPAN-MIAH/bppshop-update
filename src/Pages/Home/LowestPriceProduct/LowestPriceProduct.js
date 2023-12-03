@@ -9,7 +9,7 @@ import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import AllProductsCard from "../../AllProducts/AllProductsCard";
 import Slider from "react-slick";
 
-const LowestPriceGrocery = () => {
+const LowestPriceProduct = () => {
   const [dealOfDayProduct, setDealOfDayProduct] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -99,7 +99,7 @@ const LowestPriceGrocery = () => {
 
   return (
     <>
-      <div className="deal_of_the_day_container">
+      <div className="lowest_price_product_container">
         <SkeletonTheme baseColor="rgb(220, 220, 220)" highlightColor="#e3e3e3">
           {loading ? (
             <div className=" d-flex">
@@ -128,7 +128,7 @@ const LowestPriceGrocery = () => {
               <div className="col-md-10">
                 <div className="deal_of_the_day_product_content">
                   <div className="deal_of_the_day_product_content_header">
-                    <h4>Lowest Price Grocery</h4>
+                    <h4>Lowest Price Products</h4>
                     <button
                       className="deal_of_the_day_product_view_more_btn"
                       type=""
@@ -153,4 +153,4 @@ const LowestPriceGrocery = () => {
   );
 };
 
-export default LowestPriceGrocery;
+export default LowestPriceProduct;

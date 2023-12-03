@@ -54,3 +54,17 @@
 .after_scroll_category_nav li:hover{
   color: #ff8800;
 }
+
+@media screen and (max-width: 1200px) {
+  .category_after_scroll_section_container {
+    width: 1140px;
+  }
+  .categoryOpenHandler,
+  .categoryCloseHandler {
+    font-size: 14px;
+  }
+  .after_scroll_category_nav li{
+    padding: 0px 0px 0px 20px;
+    font-size: 13px;
+  }
+}

@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import defaultImg from "../../../Assets/Images/noImg-default.png";
 import "./StoreSection.css";
+import coverImg from "../../../Assets/Images/pexels-evie-shaffer-2512282.jpg";
 
 const StoreSection = () => {
   const [allSellerStore, setAllSellerStore] = useState([]);
@@ -43,9 +44,11 @@ const StoreSection = () => {
 
         <div className="brand_section_content_container_header">
           <h3>Store</h3>
-          <button className="brand_section_content_view_more_btn" type="">
-            View More
-          </button>
+          <Link to="/sellers-store">
+            <button className="brand_section_content_view_more_btn" type="">
+              View More
+            </button>
+          </Link>
         </div>
         <div className="store_section_content_container mt-2">
           <SkeletonTheme baseColor="#DDDDDD" highlightColor="#e3e3e3">
@@ -75,16 +78,22 @@ const StoreSection = () => {
                   }}
                 >
                   <div className="seller_store_section_content">
-                    <img
-                      src={`https://backend.bppshop.com.bd/storage/shop/banner/${sellerStore?.banner}`}
-                      alt=""
-                    />
+                    {sellerStore?.banner == "def.png" ? (
+                      <img src={coverImg} alt="" />
+                    ) : (
+                      <img
+                        src={`https://backend.bppshop.com.bd/storage/shop/banner/${sellerStore?.banner}`}
+                        alt=""
+                      />
+                    )}
                     <div className="seller_store_profile">
                       <img
                         src={`https://backend.bppshop.com.bd/storage/shop/${sellerStore?.image}`}
                         alt=""
                       />
-                      <p className="seller_store_profile_name">{sellerStore?.name}</p>
+                      <p className="seller_store_profile_name">
+                        {sellerStore?.name}
+                      </p>
                     </div>
                   </div>
                 </Link>

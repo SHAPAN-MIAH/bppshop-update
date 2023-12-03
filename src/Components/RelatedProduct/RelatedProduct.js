@@ -24,21 +24,31 @@ const RelatedProduct = ({ productId , setImg }) => {
   const responsive = {
     superLargeDesktop: {
       breakpoint: { max: 4000, min: 3000 },
-      items: 7,
+      items: 8,
       partialVisibilityGutter: 40,
     },
     desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 5,
-      partialVisibilityGutter: 40,
+      breakpoint: { max: 3000, min: 1200 },
+      items: 6,
+      partialVisibilityGutter: 20,
     },
     tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 3,
+      breakpoint: { max: 1200, min: 992 },
+      items: 5,
+      partialVisibilityGutter: 20,
     },
     mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 1,
+      breakpoint: { max: 992, min: 768 },
+      items: 4,
+      partialVisibilityGutter: 20,
+    },
+    mobile1: {
+      breakpoint: { max: 768, min: 576 },
+      items: 3,
+    },
+    mobile2: {
+      breakpoint: { max: 576, min: 0 },
+      items: 2,
     },
   };
 
@@ -54,14 +64,14 @@ const RelatedProduct = ({ productId , setImg }) => {
       <h2 className="text-center mt-5 mb-4">Related Products</h2>
       <Carousel
         responsive={responsive}
-        swipeable={false}
+        swipeable={true}
         draggable={false}
         keyBoardControl={true}
         containerClass="carousel-container"
         removeArrowOnDeviceType={["tablet", "mobile"]}
       >
         {relatedProduct?.map((product) => (
-          <div style={{ margin: "0px 10px" }}>
+          <div style={{ margin: "0px 5px" }}>
             {filterSplitLocation == "all-products" ? (
               <AllProductsCard key={product?.id} product={product} setImg={setImg}/>
             ) : filterSplitLocation == "sellers-store" ? (

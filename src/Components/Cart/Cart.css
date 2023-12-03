@@ -8,7 +8,7 @@
   border: 2px solid #ff8800;
   border-radius: 5px;
   bottom: 45vh;
-  margin-left: 94%;
+  margin-left: 94vw;
   padding: 10px 0px;
   transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }

@@ -1,7 +1,7 @@
 .footer_container_section {
   background: #eeeeee;
   padding: 40px 0px;
-  margin-top: 20px;
+  margin-top: 70px;
   font-family: "Kanit", sans-serif;
 }
 
@@ -211,6 +211,11 @@
   }
   .contact_content {
     font-size: 14px;
+  }
+
+
+  .bottom_footer_content {
+    width: 1140px;
   }
 }
 @media screen and (max-width: 992px) {
