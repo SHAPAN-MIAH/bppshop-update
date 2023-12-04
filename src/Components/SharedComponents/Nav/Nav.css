@@ -1,5 +1,5 @@
 /* nav css start */
-.navbar-section{
+.navbar-section {
   top: 0;
 }
 
@@ -17,20 +17,20 @@
 }
 .nav-content {
   width: 1320px;
-  margin:  auto;
+  margin: auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 10px;
 }
 .logo {
-  width: 200px;
+  width: 15%;
 }
 
-.bpshopsLogo {
+.bppshopLogo {
   width: 11em;
   cursor: pointer;
   transition: all 1s;
-  /* border-radius: 30px; */
 }
 .bppshopShortLogo {
   width: 40px;
@@ -42,17 +42,15 @@
   transition: all 1s;
 }
 
-.searchInput {
+.searchInput_container {
   position: relative;
-  width: 40%;
-  margin-left: 15%;
-  /* display: flex;
-  justify-content: end; */
-  /* z-index: 999; */
+  width: 65%;
+  display: flex;
+  justify-content: center;
 }
 
-.search {
-  width: 100%;
+.search_input {
+  width: 65%;
   background: #fff;
   border-radius: 5px;
   border: 1px solid gainsboro;
@@ -60,18 +58,15 @@
   font-size: 14px;
   font-family: "Space Grotesk", sans-serif;
   outline: none;
-  /* box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px; */
   transition: all 0.3s;
-  margin-left: -13%;
 }
 
 .searchIcon {
   position: absolute;
-  margin-left: -28px;
+  margin-left: 60%;
   margin-top: 8px;
   cursor: pointer;
 }
-
 
 /* .suggested_item_container::-webkit-scrollbar {
   display: none;
@@ -131,41 +126,21 @@
   margin-right: 5px;
 }
 
-.helpLine{
-  position: absolute;
-  background: #fff;
-  padding: 3px 20px 3px 5px;
-  border-radius: 30px;
-  color: #ef8341;
-  margin-left: 80%;
-}
-
-.helpLine i{
-  font-size: 20px;
-  background: #ef8341;
-  color: #fff;
-  padding: 2px 5px;
-  border-radius: 100px;
-}
-.helpLine span{
-  font-size: 20px;
-  margin-left: 10px;
-}
-
-.partner_zone{
+.partner_zone {
   background: #fff;
   color: #727272;
   border: 1px solid gainsboro;
   border-radius: 5px;
-  padding: 6px 10px ;
+  padding: 6px 10px;
 }
-.partner_zone_dropdown{
+.partner_zone_dropdown {
   margin-top: 8px !important;
   margin-left: -11px !important;
 }
 .partner_zone_dropdown .dropdown-item {
-  padding: 0px 10px!important;
+  padding: 0px 10px !important;
 }
+
 .user-profile {
   width: 40px;
   height: 40px;
@@ -175,9 +150,9 @@
 .user-profile img {
   width: 100%;
 }
-.profile_dropdown{
-  width: 250px;
-  margin-left: -209px !important;
+.profile_dropdown {
+  width: auto;
+  /* margin-left: -209px !important; */
 }
 .dropdown-item {
   cursor: pointer;
@@ -195,33 +170,66 @@
 }
 @media only screen and (max-width: 768px) {
   .nav-content {
-    margin: 10px 13px 10px 30px;
+    width: 720px;
+    margin: auto;
   }
-  .bpshopsLogo {
+
+  .logo{
+    width: 10%;
+  }
+  .bppshopLogo {
     display: none;
   }
   .bppshopShortLogo {
     display: block;
   }
-  .searchInput {
+  
+  .searchInput_container {
     position: relative;
-    width: 60%;
+    width: 58%;
+    display: flex;
     justify-content: center;
-    margin-left: -70px;
+  }
+  
+  .search_input {
+    width: 80%;
+    background: #fff;
+    border-radius: 0px;
+    border: 1px solid gainsboro;
+    padding: 8px 30px 8px 15px;
+    font-size: 14px;
+    font-family: "Space Grotesk", sans-serif;
+    outline: none;
+    transition: all 0.3s;
+  }
+  .searchIcon {
+    margin-left: 70%;
+  }
+  .partner_zone {
+    font-size: 12px;
+    padding: 9px 8px;
+    border-radius: 0px;
+  }
+  .partner_zone_dropdown {
+    margin-top: 8px !important;
+    margin-left: -11px !important;
+  }
+  .partner_zone_dropdown .dropdown-item {
+    padding: 0px 10px !important;
   }
 
-  
+  .profile_dropdown {
+    margin-left: 0px !important;
+  }
 }
 @media only screen and (max-width: 668px) {
-  
-  .searchInput {
+  /* .searchInput {
     margin-left: -75px;
-  }
+  } */
 }
 
-
 @media only screen and (max-width: 576px) {
-  .searchIcon {
+  /* .searchIcon {
     margin-top: 8px;
   }
   .search {
@@ -235,28 +243,28 @@
     height: 35px;
     border-radius: 50px;
     overflow: hidden;
-  }
+  } */
 }
 
 @media only screen and (max-width: 480px) {
-  .searchIcon {
+  /* .searchIcon {
     font-size: 13px;
   }
   .searchInput {
     margin-left: -90px;
-  }
+  } */
 }
 @media only screen and (max-width: 400px) {
-  .searchInput {
+  /* .searchInput {
     margin-left: -100px;
   }
   .Modal {
     width: 350px;
-  }
+  } */
 }
 
 @media only screen and (max-width: 360px) {
-  .searchIcon {
+  /* .searchIcon {
     padding-left: 5px;
-  }
+  } */
 }

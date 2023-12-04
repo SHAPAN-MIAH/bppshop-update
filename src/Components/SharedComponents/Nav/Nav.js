@@ -3,8 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import "./Nav.css";
 import defaultAvatar from "../../../Assets/Images/default-avatar.jpg";
 // import bppShopsLogo from "../../../Assets/Images/Currection logo-02-01.png";
-import bppShopsLogo from "../../../Assets/Images/Orenge logo.png";
-import bppShopshortLogo from "../../../Assets/Images/bpp shop logo 02-01-01.png";
+import bppShopLogo from "../../../Assets/Images/Orenge logo.png";
+import bppshopIconLogo from "../../../Assets/Images/Orenge bg 02png.png";
 import Sidebar from "../Sidebar/Sidebar";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -34,6 +34,7 @@ import { clearUserOrders } from "../../../Redux/Actions/UserOrderAction";
 import Modal from "react-modal";
 import LoginModal from "../../../Pages/User/Login/LoginModal";
 import SignUpModal from "../../../Pages/User/SignUp/SignUpModal";
+import ResponsiveSidebar from "../Sidebar/ResponsiveSidebar";
 
 Modal.setAppElement("#root");
 
@@ -207,31 +208,36 @@ const Nav = () => {
     <>
       <div className="navbar-section">
         <nav className="nav">
-          {/* <Sidebar /> */}
           <div className="nav-content">
+          <div className="responsive_sidebar_container">
+            <div className="sidebarIconToggle">
+              <i className="bi bi-list"></i>
+            </div>
+            <ResponsiveSidebar />
+          </div>
             <div className="logo">
               <Link to="/">
-                <img className="bpshopsLogo" src={bppShopsLogo} alt="" />
+                <img className="bppshopLogo" src={bppShopLogo} alt="" />
                 <img
                   className="bppshopShortLogo"
-                  src={bppShopshortLogo}
+                  src={bppshopIconLogo}
                   alt=""
                 />
               </Link>
 
               <img className="bpshopsIcon" src="img/bpp_icon.png" alt="" />
             </div>
-
-            <div className="searchInput">
+            <div className="searchInput_container">
               <input
                 onKeyUp={handleSearchByKeyUp}
                 type="text"
                 name="search"
                 id="dynamic-placeholder"
-                className="search"
+                className="search_input"
                 placeholder="Search Product..."
                 // value={suggestion}
               />
+              
               <span className="searchIcon">
                 <button
                   // onClick={handleSearchByClick}
@@ -241,7 +247,7 @@ const Nav = () => {
                   <i className="bi bi-search"></i>
                 </button>
               </span>
-
+              
               {SuggestedCategory && (
                 <div className="suggested_item_container">
                   {SuggestedCategory?.map((suggestItem) => (
@@ -261,9 +267,6 @@ const Nav = () => {
                 </div>
               )}
             </div>
-
-           
-
             <div className="partner_zone">
               <div
                 className="partner_zone_dropdown_btn"
@@ -273,19 +276,15 @@ const Nav = () => {
               >
                 Partner Zone <i className="bi bi-chevron-down"></i>
               </div>
-                <div className="dropdown-menu partner_zone_dropdown">
-                 
-                  <Link to="/">
-                    <li className="dropdown-item mt-1">Become a Seller</li>
-                  </Link>
-                  <Link to="/">
-                    <li className="dropdown-item mt-1">Become a Agent</li>
-                  </Link>
-                </div>
+              <div className="dropdown-menu partner_zone_dropdown">
+                <Link to="/">
+                  <li className="dropdown-item mt-1">Become a Seller</li>
+                </Link>
+                <Link to="/">
+                  <li className="dropdown-item mt-1">Become a Agent</li>
+                </Link>
+              </div>
             </div>
-
-
-
             <div className="userProfileTab">
               <div
                 className="user-profile "
@@ -330,11 +329,11 @@ const Nav = () => {
 
                     <h6 className="mx-2">{user?.name}</h6>
                   </div>
-                  <hr/>
+                  <hr />
                   <Link to="/profile">
                     <li className="dropdown-item mt-1">View Profile</li>
                   </Link>
-                  
+
                   <li onClick={() => handleLogout()} className="dropdown-item">
                     Logout
                   </li>
