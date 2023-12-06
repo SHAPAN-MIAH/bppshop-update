@@ -35,6 +35,7 @@ import Modal from "react-modal";
 import LoginModal from "../../../Pages/User/Login/LoginModal";
 import SignUpModal from "../../../Pages/User/SignUp/SignUpModal";
 import ResponsiveSidebar from "../Sidebar/ResponsiveSidebar";
+import partnerIcon from "../../../Assets/Images/PngItem_786610.png"
 
 Modal.setAppElement("#root");
 
@@ -274,7 +275,9 @@ const Nav = () => {
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                Partner Zone <i className="bi bi-chevron-down"></i>
+                <span>Partner Zone <i className="bi bi-chevron-down"></i></span>
+
+                <img width={30}  src={partnerIcon} alt=""/>
               </div>
               <div className="dropdown-menu partner_zone_dropdown">
                 <Link to="/">

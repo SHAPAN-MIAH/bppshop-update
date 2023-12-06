@@ -70,6 +70,7 @@ const BestSellingSection = () => {
           width: "22px",
           height: "25px",
           borderRadius: "50px",
+          right: "0px"
         }}
         onClick={onClick}
       />

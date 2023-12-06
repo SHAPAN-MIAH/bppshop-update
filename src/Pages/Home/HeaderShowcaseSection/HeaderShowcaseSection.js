@@ -17,7 +17,49 @@ const HeaderShowcaseSection = () => {
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 4000,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
   };
+
+  function NextArrow(props) {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        className={className}
+        style={{
+          ...style,
+          display: "block",
+          background: "rgba(126, 126, 126, 0.603)",
+          width: "25px",
+          height: "25px",
+          borderRadius: "50px",
+          textAlign: "center",
+          right: "18px"
+        }}
+        onClick={onClick}
+      />
+    );
+  }
+
+  function PrevArrow(props) {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        className={className}
+        style={{
+          ...style,
+          display: "block",
+          background: "rgba(126, 126, 126, 0.603)",
+          width: "25px",
+          height: "25px",
+          borderRadius: "50px",
+          left: "15px",
+          zIndex: "1"
+        }}
+        onClick={onClick}
+      />
+    );
+  }
 
   return (
     <>

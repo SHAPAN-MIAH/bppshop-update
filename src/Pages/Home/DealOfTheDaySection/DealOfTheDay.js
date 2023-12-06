@@ -32,19 +32,19 @@ const DealOfTheDay = () => {
     prevArrow: <SamplePrevArrow />,
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 1140,
         settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
+          slidesToShow: 4,
+          slidesToScroll: 4,
           infinite: true,
           dots: true,
         },
       },
       {
-        breakpoint: 600,
+        breakpoint: 768,
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
+          slidesToShow: 3,
+          slidesToScroll: 3,
           initialSlide: 2,
         },
       },
@@ -67,10 +67,12 @@ const DealOfTheDay = () => {
           ...style,
           display: "block",
           background: "gray",
-          width: "22px",
+          width: "25px",
           height: "25px",
           borderRadius: "50px",
           textAlign: "center",
+          right: "20px",
+          // textAlign: "left"
         }}
         onClick={onClick}
       />
@@ -86,9 +88,12 @@ const DealOfTheDay = () => {
           ...style,
           display: "block",
           background: "gray",
-          width: "20px",
+
+          width: "25px",
           height: "25px",
           borderRadius: "50px",
+          left: "15px",
+          zIndex: "90"
         }}
         onClick={onClick}
       />
@@ -117,13 +122,13 @@ const DealOfTheDay = () => {
               </div>
             </div>
           ) : (
-            <div className="row">
-              <div className="col-md-2">
+            <div className="deal_of_the_day_content_container">
+              {/* <div className="col-md-2"> */}
                 <div className="deal_of_the_day_banner">
                   <img src={img} alt="" />
                 </div>
-              </div>
-              <div className="col-md-10">
+              {/* </div> */}
+              {/* <div className="col-md-10"> */}
                 <div className="deal_of_the_day_product_content">
                   <div className="deal_of_the_day_product_content_header">
                     <h4>Deal Of the Day</h4>
@@ -142,7 +147,7 @@ const DealOfTheDay = () => {
                     ))}
                   </Slider>
                 </div>
-              </div>
+              {/* </div> */}
             </div>
           )}
         </SkeletonTheme>

@@ -274,7 +274,8 @@ const NewArrivalSectionProductCard = ({ product, setImg }) => {
               </div>
 
               <div className="new_arrival_section_product-card-body-content">
-                <h6>{name.toString().substring(0, 20)}...</h6>
+                <small>{name.toString().substring(0, 20)}...</small>
+                <br/>
                 <small className="">
                   {newChoiceOption && (
                     <span className="new_arrival_section_unitPrice_view">
@@ -282,7 +283,7 @@ const NewArrivalSectionProductCard = ({ product, setImg }) => {
                     </span>
                   )}
                 </small>
-                <div className="product-card-body-content-unit-price mt-2">
+                <div className="product-card-body-content-unit-price mt-1">
                   {discount ? (
                     <span>
                       <b> &#2547; {unit_price - discount} </b>
@@ -303,7 +304,7 @@ const NewArrivalSectionProductCard = ({ product, setImg }) => {
                   size={14}
                 />{" "}
                 <small>({reviews_count})</small>
-                <div className="mt-3">
+                <div className="mt-2">
                   {addeditemid ? (
                     <div className="newArrivalSectionCardFooterBtn">
                       <button disabled className="new_arrival_section_btn_after_added_cart">

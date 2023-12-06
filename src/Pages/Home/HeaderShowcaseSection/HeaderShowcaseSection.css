@@ -37,3 +37,23 @@
   border-radius: 7px;
   overflow: hidden;
 }
+/* .header_showcase_section_banner Slider img{
+  height: 100%;
+} */
+
+@media screen and (max-width: 768px) {
+  .header_showcase_section_container {
+    display: grid;
+    grid-gap: 0px;
+    overflow: hidden;
+  }
+  
+  .header_showcase_section_container > *:nth-child(2) {
+    grid-column: span 4;
+  }
+
+  .sidebar_container{
+    display: none;
+  }
+  
+}

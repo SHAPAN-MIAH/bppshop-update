@@ -127,19 +127,24 @@
 }
 
 .partner_zone {
-  background: #fff;
+  background: #ffffff;
   color: #727272;
   border: 1px solid gainsboro;
   border-radius: 5px;
-  padding: 6px 10px;
+  padding:  7px 6px;
+}
+.partner_zone_dropdown_btn img{
+ display: none;
 }
 .partner_zone_dropdown {
   margin-top: 8px !important;
   margin-left: -11px !important;
 }
+
 .partner_zone_dropdown .dropdown-item {
   padding: 0px 10px !important;
 }
+
 
 .user-profile {
   width: 40px;
@@ -206,10 +211,22 @@
     margin-left: 70%;
   }
   .partner_zone {
-    font-size: 12px;
-    padding: 9px 8px;
-    border-radius: 0px;
+    width: 40px;
+    height: 40px;
+    background: #a0a0a0;
+    border: 1px solid gainsboro;
+    border-radius: 50%;
+    padding:  5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
+  .partner_zone_dropdown_btn span{
+    display: none;
+   }
+  .partner_zone_dropdown_btn img{
+    display: block;
+   }
   .partner_zone_dropdown {
     margin-top: 8px !important;
     margin-left: -11px !important;
@@ -223,9 +240,10 @@
   }
 }
 @media only screen and (max-width: 668px) {
-  /* .searchInput {
-    margin-left: -75px;
-  } */
+  .nav-content {
+    width: 620px;
+    margin: auto;
+  }
 }
 
 @media only screen and (max-width: 576px) {
