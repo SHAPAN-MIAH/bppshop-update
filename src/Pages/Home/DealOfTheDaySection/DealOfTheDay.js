@@ -66,7 +66,7 @@ const DealOfTheDay = () => {
         style={{
           ...style,
           display: "block",
-          background: "gray",
+          background: "#e77025",
           width: "25px",
           height: "25px",
           borderRadius: "50px",
@@ -87,7 +87,7 @@ const DealOfTheDay = () => {
         style={{
           ...style,
           display: "block",
-          background: "gray",
+          background: "#e77025",
 
           width: "25px",
           height: "25px",

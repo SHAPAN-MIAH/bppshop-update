@@ -29,7 +29,7 @@ const HeaderShowcaseSection = () => {
         style={{
           ...style,
           display: "block",
-          background: "rgba(126, 126, 126, 0.603)",
+          background: "#e77025",
           width: "25px",
           height: "25px",
           borderRadius: "50px",
@@ -49,7 +49,7 @@ const HeaderShowcaseSection = () => {
         style={{
           ...style,
           display: "block",
-          background: "rgba(126, 126, 126, 0.603)",
+          background: "#e77025",
           width: "25px",
           height: "25px",
           borderRadius: "50px",

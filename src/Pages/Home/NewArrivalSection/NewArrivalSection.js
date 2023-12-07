@@ -27,13 +27,24 @@ const NewArrivalSection = () => {
     infinite: true,
     centerPadding: "0px",
     slidesToShow: 1,
-    speed: 3000,
+    speed: 1000,
     autoplay: true,
-    autoplaySpeed: 5000,
+    autoplaySpeed: 7000,
     rows: 2,
     slidesPerRow: 2,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
+    // responsive: [
+      
+    //   {
+    //     breakpoint: 768,
+    //     settings: {
+    //       slidesToShow: 1,
+    //       slidesToScroll: 1,
+    //       initialSlide: 1,
+    //     },
+    //   }
+    // ],
   };
 
   function SampleNextArrow(props) {
@@ -44,7 +55,7 @@ const NewArrivalSection = () => {
         style={{
           ...style,
           display: "block",
-          background: "gray",
+          background: "#e77025",
           width: "22px",
           height: "25px",
           borderRadius: "50px",
@@ -63,7 +74,7 @@ const NewArrivalSection = () => {
         style={{
           ...style,
           display: "block",
-          background: "gray",
+          background: "#e77025",
           width: "22px",
           height: "25px",
           borderRadius: "50px",

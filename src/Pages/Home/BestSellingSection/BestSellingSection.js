@@ -66,11 +66,11 @@ const BestSellingSection = () => {
         style={{
           ...style,
           display: "block",
-          background: "gray",
+          background: "#e77025",
           width: "22px",
           height: "25px",
           borderRadius: "50px",
-          right: "0px"
+          right: "20px",
         }}
         onClick={onClick}
       />
@@ -85,10 +85,12 @@ const BestSellingSection = () => {
         style={{
           ...style,
           display: "block",
-          background: "gray",
+          background: "#e77025",
           width: "22px",
           height: "25px",
           borderRadius: "50px",
+          left: "15px",
+          zIndex: "1"
         }}
         onClick={onClick}
       />
@@ -162,13 +164,13 @@ const BestSellingSection = () => {
               </div>
             </div>
           ) : (
-            <div className="row">
-              <div className="col-md-2">
+            <div className="deal_of_the_day_content_container">
+              {/* <div className="col-md-2"> */}
                 <div className="deal_of_the_day_banner">
                   <img src={img} alt="" />
                 </div>
-              </div>
-              <div className="col-md-10">
+              {/* </div> */}
+              {/* <div className="col-md-10"> */}
                 <div className="deal_of_the_day_product_content">
                   <div className="deal_of_the_day_product_content_header">
                     <h4>Best Selling Product</h4>
@@ -187,7 +189,7 @@ const BestSellingSection = () => {
                     ))}
                   </Slider>
                 </div>
-              </div>
+              {/* </div> */}
             </div>
           )}
         </SkeletonTheme>

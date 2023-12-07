@@ -35,7 +35,7 @@ import Modal from "react-modal";
 import LoginModal from "../../../Pages/User/Login/LoginModal";
 import SignUpModal from "../../../Pages/User/SignUp/SignUpModal";
 import ResponsiveSidebar from "../Sidebar/ResponsiveSidebar";
-import partnerIcon from "../../../Assets/Images/PngItem_786610.png"
+import partnerIcon from "../../../Assets/Images/PngItem_786610.png";
 
 Modal.setAppElement("#root");
 
@@ -205,17 +205,23 @@ const Nav = () => {
     }
   }, [loginRes, isAuthenticated, token]);
 
+  const [isToggled, setIsToggled] = useState(false);
+  const sidebarToggleHandler = () => {
+    setIsToggled(!isToggled);
+  };
+
   return (
     <>
       <div className="navbar-section">
         <nav className="nav">
           <div className="nav-content">
-          <div className="responsive_sidebar_container">
-            <div className="sidebarIconToggle">
-              <i className="bi bi-list"></i>
+            <div className="responsive_sidebar_container">
+              <div onClick={sidebarToggleHandler} className="sidebarIconToggle">
+                <i className="bi bi-list"></i>
+              </div>
+              <ResponsiveSidebar isToggled={isToggled}/>
+                
             </div>
-            <ResponsiveSidebar />
-          </div>
             <div className="logo">
               <Link to="/">
                 <img className="bppshopLogo" src={bppShopLogo} alt="" />
@@ -238,7 +244,7 @@ const Nav = () => {
                 placeholder="Search Product..."
                 // value={suggestion}
               />
-              
+
               <span className="searchIcon">
                 <button
                   // onClick={handleSearchByClick}
@@ -248,7 +254,7 @@ const Nav = () => {
                   <i className="bi bi-search"></i>
                 </button>
               </span>
-              
+
               {SuggestedCategory && (
                 <div className="suggested_item_container">
                   {SuggestedCategory?.map((suggestItem) => (
@@ -275,9 +281,11 @@ const Nav = () => {
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                <span>Partner Zone <i className="bi bi-chevron-down"></i></span>
+                <span>
+                  Partner Zone <i className="bi bi-chevron-down"></i>
+                </span>
 
-                <img width={30}  src={partnerIcon} alt=""/>
+                <img width={30} src={partnerIcon} alt="" />
               </div>
               <div className="dropdown-menu partner_zone_dropdown">
                 <Link to="/">

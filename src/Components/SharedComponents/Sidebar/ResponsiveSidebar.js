@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import "./ResponsiveSidebar.css";
 import { Link } from "react-router-dom";
 import { categoryBaseUrl } from "./../../../BaseUrl/BaseUrl";
 
-const ResponsiveSidebar = () => {
+const ResponsiveSidebar = ({isToggled}) => {
   const allCategory = useSelector(
     (state) => state.allCategories.categories.data
   );
@@ -40,48 +40,54 @@ const ResponsiveSidebar = () => {
     return activeSubSubMenu === subsubcategory;
   };
 
-  const sidebarOpenHandler = () => {
-    const sidebarMenu = document.querySelector("#sidebarMenu");
-    const openSidebarIconToggle = document.querySelector(
-      ".openSidebarIconToggle"
-    );
-    const closeSidebarIconToggle = document.querySelector(
-      ".closeSidebarIconToggle"
-    );
+  // const sidebarOpenHandler = () => {
+  //   const sidebarMenu = document.querySelector("#sidebarMenu");
+  //   const openSidebarIconToggle = document.querySelector(
+  //     ".openSidebarIconToggle"
+  //   );
+  //   const closeSidebarIconToggle = document.querySelector(
+  //     ".closeSidebarIconToggle"
+  //   );
 
-    sidebarMenu.style.transform = "translateX(0px)";
-    closeSidebarIconToggle.style.display = "block";
-    openSidebarIconToggle.style.display = "none";
-  };
+  //   sidebarMenu.style.transform = "translateX(0px)";
+  //   closeSidebarIconToggle.style.display = "block";
+  //   openSidebarIconToggle.style.display = "none";
+  // };
 
-  const sidebarCloseHandler = () => {
-    const sidebarMenu = document.querySelector("#sidebarMenu");
-    const openSidebarIconToggle = document.querySelector(
-      ".openSidebarIconToggle"
-    );
-    const closeSidebarIconToggle = document.querySelector(
-      ".closeSidebarIconToggle"
-    );
+  // const sidebarCloseHandler = () => {
+  //   const sidebarMenu = document.querySelector("#sidebarMenu");
+  //   const openSidebarIconToggle = document.querySelector(
+  //     ".openSidebarIconToggle"
+  //   );
+  //   const closeSidebarIconToggle = document.querySelector(
+  //     ".closeSidebarIconToggle"
+  //   );
 
-    sidebarMenu.style.transform = "translateX(-300px)";
-    closeSidebarIconToggle.style.display = "none";
-    openSidebarIconToggle.style.display = "block";
-  };
+  //   sidebarMenu.style.transform = "translateX(-300px)";
+  //   closeSidebarIconToggle.style.display = "none";
+  //   openSidebarIconToggle.style.display = "block";
+  // };
 
   const activeViewHandler = () => {
     setActiveSubSubMenu("");
   };
 
+  
+    const sidebarToggleHandler = () => {
+      if(isToggled){
+        document.getElementById("#responsiveSidebarMenu").style.transform = "translateX(0px)";
+      }else{
+        document.getElementById("#responsiveSidebarMenu").style.transform = "translateX(-300px)";
+      }
+    }
+  
+    useEffect(() => {
+      // sidebarToggleHandler()
+    })
+
   return (
     <>
-      <div className="responsive_sidebar-section">
-        {/* <span className="openSidebarIconToggle" onClick={sidebarOpenHandler}>
-          <i className="bi bi-list"></i>
-        </span>
-        <span className="closeSidebarIconToggle" onClick={sidebarCloseHandler}>
-          <i className="bi bi-list"></i>
-        </span> */}
-
+      <div className="responsive_sidebar_section">
         <div id="responsiveSidebarMenu">
           <ul className="responsive_menu">
             {allCategory?.map((categoryItem, categoryIndex) => {

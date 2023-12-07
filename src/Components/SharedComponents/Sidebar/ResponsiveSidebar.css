@@ -1,3 +1,4 @@
+
 #responsiveSidebarMenu {
   height: 100%;
   width: 250px;
@@ -11,6 +12,7 @@
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
   transition: transform 250ms ease-in-out;
   overflow: scroll;
+  transform: translateX(-300px);
 }
 
 #responsiveSidebarMenu::-webkit-scrollbar {
@@ -23,7 +25,6 @@
 }
 
 .sidebarIconToggle {
-  /* width: 20px; */
   height: 100%;
   display: flex;
   justify-content: center;
@@ -33,10 +34,6 @@
 .sidebarIconToggle i {
   color: rgb(0, 0, 0);
   font-size: 20px;
-}
-
-#openSidebarMenu:checked ~ #responsiveSidebarMenu {
-  transform: translateX(-300px);
 }
 
 .responsive_menu {
@@ -57,7 +54,7 @@
   padding: 5px 9px;
   color: #fd7e14;
   background: #fff;
-  font-size: 20px; 
+  font-size: 20px;
 }
 
 .responsive_menu li {
@@ -118,23 +115,21 @@
 }
 
 .subMenuActive,
-.subSubMenuActive{
+.subSubMenuActive {
   color: #fd7e14 !important;
   font-weight: 600 !important;
 }
 
-
-
-.responsive_sidebar_container{
+.responsive_sidebar_container {
   display: none;
 }
 
 @media screen and (max-width: 768px) {
-  .responsive_sidebar_container{
+  .responsive_sidebar_container {
     display: block;
   }
-  #responsiveSidebarMenu {
-    transform: translateX(-300px);
+
+  .openSidebar {
+    transform: translateX(0px);
   }
 }
-
