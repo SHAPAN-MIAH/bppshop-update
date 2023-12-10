@@ -1,3 +1,6 @@
+.brand_section{
+  width: 100%;
+}
 .brand_section_ad_banner img{
   width: 100%;
 }
@@ -37,4 +40,34 @@
   color: #fd7e14;
   font-weight: 600;
   font-size: 14px;
+}
+
+@media screen and (max-width: 768px) {
+  .brand_section_content_container{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px ;
+  }
+}
+@media screen and (max-width: 576px) {
+  .brand_section_content_container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px ;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .brand_section_content_container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+  }
+}
+@media screen and (max-width: 335px) {
+  .brand_section_content_container {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 10px;
+  }
 }

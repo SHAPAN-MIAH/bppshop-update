@@ -49,3 +49,44 @@
 .seller_store_profile_name{
   font-size: 14px;
 }
+
+@media screen and (max-width: 768px) {
+  .store_section_content_container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+  }
+}
+@media screen and (max-width: 668px) {
+  .store_section_content_container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+  }
+}
+@media screen and (max-width: 576px) {
+  .store_section_content_container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+  }
+}
+@media screen and (max-width: 520px) {
+  .store_section_content_container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+  }
+}
+@media screen and (max-width: 335px) {
+  .store_section_content_container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 10px;
+  }
+}

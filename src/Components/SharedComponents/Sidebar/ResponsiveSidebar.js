@@ -4,7 +4,7 @@ import "./ResponsiveSidebar.css";
 import { Link } from "react-router-dom";
 import { categoryBaseUrl } from "./../../../BaseUrl/BaseUrl";
 
-const ResponsiveSidebar = ({isToggled}) => {
+const ResponsiveSidebar = () => {
   const allCategory = useSelector(
     (state) => state.allCategories.categories.data
   );
@@ -73,21 +73,14 @@ const ResponsiveSidebar = ({isToggled}) => {
   };
 
   
-    const sidebarToggleHandler = () => {
-      if(isToggled){
-        document.getElementById("#responsiveSidebarMenu").style.transform = "translateX(0px)";
-      }else{
-        document.getElementById("#responsiveSidebarMenu").style.transform = "translateX(-300px)";
-      }
-    }
-  
-    useEffect(() => {
-      // sidebarToggleHandler()
-    })
 
   return (
     <>
       <div className="responsive_sidebar_section">
+        <input type="checkbox" name="" id="openSidebarMenu" />
+        <label htmlFor="openSidebarMenu" className="sidebarIconToggle">
+          <i className="bi bi-list"></i>
+        </label>
         <div id="responsiveSidebarMenu">
           <ul className="responsive_menu">
             {allCategory?.map((categoryItem, categoryIndex) => {

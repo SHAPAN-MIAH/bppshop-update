@@ -205,34 +205,27 @@ const Nav = () => {
     }
   }, [loginRes, isAuthenticated, token]);
 
-  const [isToggled, setIsToggled] = useState(false);
-  const sidebarToggleHandler = () => {
-    setIsToggled(!isToggled);
-  };
-
   return (
     <>
       <div className="navbar-section">
         <nav className="nav">
           <div className="nav-content">
-            <div className="responsive_sidebar_container">
-              <div onClick={sidebarToggleHandler} className="sidebarIconToggle">
-                <i className="bi bi-list"></i>
+            <div className="d-flex">
+              <div className="responsive_sidebar_container">
+                <ResponsiveSidebar />
               </div>
-              <ResponsiveSidebar isToggled={isToggled}/>
-                
-            </div>
-            <div className="logo">
-              <Link to="/">
-                <img className="bppshopLogo" src={bppShopLogo} alt="" />
-                <img
-                  className="bppshopShortLogo"
-                  src={bppshopIconLogo}
-                  alt=""
-                />
-              </Link>
+              <div className="logo">
+                <Link to="/">
+                  <img className="bppshopLogo" src={bppShopLogo} alt="" />
+                  <img
+                    className="bppshopShortLogo"
+                    src={bppshopIconLogo}
+                    alt=""
+                  />
+                </Link>
 
-              <img className="bpshopsIcon" src="img/bpp_icon.png" alt="" />
+                <img className="bpshopsIcon" src="img/bpp_icon.png" alt="" />
+              </div>
             </div>
             <div className="searchInput_container">
               <input

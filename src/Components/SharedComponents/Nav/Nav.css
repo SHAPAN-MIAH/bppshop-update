@@ -175,7 +175,7 @@
 }
 @media only screen and (max-width: 768px) {
   .nav-content {
-    width: 720px;
+    width: 96%;
     margin: auto;
   }
 
@@ -241,7 +241,7 @@
 }
 @media only screen and (max-width: 668px) {
   .nav-content {
-    width: 620px;
+    /* width: 620px; */
     margin: auto;
   }
 }
