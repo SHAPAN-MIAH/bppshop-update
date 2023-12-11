@@ -69,12 +69,12 @@ const HeaderShowcaseSection = () => {
                 <Sidebar />
               </div>
               <div className="header_showcase_section_banner">
-                <Slider {...settings}>
-                  <img height={400} src={banner1} alt="" />
-                  <img height={400} src={banner2} alt="" />
-                  <img height={400} src={banner3} alt="" />
-                  <img height={400} src={banner4} alt="" />
-                  <img height={400} src={banner5} alt="" />
+                <Slider {...settings} className="slider">
+                  <img  src={banner1} alt="" />
+                  <img  src={banner2} alt="" />
+                  <img  src={banner3} alt="" />
+                  <img  src={banner4} alt="" />
+                  <img  src={banner5} alt="" />
                 </Slider>
               </div>
         </div>

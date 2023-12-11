@@ -37,9 +37,9 @@
   border-radius: 7px;
   overflow: hidden;
 }
-/* .header_showcase_section_banner Slider img{
-  height: 100%;
-} */
+.header_showcase_section_banner .slider img{
+  height: 400px;
+}
 
 @media screen and (max-width: 768px) {
   .header_showcase_section_container {
@@ -54,6 +54,13 @@
 
   .sidebar_container{
     display: none;
+  }
+
+  .header_showcase_section_banner {
+    height: auto;
+  }
+  .header_showcase_section_banner .slider img{
+    height: auto;
   }
   
 }

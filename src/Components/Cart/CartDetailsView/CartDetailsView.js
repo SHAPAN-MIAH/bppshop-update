@@ -135,10 +135,10 @@ const CartDetailsView = () => {
     <>
       <div className="cartDetailsView-container">
         <div className="cartDetailsView-header">
-          <h4>My Cart</h4>
-          <p onClick={CartDetailsCloseHandler}>
+          <span>My Shopping Cart</span>
+          <span onClick={CartDetailsCloseHandler}>
             <i className="bi bi-x-lg"></i>
-          </p>
+          </span>
         </div>
         <div className="cartDetailsView-content">
           {!cartItems?.[0]?.data?.length ? (

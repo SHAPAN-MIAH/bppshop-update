@@ -197,9 +197,9 @@
   }
   
   .search_input {
-    width: 80%;
+    width: 100%;
     background: #fff;
-    border-radius: 0px;
+    border-radius: 5px;
     border: 1px solid gainsboro;
     padding: 8px 30px 8px 15px;
     font-size: 14px;
@@ -244,6 +244,9 @@
     /* width: 620px; */
     margin: auto;
   }
+  .searchIcon {
+    margin-left: 68%;
+  }
 }
 
 @media only screen and (max-width: 576px) {
@@ -262,6 +265,10 @@
     border-radius: 50px;
     overflow: hidden;
   } */
+
+  .searchIcon {
+    margin-left: 67%;
+  }
 }
 
 @media only screen and (max-width: 480px) {

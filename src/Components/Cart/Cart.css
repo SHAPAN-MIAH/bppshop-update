@@ -43,6 +43,7 @@
     width: 100%;
     display: flex;
     border: 1px solid #d1d1d1;
+    z-index: 9999;
   }
   .start-shopping-btn {
     display: block;

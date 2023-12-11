@@ -34,17 +34,22 @@ const NewArrivalSection = () => {
     slidesPerRow: 2,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
-    // responsive: [
-      
-    //   {
-    //     breakpoint: 768,
-    //     settings: {
-    //       slidesToShow: 1,
-    //       slidesToScroll: 1,
-    //       initialSlide: 1,
-    //     },
-    //   }
-    // ],
+    responsive: [
+      {
+        breakpoint: 1200,
+        settings: {
+          rows: 2,
+          slidesPerRow: 2,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          rows: 1,
+          slidesPerRow: 1,
+        },
+      },
+    ],
   };
 
   function SampleNextArrow(props) {
