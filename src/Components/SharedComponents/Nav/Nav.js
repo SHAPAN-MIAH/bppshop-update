@@ -36,6 +36,12 @@ import LoginModal from "../../../Pages/User/Login/LoginModal";
 import SignUpModal from "../../../Pages/User/SignUp/SignUpModal";
 import ResponsiveSidebar from "../Sidebar/ResponsiveSidebar";
 import partnerIcon from "../../../Assets/Images/PngItem_786610.png";
+// import { LuUser2 } from "react-icons/lu";
+import { LuHeartHandshake, LuUser, LuUsers } from "react-icons/lu";
+import { CiLogin } from "react-icons/ci";
+import { SiGnuprivacyguard } from "react-icons/si";
+import { MdOutlineHandshake } from "react-icons/md";
+
 
 Modal.setAppElement("#root");
 
@@ -274,11 +280,14 @@ const Nav = () => {
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                <span>
+                {/* <span>
                   Partner Zone <i className="bi bi-chevron-down"></i>
                 </span>
 
-                <img width={30} src={partnerIcon} alt="" />
+                <img width={30} src={partnerIcon} alt="" /> */}
+
+                {/* <LuUsers /> */}
+                <LuHeartHandshake />
               </div>
               <div className="dropdown-menu partner_zone_dropdown">
                 <Link to="/">
@@ -302,7 +311,8 @@ const Nav = () => {
                       alt="profile"
                     />
                   ) : ( */}
-                <img src={defaultAvatar} alt="profile" />
+                {/* <img src={defaultAvatar} alt="profile" /> */}
+                <LuUser />
                 {/* )}  */}
               </div>
               {token ? (
@@ -345,10 +355,10 @@ const Nav = () => {
               ) : (
                 <div className="dropdown-menu profile_dropdown">
                   <li className="dropdown-item" onClick={openModal}>
-                    Login
+                  <CiLogin /> Login
                   </li>
                   <li className="dropdown-item" onClick={openModal}>
-                    Sign-Up
+                  <SiGnuprivacyguard />  Sign-Up
                   </li>
                   {/* <Link to="/login">
                     <li className="dropdown-item">Login</li>
@@ -356,6 +366,15 @@ const Nav = () => {
                   <Link to="/signup">
                     <li className="dropdown-item">Sign-Up</li>
                   </Link> */}
+
+                  {/* <div className="dropdown-menu partner_zone_dropdown"> */}
+                  <Link to="/">
+                    <li className="dropdown-item mt-1">Become a Seller</li>
+                  </Link>
+                  <Link to="/">
+                    <li className="dropdown-item mt-1">Become a Agent</li>
+                  </Link>
+                  {/* </div> */}
                 </div>
               )}
             </div>

@@ -54,14 +54,12 @@ const Layout = ({ children }) => {
     }
   };
 
-  
-
   return (
     <div>
       <Nav />
       <div onClick={searchSuggestionCloseHandler}>
         <div onClick={sidebarCloseHandler}>
-          <CategoryAfterScroll/>
+          <CategoryAfterScroll />
           <main className="layout_container">{children}</main>
           <CartDetailsView />
           <Cart />

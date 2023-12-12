@@ -30,7 +30,7 @@ const TopRatedSection = () => {
     slidesToShow: 1,
     speed: 1000,
     autoplay: true,
-    autoplaySpeed: 7000,
+    autoplaySpeed: 3000,
     rows: 2,
     slidesPerRow: 2,
     nextArrow: <SampleNextArrow />,

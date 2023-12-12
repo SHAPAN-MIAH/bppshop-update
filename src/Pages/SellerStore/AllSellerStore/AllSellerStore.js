@@ -54,7 +54,7 @@ const AllSellerStore = () => {
 
   const fetchData = () => {
     axios
-      .get(`${baseUrl}/seller/all?limit=${25}&offset=${page}`)
+      .get(`${baseUrl}/seller/all?limit=${30}&offset=${page}`)
       .then((response) => {
         response && setLoading(false);
         setAllSellerStore([...allSellerStore, ...response?.data?.data]);
