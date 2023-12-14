@@ -47,7 +47,7 @@ const CategoryAfterScroll = () => {
             >
               <span>Categories</span>{" "}
               <span>
-                <i class="bi bi-chevron-down"></i>
+                <i className="bi bi-chevron-down"></i>
               </span>
             </button>
             <button
@@ -57,7 +57,7 @@ const CategoryAfterScroll = () => {
             >
               <span>Categories</span>{" "}
               <span>
-                <i class="bi bi-chevron-up"></i>
+                <i className="bi bi-chevron-up"></i>
               </span>
             </button>
             <div className="category_view_container">

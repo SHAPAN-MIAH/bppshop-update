@@ -80,9 +80,9 @@ const Footer = () => {
               </ul>
             </div>
           </div>
-          <div className="account_shipping_info_container">
+          <div className="useful_link_container">
             <h5>Useful Links</h5>
-            <div className="account_shipping_info_list">
+            <div className="useful_link_list">
               <ul>
                 <li>About BppShop</li>
                 <Link to="/terms-condition-english">

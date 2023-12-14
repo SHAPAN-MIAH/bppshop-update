@@ -39,6 +39,7 @@ const CheckoutPayment = () => {
     const agent_checkout = {
       address_id: id,
       agent_id: agentId,
+      // X_Client_Type: 
     };
 
     if (agentId) {

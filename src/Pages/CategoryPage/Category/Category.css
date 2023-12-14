@@ -13,7 +13,6 @@
 }
 
 .card {
-  /* height: 345px; */
   height: auto;
   border: none;
   border-radius: 5px;
@@ -29,20 +28,18 @@
 }
 
 .card-body , .category_card-body{
-  /* height: 300px; */
   border: none;
 }
 .card-body img , .category_card-body img{
   width: 100%;
-  height: 100%;
-  /* padding: 20px; */
+  /* height: 100%; */
+  padding: 10px 20px;
 }
 .card-footer {
-  background: #f2f2f2;
+  background: #eeeeee;
   color: #333333;
   font-size: 13px;
   text-align: center;
-  /* padding: 12px 0px; */
   border-top: 1px solid gainsboro;
 }
 

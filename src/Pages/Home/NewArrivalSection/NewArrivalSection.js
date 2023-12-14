@@ -46,14 +46,14 @@ const NewArrivalSection = () => {
         breakpoint: 768,
         settings: {
           rows: 1,
-          slidesPerRow: 1,
+          slidesPerRow: 2,
         },
       },
       {
         breakpoint: 576,
         settings: {
           rows: 1,
-          slidesPerRow: 1,
+          slidesPerRow: 2,
         },
       },
     ],

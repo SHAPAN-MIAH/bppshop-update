@@ -35,6 +35,29 @@ const TopRatedSection = () => {
     slidesPerRow: 2,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
+    responsive: [
+      {
+        breakpoint: 1200,
+        settings: {
+          rows: 2,
+          slidesPerRow: 2,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          rows: 1,
+          slidesPerRow: 2,
+        },
+      },
+      {
+        breakpoint: 576,
+        settings: {
+          rows: 1,
+          slidesPerRow: 2,
+        },
+      },
+    ],
   };
 
   function SampleNextArrow(props) {

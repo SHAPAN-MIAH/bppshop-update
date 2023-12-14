@@ -2,7 +2,26 @@
   background: #eeeeee;
   padding: 40px 0px;
   margin-top: 70px;
-  font-family: "Kanit", sans-serif;
+  /* font-family: "Afacad", sans-serif; */
+  /* font-family: 'Bellefair', serif; */
+  /* font-family: 'Comfortaa', sans-serif; */
+  /* font-family: 'DM Sans', sans-serif; */
+  /* font-family: 'Exo 2', sans-serif; */
+  /* font-family: 'Inclusive Sans', sans-serif; */
+  /* font-family: 'Kanit', sans-serif; */
+  /* font-family: 'Kurale', serif; */
+  /* font-family: 'Laila', serif; */
+  /* font-family: 'League Spartan', sans-serif; */
+  /* font-family: 'Manjari', sans-serif; */
+  font-family: 'Montserrat', sans-serif;
+  /* font-family: 'Prompt', sans-serif; */
+  /* font-family: 'Rajdhani', sans-serif; */
+  /* font-family: 'Roboto', sans-serif; */
+  /* font-family: 'Rubik', sans-serif; */
+  /* font-family: 'Sarala', sans-serif; */
+  /* font-family: 'Signika Negative', sans-serif; */
+  /* font-family: 'Space Grotesk', sans-serif; */
+  /* font-family: 'Varela Round', sans-serif; */
 }
 
 .footer-content {
@@ -115,8 +134,6 @@
 
 .get_in_touch_container {
   margin-top: 20px;
-  color: #414141;
-  font-family: "DM Sans", sans-serif;
 }
 .get_in_touch_container h5{
   color: #ff8800;
@@ -129,12 +146,13 @@
   align-items: center;
 }
 .contact_content i{
-  font-size: 17px;
+  font-size: 18px;
   color: #808080;
   background: #ffffff;
-  padding: 6px 9px;
-  border-radius: 7px;
+  padding: 2px 5px;
+  border-radius: 50px;
 }
+
 .social_content{
   margin: 25px 0px 0px 0px;
 }
@@ -154,6 +172,9 @@
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
+.special_content_list, .useful_link_list{
+  line-height: 25px;
+}
 
 /* -----------Bottom Footer Style--------- */
 .bottom_footer_container_section {
@@ -288,13 +309,13 @@
   }
 
   .bottom_footer_content {
-    width: 90%;
+    width: 100%;
     margin: auto;
-    color: white;
+    /* color: white; */
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap-reverse;
-    padding: 20px 0px 80px 0px;
+    padding: 20px 10px 80px 10px;
   }
 }

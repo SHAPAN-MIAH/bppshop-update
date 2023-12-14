@@ -30,7 +30,7 @@ const Cart = () => {
         <button className="start-shopping-btn ">Start Shopping</button>
         <div onClick={CartDetailsViewHandler}>
           {/* <div className="cartIcon"> */}
-            <i class="bi bi-cart3"></i>
+            <i className="bi bi-cart3"></i>
 
             <span className="itemsForFullScreen">
               {cartItems?.[0]?.data?.length ? cartItems?.[0]?.data?.length : 0}{" "}

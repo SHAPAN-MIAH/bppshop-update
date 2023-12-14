@@ -60,9 +60,11 @@
 .slick-prev:before {
   font-size: 35px;
   line-height: 0.9;
-  margin-left: -3px;
+  margin-left: -5px;
   opacity: 1;
   color: #ffffff;
+  /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 50%; */
 }
 
 

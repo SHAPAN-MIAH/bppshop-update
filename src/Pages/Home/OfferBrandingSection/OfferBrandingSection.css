@@ -8,3 +8,10 @@
   width: 100%;
 }
  
+@media screen and (max-width: 768px) {
+  .offer_branding_section {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

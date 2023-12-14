@@ -52,7 +52,7 @@ const AppBrandingSection = () => {
             <h4>Helpline</h4>
             <p>
               {" "}
-              <i className="bi bi-telephone-fill"></i> 8809610970706
+              <i className="bi bi-telephone-fill"></i> +8809610970706
             </p>
             <br />
             <h6>Join us on...</h6>

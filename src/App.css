@@ -1,19 +1,30 @@
 .App {
-  /* font-family: "Abel", sans-serif; */
-  /* font-family: "Comfortaa", cursive; */
-  /* font-family: "DM Sans", sans-serif; */
-  /* font-family: "Exo 2", sans-serif; */
-  /* font-family: "Kanit", sans-serif; */
-  font-family: "Montserrat", sans-serif;
-  /* font-family: "Prompt", sans-serif; */
-  /* font-family: "Rajdhani", sans-serif; */
-  /* font-family: "Roboto", sans-serif; */
-  /* font-family: "Rubik", sans-serif; */
-  /* font-family: "Signika Negative", sans-serif; */
-  /* font-family: "Space Grotesk", sans-serif; */
-  /* font-family: "Varela Round", sans-serif; */
+  /* font-family: 'Abel', sans-serif; */
+/* font-family: 'Afacad', sans-serif; */
+/* font-family: 'Bad Script', cursive; */
+/* font-family: 'Bellefair', serif; */
+/* font-family: 'Comfortaa', sans-serif; */
+/* font-family: 'DM Sans', sans-serif; */
+/* font-family: 'Exo 2', sans-serif; */
+/* font-family: 'Inclusive Sans', sans-serif; */
+/* font-family: 'Kanit', sans-serif; */
+/* font-family: 'Kurale', serif; */
+/* font-family: 'Laila', serif; */
+/* font-family: 'League Spartan', sans-serif; */
+font-family: 'Manjari', sans-serif;
+/* font-family: 'Merienda', cursive; */
+/* font-family: 'Montserrat', sans-serif; */
+/* font-family: 'Palanquin Dark', sans-serif; */
+/* font-family: 'Prompt', sans-serif; */
+/* font-family: 'Rajdhani', sans-serif; */
+/* font-family: 'Roboto', sans-serif; */
+/* font-family: 'Rubik', sans-serif; */
+/* font-family: 'Sarala', sans-serif; */
+/* font-family: 'Signika Negative', sans-serif; */
+/* font-family: 'Space Grotesk', sans-serif; */
+/* font-family: 'Varela Round', sans-serif; */
 
-  color: rgb(80, 80, 80);
+  color: rgb(70, 70, 70);
 }
 
 *{

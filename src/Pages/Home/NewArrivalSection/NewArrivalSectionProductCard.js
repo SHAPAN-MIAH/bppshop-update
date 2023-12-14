@@ -274,7 +274,7 @@ const NewArrivalSectionProductCard = ({ product, setImg }) => {
               </div>
 
               <div className="new_arrival_section_product-card-body-content">
-                <small>{name.toString().substring(0, 20)}...</small>
+                <small className="new_arrival_section_product_card_body_content_title">{name.toString().substring(0, 25)}...</small>
                 <br/>
                 <small className="">
                   {newChoiceOption && (

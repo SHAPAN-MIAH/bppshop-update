@@ -105,7 +105,7 @@ const Sidebar = () => {
                     {category?.childes?.map((subMenu) => {
                       return (
                         <>
-                          <li className="sub_menu_list">
+                          <li key={subMenu.name} className="sub_menu_list">
                             <div className="category_icon">
                               {subMenu?.icon ? (
                                 <img
@@ -131,7 +131,7 @@ const Sidebar = () => {
                                     <div className="mega_sub_menu">
                                       {subMenu?.childes?.map((subSubMenu) => {
                                         return (
-                                          <>
+                                          <div key={subSubMenu.id}>
                                             <Link
                                               to={`/${category?.slug}/${subMenu?.slug}/${subSubMenu?.slug}`}
                                             >
@@ -148,7 +148,7 @@ const Sidebar = () => {
                                                 <p>{subSubMenu?.name}</p>
                                               </div>
                                             </Link>
-                                          </>
+                                          </div>
                                         );
                                       })}
                                     </div>
