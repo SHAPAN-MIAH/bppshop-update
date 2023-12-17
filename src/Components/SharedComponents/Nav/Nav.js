@@ -280,14 +280,14 @@ const Nav = () => {
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                {/* <span>
+                <span>
                   Partner Zone <i className="bi bi-chevron-down"></i>
                 </span>
 
-                <img width={30} src={partnerIcon} alt="" /> */}
+                {/* <img width={30} src={partnerIcon} alt="" /> */}
 
                 {/* <LuUsers /> */}
-                <LuHeartHandshake />
+                {/* <LuHeartHandshake /> */}
               </div>
               <div className="dropdown-menu partner_zone_dropdown">
                 <Link to="/">

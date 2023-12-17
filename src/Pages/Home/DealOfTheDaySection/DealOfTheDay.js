@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import img from "../../../Assets/Images/dealoftheday.png";
+import img2 from "../../../Assets/Images/bppshop_banner/dealoftheDayV.jpg";
 import "./DealOfTheDay.css";
 import axios from "axios";
 import { baseUrl } from "../../../BaseUrl/BaseUrl";
@@ -125,7 +126,8 @@ const DealOfTheDay = () => {
             <div className="deal_of_the_day_content_container">
               {/* <div className="col-md-2"> */}
                 <div className="deal_of_the_day_banner">
-                  <img src={img} alt="" />
+                  <img className="img1" src={img} alt="" />
+                  <img className="img2" src={img2} alt="" />
                 </div>
               {/* </div> */}
               {/* <div className="col-md-10"> */}

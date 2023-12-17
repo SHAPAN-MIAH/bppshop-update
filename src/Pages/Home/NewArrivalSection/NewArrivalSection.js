@@ -4,7 +4,8 @@ import { baseUrl } from "../../../BaseUrl/BaseUrl";
 import NewArrivalSectionProductCard from "./NewArrivalSectionProductCard";
 import "./NewArrivalSection.css";
 import Slider from "react-slick";
-import newArrivalBanner from "../../../Assets/Images/newArrivalBanner.jpg";
+import newArrivalBanner from "../../../Assets/Images/bppshop_banner/newArrival (1).jpg";
+import newArrivalBanner2 from "../../../Assets/Images/bppshop_banner/newArrival (2).jpg";
 import { Link } from "react-router-dom";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
@@ -168,7 +169,8 @@ const NewArrivalSection = () => {
               <div className="row">
                 <div className="col-md-3">
                   <div className="new_arrival_banner">
-                    <img src={newArrivalBanner} alt="" />
+                    <img className="img1" src={newArrivalBanner} alt="" />
+                    <img className="img2" src={newArrivalBanner2} alt="" />
                   </div>
                 </div>
                 <div className="col-md-9">

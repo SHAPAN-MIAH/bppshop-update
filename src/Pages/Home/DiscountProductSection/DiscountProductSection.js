@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import img from "../../../Assets/Images/dealoftheday.png";
+import img from "../../../Assets/Images/bppshop_banner/discountProduct (1).jpg";
+import img2 from "../../../Assets/Images/bppshop_banner/discountProduct (2).jpg";
 // import "./DealOfTheDay.css";
 import axios from "axios";
 import { baseUrl } from "../../../BaseUrl/BaseUrl";

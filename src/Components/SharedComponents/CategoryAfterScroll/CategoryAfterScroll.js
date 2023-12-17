@@ -10,8 +10,8 @@ const CategoryAfterScroll = () => {
 
   const scrollFunction = () => {
     if (
-      document.body.scrollTop > 500 ||
-      document.documentElement.scrollTop > 500
+      document.body.scrollTop > 400 ||
+      document.documentElement.scrollTop > 400
     ) {
       document.querySelector(".category_after_scroll_section").style.top =
         "80px";

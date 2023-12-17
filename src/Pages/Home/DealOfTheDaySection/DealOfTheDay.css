@@ -22,6 +22,7 @@
   width: 245px;
   height: 372px;
   overflow: hidden;
+  border-radius: 10px;
 }
 .deal_of_the_day_banner img {
   width: 100%;
@@ -75,6 +76,17 @@
     grid-gap: 15px;
     overflow: hidden;
   }
+
+  /* .deal_of_the_day_banner{
+    width: 100%;
+    height: auto;
+  }
+  .deal_of_the_day_banner .img1{
+    display: none;
+  }
+  .deal_of_the_day_banner .img2{
+    display: block;
+  } */
   .deal_of_the_day_content_container > *:first-child {
     display: none;
   }

@@ -127,15 +127,28 @@
 }
 
 .partner_zone {
-  /* background: #ffffff; */
-  /* color: #727272; */
-  /* border: 1px solid gainsboro; */
-  /* border-radius: 5px; */
-  /* padding:  7px 6px; */
-  font-size: 25px;
+  /* width: 120px;
+  background: #ffffff;
+  color: #727272;
+  border: 1px solid gainsboro;
+  border-radius: 5px;
+  padding:  7px 6px; */
+  /* font-size: 25px; */
 }
-.partner_zone_dropdown_btn img{
- display: none;
+.partner_zone_dropdown_btn span {
+  width: 120px;
+  background: #ffffff;
+  color: #727272;
+  border: 1px solid gainsboro;
+  border-radius: 5px;
+  padding: 7px 6px;
+  font-size: 12px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.partner_zone_dropdown_btn img {
+  display: none;
 }
 .partner_zone_dropdown {
   /* margin-top: 8px !important; */
@@ -145,7 +158,6 @@
 .partner_zone_dropdown .dropdown-item {
   padding: 0px 10px !important;
 }
-
 
 .user-profile {
   /* width: 40px;
@@ -181,7 +193,7 @@
     margin: auto;
   }
 
-  .logo{
+  .logo {
     width: 10%;
   }
   .bppshopLogo {
@@ -190,14 +202,14 @@
   .bppshopShortLogo {
     display: block;
   }
-  
+
   .searchInput_container {
     position: relative;
     width: 58%;
     display: flex;
     justify-content: center;
   }
-  
+
   .search_input {
     width: 100%;
     background: #fff;
@@ -223,12 +235,12 @@
     justify-content: center;
     align-items: center; */
   }
-  .partner_zone_dropdown_btn span{
+  .partner_zone_dropdown_btn span {
     display: none;
-   }
-  .partner_zone_dropdown_btn img{
+  }
+  .partner_zone_dropdown_btn img {
     display: block;
-   }
+  }
   .partner_zone_dropdown {
     /* margin-top: 8px !important; */
     /* margin-left: -11px !important; */

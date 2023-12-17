@@ -22,7 +22,7 @@ const CheckoutPayment = () => {
   const { shippingAddressInfo } = useSelector((state) => state?.shippingInfo);
   const token = localStorage.getItem("token");
   const agentId = localStorage.getItem("agentId");
-  const config = { headers: { Authorization: `Bearer ${token}` } };
+  const config = { headers: { Authorization: `Bearer ${token}`}};
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -39,7 +39,7 @@ const CheckoutPayment = () => {
     const agent_checkout = {
       address_id: id,
       agent_id: agentId,
-      // X_Client_Type: 
+      X_Client_Type: `web` 
     };
 
     if (agentId) {
@@ -62,7 +62,7 @@ const CheckoutPayment = () => {
         });
     } else {
       axios
-        .post(`${baseUrl}/cart/checkout`, { address_id: id }, config)
+        .post(`${baseUrl}/cart/checkout`, { address_id: id,  X_Client_Type: "web" }, config)
         .then((res) => {
           if (res.data.status == "success") {
             dispatch(ClearCart());
