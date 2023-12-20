@@ -55,7 +55,7 @@ const NewArrival = () => {
 
   const fetchData = () => {
     axios
-      .get(`${baseUrl}/products/latest?limit=${15}&offset=${page}`)
+      .get(`${baseUrl}/products/latest?limit=${25}&offset=${page}`)
       .then((response) => {
         response && setLoading(false);
         setNewArrivalProduct([...newArrivalProduct, ...response.data.products]);

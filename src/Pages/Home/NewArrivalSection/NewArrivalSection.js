@@ -15,7 +15,7 @@ const NewArrivalSection = () => {
 
   useEffect(() => {
     axios
-      .get(`${baseUrl}/products/latest?limit=${16}&offset=${1}`)
+      .get(`${baseUrl}/products/latest?limit=${32}&offset=${1}`)
       .then((response) => {
         response && setLoading(false);
         setNewArrivalProduct(response.data.products);

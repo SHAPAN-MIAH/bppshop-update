@@ -14,7 +14,7 @@ const BestSellingSection = () => {
 
   useEffect(() => {
     axios
-      .get(`${baseUrl}/products/best-sellings?limit=${15}&offset=${1}`)
+      .get(`${baseUrl}/products/best-sellings?limit=${16}&offset=${1}`)
       .then((response) => {
         response && setLoading(false);
         setDealOfDayProduct(response.data.products);

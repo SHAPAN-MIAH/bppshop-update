@@ -44,15 +44,15 @@
 
 .searchInput_container {
   position: relative;
-  width: 78%;
+  width: 40%;
   display: flex;
   justify-content: center;
 }
 
 .search_input {
-  width: 65%;
+  width: 100%;
   background: #fff;
-  border-radius: 5px;
+  border-radius: 7px;
   border: 1px solid gainsboro;
   padding: 8px 30px 8px 15px;
   font-size: 14px;
@@ -63,7 +63,8 @@
 
 .searchIcon {
   position: absolute;
-  margin-left: 60%;
+  right: 10px;
+  /* margin-left: 92%; */
   margin-top: 8px;
   cursor: pointer;
 }
@@ -104,10 +105,8 @@
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   display: none;
-  margin-left: -13%;
-  margin-top: -10px;
+  margin-top: 40px;
   position: absolute;
-  padding: 10px 0px;
   overflow-y: scroll;
   z-index: -1;
 }
@@ -134,14 +133,16 @@
   border-radius: 5px;
   padding:  7px 6px; */
   /* font-size: 25px; */
+
+  margin-right: 20px;
 }
 .partner_zone_dropdown_btn span {
   width: 120px;
+  padding: 9px 0px;
   background: #ffffff;
   color: #727272;
   border: 1px solid gainsboro;
   border-radius: 5px;
-  padding: 7px 6px;
   font-size: 12px;
   display: flex;
   justify-content: space-around;
@@ -213,7 +214,7 @@
   .search_input {
     width: 100%;
     background: #fff;
-    border-radius: 5px;
+    /* border-radius: px; */
     border: 1px solid gainsboro;
     padding: 8px 30px 8px 15px;
     font-size: 14px;
@@ -222,7 +223,7 @@
     transition: all 0.3s;
   }
   .searchIcon {
-    margin-left: 70%;
+    right: 15px;
   }
   .partner_zone {
     /* width: 40px;
@@ -234,9 +235,10 @@
     /* display: flex;
     justify-content: center;
     align-items: center; */
+    margin-right: 10px;
   }
   .partner_zone_dropdown_btn span {
-    display: none;
+    /* display: none; */
   }
   .partner_zone_dropdown_btn img {
     display: block;
@@ -258,9 +260,9 @@
     /* width: 620px; */
     margin: auto;
   }
-  .searchIcon {
+  /* .searchIcon {
     margin-left: 68%;
-  }
+  } */
 }
 
 @media only screen and (max-width: 576px) {
@@ -280,9 +282,9 @@
     overflow: hidden;
   } */
 
-  .searchIcon {
+  /* .searchIcon {
     margin-left: 67%;
-  }
+  } */
 }
 
 @media only screen and (max-width: 480px) {
@@ -292,9 +294,9 @@
   .searchInput {
     margin-left: -90px;
   } */
-  .searchIcon {
+  /* .searchIcon {
     margin-left: 82%;
-  }
+  } */
 }
 @media only screen and (max-width: 400px) {
   /* .searchInput {

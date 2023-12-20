@@ -56,7 +56,7 @@ const Brands = () => {
 
   const fetchData = () => {
     axios
-      .get(`${baseUrl}/brands?limit=${25}&offset=${page}`)
+      .get(`${baseUrl}/brands?limit=${30}&offset=${page}`)
       .then((response) => {
         response && setLoading(false);
         setBrands([...brands, ...response?.data?.data?.data]);

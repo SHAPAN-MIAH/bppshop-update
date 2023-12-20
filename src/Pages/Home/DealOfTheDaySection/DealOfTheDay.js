@@ -14,7 +14,7 @@ const DealOfTheDay = () => {
 
   useEffect(() => {
     axios
-      .get(`${baseUrl}/products/top?limit=${15}&offset=${1}`)
+      .get(`${baseUrl}/products/top?limit=${16}&offset=${1}`)
       .then((response) => {
         response && setLoading(false);
         setDealOfDayProduct(response.data.products);

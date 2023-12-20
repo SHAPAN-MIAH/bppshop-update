@@ -55,7 +55,7 @@ const DiscountProducts = () => {
 
   const fetchData = () => {
     axios
-      .get(`${baseUrl}/products/discounted-product?limit=${15}&offset=${page}`)
+      .get(`${baseUrl}/products/discounted-product?limit=${25}&offset=${page}`)
       .then((response) => {
         response && setLoading(false);
         setDiscountProduct([...discountProduct, ...response?.data?.products]);

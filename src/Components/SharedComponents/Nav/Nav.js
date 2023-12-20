@@ -42,7 +42,6 @@ import { CiLogin } from "react-icons/ci";
 import { SiGnuprivacyguard } from "react-icons/si";
 import { MdOutlineHandshake } from "react-icons/md";
 
-
 Modal.setAppElement("#root");
 
 let customStyles = {
@@ -273,59 +272,60 @@ const Nav = () => {
                 </div>
               )}
             </div>
-            <div className="partner_zone">
-              <div
-                className="partner_zone_dropdown_btn"
-                type="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                <span>
-                  Partner Zone <i className="bi bi-chevron-down"></i>
-                </span>
+            <div className="d-flex align-items-center">
+              <div className="partner_zone">
+                <div
+                  className="partner_zone_dropdown_btn"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <span>
+                    Partner Zone <i className="bi bi-chevron-down"></i>
+                  </span>
 
-                {/* <img width={30} src={partnerIcon} alt="" /> */}
+                  {/* <img width={30} src={partnerIcon} alt="" /> */}
 
-                {/* <LuUsers /> */}
-                {/* <LuHeartHandshake /> */}
+                  {/* <LuUsers /> */}
+                  {/* <LuHeartHandshake /> */}
+                </div>
+                <div className="dropdown-menu partner_zone_dropdown">
+                  <Link to="/">
+                    <li className="dropdown-item mt-1">Become a Seller</li>
+                  </Link>
+                  <Link to="/">
+                    <li className="dropdown-item mt-1">Become a Agent</li>
+                  </Link>
+                </div>
               </div>
-              <div className="dropdown-menu partner_zone_dropdown">
-                <Link to="/">
-                  <li className="dropdown-item mt-1">Become a Seller</li>
-                </Link>
-                <Link to="/">
-                  <li className="dropdown-item mt-1">Become a Agent</li>
-                </Link>
-              </div>
-            </div>
-            <div className="userProfileTab">
-              <div
-                className="user-profile "
-                type="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                {/* {user.image ? (
+              <div className="userProfileTab">
+                <div
+                  className="user-profile "
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  {/* {user.image ? (
                     <img
                       src={`https://backend.bppshop.com.bd/storage/${user.image}`}
                       alt="profile"
                     />
                   ) : ( */}
-                {/* <img src={defaultAvatar} alt="profile" /> */}
-                <LuUser />
-                {/* )}  */}
-              </div>
-              {token ? (
-                <div className="dropdown-menu profile_dropdown">
-                  <div
-                    className="d-flex mx-3"
-                    style={{
-                      // borderBottom: "1px solid gray",
-                      padding: "10px 0px",
-                      // marginBottom: "10px",
-                    }}
-                  >
-                    {/* {agent.image ? (
+                  {/* <img src={defaultAvatar} alt="profile" /> */}
+                  <LuUser />
+                  {/* )}  */}
+                </div>
+                {token ? (
+                  <div className="dropdown-menu profile_dropdown">
+                    <div
+                      className="d-flex mx-3"
+                      style={{
+                        // borderBottom: "1px solid gray",
+                        padding: "10px 0px",
+                        // marginBottom: "10px",
+                      }}
+                    >
+                      {/* {agent.image ? (
                       <img
                         width="30"
                         height="100%"
@@ -333,50 +333,54 @@ const Nav = () => {
                         alt="profile"
                       />
                     ) : ( */}
-                    <img
-                      width="30"
-                      height="100%"
-                      src={defaultAvatar}
-                      alt="profile"
-                    />
-                    {/* )} */}
+                      <img
+                        width="30"
+                        height="100%"
+                        src={defaultAvatar}
+                        alt="profile"
+                      />
+                      {/* )} */}
 
-                    <h6 className="mx-2">{user?.name}</h6>
+                      <h6 className="mx-2">{user?.name}</h6>
+                    </div>
+                    <hr />
+                    <Link to="/profile">
+                      <li className="dropdown-item mt-1">View Profile</li>
+                    </Link>
+
+                    <li
+                      onClick={() => handleLogout()}
+                      className="dropdown-item"
+                    >
+                      Logout
+                    </li>
                   </div>
-                  <hr />
-                  <Link to="/profile">
-                    <li className="dropdown-item mt-1">View Profile</li>
-                  </Link>
-
-                  <li onClick={() => handleLogout()} className="dropdown-item">
-                    Logout
-                  </li>
-                </div>
-              ) : (
-                <div className="dropdown-menu profile_dropdown">
-                  <li className="dropdown-item" onClick={openModal}>
-                  <CiLogin /> Login
-                  </li>
-                  <li className="dropdown-item" onClick={openModal}>
-                  <SiGnuprivacyguard />  Sign-Up
-                  </li>
-                  {/* <Link to="/login">
+                ) : (
+                  <div className="dropdown-menu profile_dropdown">
+                    <li className="dropdown-item" onClick={openModal}>
+                      <CiLogin /> Login
+                    </li>
+                    <li className="dropdown-item" onClick={openModal}>
+                      <SiGnuprivacyguard /> Sign-Up
+                    </li>
+                    {/* <Link to="/login">
                     <li className="dropdown-item">Login</li>
                   </Link>
                   <Link to="/signup">
                     <li className="dropdown-item">Sign-Up</li>
                   </Link> */}
 
-                  {/* <div className="dropdown-menu partner_zone_dropdown"> */}
-                  <Link to="/">
-                    <li className="dropdown-item mt-1">Become a Seller</li>
-                  </Link>
-                  <Link to="/">
-                    <li className="dropdown-item mt-1">Become a Agent</li>
-                  </Link>
-                  {/* </div> */}
-                </div>
-              )}
+                    {/* <div className="dropdown-menu partner_zone_dropdown"> */}
+                    <Link to="/">
+                      <li className="dropdown-item mt-1">Become a Seller</li>
+                    </Link>
+                    <Link to="/">
+                      <li className="dropdown-item mt-1">Become a Agent</li>
+                    </Link>
+                    {/* </div> */}
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </nav>

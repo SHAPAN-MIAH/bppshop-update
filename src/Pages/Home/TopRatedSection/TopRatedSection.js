@@ -1,17 +1,15 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
+import img from "../../../Assets/Images/bppshop_banner/discountProduct (1).jpg";
+import img2 from "../../../Assets/Images/bppshop_banner/discountProduct (2).jpg";
+// import "./DealOfTheDay.css";
+import axios from "axios";
 import { baseUrl } from "../../../BaseUrl/BaseUrl";
-import "../NewArrivalSection/NewArrivalSection.css";
-import Slider from "react-slick";
-import newArrivalBanner from "../../../Assets/Images/bppshop_banner/topRated (1).jpg";
-import newArrivalBanner2 from "../../../Assets/Images/bppshop_banner/topRated (2).jpg";
-import { Link } from "react-router-dom";
-import TopRatedProductCard from "../../TopRated/TopRatedProductCard";
-import NewArrivalSectionProductCard from "../NewArrivalSection/NewArrivalSectionProductCard";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import AllProductsCard from "../../AllProducts/AllProductsCard";
+import Slider from "react-slick";
 
-const TopRatedSection = () => {
-  const [newArrivalProduct, setNewArrivalProduct] = useState([]);
+const DiscountProductSection = () => {
+  const [dealOfDayProduct, setDealOfDayProduct] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -19,45 +17,45 @@ const TopRatedSection = () => {
       .get(`${baseUrl}/products/top-rated?limit=${16}&offset=${1}`)
       .then((response) => {
         response && setLoading(false);
-        setNewArrivalProduct(response.data.products);
+        setDealOfDayProduct(response.data.products);
       });
   }, []);
 
   const settings = {
-    className: "center",
-    centerMode: true,
+    // dots: true,
     infinite: true,
-    centerPadding: "0px",
-    slidesToShow: 1,
-    speed: 1000,
+    slidesToShow: 5,
+    slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3000,
-    rows: 2,
-    slidesPerRow: 2,
+    pauseOnHover: true,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
     responsive: [
       {
-        breakpoint: 1200,
+        breakpoint: 1140,
         settings: {
-          rows: 2,
-          slidesPerRow: 2,
+          slidesToShow: 4,
+          slidesToScroll: 4,
+          infinite: true,
+          dots: true,
         },
       },
       {
         breakpoint: 768,
         settings: {
-          rows: 1,
-          slidesPerRow: 2,
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          initialSlide: 2,
         },
       },
       {
         breakpoint: 576,
         settings: {
-          rows: 1,
-          slidesPerRow: 2,
+          slidesToShow: 2,
+          slidesToScroll: 1,
         },
-      },
+      }
     ],
   };
 
@@ -73,7 +71,7 @@ const TopRatedSection = () => {
           width: "22px",
           height: "25px",
           borderRadius: "50px",
-          marginRight: "-5px",
+          right: "20px",
         }}
         onClick={onClick}
       />
@@ -89,10 +87,11 @@ const TopRatedSection = () => {
           ...style,
           display: "block",
           background: "#e77025",
-          width: "22px",
+          width: "20px",
           height: "25px",
           borderRadius: "50px",
-          marginLeft: "-12px",
+          left: "15px",
+          zIndex: "1",
         }}
         onClick={onClick}
       />
@@ -101,116 +100,103 @@ const TopRatedSection = () => {
 
   return (
     <>
-      <div className="new_arrival_section">
-        <div className="new_arrival_section_container">
-          <SkeletonTheme
-            baseColor="rgb(220, 220, 220)"
-            highlightColor="#e3e3e3"
-          >
-            {loading ? (
-              <div className=" d-flex">
-                <Skeleton
-                  height="430px"
-                  width="300px"
-                  borderRadius="10px"
-                  count={1}
-                />
-                <div style={{ marginLeft: "24px" }}>
-                  <div className="d-flex justify-content-between">
-                    <Skeleton
-                      height="40px"
-                      width="410px"
-                      borderRadius="5px"
-                      count={1}
-                    />
-                    <Skeleton
-                      height="40px"
-                      width="120px"
-                      borderRadius="5px"
-                      count={1}
-                    />
-                  </div>
-                  <div className="d-flex justify-content-between">
-                    <div>
-                      <Skeleton
-                        height="180px"
-                        width="490px"
-                        style={{ marginTop: "15px" }}
-                        borderRadius="10px"
-                        count={1}
-                      />
-                      <Skeleton
-                        height="180px"
-                        width="490px"
-                        style={{ marginTop: "15px" }}
-                        borderRadius="10px"
-                        count={1}
-                      />
-                    </div>
-                    <div>
-                      <Skeleton
-                        height="180px"
-                        width="490px"
-                        style={{ marginTop: "15px", marginLeft: "15px" }}
-                        borderRadius="10px"
-                        count={1}
-                      />
-                      <Skeleton
-                        height="180px"
-                        width="490px"
-                        style={{ marginTop: "15px", marginLeft: "15px" }}
-                        borderRadius="10px"
-                        count={1}
-                      />
-                    </div>
-                  </div>
+      <div className="deal_of_the_day_container">
+        <SkeletonTheme baseColor="rgb(220, 220, 220)" highlightColor="#e3e3e3">
+          {loading ? (
+            <div className=" d-flex">
+              <Skeleton
+                height="335px"
+                width="250px"
+                borderRadius="10px"
+                count={1}
+              />
+              <div style={{ marginLeft: "22px" }}>
+                <div className="d-flex justify-content-between">
+                  <Skeleton
+                    height="40px"
+                    width="410px"
+                    borderRadius="5px"
+                    count={1}
+                  />
+                  <Skeleton
+                    height="40px"
+                    width="120px"
+                    borderRadius="5px"
+                    count={1}
+                  />
+                </div>
+                <div className="d-flex justify-content-between">
+                  <Skeleton
+                    height="280px"
+                    width="200px"
+                    style={{ marginTop: "15px" }}
+                    borderRadius="10px"
+                    count={1}
+                  />
+                  <Skeleton
+                    height="280px"
+                    width="200px"
+                    style={{ marginTop: "15px", marginLeft: "12px" }}
+                    borderRadius="10px"
+                    count={1}
+                  />
+                  <Skeleton
+                    height="280px"
+                    width="200px"
+                    style={{ marginTop: "15px", marginLeft: "12px" }}
+                    borderRadius="10px"
+                    count={1}
+                  />
+                  <Skeleton
+                    height="280px"
+                    width="200px"
+                    style={{ marginTop: "15px", marginLeft: "12px" }}
+                    borderRadius="10px"
+                    count={1}
+                  />
+                  <Skeleton
+                    height="280px"
+                    width="200px"
+                    style={{ marginTop: "15px", marginLeft: "12px" }}
+                    borderRadius="10px"
+                    count={1}
+                  />
                 </div>
               </div>
-            ) : (
-              <div className="row">
-                <div className="col-md-3">
-                  <div className="new_arrival_banner">
-                    <img className="img1" src={newArrivalBanner} alt="" />
-                    <img className="img2" src={newArrivalBanner2} alt="" />
-                  </div>
-                </div>
-                <div className="col-md-9">
-                  <div>
-                    <div className="new_arrival_section_product_content_header">
-                      <h4>Top Rated</h4>
-                      <Link to="/top-rated">
-                        <button
-                          className="new_arrival_section_product_view_more_btn"
-                          type=""
-                        >
-                          View More
-                        </button>
-                      </Link>
-                    </div>
-                    <div className="horizontal_slider_container">
-                      <Slider
-                        {...settings}
-                        className="new_arrival_section_product_slider"
-                      >
-                        {newArrivalProduct?.map((product) => (
-                          <div className="new_arrival_section_product_content px-1">
-                            <NewArrivalSectionProductCard
-                              key={product?.id}
-                              product={product}
-                            />
-                          </div>
-                        ))}
-                      </Slider>
-                    </div>
-                  </div>
-                </div>
+            </div>
+          ) : (
+            <div className="deal_of_the_day_content_container">
+              {/* <div className="col-md-2"> */}
+              <div className="deal_of_the_day_banner">
+                <img src={img} alt="" />
               </div>
-            )}
-          </SkeletonTheme>
-        </div>
+              {/* </div> */}
+              {/* <div className="col-md-10"> */}
+              <div className="deal_of_the_day_product_content">
+                <div className="deal_of_the_day_product_content_header">
+                  <h4> Top Rated</h4>
+                  <button
+                    className="deal_of_the_day_product_view_more_btn"
+                    type=""
+                  >
+                    View More
+                  </button>
+                </div>
+                <Slider {...settings}>
+                  {dealOfDayProduct?.map((product) => (
+                    <div className="p-1">
+                      <AllProductsCard key={product?.id} product={product} />
+                    </div>
+                  ))}
+                </Slider>
+              </div>
+              {/* </div> */}
+            </div>
+          )}
+        </SkeletonTheme>
       </div>
     </>
   );
 };
 
-export default TopRatedSection;
+export default DiscountProductSection;

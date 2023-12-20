@@ -54,7 +54,7 @@ const BestSelling = () => {
 
   const fetchData = () => {
     axios
-      .get(`${baseUrl}/products/best-sellings?limit=${15}&offset=${page}`)
+      .get(`${baseUrl}/products/best-sellings?limit=${25}&offset=${page}`)
       .then((response) => {
         response && setLoading(false);
         setBestSellingProduct([

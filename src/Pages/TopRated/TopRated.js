@@ -54,7 +54,7 @@ const TopRated = () => {
 
   const fetchData = () => {
     axios
-      .get(`${baseUrl}/products/top-rated?limit=${15}&offset=${page}`)
+      .get(`${baseUrl}/products/top-rated?limit=${25}&offset=${page}`)
       .then((response) => {
         response && setLoading(false);
         setTopRatedProduct([...topRatedProduct, ...response?.data?.products]);

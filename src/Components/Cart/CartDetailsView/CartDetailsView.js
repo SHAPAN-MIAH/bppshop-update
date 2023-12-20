@@ -249,12 +249,12 @@ const CartDetailsView = () => {
           </div>
           {!cartItems[0]?.data?.length ? (
             <button onClick={CartEmptyAlert} type="">
-              Place Order
+              Proceed Order
             </button>
           ) : (
             <Link to="/shipping-address">
               <button onClick={CartDetailsCloseHandlerAfterPlaceOrder} type="">
-                Place Order
+                Proceed Order
               </button>
             </Link>
           )}

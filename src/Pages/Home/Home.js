@@ -31,9 +31,9 @@ const Home = () => {
         <BrandSection/>
         <BestSellingSection/>
         <StoreSection/>
-        <TopRatedSection/>
-        <OfferBrandingSection/>
         <DiscountProductSection/>
+        <OfferBrandingSection/>
+        <TopRatedSection/>
         <AppBrandingSection/>
         <AllProductSection/>
         {/* <LowestPriceProduct/> */}
