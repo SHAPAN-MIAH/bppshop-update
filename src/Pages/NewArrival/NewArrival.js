@@ -7,8 +7,8 @@ import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import { useRef } from "react";
 import NewArrivalProductCard from "./NewArrivalProductCard";
 import InfiniteScroll from "react-infinite-scroll-component";
-import downArrow from "../../Assets/Images/arrow-down.gif.c819a92ab7162c828e944727a545dcd7.gif"
-
+import downArrow from "../../Assets/Images/arrow-down.gif.c819a92ab7162c828e944727a545dcd7.gif";
+import "./NewArrival.css";
 
 const NewArrival = () => {
   const [newArrivalProduct, setNewArrivalProduct] = useState([]);
@@ -70,7 +70,16 @@ const NewArrival = () => {
   return (
     <>
       <div className="newArrival_container">
-        <h4>New Arrival Products:</h4>
+        <div className="newArrival_container_header">
+          <h1>New Arrival Products:</h1>
+
+          <select>
+            <option value="none" selected disabled hidden>Filter</option>
+            <option value="">Lowest Price</option>
+            <option value="">Highest Price</option>
+            {/* <option value=""> Price</option> */}
+          </select>
+        </div>
 
         {/* <div className="product-content mt-4"
            onScroll={onScroll}
@@ -107,7 +116,11 @@ const NewArrival = () => {
           dataLength={newArrivalProduct?.length}
           next={fetchData}
           hasMore={hasMore}
-          loader={<h4 style={{textAlign: "center", padding: "10px 0px"}}><img width={60} src={downArrow} alt=""/></h4>}
+          loader={
+            <h4 style={{ textAlign: "center", padding: "10px 0px" }}>
+              <img width={60} src={downArrow} alt="" />
+            </h4>
+          }
         >
           <div className="product-content mt-3">
             <SkeletonTheme baseColor="#DDDDDD" highlightColor="#e3e3e3">

@@ -1,0 +1,15 @@
+.discountProduct_container {
+  padding-top: 10px;
+}
+.discountProduct_container_header{
+  display: flex;
+  justify-content: space-between;
+}
+.discountProduct_container_header h1 {
+  font-size: 25px;
+}
+.discountProduct_container_header select {
+  outline: none;
+  border: 1px solid gainsboro;
+  color: #4e4e4e;
+}

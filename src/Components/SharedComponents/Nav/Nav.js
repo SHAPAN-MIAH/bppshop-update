@@ -290,12 +290,12 @@ const Nav = () => {
                   {/* <LuHeartHandshake /> */}
                 </div>
                 <div className="dropdown-menu partner_zone_dropdown">
-                  <Link to="/">
+                  <a href="https://backend.bppshop.com.bd/shop/apply">
                     <li className="dropdown-item mt-1">Become a Seller</li>
-                  </Link>
-                  <Link to="/">
+                  </a>
+                  <a href="https://agent.bppshop.com.bd/login">
                     <li className="dropdown-item mt-1">Become a Agent</li>
-                  </Link>
+                  </a>
                 </div>
               </div>
               <div className="userProfileTab">

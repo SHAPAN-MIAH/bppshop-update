@@ -206,7 +206,7 @@ const ProductCard = ({ product, setImg, allCategoryProductCard, allSubCategoryPr
                 <span>-</span>
                   {discount ? (
                     <span>
-                      <b> &#2547; {unit_price - discount} -</b>
+                      <b> &#2547; {unit_price - discount} </b>
                       <del>
                         <b className="text-danger ">
                           {" "}
@@ -248,9 +248,9 @@ const ProductCard = ({ product, setImg, allCategoryProductCard, allSubCategoryPr
                   </div>
                 ) : (
                   <div className="product_stock_out_overlay d-flex justify-content-center align-items-center">
-                    <h3 className="text-center">
+                    <h4 className="text-center">
                       Stock <br /> Out
-                    </h3>
+                    </h4>
                   </div>
                 )}
               </Link>

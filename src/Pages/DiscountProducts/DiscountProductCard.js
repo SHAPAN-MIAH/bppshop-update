@@ -1,5 +1,3 @@
-
-
 import React, { useEffect, useState } from "react";
 import defaultProImg from "../../Assets/Images/defaultImg.jpg";
 import { useDispatch, useSelector } from "react-redux";
@@ -91,7 +89,6 @@ const DiscountProductCard = ({ product, setImg }) => {
   const { loginRes } = useSelector((state) => state.loginRes);
   const { signupRes } = useSelector((state) => state.signupRes);
 
-
   useEffect(() => {
     if (isAuthenticated == true) {
       closeModal();
@@ -147,12 +144,10 @@ const DiscountProductCard = ({ product, setImg }) => {
 
   // Add to cart functionality.............................
   const addToCartHandler = (product, quantity) => {
-
     if (!token) {
       dispatch(addItemsToCart(product, quantity));
-      localStorage.setItem("productCartLoginAddItem", "true")
+      localStorage.setItem("productCartLoginAddItem", "true");
       openModal();
-
     }
 
     if (isAuthenticated == true && token) {
@@ -195,14 +190,11 @@ const DiscountProductCard = ({ product, setImg }) => {
           : dispatch(addItemsToCartAfterLogin(addItemsToCartDataWithoutColor));
       }
 
-
-      addToCartOverlyLoading()
+      addToCartOverlyLoading();
     }
-    
   };
 
   const addToCartOverlyLoading = () => {
-    
     const addToCartLoaderOverlay = document.querySelector(
       ".addToCart_loader_overlay"
     );
@@ -231,16 +223,14 @@ const DiscountProductCard = ({ product, setImg }) => {
     // });
   }
 
-  
-
   const scrollTop = () => {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
   };
 
   const imgReset = () => {
-    setImg("")
-  }
+    setImg("");
+  };
   return (
     <>
       <div className="product_card_content" onClick={imgReset}>
@@ -262,14 +252,18 @@ const DiscountProductCard = ({ product, setImg }) => {
                 <small>{name.toString().substring(0, 23)}...</small>
                 <br />
                 <div className="product-card-body-content-unit-price">
-                <small>
-                  {newChoiceOption && (
-                    <span className="unitPrice_view">
-                      {newChoiceOption?.options[0]} : {newChoiceOption?.title}
-                    </span>
+                  <small>
+                    {newChoiceOption && (
+                      <span className="unitPrice_view">
+                        {newChoiceOption?.options[0]} : {newChoiceOption?.title}
+                      </span>
+                    )}
+                  </small>
+                  {newChoiceOption?.options[0] && newChoiceOption?.title ? (
+                    <span>-</span>
+                  ) : (
+                    ""
                   )}
-                </small>
-                <span>-</span>
                   {discount ? (
                     <span>
                       <b> &#2547; {unit_price - discount} </b>
@@ -295,7 +289,8 @@ const DiscountProductCard = ({ product, setImg }) => {
 
               <Link
                 // to={`/discount-products/${id}`} addeditemid={addeditemid}
-                to={`/discount-products/${product.slug}`} addeditemid={addeditemid}
+                to={`/discount-products/${product.slug}`}
+                addeditemid={addeditemid}
               >
                 {current_stock > 0 ? (
                   <div

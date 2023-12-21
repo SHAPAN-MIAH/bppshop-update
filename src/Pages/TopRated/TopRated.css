@@ -1,0 +1,15 @@
+.top_rated_container {
+  padding-top: 10px;
+}
+.top_rated_container_header{
+  display: flex;
+  justify-content: space-between;
+}
+.top_rated_container_header h1 {
+  font-size: 25px;
+}
+.top_rated_container_header select {
+  outline: none;
+  border: 1px solid gainsboro;
+  color: #4e4e4e;
+}

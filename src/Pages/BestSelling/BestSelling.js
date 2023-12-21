@@ -8,6 +8,7 @@ import { useRef } from "react";
 import BestSellingProductCard from "./BestSellingProductCard";
 import InfiniteScroll from "react-infinite-scroll-component";
 import downArrow from "../../Assets/Images/arrow-down.gif.c819a92ab7162c828e944727a545dcd7.gif"
+import './BestSelling.css'
 
 const BestSelling = () => {
   const [bestSellingProduct, setBestSellingProduct] = useState([]);
@@ -72,7 +73,19 @@ const BestSelling = () => {
   return (
     <>
       <div className="best_selling_container">
-        <h4>Best Selling Products:</h4>
+        
+        <div className="best_selling_container_header">
+        <h1>Best Selling Products:</h1>
+
+        <select>
+          <option value="none" selected disabled hidden>
+            Filter
+          </option>
+          <option value="">Lowest Price</option>
+          <option value="">Highest Price</option>
+          {/* <option value=""> Price</option> */}
+        </select>
+      </div>
         <InfiniteScroll
           dataLength={bestSellingProduct?.length}
           next={fetchData}

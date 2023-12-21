@@ -141,7 +141,7 @@
 }
 .btn_before_add_cart_stockOut{
   background: #eeb18b;
-  padding: 7px 20px;
+  padding: 5px 20px;
 }
 
 .btn_after_added_cart {
@@ -176,7 +176,7 @@
 .product_stock_out_overlay {
   position: absolute;
   background: #00000071;
-  height: 400px;
+  height: 324px;
   width: 100%;
   top: 0;
   left: 0;

@@ -1,0 +1,15 @@
+.best_selling_container {
+  padding-top: 10px;
+}
+.best_selling_container_header{
+  display: flex;
+  justify-content: space-between;
+}
+.best_selling_container_header h1 {
+  font-size: 25px;
+}
+.best_selling_container_header select {
+  outline: none;
+  border: 1px solid gainsboro;
+  color: #4e4e4e;
+}

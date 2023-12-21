@@ -247,7 +247,11 @@ const AllProductsCard = ({ product, setImg }) => {
                     )}
 
                   </small>
-                  <span>-</span>
+                  {newChoiceOption?.options[0] && newChoiceOption?.title ? (
+                    <span>-</span>
+                  ) : (
+                    ""
+                  )}
                   {discount ? (
                     <span>
                       <b>&#2547; {unit_price - discount}</b>

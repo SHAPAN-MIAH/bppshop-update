@@ -7,7 +7,8 @@ import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import { useRef } from "react";
 import TopRatedProductCard from "./TopRatedProductCard";
 import InfiniteScroll from "react-infinite-scroll-component";
-import downArrow from "../../Assets/Images/arrow-down.gif.c819a92ab7162c828e944727a545dcd7.gif"
+import downArrow from "../../Assets/Images/arrow-down.gif.c819a92ab7162c828e944727a545dcd7.gif";
+import './TopRated.css'
 
 const TopRated = () => {
   const [topRatedProduct, setTopRatedProduct] = useState([]);
@@ -68,8 +69,19 @@ const TopRated = () => {
 
   return (
     <>
-      <div className="newArrival_container">
-        <h4>Top Rated Products:</h4>
+      <div className="top_rated_container">
+        <div className="top_rated_container_header">
+          <h1>Top Rated Products:</h1>
+
+          <select>
+            <option value="none" selected disabled hidden>
+              Filter
+            </option>
+            <option value="">Lowest Price</option>
+            <option value="">Highest Price</option>
+            {/* <option value=""> Price</option> */}
+          </select>
+        </div>
 
         <InfiniteScroll
           dataLength={topRatedProduct?.length}
@@ -77,7 +89,7 @@ const TopRated = () => {
           hasMore={hasMore}
           loader={
             <h4 style={{ textAlign: "center", padding: "10px 0px" }}>
-              <img width={60} src={downArrow} alt=""/>
+              <img width={60} src={downArrow} alt="" />
             </h4>
           }
         >
