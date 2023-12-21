@@ -75,7 +75,6 @@ const TopRatedProductDetails = () => {
     });
   }, [id]);
 
-
   // Customer Audit log.........................
   // const auditLog = {
   //   product_id: id,
@@ -85,7 +84,6 @@ const TopRatedProductDetails = () => {
   // useEffect(() => {
   //   token && axios.post(`${baseUrl}/customer/audit-log`, auditLog, config);
   // }, []);
-
 
   let productDetailId = parseInt(productDetail?.id);
   const cartItemsId = cartItems?.map((i) => i?.product_id);
@@ -249,68 +247,67 @@ const TopRatedProductDetails = () => {
   //   }
   // }, [productDetailsPath, navigate]);
 
+  // cart item increase decrease function..............................
+  const increaseQuantityBeforeAddToCart = (quantity, stock, maxOrderQty) => {
+    if (stock <= quantity) {
+      toast.error("Sorry, Stock is limited!", {
+        duration: 2000,
+        style: {
+          width: "100%",
+          height: "80px",
+          padding: "0px 20px",
+          background: "#86bc19",
+          color: "#fff",
+        },
+      });
+      return;
+    }
+    if (maxOrderQty > 1 && maxOrderQty <= quantity) {
+      toast.error("Sorry! Stock limited!", {
+        duration: 2000,
+        style: {
+          width: "100%",
+          height: "80px",
+          padding: "0px 20px",
+          background: "#86bc19",
+          color: "#fff",
+        },
+      });
+      return;
+    }
+  };
 
- // cart item increase decrease function..............................
- const increaseQuantityBeforeAddToCart = (quantity, stock, maxOrderQty) => {
-  if (stock <= quantity) {
-    toast.error("Sorry, Stock is limited!", {
-      duration: 2000,
-      style: {
-        width: "100%",
-        height: "80px",
-        padding: "0px 20px",
-        background: "#86bc19",
-        color: "#fff",
-      },
-    });
-    return ;
-  }
-  if (maxOrderQty > 1 && maxOrderQty <= quantity) {
-    toast.error("Sorry! Stock limited!", {
-      duration: 2000,
-      style: {
-        width: "100%",
-        height: "80px",
-        padding: "0px 20px",
-        background: "#86bc19",
-        color: "#fff",
-      },
-    });
-    return ;
-  }
-};
-
-const increaseQuantity = (id, quantity, stock, maxOrderQty) => {
-  const newQty = quantity + 1;
-  if (stock <= quantity) {
-    toast.error("Sorry, Stock is limited!", {
-      duration: 2000,
-      style: {
-        width: "100%",
-        height: "80px",
-        padding: "0px 20px",
-        background: "#86bc19",
-        color: "#fff",
-      },
-    });
-    return;
-  }
-  if (maxOrderQty > 1 && maxOrderQty <= quantity) {
-    toast.error("Sorry! Stock is limited!", {
-      duration: 2000,
-      style: {
-        width: "100%",
-        height: "80px",
-        padding: "0px 20px",
-        background: "#86bc19",
-        color: "#fff",
-      },
-    });
-    return ;
-  }
-  // dispatch(addItemsToCart(id, newQty, defaultChoices));
-  dispatch(updateItemsToCart(id, newQty));
-};
+  const increaseQuantity = (id, quantity, stock, maxOrderQty) => {
+    const newQty = quantity + 1;
+    if (stock <= quantity) {
+      toast.error("Sorry, Stock is limited!", {
+        duration: 2000,
+        style: {
+          width: "100%",
+          height: "80px",
+          padding: "0px 20px",
+          background: "#86bc19",
+          color: "#fff",
+        },
+      });
+      return;
+    }
+    if (maxOrderQty > 1 && maxOrderQty <= quantity) {
+      toast.error("Sorry! Stock is limited!", {
+        duration: 2000,
+        style: {
+          width: "100%",
+          height: "80px",
+          padding: "0px 20px",
+          background: "#86bc19",
+          color: "#fff",
+        },
+      });
+      return;
+    }
+    // dispatch(addItemsToCart(id, newQty, defaultChoices));
+    dispatch(updateItemsToCart(id, newQty));
+  };
 
   const decreaseQuantity = (id, quantity, defaultChoices) => {
     const newQty = quantity - 1;
@@ -335,8 +332,8 @@ const increaseQuantity = (id, quantity, stock, maxOrderQty) => {
     (state) => state.cartItemBeforeLogin.cartItem[0]
   );
 
-   // add to cart after login res............
-   useEffect(() => {
+  // add to cart after login res............
+  useEffect(() => {
     if (isAuthenticated == true && token) {
       (loginRes?.status == "success") | (signupRes?.status == "success") &&
         closeModal();
@@ -418,7 +415,7 @@ const increaseQuantity = (id, quantity, stock, maxOrderQty) => {
 
         addToCartOverlyLoading();
       }
-     
+
       dispatch(ClearAddToCartRes());
     }
   };
@@ -432,15 +429,17 @@ const increaseQuantity = (id, quantity, stock, maxOrderQty) => {
   };
 
   const addToCartOverlyLoadingCloseHandler = () => {
-    const addToCartLoaderOverlay = document.querySelector(".addToCart_loader_overlay");
+    const addToCartLoaderOverlay = document.querySelector(
+      ".addToCart_loader_overlay"
+    );
     addToCartLoaderOverlay.style.display = "none";
   };
 
   if (AddToCartResponse[0]?.status == "success") {
-    addToCartOverlyLoadingCloseHandler()
+    addToCartOverlyLoadingCloseHandler();
   }
   useEffect(() => {
-    if( AddToCartResponse[0]?.status == "failed"){
+    if (AddToCartResponse[0]?.status == "failed") {
       addToCartOverlyLoadingCloseHandler();
       toast.error(`${AddToCartResponse[0]?.message}`, {
         duration: 2000,
@@ -453,7 +452,7 @@ const increaseQuantity = (id, quantity, stock, maxOrderQty) => {
         },
       });
     }
-  })
+  });
   const [isOpen, setOpen] = useState(false);
 
   // youtube video embed code split function............
@@ -481,13 +480,11 @@ const increaseQuantity = (id, quantity, stock, maxOrderQty) => {
     localStorage.setItem("sellerName", sellerName);
   };
 
-
   const pageMount = () => {
     setQuantityCount(1);
-    setVariantRes("")
-    setImg("")
+    setVariantRes("");
+    setImg("");
   };
-
 
   return (
     <>
@@ -585,7 +582,7 @@ const increaseQuantity = (id, quantity, stock, maxOrderQty) => {
             </div>
             <div className="col-md-5">
               <div className="product_details_page_content">
-                <h2>{productDetail?.name}</h2>
+                <h1>{productDetail?.name}</h1>
                 <p>
                   <span>
                     Product Code: <strong>{productDetail?.code}</strong>
@@ -735,12 +732,15 @@ const increaseQuantity = (id, quantity, stock, maxOrderQty) => {
                       <span
                         onClick={() => {
                           setQuantityCount(
-                            productDetail?.max_order_qty ? (productDetail?.max_order_qty >= quantityCount + 1
+                            productDetail?.max_order_qty
+                              ? productDetail?.max_order_qty >=
+                                quantityCount + 1
+                                ? quantityCount + 1
+                                : quantityCount
+                              : productDetail?.current_stock >=
+                                quantityCount + 1
                               ? quantityCount + 1
-                              : quantityCount ) :
-                              ( productDetail?.current_stock >= quantityCount + 1
-                              ? quantityCount + 1
-                              : quantityCount)
+                              : quantityCount
                           );
                           priceVariantHandlerByChoiceOption(
                             productDetail?.current_stock >= quantityCount + 1
@@ -752,11 +752,13 @@ const increaseQuantity = (id, quantity, stock, maxOrderQty) => {
                       >
                         <i
                           className="bi bi-plus-lg"
-                          onClick={() => increaseQuantityBeforeAddToCart(
-                            quantityCount,
-                            productDetail?.current_stock,
-                            productDetail?.max_order_qty
-                          )}
+                          onClick={() =>
+                            increaseQuantityBeforeAddToCart(
+                              quantityCount,
+                              productDetail?.current_stock,
+                              productDetail?.max_order_qty
+                            )
+                          }
                         ></i>
                       </span>
                     )}
@@ -853,7 +855,7 @@ const increaseQuantity = (id, quantity, stock, maxOrderQty) => {
                       </div>
                     </Link>
                   </div> */}
-<Link
+                  <Link
                     to={`/sellers-store/${productDetail?.seller?.id}`}
                     onClick={(e) => {
                       SellerNameSave(productDetail?.seller?.shop_name);
@@ -888,7 +890,10 @@ const increaseQuantity = (id, quantity, stock, maxOrderQty) => {
                   <div className="seller-product-view-container ">
                     {productDetail?.seller?.product?.map((item) => (
                       <Link to={`/top-rated/${item.id}`}>
-                        <div className="seller_product_item" onClick={() => pageMount()}>
+                        <div
+                          className="seller_product_item"
+                          onClick={() => pageMount()}
+                        >
                           <div>
                             {item.thumbnail ? (
                               <img
@@ -920,8 +925,12 @@ const increaseQuantity = (id, quantity, stock, maxOrderQty) => {
         </div>
       </div>
       {/* )} */}
-      <ProductReview productDetail={productDetail} key={productDetail?.name}/>
-      <RelatedProduct productId={productDetail?.id} key={productDetail?.id} setImg={setImg}/>
+      <ProductReview productDetail={productDetail} key={productDetail?.name} />
+      <RelatedProduct
+        productId={productDetail?.id}
+        key={productDetail?.id}
+        setImg={setImg}
+      />
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}

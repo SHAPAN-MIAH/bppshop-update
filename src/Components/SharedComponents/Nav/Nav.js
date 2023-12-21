@@ -371,12 +371,12 @@ const Nav = () => {
                   </Link> */}
 
                     {/* <div className="dropdown-menu partner_zone_dropdown"> */}
-                    <Link to="/">
+                    {/* <Link to="/">
                       <li className="dropdown-item mt-1">Become a Seller</li>
                     </Link>
                     <Link to="/">
                       <li className="dropdown-item mt-1">Become a Agent</li>
-                    </Link>
+                    </Link> */}
                     {/* </div> */}
                   </div>
                 )}

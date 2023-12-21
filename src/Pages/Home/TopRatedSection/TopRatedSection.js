@@ -7,6 +7,7 @@ import { baseUrl } from "../../../BaseUrl/BaseUrl";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import AllProductsCard from "../../AllProducts/AllProductsCard";
 import Slider from "react-slick";
+import { Link } from "react-router-dom";
 
 const DiscountProductSection = () => {
   const [dealOfDayProduct, setDealOfDayProduct] = useState([]);
@@ -14,7 +15,7 @@ const DiscountProductSection = () => {
 
   useEffect(() => {
     axios
-      .get(`${baseUrl}/products/top-rated?limit=${16}&offset=${1}`)
+      .get(`${baseUrl}/products/top-rated?limit=${30}&offset=${1}`)
       .then((response) => {
         response && setLoading(false);
         setDealOfDayProduct(response.data.products);
@@ -175,12 +176,14 @@ const DiscountProductSection = () => {
               <div className="deal_of_the_day_product_content">
                 <div className="deal_of_the_day_product_content_header">
                   <h4> Top Rated</h4>
+                  <Link to="/top-rated">
                   <button
                     className="deal_of_the_day_product_view_more_btn"
                     type=""
                   >
                     View More
                   </button>
+                  </Link>
                 </div>
                 <Slider {...settings}>
                   {dealOfDayProduct?.map((product) => (

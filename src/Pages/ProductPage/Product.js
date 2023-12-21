@@ -43,7 +43,7 @@ const Product = () => {
       .get(
         `${baseUrl}/categories/products/${
           subSubCategories?.id
-        }?limit=${15}&offset=${p}`
+        }?limit=${25}&offset=${p}`
       )
       .then((response) => {
         response && setLoading(false);

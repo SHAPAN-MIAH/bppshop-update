@@ -94,7 +94,7 @@ const DealOfTheDay = () => {
           height: "25px",
           borderRadius: "50px",
           left: "15px",
-          zIndex: "90"
+          zIndex: "9"
         }}
         onClick={onClick}
       />

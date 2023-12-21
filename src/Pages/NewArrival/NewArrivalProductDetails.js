@@ -611,7 +611,7 @@ const NewArrivalProductDetails = () => {
             </div>
             <div className="col-md-5">
               <div className="product_details_page_content">
-                <h2>{productDetail?.name}</h2>
+                <h1>{productDetail?.name}</h1>
                 <p>
                   <span>
                     Product Code: <strong>{productDetail?.code}</strong>

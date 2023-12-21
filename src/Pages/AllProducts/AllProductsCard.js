@@ -236,7 +236,7 @@ const AllProductsCard = ({ product, setImg }) => {
                 )}
               </div>
               <div className="product-card-body-content">
-                <small>{name.toString().substring(0, 25)}..</small>
+                <small>{name.toString().substring(0, 23)}...</small>
                 <br />
                 <div className="product-card-body-content-unit-price">
                   <small>
@@ -247,7 +247,7 @@ const AllProductsCard = ({ product, setImg }) => {
                     )}
 
                   </small>
-                  <span> --</span>
+                  <span>-</span>
                   {discount ? (
                     <span>
                       <b>&#2547; {unit_price - discount}</b>

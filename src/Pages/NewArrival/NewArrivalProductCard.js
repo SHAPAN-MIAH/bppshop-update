@@ -259,8 +259,9 @@ const NewArrivalProductCard = ({ product, setImg }) => {
               </div>
               <div className="product-card-body-content">
                 
-                <small>{name.toString().substring(0, 26)}...</small>
+                <small>{name.toString().substring(0, 23)}...</small>
                 <br />
+                <div className="product-card-body-content-unit-price">
                 <small>
                   {newChoiceOption && (
                     <span className="unitPrice_view">
@@ -268,7 +269,7 @@ const NewArrivalProductCard = ({ product, setImg }) => {
                     </span>
                   )}
                 </small>
-                <div className="product-card-body-content-unit-price">
+                <span>-</span>
                   {discount ? (
                     <span>
                       <b> &#2547; {unit_price - discount} </b>

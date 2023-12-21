@@ -68,20 +68,20 @@ const CategoryAfterScroll = () => {
             <Link to="/new-arrival">
               <li>New Arrival Product</li>
             </Link>
-            <Link to="/top-rated">
-              <li>Top Rated Product</li>
+            <Link to="/best-selling">
+              <li>Best Selling Product</li>
             </Link>
             <Link to="/discount-products">
               <li>Discount Product</li>
             </Link>
-            <Link to="/best-selling">
-              <li>Best Selling Product</li>
-            </Link>
-            <Link to="/sellers-store">
-              <li>Store</li>
+            <Link to="/top-rated">
+              <li>Top Rated Product</li>
             </Link>
             <Link to="/brands">
               <li>Brands</li>
+            </Link>
+            <Link to="/sellers-store">
+              <li>Store</li>
             </Link>
           </ul>
         </div>
