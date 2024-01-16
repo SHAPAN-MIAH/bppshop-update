@@ -1,13 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Sidebar from "../../../Components/SharedComponents/Sidebar/Sidebar";
 import Slider from "react-slick";
-import banner1 from "../../../Assets/Images/bppshop_banner/Artboard 1.jpg";
-import banner2 from "../../../Assets/Images/bppshop_banner/Artboard 2.jpg";
-import banner3 from "../../../Assets/Images/bppshop_banner/Artboard 3.jpg";
-// import banner3 from "../../../Assets/Images/horizontal-sale-banner3.jpg";
-// import banner4 from "../../../Assets/Images/gradient-social-media-sale banner4.jpg";
-// import banner5 from "../../../Assets/Images/horizontal-sale-banner5.jpg";
 import "./HeaderShowcaseSection.css";
+import axios from "axios";
+import { baseUrl } from "../../../BaseUrl/BaseUrl";
 
 const HeaderShowcaseSection = () => {
   const settings = {
@@ -35,7 +31,7 @@ const HeaderShowcaseSection = () => {
           height: "25px",
           borderRadius: "50px",
           textAlign: "center",
-          right: "18px"
+          right: "18px",
         }}
         onClick={onClick}
       />
@@ -55,29 +51,38 @@ const HeaderShowcaseSection = () => {
           height: "25px",
           borderRadius: "50px",
           left: "15px",
-          zIndex: "1"
+          zIndex: "1",
         }}
         onClick={onClick}
       />
     );
   }
 
+  const [sliderBanners, setSliderBanners] = useState([]);
+
+  useEffect(() => {
+    axios.get(`${baseUrl}/banners?type=sliders_for_web`).then((response) => {
+      setSliderBanners(response.data.sliders);
+    });
+  }, []);
+
   return (
     <>
       <div className="header_showcase_section">
         <div className="header_showcase_section_container">
-              <div className="sidebar_container">
-                <Sidebar />
-              </div>
-              <div className="header_showcase_section_banner">
-                <Slider {...settings} className="slider">
-                  <img  src={banner1} alt="" />
-                  <img  src={banner2} alt="" />
-                  <img  src={banner3} alt="" />
-                  {/* <img  src={banner4} alt="" />
-                  <img  src={banner5} alt="" /> */}
-                </Slider>
-              </div>
+          <div className="sidebar_container">
+            <Sidebar />
+          </div>
+          <div className="header_showcase_section_banner">
+            <Slider {...settings} className="slider">
+              {sliderBanners?.map((banner) => (
+                <img
+                  src={`https://backend.bppshop.com.bd/storage/slider/${banner}`}
+                  alt="slider"
+                />
+              ))}
+            </Slider>
+          </div>
         </div>
       </div>
     </>

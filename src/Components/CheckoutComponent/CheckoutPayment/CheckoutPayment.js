@@ -226,7 +226,7 @@ const CheckoutPayment = () => {
               </div>
             </div>
             <div className="mobile_payment">
-              {/* <div>
+              <div>
                 <input
                   type="radio"
                   name="selectedRadioBtn"
@@ -237,7 +237,7 @@ const CheckoutPayment = () => {
                   id="mobilePayment"
                 />
                 <label onClick={MobilePaymentOptionHandler} htmlFor="mobilePayment">Mobile Payment</label>
-              </div> */}
+              </div> 
               <div className="payment-option-way">
                 <div className="payment-option">
                   <div>
@@ -253,7 +253,7 @@ const CheckoutPayment = () => {
               </div>
             </div>
             <div className="bank_payment">
-              {/* <div>
+               <div>
                 <input
                   type="radio"
                   name="selectedRadioBtn"
@@ -264,7 +264,7 @@ const CheckoutPayment = () => {
                   id="bankPayment"
                 />
                 <label onClick={BankPaymentOptionHandler} htmlFor="bankPayment">Bank Payment</label>
-              </div> */}
+              </div>
               <div className="bankPayment-option-way">
                 <div className="bankPayment-option">
                   <div>

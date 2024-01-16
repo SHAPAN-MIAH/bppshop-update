@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import img from "../../../Assets/Images/dealoftheday.png";
-import img2 from "../../../Assets/Images/bppshop_banner/dealoftheDayV.jpg";
 import "./DealOfTheDay.css";
 import axios from "axios";
 import { baseUrl } from "../../../BaseUrl/BaseUrl";
@@ -14,15 +12,14 @@ const DealOfTheDay = () => {
 
   useEffect(() => {
     axios
-      .get(`${baseUrl}/products/top?limit=${16}&offset=${1}`)
+      .get(`${baseUrl}/dealsoftheday/deal-of-the-day?limit=${16}&offset=${1}`)
       .then((response) => {
         response && setLoading(false);
-        setDealOfDayProduct(response.data.products);
+        setDealOfDayProduct(response?.data);
       });
   }, []);
 
   const settings = {
-    // dots: true,
     infinite: true,
     slidesToShow: 5,
     slidesToScroll: 1,
@@ -73,7 +70,6 @@ const DealOfTheDay = () => {
           borderRadius: "50px",
           textAlign: "center",
           right: "20px",
-          // textAlign: "left"
         }}
         onClick={onClick}
       />
@@ -89,12 +85,11 @@ const DealOfTheDay = () => {
           ...style,
           display: "block",
           background: "#e77025",
-
           width: "25px",
           height: "25px",
           borderRadius: "50px",
           left: "15px",
-          zIndex: "9"
+          zIndex: "9",
         }}
         onClick={onClick}
       />
@@ -107,49 +102,95 @@ const DealOfTheDay = () => {
         <SkeletonTheme baseColor="rgb(220, 220, 220)" highlightColor="#e3e3e3">
           {loading ? (
             <div className=" d-flex">
-              <Skeleton height="335px" width="250px" borderRadius="10px" count={1} />
-              <div style={{marginLeft: "22px"}}>
+              <Skeleton
+                height="335px"
+                width="250px"
+                borderRadius="10px"
+                count={1}
+              />
+              <div style={{ marginLeft: "22px" }}>
                 <div className="d-flex justify-content-between">
-                  <Skeleton height="40px" width="410px" borderRadius="5px" count={1} />
-                  <Skeleton height="40px" width="120px" borderRadius="5px" count={1} />
+                  <Skeleton
+                    height="40px"
+                    width="410px"
+                    borderRadius="5px"
+                    count={1}
+                  />
+                  <Skeleton
+                    height="40px"
+                    width="120px"
+                    borderRadius="5px"
+                    count={1}
+                  />
                 </div>
                 <div className="d-flex justify-content-between">
-                  <Skeleton height="280px" width="200px" style={{marginTop : "15px"}} borderRadius="10px" count={1} />
-                  <Skeleton height="280px" width="200px" style={{marginTop : "15px", marginLeft: "12px"}} borderRadius="10px" count={1} />
-                  <Skeleton height="280px" width="200px" style={{marginTop : "15px", marginLeft: "12px"}} borderRadius="10px" count={1} />
-                  <Skeleton height="280px" width="200px" style={{marginTop : "15px", marginLeft: "12px"}} borderRadius="10px" count={1} />
-                  <Skeleton height="280px" width="200px" style={{marginTop : "15px", marginLeft: "12px"}} borderRadius="10px" count={1} />
+                  <Skeleton
+                    height="280px"
+                    width="200px"
+                    style={{ marginTop: "15px" }}
+                    borderRadius="10px"
+                    count={1}
+                  />
+                  <Skeleton
+                    height="280px"
+                    width="200px"
+                    style={{ marginTop: "15px", marginLeft: "12px" }}
+                    borderRadius="10px"
+                    count={1}
+                  />
+                  <Skeleton
+                    height="280px"
+                    width="200px"
+                    style={{ marginTop: "15px", marginLeft: "12px" }}
+                    borderRadius="10px"
+                    count={1}
+                  />
+                  <Skeleton
+                    height="280px"
+                    width="200px"
+                    style={{ marginTop: "15px", marginLeft: "12px" }}
+                    borderRadius="10px"
+                    count={1}
+                  />
+                  <Skeleton
+                    height="280px"
+                    width="200px"
+                    style={{ marginTop: "15px", marginLeft: "12px" }}
+                    borderRadius="10px"
+                    count={1}
+                  />
                 </div>
               </div>
             </div>
           ) : (
             <div className="deal_of_the_day_content_container">
-              {/* <div className="col-md-2"> */}
-                <div className="deal_of_the_day_banner">
-                  <img className="img1" src={img} alt="" />
-                  <img className="img2" src={img2} alt="" />
+              <div className="deal_of_the_day_banner">
+                {
+                  <img
+                    className="img1"
+                    src={`https://backend.bppshop.com.bd/storage/banner/${dealOfDayProduct.banner}`}
+                    alt=""
+                  />
+                }
+              </div>
+              <div className="deal_of_the_day_product_content">
+                <div className="deal_of_the_day_product_content_header">
+                  <h4>Deal Of the Day</h4>
+                  <button
+                    className="deal_of_the_day_product_view_more_btn"
+                    type=""
+                  >
+                    View More
+                  </button>
                 </div>
-              {/* </div> */}
-              {/* <div className="col-md-10"> */}
-                <div className="deal_of_the_day_product_content">
-                  <div className="deal_of_the_day_product_content_header">
-                    <h4>Deal Of the Day</h4>
-                    <button
-                      className="deal_of_the_day_product_view_more_btn"
-                      type=""
-                    >
-                      View More
-                    </button>
-                  </div>
-                  <Slider {...settings}>
-                    {dealOfDayProduct?.map((product) => (
-                      <div className="p-1">
-                        <AllProductsCard key={product?.id} product={product} />
-                      </div>
-                    ))}
-                  </Slider>
-                </div>
-              {/* </div> */}
+                <Slider {...settings}>
+                  {dealOfDayProduct?.products?.map((product) => (
+                    <div className="p-1">
+                      <AllProductsCard key={product?.id} product={product} />
+                    </div>
+                  ))}
+                </Slider>
+              </div>
             </div>
           )}
         </SkeletonTheme>
