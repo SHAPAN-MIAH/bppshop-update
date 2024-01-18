@@ -72,7 +72,7 @@ const AllSellerStore = () => {
 
   return (
     <>
-      <h4>All Seller Store:</h4>
+      <h3 className="my-3">All Seller Store:</h3>
       {/* <div
         onScroll={onScroll}
         ref={listInnerRef}
@@ -134,7 +134,16 @@ const AllSellerStore = () => {
           )}
         </SkeletonTheme>
       </div> */}
-
+      <nav aria-label="breadcrumb">
+        <ol className="breadcrumb">
+          <li className="breadcrumb-item">
+            <Link to="/">Home</Link>
+          </li>
+          <li className="breadcrumb-item" aria-current="page">
+            Seller Store
+          </li>
+        </ol>
+      </nav>
       <InfiniteScroll
         dataLength={allSellerStore?.length}
         next={fetchData}
@@ -145,7 +154,7 @@ const AllSellerStore = () => {
           </h4>
         }
       >
-        <div className="all-seller-store-container mt-4 ">
+        <div className="all-seller-store-container mt-2 ">
           <SkeletonTheme baseColor="#DDDDDD" highlightColor="#e3e3e3">
             {loading ? (
               <>
@@ -193,7 +202,6 @@ const AllSellerStore = () => {
                         src={`https://backend.bppshop.com.bd/storage/shop/banner/${sellerStore?.banner}`}
                         alt=""
                       />
-                      
                     )}
                     <div className="seller_store_profile">
                       <img

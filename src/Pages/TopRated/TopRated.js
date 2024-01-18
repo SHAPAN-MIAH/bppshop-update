@@ -9,6 +9,7 @@ import TopRatedProductCard from "./TopRatedProductCard";
 import InfiniteScroll from "react-infinite-scroll-component";
 import downArrow from "../../Assets/Images/arrow-down.gif.c819a92ab7162c828e944727a545dcd7.gif";
 import './TopRated.css'
+import { Link } from "react-router-dom";
 
 const TopRated = () => {
   const [topRatedProduct, setTopRatedProduct] = useState([]);
@@ -70,9 +71,18 @@ const TopRated = () => {
   return (
     <>
       <div className="top_rated_container">
-        <div className="top_rated_container_header">
           <h1>Top Rated Products:</h1>
-
+        <div className="top_rated_container_header">
+          <nav aria-label="breadcrumb">
+          <ol className="breadcrumb">
+            <li className="breadcrumb-item">
+              <Link to="/">Home</Link>
+            </li>
+            <li className="breadcrumb-item" aria-current="page">
+              Top Rated Products
+            </li>
+          </ol>
+        </nav>
           <select>
             <option value="none" selected disabled hidden>
               Filter

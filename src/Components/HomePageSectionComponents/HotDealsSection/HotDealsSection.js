@@ -1,23 +1,40 @@
-import React, { useEffect, useState } from "react";
-import "./DealOfTheDay.css";
 import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { baseUrl } from "../../../BaseUrl/BaseUrl";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
-import AllProductsCard from "../../AllProducts/AllProductsCard";
+import { Link } from "react-router-dom";
 import Slider from "react-slick";
+import HotDealsProductCard from "../../Cards/HotDealsProductCard/HotDealsProductCard";
+import Countdown from "react-countdown";
 
-const DealOfTheDay = () => {
-  const [dealOfDayProduct, setDealOfDayProduct] = useState([]);
+const HotDealsSection = () => {
+  const [hotDeals, SetHotDeals] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     axios
-      .get(`${baseUrl}/dealsoftheday/deal-of-the-day?limit=${16}&offset=${1}`)
+      .get(`${baseUrl}/flash-deals/products?limit=${5}&offset=${1}`)
       .then((response) => {
-        response && setLoading(false);
-        setDealOfDayProduct(response?.data);
+        setLoading(false);
+        SetHotDeals(response?.data);
       });
   }, []);
+
+  console.log(hotDeals?.hot_deals?.banner);
+
+  const renderer = ({ hours, minutes, seconds, completed }) => {
+    if (completed) {
+      // Render a completed state
+      return "offer ses";
+    } else {
+      // Render a countdown
+      return (
+        <span>
+          {hours}:{minutes}:{seconds}
+        </span>
+      );
+    }
+  };
 
   const settings = {
     infinite: true,
@@ -168,25 +185,32 @@ const DealOfTheDay = () => {
                 {
                   <img
                     className="img1"
-                    src={`https://backend.bppshop.com.bd/storage/banner/${dealOfDayProduct.banner}`}
+                    src={`https://backend.bppshop.com.bd/storage/banner/${hotDeals?.hot_deals?.banner}`}
                     alt=""
                   />
                 }
               </div>
               <div className="deal_of_the_day_product_content">
                 <div className="deal_of_the_day_product_content_header">
-                  <h4>Deal Of the Day</h4>
-                  <button
-                    className="deal_of_the_day_product_view_more_btn"
-                    type=""
-                  >
-                    View More
-                  </button>
+                  <h4>Hot Deals</h4>
+                  <Countdown date={Date.now() + 100000} renderer={renderer} />,
+
+                  <Link to="/deals-of-the-day">
+                    <button
+                      className="deal_of_the_day_product_view_more_btn"
+                      type=""
+                    >
+                      View More
+                    </button>
+                  </Link>
                 </div>
                 <Slider {...settings}>
-                  {dealOfDayProduct?.products?.map((product) => (
+                  {hotDeals?.products?.map((product) => (
                     <div className="p-1">
-                      <AllProductsCard key={product?.id} product={product} />
+                      <HotDealsProductCard
+                        key={product?.id}
+                        product={product}
+                      />
                     </div>
                   ))}
                 </Slider>
@@ -199,4 +223,4 @@ const DealOfTheDay = () => {
   );
 };
 
-export default DealOfTheDay;
+export default HotDealsSection;

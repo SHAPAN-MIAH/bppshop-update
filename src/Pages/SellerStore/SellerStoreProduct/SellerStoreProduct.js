@@ -75,6 +75,9 @@ const SellerStoreProduct = () => {
       <nav aria-label="breadcrumb">
         <ol className="breadcrumb my-4">
           <li className="breadcrumb-item" aria-current="page">
+            <Link to="/">Home </Link>
+          </li>
+          <li className="breadcrumb-item" aria-current="page">
             <Link to="/sellers-store">Seller Store </Link>
           </li>
 

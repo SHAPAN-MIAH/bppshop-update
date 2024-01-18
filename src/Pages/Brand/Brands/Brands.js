@@ -75,6 +75,16 @@ const Brands = () => {
   return (
     <>
       <h4>Brands:</h4>
+      <nav aria-label="breadcrumb">
+            <ol className="breadcrumb">
+              <li className="breadcrumb-item">
+                <Link to="/">Home</Link>
+              </li>
+              <li className="breadcrumb-item" aria-current="page">
+                Brands
+              </li>
+            </ol>
+          </nav>
       <InfiniteScroll
         dataLength={brands?.length}
         next={fetchData}

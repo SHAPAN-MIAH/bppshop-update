@@ -489,12 +489,12 @@ const increaseQuantity = (id, quantity, stock, maxOrderQty) => {
 
   return (
     <>
-      <h4>Discount Products:</h4>
+      <h3 className="my-3">Discount Products:</h3>
       <nav aria-label="breadcrumb">
-        <ol className="breadcrumb my-4">
-          {/* <li className="breadcrumb-item">
+        <ol className="breadcrumb my-2">
+          <li className="breadcrumb-item">
             <Link to="/">Home</Link>
-          </li> */}
+          </li>
           <li className="breadcrumb-item" aria-current="page">
             <Link to="/discount-products">Discount Products</Link>
           </li>

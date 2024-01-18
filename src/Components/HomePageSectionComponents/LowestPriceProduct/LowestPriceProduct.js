@@ -6,7 +6,7 @@ import img from "../../../Assets/Images/dealoftheday.png";
 import axios from "axios";
 import { baseUrl } from "../../../BaseUrl/BaseUrl";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
-import AllProductsCard from "../../AllProducts/AllProductsCard";
+import AllProductsCard from "../../../Pages/AllProducts/AllProductsCard";
 import Slider from "react-slick";
 
 const LowestPriceProduct = () => {

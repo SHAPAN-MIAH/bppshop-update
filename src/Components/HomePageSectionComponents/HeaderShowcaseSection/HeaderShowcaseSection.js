@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Sidebar from "../../../Components/SharedComponents/Sidebar/Sidebar";
+import Sidebar from "../../SharedComponents/Sidebar/Sidebar";
 import Slider from "react-slick";
 import "./HeaderShowcaseSection.css";
 import axios from "axios";

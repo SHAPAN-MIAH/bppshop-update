@@ -1,21 +1,22 @@
 import React, { useEffect, useState } from "react";
-import img from "../../../Assets/Images/bppshop_banner/discountProduct (1).jpg";
-import img2 from "../../../Assets/Images/bppshop_banner/discountProduct (2).jpg";
+import img from "../../../Assets/Images/bppshop_banner/bestSelling (1).jpg";
+import img2 from "../../../Assets/Images/bppshop_banner/bestSelling (2).jpg";
 // import "./DealOfTheDay.css";
 import axios from "axios";
 import { baseUrl } from "../../../BaseUrl/BaseUrl";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
-import AllProductsCard from "../../AllProducts/AllProductsCard";
+import AllProductsCard from "../../../Pages/AllProducts/AllProductsCard";
 import Slider from "react-slick";
 import { Link } from "react-router-dom";
+import BestSellingProductCard from "../../../Pages/BestSelling/BestSellingProductCard";
 
-const DiscountProductSection = () => {
+const BestSellingSection = () => {
   const [dealOfDayProduct, setDealOfDayProduct] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     axios
-      .get(`${baseUrl}/products/top-rated?limit=${30}&offset=${1}`)
+      .get(`${baseUrl}/products/best-sellings?limit=${16}&offset=${1}`)
       .then((response) => {
         response && setLoading(false);
         setDealOfDayProduct(response.data.products);
@@ -56,7 +57,7 @@ const DiscountProductSection = () => {
           slidesToShow: 2,
           slidesToScroll: 1,
         },
-      }
+      },
     ],
   };
 
@@ -88,7 +89,7 @@ const DiscountProductSection = () => {
           ...style,
           display: "block",
           background: "#e77025",
-          width: "20px",
+          width: "22px",
           height: "25px",
           borderRadius: "50px",
           left: "15px",
@@ -167,33 +168,29 @@ const DiscountProductSection = () => {
             </div>
           ) : (
             <div className="deal_of_the_day_content_container">
-              {/* <div className="col-md-2"> */}
               <div className="deal_of_the_day_banner">
                 <img src={img} alt="" />
               </div>
-              {/* </div> */}
-              {/* <div className="col-md-10"> */}
               <div className="deal_of_the_day_product_content">
                 <div className="deal_of_the_day_product_content_header">
-                  <h4> Top Rated</h4>
-                  <Link to="/top-rated">
-                  <button
-                    className="deal_of_the_day_product_view_more_btn"
-                    type=""
-                  >
-                    View More
-                  </button>
+                  <h4>Best Selling Product</h4>
+                  <Link to="./best-selling">
+                    <button
+                      className="deal_of_the_day_product_view_more_btn"
+                      type=""
+                    >
+                      View More
+                    </button>
                   </Link>
                 </div>
                 <Slider {...settings}>
                   {dealOfDayProduct?.map((product) => (
                     <div className="p-1">
-                      <AllProductsCard key={product?.id} product={product} />
+                      <BestSellingProductCard key={product?.id} product={product} />
                     </div>
                   ))}
                 </Slider>
               </div>
-              {/* </div> */}
             </div>
           )}
         </SkeletonTheme>
@@ -202,4 +199,4 @@ const DiscountProductSection = () => {
   );
 };
 
-export default DiscountProductSection;
+export default BestSellingSection;

@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { baseUrl } from "../../../BaseUrl/BaseUrl";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
-import AllProductsCard from "../../AllProducts/AllProductsCard";
+import AllProductsCard from "../../../Pages/AllProducts/AllProductsCard";
 import "./AllProductSection.css";
 
 const AllProductSection = () => {

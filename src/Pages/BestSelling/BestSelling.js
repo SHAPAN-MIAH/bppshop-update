@@ -7,8 +7,9 @@ import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import { useRef } from "react";
 import BestSellingProductCard from "./BestSellingProductCard";
 import InfiniteScroll from "react-infinite-scroll-component";
-import downArrow from "../../Assets/Images/arrow-down.gif.c819a92ab7162c828e944727a545dcd7.gif"
-import './BestSelling.css'
+import downArrow from "../../Assets/Images/arrow-down.gif.c819a92ab7162c828e944727a545dcd7.gif";
+import "./BestSelling.css";
+import { Link } from "react-router-dom";
 
 const BestSelling = () => {
   const [bestSellingProduct, setBestSellingProduct] = useState([]);
@@ -73,26 +74,34 @@ const BestSelling = () => {
   return (
     <>
       <div className="best_selling_container">
-        
+        <h1 className="my-2">Best Selling Products:</h1>
         <div className="best_selling_container_header">
-        <h1>Best Selling Products:</h1>
-
-        <select>
-          <option value="none" selected disabled hidden>
-            Filter
-          </option>
-          <option value="">Lowest Price</option>
-          <option value="">Highest Price</option>
-          {/* <option value=""> Price</option> */}
-        </select>
-      </div>
+          <nav aria-label="breadcrumb">
+            <ol className="breadcrumb">
+              <li className="breadcrumb-item">
+                <Link to="/">Home</Link>
+              </li>
+              <li className="breadcrumb-item" aria-current="page">
+                Best selling
+              </li>
+            </ol>
+          </nav>
+          <select>
+            <option value="none" selected disabled hidden>
+              Filter
+            </option>
+            <option value="">Lowest Price</option>
+            <option value="">Highest Price</option>
+            {/* <option value=""> Price</option> */}
+          </select>
+        </div>
         <InfiniteScroll
           dataLength={bestSellingProduct?.length}
           next={fetchData}
           hasMore={hasMore}
           loader={
             <h4 style={{ textAlign: "center", padding: "10px 0px" }}>
-              <img width={60} src={downArrow} alt=""/>
+              <img width={60} src={downArrow} alt="" />
             </h4>
           }
         >

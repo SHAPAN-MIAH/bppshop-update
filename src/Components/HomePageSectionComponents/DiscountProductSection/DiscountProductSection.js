@@ -3,12 +3,14 @@ import React, { useEffect, useState } from "react";
 import { baseUrl } from "../../../BaseUrl/BaseUrl";
 import "../NewArrivalSection/NewArrivalSection.css";
 import Slider from "react-slick";
-import newArrivalBanner from "../../../Assets/Images/bppshop_banner/topRated (1).jpg";
-import newArrivalBanner2 from "../../../Assets/Images/bppshop_banner/topRated (2).jpg";
+import discountBanner from "../../../Assets/Images/bppshop_banner/discountProduct (1).jpg";
+import discountBanner2 from "../../../Assets/Images/bppshop_banner/discountProduct (2).jpg";
 import { Link } from "react-router-dom";
-import TopRatedProductCard from "../../TopRated/TopRatedProductCard";
+import TopRatedProductCard from "../../../Pages/TopRated/TopRatedProductCard";
 import NewArrivalSectionProductCard from "../NewArrivalSection/NewArrivalSectionProductCard";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import DiscountProductCard from "../../../Pages/DiscountProducts/DiscountProductCard";
+import DiscountSectionProductCard from "./DiscountSectionProductCard";
 
 const TopRatedSection = () => {
   const [newArrivalProduct, setNewArrivalProduct] = useState([]);
@@ -170,15 +172,15 @@ const TopRatedSection = () => {
               <div className="row">
                 <div className="col-md-3">
                   <div className="new_arrival_banner">
-                    <img className="img1" src={newArrivalBanner} alt="" />
-                    <img className="img2" src={newArrivalBanner2} alt="" />
+                    <img className="img1" src={discountBanner} alt="" />
+                    <img className="img2" src={discountBanner2} alt="" />
                   </div>
                 </div>
                 <div className="col-md-9">
                   <div>
                     <div className="new_arrival_section_product_content_header">
                       <h4>Discount Product</h4>
-                      <Link to="/top-rated">
+                      <Link to="/discount-products">
                         <button
                           className="new_arrival_section_product_view_more_btn"
                           type=""
@@ -194,7 +196,7 @@ const TopRatedSection = () => {
                       >
                         {newArrivalProduct?.map((product) => (
                           <div className="new_arrival_section_product_content px-1">
-                            <NewArrivalSectionProductCard
+                            <DiscountSectionProductCard
                               key={product?.id}
                               product={product}
                             />

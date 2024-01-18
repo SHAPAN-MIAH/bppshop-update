@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 // import "./ProductDetailsPage.css";
 import { useParams } from "react-router-dom";
 import {
@@ -49,17 +49,8 @@ const customStyles = {
   },
 };
 
-const BrandProductDetails = () => {
-  const { brandId, id } = useParams();
-  const location = useLocation();
-  const newLocation = location.pathname.split("/");
-  // const brandName = newLocation[2];
-  const brandName = localStorage.getItem("brandName");
-
-  // let newId = parseInt(id);
-
-  // console.log(id);
-
+const DealsOfTheDayProductDetails = () => {
+  const { slug, subSlug, subSubSlug, id } = useParams();
   const [productDetail, setProductDetail] = useState([]);
   const [quantityCount, setQuantityCount] = useState(1);
   const [loading, setLoading] = useState(true);
@@ -76,10 +67,11 @@ const BrandProductDetails = () => {
   const { loginRes } = useSelector((state) => state.loginRes);
   const { signupRes } = useSelector((state) => state.signupRes);
 
+  // Product Details............................
   useEffect(() => {
     axios.get(`${baseUrl}/products/details/${id}`).then((res) => {
-      setProductDetail(res.data.data);
       // setLoading(false);
+      setProductDetail(res.data.data);
     });
   }, [id]);
 
@@ -97,9 +89,9 @@ const BrandProductDetails = () => {
   const cartItemsId = cartItems?.map((i) => i?.product_id);
   const addeditemid = cartItemsId?.find((i) => i == productDetailId);
   const isItemExist = cartItems?.find((i) => i?.product_id == addeditemid);
-  // const paramId = subSubSlug;
-  // const productDetailsPathId = productDetail?.id?.toString();
-  // const productDetailsPath = productDetailsPathId == paramId;
+  const paramId = subSubSlug;
+  const productDetailsPathId = productDetail?.id?.toString();
+  const productDetailsPath = productDetailsPathId == paramId;
   const choiceOptions = productDetail?.choice_options?.map(
     (list) => list?.options
   );
@@ -268,7 +260,7 @@ const BrandProductDetails = () => {
           color: "#fff",
         },
       });
-      return ;
+      return;
     }
     if (maxOrderQty > 1 && maxOrderQty <= quantity) {
       toast.error("Sorry! Stock limited!", {
@@ -281,7 +273,7 @@ const BrandProductDetails = () => {
           color: "#fff",
         },
       });
-      return ;
+      return;
     }
   };
 
@@ -311,7 +303,7 @@ const BrandProductDetails = () => {
           color: "#fff",
         },
       });
-      return ;
+      return;
     }
     // dispatch(addItemsToCart(id, newQty, defaultChoices));
     dispatch(updateItemsToCart(id, newQty));
@@ -335,10 +327,10 @@ const BrandProductDetails = () => {
   }
 
   const modalLogin = localStorage.getItem("modalLogin");
+  const modalSignup = localStorage.getItem("modalSignup");
   const cartItemBeforeLogin = useSelector(
     (state) => state.cartItemBeforeLogin.cartItem[0]
   );
-  const modalSignup = localStorage.getItem("modalSignup");
 
   // add to cart after login res............
   useEffect(() => {
@@ -423,20 +415,7 @@ const BrandProductDetails = () => {
 
         addToCartOverlyLoading();
       }
-      // if(AddToCartResponse?.map(i => i.status == "success")){
-      //   // toaster
-      //   toast.success(`Product added to cart successfully`, {
-      //     duration: 3000,
-      //     style: {
-      //       width: "100%",
-      //       height: "80px",
-      //       padding: "0px 20px",
-      //       background: "#86bc19",
-      //       color: "#fff",
-      //     },
-      //   });
 
-      // }
       dispatch(ClearAddToCartRes());
     }
   };
@@ -459,7 +438,6 @@ const BrandProductDetails = () => {
   if (AddToCartResponse[0]?.status == "success") {
     addToCartOverlyLoadingCloseHandler();
   }
-
   useEffect(() => {
     if (AddToCartResponse[0]?.status == "failed") {
       addToCartOverlyLoadingCloseHandler();
@@ -476,8 +454,9 @@ const BrandProductDetails = () => {
     }
   });
 
-  // youtube video embed code split function............
   const [isOpen, setOpen] = useState(false);
+
+  // youtube video embed code split function............
   let embed_video_url;
 
   const youtube_url = () => {
@@ -509,19 +488,15 @@ const BrandProductDetails = () => {
 
   return (
     <>
-      <h4>Brand Products:</h4>
+      <h3 className="my-3">Deals of the day:</h3>
       <nav aria-label="breadcrumb">
-        <ol className="breadcrumb my-4">
-          <li className="breadcrumb-item" aria-current="page">
+        <ol className="breadcrumb my-2">
+          <li className="breadcrumb-item">
             <Link to="/">Home</Link>
           </li>
           <li className="breadcrumb-item" aria-current="page">
-            <Link to="/brands">Brands</Link>
+            <Link to="/deals-of-the-day">Deals of the day</Link>
           </li>
-          <li className="breadcrumb-item" aria-current="page">
-            <Link to={`/brands/${brandId}`}>{brandName}</Link>
-          </li>
-
           <li className="breadcrumb-item active" aria-current="page">
             {productDetail?.name}
           </li>
@@ -529,6 +504,7 @@ const BrandProductDetails = () => {
       </nav>
       <br />
       {/* {productDetailsPath == true && ( */}
+
       <div className="product_details_page_container">
         <div className="container-fluid">
           <div className="row">
@@ -758,12 +734,15 @@ const BrandProductDetails = () => {
                       <span
                         onClick={() => {
                           setQuantityCount(
-                            productDetail?.max_order_qty ? (productDetail?.max_order_qty >= quantityCount + 1
+                            productDetail?.max_order_qty
+                              ? productDetail?.max_order_qty >=
+                                quantityCount + 1
+                                ? quantityCount + 1
+                                : quantityCount
+                              : productDetail?.current_stock >=
+                                quantityCount + 1
                               ? quantityCount + 1
-                              : quantityCount ) :
-                              ( productDetail?.current_stock >= quantityCount + 1
-                              ? quantityCount + 1
-                              : quantityCount)
+                              : quantityCount
                           );
                           priceVariantHandlerByChoiceOption(
                             productDetail?.current_stock >= quantityCount + 1
@@ -831,7 +810,7 @@ const BrandProductDetails = () => {
                     </button>
                   ) : (
                     <button className="btn_before_add_cart_stockOut">
-                      <i className="bi bi-cart-x"></i> Stock Out
+                      <i class="bi bi-cart-x"></i> Stock Out
                     </button>
                   )}
                   <button className="addWishListBtn">
@@ -878,7 +857,7 @@ const BrandProductDetails = () => {
                       </div>
                     </Link>
                   </div> */}
-<Link
+                  <Link
                     to={`/sellers-store/${productDetail?.seller?.id}`}
                     onClick={(e) => {
                       SellerNameSave(productDetail?.seller?.shop_name);
@@ -912,7 +891,7 @@ const BrandProductDetails = () => {
                   </h4>
                   <div className="seller-product-view-container ">
                     {productDetail?.seller?.product?.map((item) => (
-                      <Link to={`/brand/${brandId}/${item.id}`}>
+                      <Link to={`/deals-of-the-day/${item.id}`}>
                         <div
                           className="seller_product_item"
                           onClick={() => pageMount()}
@@ -979,4 +958,4 @@ const BrandProductDetails = () => {
     </>
   );
 };
-export default BrandProductDetails;
+export default DealsOfTheDayProductDetails;

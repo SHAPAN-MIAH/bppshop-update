@@ -517,11 +517,14 @@ const NewArrivalProductDetails = () => {
 
   return (
     <>
-      <h4>New Arrival Products:</h4>
+      <h3 className="my-3">New Arrival Products:</h3>
       <nav aria-label="breadcrumb">
-        <ol className="breadcrumb my-4">
+        <ol className="breadcrumb my-2">
           <li className="breadcrumb-item" aria-current="page">
-            <Link to="/new-arrival">New Arrival Products</Link>
+            <Link to="/">Home</Link>
+          </li>
+          <li className="breadcrumb-item" aria-current="page">
+            <Link to="/new-arrival">New Arrival</Link>
           </li>
 
           <li className="breadcrumb-item active" aria-current="page">
@@ -884,7 +887,7 @@ const NewArrivalProductDetails = () => {
                       </div>
                     </Link>
                   </div> */}
-<Link
+                  <Link
                     to={`/sellers-store/${productDetail?.seller?.id}`}
                     onClick={(e) => {
                       SellerNameSave(productDetail?.seller?.shop_name);

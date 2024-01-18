@@ -488,9 +488,12 @@ const TopRatedProductDetails = () => {
 
   return (
     <>
-      <h4>Top Rated Products:</h4>
+      <h3 className="my-3">Top Rated Products:</h3>
       <nav aria-label="breadcrumb">
-        <ol className="breadcrumb my-4">
+        <ol className="breadcrumb my-2">
+          <li className="breadcrumb-item" aria-current="page">
+            <Link to="/">Home</Link>
+          </li>
           <li className="breadcrumb-item" aria-current="page">
             <Link to="/top-rated">Top Rated Products</Link>
           </li>

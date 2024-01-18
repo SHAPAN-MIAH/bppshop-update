@@ -9,6 +9,7 @@ import NewArrivalProductCard from "./NewArrivalProductCard";
 import InfiniteScroll from "react-infinite-scroll-component";
 import downArrow from "../../Assets/Images/arrow-down.gif.c819a92ab7162c828e944727a545dcd7.gif";
 import "./NewArrival.css";
+import { Link } from "react-router-dom";
 
 const NewArrival = () => {
   const [newArrivalProduct, setNewArrivalProduct] = useState([]);
@@ -70,11 +71,23 @@ const NewArrival = () => {
   return (
     <>
       <div className="newArrival_container">
+        <h1>New Arrival Products:</h1>
         <div className="newArrival_container_header">
-          <h1>New Arrival Products:</h1>
+          <nav aria-label="breadcrumb">
+            <ol className="breadcrumb">
+              <li className="breadcrumb-item">
+                <Link to="/">Home</Link>
+              </li>
+              <li className="breadcrumb-item" aria-current="page">
+                New Arrival
+              </li>
+            </ol>
+          </nav>
 
           <select>
-            <option value="none" selected disabled hidden>Filter</option>
+            <option value="none" selected disabled hidden>
+              Filter
+            </option>
             <option value="">Lowest Price</option>
             <option value="">Highest Price</option>
             {/* <option value=""> Price</option> */}

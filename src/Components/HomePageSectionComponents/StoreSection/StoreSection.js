@@ -3,7 +3,7 @@ import adBanner from "../../../Assets/Images/8487798 2 (1).png";
 import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
-import { baseUrl } from "./../../../BaseUrl/BaseUrl";
+import { baseUrl } from "../../../BaseUrl/BaseUrl";
 import { Link } from "react-router-dom";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import defaultImg from "../../../Assets/Images/noImg-default.png";

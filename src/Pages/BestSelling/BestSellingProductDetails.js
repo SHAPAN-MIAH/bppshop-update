@@ -485,11 +485,14 @@ const increaseQuantity = (id, quantity, stock, maxOrderQty) => {
         title={productDetail.meta_title}
         description={productDetail.meta_description}
       />
-      <h4>Best Selling Products:</h4>
+      <h3 className="my-3">Best Selling Products:</h3>
       <nav aria-label="breadcrumb">
-        <ol className="breadcrumb my-4">
+        <ol className="breadcrumb">
           <li className="breadcrumb-item" aria-current="page">
-            <Link to="/best-selling">Best Selling Products</Link>
+            <Link to="/">Home</Link>
+          </li>
+          <li className="breadcrumb-item" aria-current="page">
+            <Link to="/best-selling">Best Selling</Link>
           </li>
 
           <li className="breadcrumb-item active" aria-current="page">

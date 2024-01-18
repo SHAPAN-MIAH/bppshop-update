@@ -1,19 +1,21 @@
+
+
+
 import React, { useEffect, useState } from "react";
 import defaultProImg from "../../../Assets/Images/defaultImg.jpg";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addItemsToCart,
   addItemsToCartAfterLogin,
-} from "./../../../Redux/Actions/CartAction";
-import { imgThumbnailBaseUrl } from "./../../../BaseUrl/BaseUrl";
+} from "../../../Redux/Actions/CartAction";
+import { imgThumbnailBaseUrl } from "../../../BaseUrl/BaseUrl";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import { RatingStar } from "rating-star";
 import Modal from "react-modal";
-import LoginModal from "../../User/Login/LoginModal";
-import SignUpModal from "../../User/SignUp/SignUpModal";
-import "./NewArrivalSection.css";
+import LoginModal from "../../../Pages/User/Login/LoginModal";
+import SignUpModal from "../../../Pages/User/SignUp/SignUpModal";
 
 Modal.setAppElement("#root");
 
@@ -31,7 +33,7 @@ let customStyles = {
   },
 };
 
-const NewArrivalSectionProductCard = ({ product, setImg }) => {
+const DiscountSectionProductCard = ({ product, setImg }) => {
   if (window.matchMedia("(max-width: 460px)").matches) {
     customStyles = {
       content: {
@@ -71,6 +73,8 @@ const NewArrivalSectionProductCard = ({ product, setImg }) => {
     reviews_count,
     rating,
   } = product;
+
+  // console.log(product);
 
   const newChoiceOption = product?.choice_options?.find((option) => option);
   const [quantity, setQuantity] = useState(1);
@@ -251,7 +255,7 @@ const NewArrivalSectionProductCard = ({ product, setImg }) => {
                 )}
 
                 <Link
-                  to={`/new-arrival/${product?.slug}`}
+                  to={`/discount-products/${product?.slug}`}
                   addeditemid={addeditemid}
                 >
                   {current_stock > 0 ? (
@@ -358,4 +362,4 @@ const NewArrivalSectionProductCard = ({ product, setImg }) => {
     </>
   );
 };
-export default NewArrivalSectionProductCard;
+export default DiscountSectionProductCard;

@@ -67,6 +67,8 @@ import PrivacyPolicyEng from "./Pages/PrivacyPolicy/PrivacyPolicyEng";
 import PrivacyPolicyBang from "./Pages/PrivacyPolicy/PrivacyPolicyBang";
 import TermsConditionEng from "./Pages/TermsAndCondition/TermsConditionEng";
 import TermsConditionBang from "./Pages/TermsAndCondition/TermsConditionBang";
+import DealOfTheDay from "./Pages/DealOfTheDay/DealOfTheDay";
+import DealsOfTheDayProductDetails from "./Pages/DealOfTheDay/DealsOfTheDayProductDetails";
 
 
 function App() {
@@ -115,6 +117,8 @@ function App() {
           <Route path="/brand/:brandId/:id" element={<BrandProductDetails/>} />
           <Route path="/discount-products" element={<DiscountProducts/>} />
           <Route path="/discount-products/:id" element={<DiscountProductDetails/>} />
+          <Route path="/deals-of-the-day" element={<DealOfTheDay/>} />
+          <Route path="/deals-of-the-day/:id" element={<DealsOfTheDayProductDetails/>} />
           {/* <Route path="/flash-sale" element={<FlashSale/>} />
           <Route path="/flash-sale/:id" element={<FlashSaleProductDetails/>} /> */}
           <Route path="/best-selling" element={<BestSelling/>} />

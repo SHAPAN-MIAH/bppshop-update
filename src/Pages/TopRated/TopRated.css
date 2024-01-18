@@ -2,11 +2,12 @@
   padding-top: 10px;
 }
 .top_rated_container_header{
+  height: 30px;
   display: flex;
   justify-content: space-between;
 }
-.top_rated_container_header h1 {
-  font-size: 25px;
+.top_rated_container h1 {
+  font-size: 1.75rem;
 }
 .top_rated_container_header select {
   outline: none;

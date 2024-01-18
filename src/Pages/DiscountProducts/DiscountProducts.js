@@ -7,7 +7,8 @@ import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import DiscountProductCard from "./DiscountProductCard";
 import InfiniteScroll from "react-infinite-scroll-component";
 import downArrow from "../../Assets/Images/arrow-down.gif.c819a92ab7162c828e944727a545dcd7.gif";
-import './DIscountProducts.css'
+import "./DIscountProducts.css";
+import { Link } from "react-router-dom";
 
 const DiscountProducts = () => {
   //onscrool paginations
@@ -69,9 +70,18 @@ const DiscountProducts = () => {
 
   return (
     <div className="discountProduct_container">
+      <h1>Discount Products:</h1>
       <div className="discountProduct_container_header">
-        <h1>Discount Products:</h1>
-
+        <nav aria-label="breadcrumb">
+          <ol className="breadcrumb">
+            <li className="breadcrumb-item">
+              <Link to="/">Home</Link>
+            </li>
+            <li className="breadcrumb-item" aria-current="page">
+              Discount Products
+            </li>
+          </ol>
+        </nav>
         <select>
           <option value="none" selected disabled hidden>
             Filter
