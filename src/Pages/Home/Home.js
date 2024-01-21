@@ -39,8 +39,8 @@ const Home = () => {
         <MetaData title="BPPShop" description=""/>
         <HeaderShowcaseSection/>
         <HotDealsSection/>
-        <DealOfTheDay/>
         <Category allCategory={allCategories} loading={loading}/>
+        <DealOfTheDay/>
         <NewArrivalSection/>
         <BrandSection/>
         <BestSellingSection/>

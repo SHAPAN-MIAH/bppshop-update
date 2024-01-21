@@ -5,7 +5,7 @@ import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import HotDealsProductCard from "../../Cards/HotDealsProductCard/HotDealsProductCard";
-import Countdown from "react-countdown";
+import Timer from "../../SharedComponents/Timer/Timer";
 
 const HotDealsSection = () => {
   const [hotDeals, SetHotDeals] = useState([]);
@@ -17,24 +17,11 @@ const HotDealsSection = () => {
       .then((response) => {
         setLoading(false);
         SetHotDeals(response?.data);
+        // console.log(response);
       });
   }, []);
 
-  console.log(hotDeals?.hot_deals?.banner);
-
-  const renderer = ({ hours, minutes, seconds, completed }) => {
-    if (completed) {
-      // Render a completed state
-      return "offer ses";
-    } else {
-      // Render a countdown
-      return (
-        <span>
-          {hours}:{minutes}:{seconds}
-        </span>
-      );
-    }
-  };
+  // console.log(hotDeals.hot_deals.banner);s
 
   const settings = {
     infinite: true,
@@ -113,6 +100,9 @@ const HotDealsSection = () => {
     );
   }
 
+  const startTime = "2024-01-20T24:00:00.000000Z";
+  const endTime = "2024-01-22T18:00:00.000000Z";
+
   return (
     <>
       <div className="deal_of_the_day_container">
@@ -185,16 +175,16 @@ const HotDealsSection = () => {
                 {
                   <img
                     className="img1"
-                    src={`https://backend.bppshop.com.bd/storage/banner/${hotDeals?.hot_deals?.banner}`}
+                    src={`https://backend.bppshop.com.bd/storage/deal/${hotDeals?.hot_deals?.banner}`}
                     alt=""
                   />
                 }
               </div>
               <div className="deal_of_the_day_product_content">
                 <div className="deal_of_the_day_product_content_header">
-                  <h4>Hot Deals</h4>
-                  <Countdown date={Date.now() + 100000} renderer={renderer} />,
-
+                    <h4>Hot Deals</h4>
+                  <div className="d-flex">
+                    <Timer endTime={endTime} />
                   <Link to="/deals-of-the-day">
                     <button
                       className="deal_of_the_day_product_view_more_btn"
@@ -203,6 +193,7 @@ const HotDealsSection = () => {
                       View More
                     </button>
                   </Link>
+                  </div>
                 </div>
                 <Slider {...settings}>
                   {hotDeals?.products?.map((product) => (
