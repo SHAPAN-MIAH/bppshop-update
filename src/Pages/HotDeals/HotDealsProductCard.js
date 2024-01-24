@@ -1,23 +1,20 @@
 
 
-
 import React, { useEffect, useState } from "react";
-import defaultProImg from "../../../Assets/Images/defaultImg.jpg";
+import defaultProImg from "../../Assets/Images/defaultImg.jpg";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addItemsToCart,
   addItemsToCartAfterLogin,
-} from "../../../Redux/Actions/CartAction";
-import { imgThumbnailBaseUrl } from "../../../BaseUrl/BaseUrl";
+} from "./../../Redux/Actions/CartAction";
+import { imgThumbnailBaseUrl } from "./../../BaseUrl/BaseUrl";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import { RatingStar } from "rating-star";
 import Modal from "react-modal";
-import LoginModal from "../../../Pages/User/Login/LoginModal";
-import SignUpModal from "../../../Pages/User/SignUp/SignUpModal";
-// import LoginModal from "./../User/Login/LoginModal";
-// import SignUpModal from "./../User/SignUp/SignUpModal";
+import LoginModal from "../User/Login/LoginModal";
+import SignUpModal from "../User/SignUp/SignUpModal";
 
 Modal.setAppElement("#root");
 

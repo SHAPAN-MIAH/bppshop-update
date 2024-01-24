@@ -14,6 +14,7 @@ import NewArrivalProductCard from "../../Pages/NewArrival/NewArrivalProductCard"
 import TopRatedProductCard from "../../Pages/TopRated/TopRatedProductCard";
 import SearchProductCard from "../../Pages/Search/SearchProductCard";
 import DealOfTheDayProductCard from "../../Pages/DealOfTheDay/DealOfTheDayProductCard";
+import HotDealsProductCard from "../Cards/HotDealsProductCard/HotDealsProductCard";
 
 const RelatedProduct = ({ productId , setImg }) => {
 
@@ -91,6 +92,8 @@ const RelatedProduct = ({ productId , setImg }) => {
               <SearchProductCard key={product?.id} product={product} setImg={setImg}/>
             ) : filterSplitLocation == "deals-of-the-day" ? (
               <DealOfTheDayProductCard key={product?.id} product={product} setImg={setImg}/>
+            ) : filterSplitLocation == "hot-deals" ? (
+              <HotDealsProductCard key={product?.id} product={product} setImg={setImg}/>
             ) :(
               <ProductCard key={product.id} product={product} setImg={setImg} />
             )}

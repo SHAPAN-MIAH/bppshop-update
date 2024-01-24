@@ -39,7 +39,7 @@ const Timer = ({ endTime, startTime }) => {
         <div className="timer_day">{timeRemaining.days} days</div> :
         <div className="timer_hours">{timeRemaining.hours} hours</div> :
         <div className="timer_minutes">{timeRemaining.minutes} minutes</div> 
-        {/* <div className="timer_seconds">{timeRemaining.seconds} seconds</div> */}
+        <div className="timer_seconds">{timeRemaining.seconds} seconds</div>
       </div>
     </div>
   );

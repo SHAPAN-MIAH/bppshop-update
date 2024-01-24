@@ -13,15 +13,13 @@ const HotDealsSection = () => {
 
   useEffect(() => {
     axios
-      .get(`${baseUrl}/flash-deals/products?limit=${5}&offset=${1}`)
+      .get(`${baseUrl}/flash-deals/products?limit=${6}&offset=${1}`)
       .then((response) => {
         setLoading(false);
         SetHotDeals(response?.data);
-        // console.log(response);
       });
   }, []);
 
-  // console.log(hotDeals.hot_deals.banner);s
 
   const settings = {
     infinite: true,
@@ -101,115 +99,120 @@ const HotDealsSection = () => {
   }
 
   const startTime = "2024-01-20T24:00:00.000000Z";
-  const endTime = "2024-01-22T18:00:00.000000Z";
+  const endTime = "2024-01-24T18:00:00.000000Z";
 
   return (
     <>
-      <div className="deal_of_the_day_container">
-        <SkeletonTheme baseColor="rgb(220, 220, 220)" highlightColor="#e3e3e3">
-          {loading ? (
-            <div className=" d-flex">
-              <Skeleton
-                height="335px"
-                width="250px"
-                borderRadius="10px"
-                count={1}
-              />
-              <div style={{ marginLeft: "22px" }}>
-                <div className="d-flex justify-content-between">
-                  <Skeleton
-                    height="40px"
-                    width="410px"
-                    borderRadius="5px"
-                    count={1}
-                  />
-                  <Skeleton
-                    height="40px"
-                    width="120px"
-                    borderRadius="5px"
-                    count={1}
-                  />
-                </div>
-                <div className="d-flex justify-content-between">
-                  <Skeleton
-                    height="280px"
-                    width="200px"
-                    style={{ marginTop: "15px" }}
-                    borderRadius="10px"
-                    count={1}
-                  />
-                  <Skeleton
-                    height="280px"
-                    width="200px"
-                    style={{ marginTop: "15px", marginLeft: "12px" }}
-                    borderRadius="10px"
-                    count={1}
-                  />
-                  <Skeleton
-                    height="280px"
-                    width="200px"
-                    style={{ marginTop: "15px", marginLeft: "12px" }}
-                    borderRadius="10px"
-                    count={1}
-                  />
-                  <Skeleton
-                    height="280px"
-                    width="200px"
-                    style={{ marginTop: "15px", marginLeft: "12px" }}
-                    borderRadius="10px"
-                    count={1}
-                  />
-                  <Skeleton
-                    height="280px"
-                    width="200px"
-                    style={{ marginTop: "15px", marginLeft: "12px" }}
-                    borderRadius="10px"
-                    count={1}
-                  />
-                </div>
-              </div>
-            </div>
-          ) : (
-            <div className="deal_of_the_day_content_container">
-              <div className="deal_of_the_day_banner">
-                {
-                  <img
-                    className="img1"
-                    src={`https://backend.bppshop.com.bd/storage/deal/${hotDeals?.hot_deals?.banner}`}
-                    alt=""
-                  />
-                }
-              </div>
-              <div className="deal_of_the_day_product_content">
-                <div className="deal_of_the_day_product_content_header">
-                    <h4>Hot Deals</h4>
-                  <div className="d-flex">
-                    <Timer endTime={endTime} />
-                  <Link to="/deals-of-the-day">
-                    <button
-                      className="deal_of_the_day_product_view_more_btn"
-                      type=""
-                    >
-                      View More
-                    </button>
-                  </Link>
+      {endTime && (
+        <div className="deal_of_the_day_container">
+          <SkeletonTheme
+            baseColor="rgb(220, 220, 220)"
+            highlightColor="#e3e3e3"
+          >
+            {loading ? (
+              <div className=" d-flex">
+                <Skeleton
+                  height="335px"
+                  width="250px"
+                  borderRadius="10px"
+                  count={1}
+                />
+                <div style={{ marginLeft: "22px" }}>
+                  <div className="d-flex justify-content-between">
+                    <Skeleton
+                      height="40px"
+                      width="410px"
+                      borderRadius="5px"
+                      count={1}
+                    />
+                    <Skeleton
+                      height="40px"
+                      width="120px"
+                      borderRadius="5px"
+                      count={1}
+                    />
+                  </div>
+                  <div className="d-flex justify-content-between">
+                    <Skeleton
+                      height="280px"
+                      width="200px"
+                      style={{ marginTop: "15px" }}
+                      borderRadius="10px"
+                      count={1}
+                    />
+                    <Skeleton
+                      height="280px"
+                      width="200px"
+                      style={{ marginTop: "15px", marginLeft: "12px" }}
+                      borderRadius="10px"
+                      count={1}
+                    />
+                    <Skeleton
+                      height="280px"
+                      width="200px"
+                      style={{ marginTop: "15px", marginLeft: "12px" }}
+                      borderRadius="10px"
+                      count={1}
+                    />
+                    <Skeleton
+                      height="280px"
+                      width="200px"
+                      style={{ marginTop: "15px", marginLeft: "12px" }}
+                      borderRadius="10px"
+                      count={1}
+                    />
+                    <Skeleton
+                      height="280px"
+                      width="200px"
+                      style={{ marginTop: "15px", marginLeft: "12px" }}
+                      borderRadius="10px"
+                      count={1}
+                    />
                   </div>
                 </div>
-                <Slider {...settings}>
-                  {hotDeals?.products?.map((product) => (
-                    <div className="p-1">
-                      <HotDealsProductCard
-                        key={product?.id}
-                        product={product}
-                      />
-                    </div>
-                  ))}
-                </Slider>
               </div>
-            </div>
-          )}
-        </SkeletonTheme>
-      </div>
+            ) : (
+              <div className="deal_of_the_day_content_container">
+                <div className="deal_of_the_day_banner">
+                  {
+                    <img
+                      className="img1"
+                      src={`https://backend.bppshop.com.bd/storage/deal/${hotDeals?.hot_deals?.banner}`}
+                      alt=""
+                    />
+                  }
+                </div>
+                <div className="deal_of_the_day_product_content">
+                  <div className="deal_of_the_day_product_content_header">
+                    <h4>Hot Deals</h4>
+                    <div className="d-flex">
+                      <Timer endTime={endTime} />
+                      <Link to="/hot-deals">
+                        <button
+                          className="deal_of_the_day_product_view_more_btn"
+                          type=""
+                        >
+                          View More
+                        </button>
+                      </Link>
+                    </div>
+                  </div>
+                  <Slider {...settings}>
+                    {hotDeals?.products?.map((product) => (
+                      <div className="p-1">
+                        <HotDealsProductCard
+                          key={product?.id}
+                          product={product}
+                        />
+                      </div>
+                    ))}
+                  </Slider>
+                </div>
+              </div>
+            )}
+          </SkeletonTheme>
+        </div>
+      )}
     </>
   );
 };

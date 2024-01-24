@@ -60,9 +60,11 @@ const HeaderShowcaseSection = () => {
 
   const [sliderBanners, setSliderBanners] = useState([]);
 
+  console.log(sliderBanners);
+
   useEffect(() => {
     axios.get(`${baseUrl}/banners?type=sliders_for_web`).then((response) => {
-      setSliderBanners(response.data.sliders);
+      setSliderBanners(response?.data?.sliders);
     });
   }, []);
 
@@ -75,7 +77,7 @@ const HeaderShowcaseSection = () => {
           </div>
           <div className="header_showcase_section_banner">
             <Slider {...settings} className="slider">
-              {sliderBanners?.map((banner) => (
+              {sliderBanners && sliderBanners?.map((banner) => (
                 <img
                   src={`https://backend.bppshop.com.bd/storage/slider/${banner}`}
                   alt="slider"
