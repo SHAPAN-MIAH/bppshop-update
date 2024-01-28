@@ -98,12 +98,15 @@ const HotDealsSection = () => {
     );
   }
 
-  const startTime = "2024-01-20T24:00:00.000000Z";
-  const endTime = "2024-01-24T18:00:00.000000Z";
+  // const startTime = "2024-01-20T24:00:00.000000Z";
+  // const endTime = "2024-01-24T18:00:00.000000Z";
+
+
+  console.log(hotDeals?.hot_deals?.end_date);
 
   return (
     <>
-      {endTime && (
+      {/* {endTime && ( */}
         <div className="deal_of_the_day_container">
           <SkeletonTheme
             baseColor="rgb(220, 220, 220)"
@@ -186,7 +189,7 @@ const HotDealsSection = () => {
                   <div className="deal_of_the_day_product_content_header">
                     <h4>Hot Deals</h4>
                     <div className="d-flex">
-                      <Timer endTime={endTime} />
+                      <Timer endTime={hotDeals?.hot_deals?.end_date} />
                       <Link to="/hot-deals">
                         <button
                           className="deal_of_the_day_product_view_more_btn"
@@ -212,7 +215,7 @@ const HotDealsSection = () => {
             )}
           </SkeletonTheme>
         </div>
-      )}
+      {/* )} */}
     </>
   );
 };
