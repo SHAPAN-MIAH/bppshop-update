@@ -4,7 +4,7 @@ import { baseUrl } from "../../BaseUrl/BaseUrl";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import InfiniteScroll from "react-infinite-scroll-component";
 import downArrow from "../../Assets/Images/arrow-down.gif.c819a92ab7162c828e944727a545dcd7.gif";
-import DealOfTheDayProductCard from "./DealOfTheDayProductCard";
+import DealOfTheDayProductCard from "../../Components/Cards/DealOfTheDayProductCard/DealOfTheDayProductCard";
 import { Link } from "react-router-dom";
 
 const DealOfTheDay = () => {

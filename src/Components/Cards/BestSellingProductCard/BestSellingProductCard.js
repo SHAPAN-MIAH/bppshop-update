@@ -1,20 +1,18 @@
-
-
 import React, { useEffect, useState } from "react";
-import defaultProImg from "../../Assets/Images/defaultImg.jpg";
+import defaultProImg from "../../../Assets/Images/defaultImg.jpg";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addItemsToCart,
   addItemsToCartAfterLogin,
-} from "./../../Redux/Actions/CartAction";
-import { imgThumbnailBaseUrl } from "./../../BaseUrl/BaseUrl";
+} from "../../../Redux/Actions/CartAction";
+import { imgThumbnailBaseUrl } from "../../../BaseUrl/BaseUrl";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import { RatingStar } from "rating-star";
 import Modal from "react-modal";
-import LoginModal from "../User/Login/LoginModal";
-import SignUpModal from "../User/SignUp/SignUpModal";
+import LoginModal from "../../../Pages/User/Login/LoginModal";
+import SignUpModal from "../../../Pages/User/SignUp/SignUpModal";
 
 Modal.setAppElement("#root");
 
@@ -32,7 +30,7 @@ let customStyles = {
   },
 };
 
-const HotDealsProductCard = ({ product, setImg }) => {
+const BestSellingProductCard = ({ product, setImg }) => {
   if (window.matchMedia("(max-width: 460px)").matches) {
     customStyles = {
       content: {
@@ -99,7 +97,7 @@ const HotDealsProductCard = ({ product, setImg }) => {
       //   addToCartAfterLoginRes();
       // }
     }
-  }, [isAuthenticated, modalLogin]);
+  }, [isAuthenticated]);
 
   // add to cart after login response......
   // const addToCartAfterLoginRes = () => {
@@ -148,7 +146,7 @@ const HotDealsProductCard = ({ product, setImg }) => {
   const addToCartHandler = (product, quantity) => {
     if (!token) {
       dispatch(addItemsToCart(product, quantity));
-      localStorage.setItem("productCartLoginAddItem", "true");
+      localStorage.setItem("productCartLoginAddItem", "true")
       openModal();
     }
 
@@ -200,30 +198,17 @@ const HotDealsProductCard = ({ product, setImg }) => {
     const addToCartLoaderOverlay = document.querySelector(
       ".addToCart_loader_overlay"
     );
-
     addToCartLoaderOverlay.style.display = "block";
   };
+
 
   if (addeditemid) {
     const addToCartLoaderOverlay = document.querySelector(
       ".addToCart_loader_overlay"
     );
-
     addToCartLoaderOverlay.style.display = "none";
-
-    // toaster
-    // toast.success(`Product added to cart successfully`, {
-    //   duration: 2000,
-
-    //   style: {
-    //     width: "100%",
-    //     height: "80px",
-    //     padding: "0px 20px",
-    //     background: "#86bc19",
-    //     color: "#fff",
-    //   },
-    // });
   }
+
 
   const scrollTop = () => {
     document.body.scrollTop = 0;
@@ -231,8 +216,9 @@ const HotDealsProductCard = ({ product, setImg }) => {
   };
 
   const imgReset = () => {
-    setImg("");
-  };
+    setImg("")
+  }
+
   return (
     <>
       <div className="product_card_content" onClick={imgReset}>
@@ -254,14 +240,14 @@ const HotDealsProductCard = ({ product, setImg }) => {
                 <small>{name.toString().substring(0, 23)}...</small>
                 <br />
                 <div className="product-card-body-content-unit-price">
-                  <small>
-                    {newChoiceOption && (
-                      <span className="unitPrice_view">
-                        {newChoiceOption?.options[0]} : {newChoiceOption?.title}
-                      </span>
-                    )}
-                  </small>
-                  {newChoiceOption?.options[0] && newChoiceOption?.title ? (
+                <small>
+                  {newChoiceOption && (
+                    <span className="unitPrice_view">
+                      {newChoiceOption?.options[0]} : {newChoiceOption?.title}
+                    </span>
+                  )}
+                </small>
+                {newChoiceOption?.options[0] && newChoiceOption?.title ? (
                     <span>-</span>
                   ) : (
                     ""
@@ -289,11 +275,8 @@ const HotDealsProductCard = ({ product, setImg }) => {
                 <small>({reviews_count})</small>
               </div>
 
-              <Link
-                // to={`/discount-products/${id}`} addeditemid={addeditemid}
-                to={`/hot-deals/${product.slug}`}
-                addeditemid={addeditemid}
-              >
+              {/* <Link to={`/best-selling/${id}`} addeditemid={addeditemid}> */}
+              <Link to={`/best-selling/${product.slug}`} addeditemid={addeditemid}>
                 {current_stock > 0 ? (
                   <div
                     className="quickView_AddToCart_overlay"
@@ -301,7 +284,7 @@ const HotDealsProductCard = ({ product, setImg }) => {
                   >
                     <div className="overlayViewCartBtn">
                       <span>
-                        <i class="bi bi-eye-fill"></i> <br /> View Details
+                        <i className="bi bi-eye-fill"></i> <br /> View Details
                       </span>
                     </div>
                   </div>
@@ -333,7 +316,7 @@ const HotDealsProductCard = ({ product, setImg }) => {
                     </button>
                   ) : (
                     <button className="btn_before_add_cart_stockOut">
-                      <i class="bi bi-cart-x"></i> Stock Out
+                      <i className="bi bi-cart-x"></i> Stock Out
                     </button>
                   )}
                 </div>
@@ -365,4 +348,4 @@ const HotDealsProductCard = ({ product, setImg }) => {
     </>
   );
 };
-export default HotDealsProductCard;
+export default BestSellingProductCard;

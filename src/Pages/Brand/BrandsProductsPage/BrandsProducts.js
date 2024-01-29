@@ -2,11 +2,11 @@ import React, { useRef } from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
-import { baseUrl, imgThumbnailBaseUrl } from "./../../../BaseUrl/BaseUrl";
+import { baseUrl, imgThumbnailBaseUrl } from "../../../BaseUrl/BaseUrl";
 import { Link, useParams } from "react-router-dom";
 import "./BrandsProducts.css";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
-import BrandsProductsCard from "../BrandsProductsCard";
+import BrandsProductsCard from "../../../Components/Cards/BrandProductCard/BrandsProductsCard";
 import InfiniteScroll from "react-infinite-scroll-component";
 import downArrow from "../../../Assets/Images/arrow-down.gif.c819a92ab7162c828e944727a545dcd7.gif"
 

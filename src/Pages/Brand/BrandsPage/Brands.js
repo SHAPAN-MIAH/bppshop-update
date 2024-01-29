@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
-import { baseUrl } from "./../../../BaseUrl/BaseUrl";
+import { baseUrl } from "../../../BaseUrl/BaseUrl";
 import "./Brands.css";
 import { Link } from "react-router-dom";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";

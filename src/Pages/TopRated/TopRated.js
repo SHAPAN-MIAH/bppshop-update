@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { baseUrl } from "./../../BaseUrl/BaseUrl";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import { useRef } from "react";
-import TopRatedProductCard from "./TopRatedProductCard";
+import TopRatedProductCard from "../../Components/Cards/TopRatedProductCard/TopRatedProductCard";
 import InfiniteScroll from "react-infinite-scroll-component";
 import downArrow from "../../Assets/Images/arrow-down.gif.c819a92ab7162c828e944727a545dcd7.gif";
 import './TopRated.css'

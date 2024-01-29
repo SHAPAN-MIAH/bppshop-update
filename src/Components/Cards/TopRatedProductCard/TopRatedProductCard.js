@@ -1,22 +1,20 @@
 
 
-
-
 import React, { useEffect, useState } from "react";
-import defaultProImg from "../../Assets/Images/defaultImg.jpg";
+import defaultProImg from "../../../Assets/Images/defaultImg.jpg";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addItemsToCart,
   addItemsToCartAfterLogin,
-} from "./../../Redux/Actions/CartAction";
-import { imgThumbnailBaseUrl } from "./../../BaseUrl/BaseUrl";
+} from "../../../Redux/Actions/CartAction";
+import { imgThumbnailBaseUrl } from "../../../BaseUrl/BaseUrl";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import { RatingStar } from "rating-star";
 import Modal from "react-modal";
-import LoginModal from "../User/Login/LoginModal";
-import SignUpModal from "../User/SignUp/SignUpModal";
+import LoginModal from "../../../Pages/User/Login/LoginModal";
+import SignUpModal from "../../../Pages/User/SignUp/SignUpModal";
 
 Modal.setAppElement("#root");
 
@@ -34,7 +32,7 @@ let customStyles = {
   },
 };
 
-const DealOfTheDayProductCard = ({ product, setImg }) => {
+const TopRatedProductCard = ({ product, setImg }) => {
   if (window.matchMedia("(max-width: 460px)").matches) {
     customStyles = {
       content: {
@@ -93,6 +91,7 @@ const DealOfTheDayProductCard = ({ product, setImg }) => {
   const { loginRes } = useSelector((state) => state.loginRes);
   const { signupRes } = useSelector((state) => state.signupRes);
 
+
   useEffect(() => {
     if (isAuthenticated == true) {
       closeModal();
@@ -148,10 +147,12 @@ const DealOfTheDayProductCard = ({ product, setImg }) => {
 
   // Add to cart functionality.............................
   const addToCartHandler = (product, quantity) => {
+
     if (!token) {
       dispatch(addItemsToCart(product, quantity));
-      localStorage.setItem("productCartLoginAddItem", "true");
+      localStorage.setItem("productCartLoginAddItem", "true")
       openModal();
+
     }
 
     if (isAuthenticated == true && token) {
@@ -194,11 +195,14 @@ const DealOfTheDayProductCard = ({ product, setImg }) => {
           : dispatch(addItemsToCartAfterLogin(addItemsToCartDataWithoutColor));
       }
 
-      addToCartOverlyLoading();
+
+      addToCartOverlyLoading()
     }
+    
   };
 
   const addToCartOverlyLoading = () => {
+    
     const addToCartLoaderOverlay = document.querySelector(
       ".addToCart_loader_overlay"
     );
@@ -227,18 +231,23 @@ const DealOfTheDayProductCard = ({ product, setImg }) => {
     // });
   }
 
+  
+
   const scrollTop = () => {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
   };
 
+
   const imgReset = () => {
-    setImg("");
-  };
+    setImg("")
+  }
+
   return (
     <>
       <div className="product_card_content" onClick={imgReset}>
         <div className="product-card">
+          {/* ( */}
           <>
             <div className=" product-card-body">
               <div className="productImg_container">
@@ -253,17 +262,18 @@ const DealOfTheDayProductCard = ({ product, setImg }) => {
                 )}
               </div>
               <div className="product-card-body-content">
+                
                 <small>{name.toString().substring(0, 23)}...</small>
                 <br />
                 <div className="product-card-body-content-unit-price">
-                  <small>
-                    {newChoiceOption && (
-                      <span className="unitPrice_view">
-                        {newChoiceOption?.options[0]} : {newChoiceOption?.title}
-                      </span>
-                    )}
-                  </small>
-                  {newChoiceOption?.options[0] && newChoiceOption?.title ? (
+                <small>
+                  {newChoiceOption && (
+                    <span className="unitPrice_view">
+                      {newChoiceOption?.options[0]} : {newChoiceOption?.title}
+                    </span>
+                  )}
+                </small>
+                {newChoiceOption?.options[0] && newChoiceOption?.title ? (
                     <span>-</span>
                   ) : (
                     ""
@@ -285,18 +295,14 @@ const DealOfTheDayProductCard = ({ product, setImg }) => {
                 <RatingStar
                   id={id}
                   rating={rating?.map((r) => r?.average)}
-                  size={11}
-                  className="RatingStar"
+                  size={14}
                 />{" "}
-                <small>({reviews_count})</small>
+                <small>({reviews_count? reviews_count : 0})</small>
               </div>
 
-              <Link
-                // to={`/discount-products/${id}`} addeditemid={addeditemid}
-                to={`/deals-of-the-day/${product.slug}`}
-                addeditemid={addeditemid}
-              >
-                {current_stock > 0 ? (
+              {/* <Link to={`/top-rated/${id}`} addeditemid={addeditemid}> */}
+              <Link to={`/top-rated/${product.slug}`} addeditemid={addeditemid}>
+              {current_stock > 0 ? (
                   <div
                     className="quickView_AddToCart_overlay"
                     onClick={scrollTop}
@@ -329,7 +335,6 @@ const DealOfTheDayProductCard = ({ product, setImg }) => {
                     <button
                       className="btn_before_add_cart"
                       onClick={() => addToCartHandler(product, quantity)}
-                      id="addToCartBtn"
                     >
                       <i className="bi bi-cart-plus"></i> Add To Cart
                     </button>
@@ -342,6 +347,7 @@ const DealOfTheDayProductCard = ({ product, setImg }) => {
               )}
             </div>
           </>
+         
         </div>
       </div>
 
@@ -367,4 +373,4 @@ const DealOfTheDayProductCard = ({ product, setImg }) => {
     </>
   );
 };
-export default DealOfTheDayProductCard;
+export default TopRatedProductCard;

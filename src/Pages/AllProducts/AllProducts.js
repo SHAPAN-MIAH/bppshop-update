@@ -5,7 +5,7 @@ import axios from "axios";
 import { baseUrl } from "../../BaseUrl/BaseUrl";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import { useRef } from "react";
-import AllProductsCard from "./AllProductsCard";
+import AllProductsCard from "../../Components/Cards/AllProductCard/AllProductsCard";
 import InfiniteScroll from "react-infinite-scroll-component";
 import downArrow from "../../Assets/Images/arrow-down.gif.c819a92ab7162c828e944727a545dcd7.gif"
 

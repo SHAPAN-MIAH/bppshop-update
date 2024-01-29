@@ -1,19 +1,18 @@
-
 import React, { useEffect, useState } from "react";
-import defaultProImg from "../../Assets/Images/defaultImg.jpg";
+import defaultProImg from "../../../Assets/Images/defaultImg.jpg";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addItemsToCart,
   addItemsToCartAfterLogin,
-} from "./../../Redux/Actions/CartAction";
-import { imgThumbnailBaseUrl } from "./../../BaseUrl/BaseUrl";
+} from "../../../Redux/Actions/CartAction";
+import { imgThumbnailBaseUrl } from "../../../BaseUrl/BaseUrl";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import { RatingStar } from "rating-star";
 import Modal from "react-modal";
-import LoginModal from "../User/Login/LoginModal";
-import SignUpModal from "../User/SignUp/SignUpModal";
+import LoginModal from "../../../Pages/User/Login/LoginModal";
+import SignUpModal from "../../../Pages/User/SignUp/SignUpModal";
 
 Modal.setAppElement("#root");
 
@@ -31,7 +30,7 @@ let customStyles = {
   },
 };
 
-const SearchProductCard = ({ product, setImg }) => {
+const NewArrivalProductCard = ({ product, setImg }) => {
   if (window.matchMedia("(max-width: 460px)").matches) {
     customStyles = {
       content: {
@@ -93,10 +92,55 @@ const SearchProductCard = ({ product, setImg }) => {
   useEffect(() => {
     if (isAuthenticated == true) {
       closeModal();
+
+      // if (modalLogin == "true") {
+      //   addToCartAfterLoginRes();
+      // }
     }
   }, [isAuthenticated, modalLogin]);
 
- 
+  // add to cart after login response......
+  // const addToCartAfterLoginRes = () => {
+  //   const choice_options = cartItemBeforeLogin[0]?.product?.choice_options;
+  //   const choice_options_name = choice_options?.map((option) => option.name);
+  //   const choice_options_defaultValue = choice_options?.map(
+  //     (option) => option?.options[0]
+  //   );
+  //   const defaultChoices = choice_options_name?.map((name, index) => ({
+  //     name,
+  //     options: choice_options_defaultValue[index],
+  //   }));
+
+  //   let color = colors?.map((color) => color?.code);
+
+  //   const addItemsToCartDataWithColor = {
+  //     id: `${cartItemBeforeLogin[0]?.product?.id}`,
+  //     color: `${color[0]}`,
+  //     quantity: `${quantity}`,
+  //   };
+
+  //   const addItemsToCartDataWithoutColor = {
+  //     id: `${cartItemBeforeLogin[0]?.product?.id}`,
+  //     quantity: `${quantity}`,
+  //   };
+
+  //   defaultChoices?.forEach((element) => {
+  //     addItemsToCartDataWithColor[element.name] = `${element.options}`.trim();
+  //   });
+
+  //   defaultChoices?.forEach((element) => {
+  //     addItemsToCartDataWithoutColor[element.name] =
+  //       `${element.options}`.trim();
+  //   });
+
+  //   // if (loginRes?.status == "success" || signupRes?.status == "success") {
+  //   cartItemBeforeLogin[0]?.product?.colors?.length > 0
+  //     ? dispatch(addItemsToCartAfterLogin(addItemsToCartDataWithColor))
+  //     : dispatch(addItemsToCartAfterLogin(addItemsToCartDataWithoutColor));
+
+  //   addToCartOverlyLoading();
+  //   // }
+  // };
 
   // Add to cart functionality.............................
   const addToCartHandler = (product, quantity) => {
@@ -169,6 +213,19 @@ const SearchProductCard = ({ product, setImg }) => {
     );
 
     addToCartLoaderOverlay.style.display = "none";
+
+    // toaster
+    // toast.success(`Product added to cart successfully`, {
+    //   duration: 2000,
+
+    //   style: {
+    //     width: "100%",
+    //     height: "80px",
+    //     padding: "0px 20px",
+    //     background: "#86bc19",
+    //     color: "#fff",
+    //   },
+    // });
   }
 
   
@@ -178,7 +235,6 @@ const SearchProductCard = ({ product, setImg }) => {
     document.documentElement.scrollTop = 0;
   };
 
-
   const imgReset = () => {
     setImg("")
   }
@@ -187,6 +243,7 @@ const SearchProductCard = ({ product, setImg }) => {
     <>
       <div className="product_card_content" onClick={imgReset}>
         <div className="product-card">
+          {/* ( */}
           <>
             <div className=" product-card-body">
               <div className="productImg_container">
@@ -202,7 +259,7 @@ const SearchProductCard = ({ product, setImg }) => {
               </div>
               <div className="product-card-body-content">
                 
-                <small>{name.toString().substring(0, 26)}...</small>
+                <small>{name.toString().substring(0, 23)}...</small>
                 <br />
                 <div className="product-card-body-content-unit-price">
                 <small>
@@ -239,7 +296,8 @@ const SearchProductCard = ({ product, setImg }) => {
                 <small>({reviews_count})</small>
               </div>
 
-              <Link to={`/search/${id}`} addeditemid={addeditemid}>
+              {/* <Link to={`/new-arrival/${id}`} addeditemid={addeditemid}> */}
+              <Link to={`/new-arrival/${product?.slug}`} addeditemid={addeditemid}>
               {current_stock > 0 ? (
                   <div
                     className="quickView_AddToCart_overlay"
@@ -247,7 +305,7 @@ const SearchProductCard = ({ product, setImg }) => {
                   >
                     <div className="overlayViewCartBtn">
                       <span>
-                        <i class="bi bi-eye-fill"></i> <br /> View Details
+                        <i className="bi bi-eye-fill"></i> <br /> View Details
                       </span>
                     </div>
                   </div>
@@ -278,7 +336,7 @@ const SearchProductCard = ({ product, setImg }) => {
                     </button>
                   ) : (
                     <button className="btn_before_add_cart_stockOut">
-                      <i class="bi bi-cart-x"></i> Stock Out
+                      <i className="bi bi-cart-x"></i> Stock Out
                     </button>
                   )}
                 </div>
@@ -310,4 +368,4 @@ const SearchProductCard = ({ product, setImg }) => {
     </>
   );
 };
-export default SearchProductCard;
+export default NewArrivalProductCard;

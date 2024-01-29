@@ -3,10 +3,10 @@ import "./DealOfTheDay.css";
 import axios from "axios";
 import { baseUrl } from "../../../BaseUrl/BaseUrl";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
-import AllProductsCard from "../../../Pages/AllProducts/AllProductsCard";
+import AllProductsCard from "../../Cards/AllProductCard/AllProductsCard";
 import Slider from "react-slick";
 import { Link } from "react-router-dom";
-import DealOfTheDayProductCard from "../../../Pages/DealOfTheDay/DealOfTheDayProductCard";
+import DealOfTheDayProductCard from "../../Cards/DealOfTheDayProductCard/DealOfTheDayProductCard";
 
 const DealOfTheDay = () => {
   const [dealOfDayProduct, setDealOfDayProduct] = useState([]);

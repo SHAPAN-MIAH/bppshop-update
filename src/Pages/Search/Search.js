@@ -1,7 +1,7 @@
 import React from "react";
 import MetaData from "../Layout/MetaData";
 import { useSelector } from "react-redux";
-import SearchProductCard from "./SearchProductCard";
+import SearchProductCard from "../../Components/Cards/SearchProductCard/SearchProductCard";
 import loadingGif from "../../Assets/Images/loading.gif";
 
 const Search = () => {

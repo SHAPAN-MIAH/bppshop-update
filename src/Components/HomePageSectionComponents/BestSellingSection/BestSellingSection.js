@@ -5,10 +5,11 @@ import img2 from "../../../Assets/Images/bppshop_banner/bestSelling (2).jpg";
 import axios from "axios";
 import { baseUrl } from "../../../BaseUrl/BaseUrl";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
-import AllProductsCard from "../../../Pages/AllProducts/AllProductsCard";
+import AllProductsCard from "../../Cards/AllProductCard/AllProductsCard";
 import Slider from "react-slick";
 import { Link } from "react-router-dom";
-import BestSellingProductCard from "../../../Pages/BestSelling/BestSellingProductCard";
+import BestSellingProductCard from "../../Cards/BestSellingProductCard/BestSellingProductCard";
+// import BestSellingProductCard from "../../../Pages/BestSelling/BestSellingProductCard";
 
 const BestSellingSection = () => {
   const [dealOfDayProduct, setDealOfDayProduct] = useState([]);

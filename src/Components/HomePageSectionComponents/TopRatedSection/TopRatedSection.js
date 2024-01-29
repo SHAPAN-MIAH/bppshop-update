@@ -5,10 +5,10 @@ import img2 from "../../../Assets/Images/bppshop_banner/discountProduct (2).jpg"
 import axios from "axios";
 import { baseUrl } from "../../../BaseUrl/BaseUrl";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
-import AllProductsCard from "../../../Pages/AllProducts/AllProductsCard";
+import AllProductsCard from "../../Cards/AllProductCard/AllProductsCard";
 import Slider from "react-slick";
 import { Link } from "react-router-dom";
-import TopRatedProductCard from "../../../Pages/TopRated/TopRatedProductCard";
+import TopRatedProductCard from "../../Cards/TopRatedProductCard/TopRatedProductCard";
 
 const DiscountProductSection = () => {
   const [dealOfDayProduct, setDealOfDayProduct] = useState([]);

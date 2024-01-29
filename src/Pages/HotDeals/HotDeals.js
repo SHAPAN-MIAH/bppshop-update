@@ -10,8 +10,9 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import downArrow from "../../Assets/Images/arrow-down.gif.c819a92ab7162c828e944727a545dcd7.gif";
 // import DealOfTheDayProductCard from "./DealOfTheDayProductCard";
 import { Link } from "react-router-dom";
-import DealOfTheDayProductCard from "../DealOfTheDay/DealOfTheDayProductCard";
-import HotDealsProductCard from "./HotDealsProductCard";
+import DealOfTheDayProductCard from "../../Components/Cards/DealOfTheDayProductCard/DealOfTheDayProductCard";
+import HotDealsProductCard from "../../Components/Cards/HotDealsProductCard/HotDealsProductCard";
+// import HotDealsProductCard from "./HotDealsProductCard";
 
 const HotDeals = () => {
   const [dealOfDayProduct, setDealOfDayProduct] = useState([]);

@@ -1,18 +1,22 @@
+
+
+
+
 import React, { useEffect, useState } from "react";
-import defaultProImg from "../../Assets/Images/defaultImg.jpg";
+import defaultProImg from "../../../Assets/Images/defaultImg.jpg";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addItemsToCart,
   addItemsToCartAfterLogin,
-} from "./../../Redux/Actions/CartAction";
-import { imgThumbnailBaseUrl } from "./../../BaseUrl/BaseUrl";
+} from "../../../Redux/Actions/CartAction";
+import { imgThumbnailBaseUrl } from "../../../BaseUrl/BaseUrl";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import { RatingStar } from "rating-star";
 import Modal from "react-modal";
-import LoginModal from "../User/Login/LoginModal";
-import SignUpModal from "../User/SignUp/SignUpModal";
+import LoginModal from "../../../Pages/User/Login/LoginModal";
+import SignUpModal from "../../../Pages/User/SignUp/SignUpModal";
 
 Modal.setAppElement("#root");
 
@@ -30,7 +34,7 @@ let customStyles = {
   },
 };
 
-const DiscountProductCard = ({ product, setImg }) => {
+const DealOfTheDayProductCard = ({ product, setImg }) => {
   if (window.matchMedia("(max-width: 460px)").matches) {
     customStyles = {
       content: {
@@ -289,7 +293,7 @@ const DiscountProductCard = ({ product, setImg }) => {
 
               <Link
                 // to={`/discount-products/${id}`} addeditemid={addeditemid}
-                to={`/discount-products/${product.slug}`}
+                to={`/deals-of-the-day/${product.slug}`}
                 addeditemid={addeditemid}
               >
                 {current_stock > 0 ? (
@@ -363,4 +367,4 @@ const DiscountProductCard = ({ product, setImg }) => {
     </>
   );
 };
-export default DiscountProductCard;
+export default DealOfTheDayProductCard;

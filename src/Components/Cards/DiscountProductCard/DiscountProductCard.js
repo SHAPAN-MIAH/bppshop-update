@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from "react";
-import defaultProImg from "../../Assets/Images/defaultImg.jpg";
+import defaultProImg from "../../../Assets/Images/defaultImg.jpg";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addItemsToCart,
   addItemsToCartAfterLogin,
-} from "../../Redux/Actions/CartAction";
-import { imgThumbnailBaseUrl } from "../../BaseUrl/BaseUrl";
+} from "../../../Redux/Actions/CartAction";
+import { imgThumbnailBaseUrl } from "../../../BaseUrl/BaseUrl";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import { RatingStar } from "rating-star";
 import Modal from "react-modal";
-import LoginModal from "../User/Login/LoginModal";
-import SignUpModal from "../User/SignUp/SignUpModal";
+import LoginModal from "../../../Pages/User/Login/LoginModal";
+import SignUpModal from "../../../Pages/User/SignUp/SignUpModal";
 
 Modal.setAppElement("#root");
 
@@ -30,7 +30,7 @@ let customStyles = {
   },
 };
 
-const AllProductsCard = ({ product, setImg }) => {
+const DiscountProductCard = ({ product, setImg }) => {
   if (window.matchMedia("(max-width: 460px)").matches) {
     customStyles = {
       content: {
@@ -46,7 +46,6 @@ const AllProductsCard = ({ product, setImg }) => {
       },
     };
   }
-
   const [modalIsOpen, setIsOpen] = React.useState(false);
   function openModal() {
     setIsOpen(true);
@@ -94,57 +93,60 @@ const AllProductsCard = ({ product, setImg }) => {
     if (isAuthenticated == true) {
       closeModal();
 
-      if (modalLogin == "true") {
-        addToCartAfterLoginRes();
-      }
+      // if (modalLogin == "true") {
+      //   addToCartAfterLoginRes();
+      // }
     }
   }, [isAuthenticated, modalLogin]);
 
   // add to cart after login response......
-  const addToCartAfterLoginRes = () => {
-    const choice_options = cartItemBeforeLogin[0]?.product?.choice_options;
-    const choice_options_name = choice_options?.map((option) => option.name);
-    const choice_options_defaultValue = choice_options?.map(
-      (option) => option?.options[0]
-    );
-    const defaultChoices = choice_options_name?.map((name, index) => ({
-      name,
-      options: choice_options_defaultValue[index],
-    }));
+  // const addToCartAfterLoginRes = () => {
+  //   const choice_options = cartItemBeforeLogin[0]?.product?.choice_options;
+  //   const choice_options_name = choice_options?.map((option) => option.name);
+  //   const choice_options_defaultValue = choice_options?.map(
+  //     (option) => option?.options[0]
+  //   );
+  //   const defaultChoices = choice_options_name?.map((name, index) => ({
+  //     name,
+  //     options: choice_options_defaultValue[index],
+  //   }));
 
-    let color = colors?.map((color) => color?.code);
+  //   let color = colors?.map((color) => color?.code);
 
-    const addItemsToCartDataWithColor = {
-      id: `${cartItemBeforeLogin[0]?.product?.id}`,
-      color: `${color[0]}`,
-      quantity: `${quantity}`,
-    };
+  //   const addItemsToCartDataWithColor = {
+  //     id: `${cartItemBeforeLogin[0]?.product?.id}`,
+  //     color: `${color[0]}`,
+  //     quantity: `${quantity}`,
+  //   };
 
-    const addItemsToCartDataWithoutColor = {
-      id: `${cartItemBeforeLogin[0]?.product?.id}`,
-      quantity: `${quantity}`,
-    };
+  //   const addItemsToCartDataWithoutColor = {
+  //     id: `${cartItemBeforeLogin[0]?.product?.id}`,
+  //     quantity: `${quantity}`,
+  //   };
 
-    defaultChoices?.forEach((element) => {
-      addItemsToCartDataWithColor[element.name] = `${element.options}`.trim();
-    });
+  //   defaultChoices?.forEach((element) => {
+  //     addItemsToCartDataWithColor[element.name] = `${element.options}`.trim();
+  //   });
 
-    defaultChoices?.forEach((element) => {
-      addItemsToCartDataWithoutColor[element.name] =
-        `${element.options}`.trim();
-    });
+  //   defaultChoices?.forEach((element) => {
+  //     addItemsToCartDataWithoutColor[element.name] =
+  //       `${element.options}`.trim();
+  //   });
 
-    cartItemBeforeLogin[0]?.product?.colors?.length > 0
-      ? dispatch(addItemsToCartAfterLogin(addItemsToCartDataWithColor))
-      : dispatch(addItemsToCartAfterLogin(addItemsToCartDataWithoutColor));
+  //   // if (loginRes?.status == "success" || signupRes?.status == "success") {
+  //   cartItemBeforeLogin[0]?.product?.colors?.length > 0
+  //     ? dispatch(addItemsToCartAfterLogin(addItemsToCartDataWithColor))
+  //     : dispatch(addItemsToCartAfterLogin(addItemsToCartDataWithoutColor));
 
-    addToCartOverlyLoading();
-  };
+  //   addToCartOverlyLoading();
+  //   // }
+  // };
 
   // Add to cart functionality.............................
   const addToCartHandler = (product, quantity) => {
     if (!token) {
       dispatch(addItemsToCart(product, quantity));
+      localStorage.setItem("productCartLoginAddItem", "true");
       openModal();
     }
 
@@ -206,6 +208,19 @@ const AllProductsCard = ({ product, setImg }) => {
     );
 
     addToCartLoaderOverlay.style.display = "none";
+
+    // toaster
+    // toast.success(`Product added to cart successfully`, {
+    //   duration: 2000,
+
+    //   style: {
+    //     width: "100%",
+    //     height: "80px",
+    //     padding: "0px 20px",
+    //     background: "#86bc19",
+    //     color: "#fff",
+    //   },
+    // });
   }
 
   const scrollTop = () => {
@@ -216,12 +231,10 @@ const AllProductsCard = ({ product, setImg }) => {
   const imgReset = () => {
     setImg("");
   };
-
   return (
     <>
       <div className="product_card_content" onClick={imgReset}>
         <div className="product-card">
-          {/* ( */}
           <>
             <div className=" product-card-body">
               <div className="productImg_container">
@@ -242,10 +255,9 @@ const AllProductsCard = ({ product, setImg }) => {
                   <small>
                     {newChoiceOption && (
                       <span className="unitPrice_view">
-                        {newChoiceOption?.options[0]} {newChoiceOption?.title}
+                        {newChoiceOption?.options[0]} : {newChoiceOption?.title}
                       </span>
                     )}
-
                   </small>
                   {newChoiceOption?.options[0] && newChoiceOption?.title ? (
                     <span>-</span>
@@ -254,9 +266,10 @@ const AllProductsCard = ({ product, setImg }) => {
                   )}
                   {discount ? (
                     <span>
-                      <b>&#2547; {unit_price - discount}</b>
+                      <b> &#2547; {unit_price - discount} </b>
                       <del>
                         <b className="text-danger ms-2">
+                          {" "}
                           &#2547; {unit_price}
                         </b>
                       </del>
@@ -268,14 +281,15 @@ const AllProductsCard = ({ product, setImg }) => {
                 <RatingStar
                   id={id}
                   rating={rating?.map((r) => r?.average)}
-                  size={14}
+                  size={11}
+                  className="RatingStar"
                 />{" "}
                 <small>({reviews_count})</small>
               </div>
 
-              {/* <Link to={`/all-products/${id}`} addeditemid={addeditemid}> */}
               <Link
-                to={`/all-products/${product.slug}`}
+                // to={`/discount-products/${id}`} addeditemid={addeditemid}
+                to={`/discount-products/${product.slug}`}
                 addeditemid={addeditemid}
               >
                 {current_stock > 0 ? (
@@ -285,7 +299,7 @@ const AllProductsCard = ({ product, setImg }) => {
                   >
                     <div className="overlayViewCartBtn">
                       <span>
-                        <i className="bi bi-eye-fill"></i> <br /> View Details
+                        <i class="bi bi-eye-fill"></i> <br /> View Details
                       </span>
                     </div>
                   </div>
@@ -311,12 +325,13 @@ const AllProductsCard = ({ product, setImg }) => {
                     <button
                       className="btn_before_add_cart"
                       onClick={() => addToCartHandler(product, quantity)}
+                      id="addToCartBtn"
                     >
                       <i className="bi bi-cart-plus"></i> Add To Cart
                     </button>
                   ) : (
                     <button className="btn_before_add_cart_stockOut">
-                      <i className="bi bi-cart-x"></i> Stock Out
+                      <i class="bi bi-cart-x"></i> Stock Out
                     </button>
                   )}
                 </div>
@@ -348,4 +363,4 @@ const AllProductsCard = ({ product, setImg }) => {
     </>
   );
 };
-export default AllProductsCard;
+export default DiscountProductCard;

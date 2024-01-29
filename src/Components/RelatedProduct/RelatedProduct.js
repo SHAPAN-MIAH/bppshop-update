@@ -5,16 +5,17 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import ProductCard from "../Cards/ProductCard/ProductCard";
 import { useLocation } from "react-router-dom";
-import AllProductsCard from "../../Pages/AllProducts/AllProductsCard";
-import SellerStoreProductsCard from "../../Pages/SellerStore/SellerStoreProductsCard";
-import BrandsProductsCard from "../../Pages/Brand/BrandsProductsCard";
-import DiscountProductCard from "../../Pages/DiscountProducts/DiscountProductCard";
-import BestSellingProductCard from "../../Pages/BestSelling/BestSellingProductCard";
-import NewArrivalProductCard from "../../Pages/NewArrival/NewArrivalProductCard";
-import TopRatedProductCard from "../../Pages/TopRated/TopRatedProductCard";
-import SearchProductCard from "../../Pages/Search/SearchProductCard";
-import DealOfTheDayProductCard from "../../Pages/DealOfTheDay/DealOfTheDayProductCard";
+import AllProductsCard from "../Cards/AllProductCard/AllProductsCard";
+import SellerStoreProductsCard from "../Cards/SellerStoreProductCard/SellerStoreProductsCard";
+import BrandsProductsCard from "../Cards/BrandProductCard/BrandsProductsCard";
+import DiscountProductCard from "../Cards/DiscountProductCard/DiscountProductCard";
+// import BestSellingProductCard from "../../../Pages/BestSelling/BestSellingProductCard";
+import NewArrivalProductCard from "../Cards/NewArrivalProductCard/NewArrivalProductCard";
+import TopRatedProductCard from "../Cards/TopRatedProductCard/TopRatedProductCard";
+import SearchProductCard from "../Cards/SearchProductCard/SearchProductCard";
+import DealOfTheDayProductCard from "../Cards/DealOfTheDayProductCard/DealOfTheDayProductCard";
 import HotDealsProductCard from "../Cards/HotDealsProductCard/HotDealsProductCard";
+import BestSellingProductCard from "../Cards/BestSellingProductCard/BestSellingProductCard";
 
 const RelatedProduct = ({ productId , setImg }) => {
 

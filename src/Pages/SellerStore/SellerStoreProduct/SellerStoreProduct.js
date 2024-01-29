@@ -3,7 +3,7 @@ import "./SellerStoreProduct.css";
 import { Link, useParams } from "react-router-dom";
 import { useState } from "react";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
-import SellerStoreProductsCard from "../SellerStoreProductsCard";
+import SellerStoreProductsCard from "../../../Components/Cards/SellerStoreProductCard/SellerStoreProductsCard";
 import { useEffect } from "react";
 import axios from "axios";
 import { baseUrl } from "../../../BaseUrl/BaseUrl";

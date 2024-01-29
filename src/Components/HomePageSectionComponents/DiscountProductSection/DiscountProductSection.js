@@ -6,10 +6,10 @@ import Slider from "react-slick";
 import discountBanner from "../../../Assets/Images/bppshop_banner/discountProduct (1).jpg";
 import discountBanner2 from "../../../Assets/Images/bppshop_banner/discountProduct (2).jpg";
 import { Link } from "react-router-dom";
-import TopRatedProductCard from "../../../Pages/TopRated/TopRatedProductCard";
+import TopRatedProductCard from "../../Cards/TopRatedProductCard/TopRatedProductCard";
 import NewArrivalSectionProductCard from "../NewArrivalSection/NewArrivalSectionProductCard";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
-import DiscountProductCard from "../../../Pages/DiscountProducts/DiscountProductCard";
+import DiscountProductCard from "../../Cards/DiscountProductCard/DiscountProductCard";
 import DiscountSectionProductCard from "./DiscountSectionProductCard";
 
 const TopRatedSection = () => {
