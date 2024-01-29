@@ -172,7 +172,7 @@ console.log(bestSellingBannerImg);
           ) : (
             <div className="deal_of_the_day_content_container">
               <div className="deal_of_the_day_banner">
-                <img src={`${bannerBaseUrl}/${bestSellingBannerImg.value}`} alt="" />
+                <img src={`${bannerBaseUrl}/${bestSellingBannerImg?.value}`} alt="" />
               </div>
               <div className="deal_of_the_day_product_content">
                 <div className="deal_of_the_day_product_content_header">
