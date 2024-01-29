@@ -2,23 +2,29 @@ import React, { useState, useEffect } from "react";
 import moment from "moment";
 import "./Timer.css";
 
-const Timer = ({ endTime, startTime }) => {
+const Timer = ({ endTime, startTime,setTimeoutMsgVisible }) => {
   const [timeRemaining, setTimeRemaining] = useState(calculateTimeRemaining());
 
   useEffect(() => {
     const timerInterval = setInterval(() => {
       setTimeRemaining(calculateTimeRemaining());
+      // console.log(timeRemaining.seconds );
+      if (timeRemaining.days  <= 0 && timeRemaining.hours  <= 0 && timeRemaining.minutes  <= 0 && timeRemaining.seconds <= 0) {
+        clearInterval(timerInterval);
+         console.log(timeRemaining.seconds );
+        setTimeoutMsgVisible(true);
+      }
     }, 1000);
 
     return () => clearInterval(timerInterval);
-  }, []);
+  }, [timeRemaining]);
 
   function calculateTimeRemaining() {
     const now = moment();
     const start = moment(startTime);
     const end = moment(endTime);
     const duration = moment.duration(end.diff(now));
-
+    // console.log(end);
     const days = Math.floor(duration.asDays());
     const hours = duration.hours();
     const minutes = duration.minutes();

@@ -3,16 +3,22 @@ import adBanner from "../../../Assets/Images/8487798 2 (1).png";
 import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
-import { baseUrl } from "../../../BaseUrl/BaseUrl";
+import { bannerBaseUrl, baseUrl } from "../../../BaseUrl/BaseUrl";
 import { Link } from "react-router-dom";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import defaultImg from "../../../Assets/Images/noImg-default.png";
 import "./StoreSection.css";
 import coverImg from "../../../Assets/Images/pexels-evie-shaffer-2512282.jpg";
+import { useSelector } from "react-redux";
 
 const StoreSection = () => {
   const [allSellerStore, setAllSellerStore] = useState([]);
   const [loading, setLoading] = useState(true);
+  const {banners} = useSelector((state) => state?.banners);
+
+  console.log(banners.sliders);
+  const storBannerOneImg = banners?.sliders?.find(item=>item?.type==="home_banner_two");
+  console.log(storBannerOneImg);
 
   useEffect(() => {
     fetchData();
@@ -38,7 +44,7 @@ const StoreSection = () => {
     <div className="store_section ">
       <div className="brand_section_container">
         <div className="brand_section_ad_banner">
-          <img src={adBanner} alt="" />
+          <img src={`${bannerBaseUrl}/${storBannerOneImg?.value}`}  alt="" />
         </div>
         <br />
 

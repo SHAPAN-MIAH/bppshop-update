@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { baseUrl } from "../../../BaseUrl/BaseUrl";
+import { bannerBaseUrl, baseUrl } from "../../../BaseUrl/BaseUrl";
 import NewArrivalSectionProductCard from "./NewArrivalSectionProductCard";
 import "./NewArrivalSection.css";
 import Slider from "react-slick";
@@ -8,10 +8,13 @@ import newArrivalBanner from "../../../Assets/Images/bppshop_banner/newArrival (
 import newArrivalBanner2 from "../../../Assets/Images/bppshop_banner/newArrival (2).jpg";
 import { Link } from "react-router-dom";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import { useSelector } from "react-redux";
 
 const NewArrivalSection = () => {
   const [newArrivalProduct, setNewArrivalProduct] = useState([]);
   const [loading, setLoading] = useState(true);
+  const newArrivalBannerImg = useSelector((state)=>state?.banners?.banners?.sliders?.find(item=>item?.type==="new_arrival"));
+
 
   useEffect(() => {
     axios
@@ -169,7 +172,7 @@ const NewArrivalSection = () => {
               <div className="row">
                 <div className="col-md-3">
                   <div className="new_arrival_banner">
-                    <img className="img1" src={newArrivalBanner} alt="" />
+                    <img className="img1" src={`${bannerBaseUrl}/${newArrivalBannerImg?.value}`} alt="" />
                     <img className="img2" src={newArrivalBanner2} alt="" />
                   </div>
                 </div>

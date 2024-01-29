@@ -3,18 +3,20 @@ import img from "../../../Assets/Images/bppshop_banner/bestSelling (1).jpg";
 import img2 from "../../../Assets/Images/bppshop_banner/bestSelling (2).jpg";
 // import "./DealOfTheDay.css";
 import axios from "axios";
-import { baseUrl } from "../../../BaseUrl/BaseUrl";
+import { bannerBaseUrl, baseUrl } from "../../../BaseUrl/BaseUrl";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import AllProductsCard from "../../Cards/AllProductCard/AllProductsCard";
 import Slider from "react-slick";
 import { Link } from "react-router-dom";
 import BestSellingProductCard from "../../Cards/BestSellingProductCard/BestSellingProductCard";
+import { useSelector } from "react-redux";
 // import BestSellingProductCard from "../../../Pages/BestSelling/BestSellingProductCard";
 
 const BestSellingSection = () => {
   const [dealOfDayProduct, setDealOfDayProduct] = useState([]);
   const [loading, setLoading] = useState(true);
-
+  const bestSellingBannerImg = useSelector((state)=>state?.banners?.banners?.sliders?.find(item=>item?.type==="best_selling"));
+console.log(bestSellingBannerImg);
   useEffect(() => {
     axios
       .get(`${baseUrl}/products/best-sellings?limit=${16}&offset=${1}`)
@@ -170,7 +172,7 @@ const BestSellingSection = () => {
           ) : (
             <div className="deal_of_the_day_content_container">
               <div className="deal_of_the_day_banner">
-                <img src={img} alt="" />
+                <img src={`${bannerBaseUrl}/${bestSellingBannerImg.value}`} alt="" />
               </div>
               <div className="deal_of_the_day_product_content">
                 <div className="deal_of_the_day_product_content_header">

@@ -6,10 +6,13 @@ import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import HotDealsProductCard from "../../Cards/HotDealsProductCard/HotDealsProductCard";
 import Timer from "../../SharedComponents/Timer/Timer";
+import moment from "moment";
 
 const HotDealsSection = () => {
   const [hotDeals, SetHotDeals] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [timeoutMsgVisible, setTimeoutMsgVisible] = useState(false);
+  
 
   useEffect(() => {
     axios
@@ -100,13 +103,16 @@ const HotDealsSection = () => {
 
   // const startTime = "2024-01-20T24:00:00.000000Z";
   // const endTime = "2024-01-24T18:00:00.000000Z";
+  const now = moment();
+  const end = moment(hotDeals?.hot_deals?.end_date);
 
-
+  const duration = moment.duration(end.diff(now));
+  console.log(duration._data.seconds);
   console.log(hotDeals?.hot_deals?.end_date);
-
+  console.log(timeoutMsgVisible);
   return (
     <>
-      {/* {endTime && ( */}
+      {!timeoutMsgVisible && (
         <div className="deal_of_the_day_container">
           <SkeletonTheme
             baseColor="rgb(220, 220, 220)"
@@ -189,7 +195,7 @@ const HotDealsSection = () => {
                   <div className="deal_of_the_day_product_content_header">
                     <h4>Hot Deals</h4>
                     <div className="d-flex">
-                      <Timer endTime={hotDeals?.hot_deals?.end_date} />
+                      <Timer endTime={end} setTimeoutMsgVisible={setTimeoutMsgVisible} />
                       <Link to="/hot-deals">
                         <button
                           className="deal_of_the_day_product_view_more_btn"
@@ -215,7 +221,7 @@ const HotDealsSection = () => {
             )}
           </SkeletonTheme>
         </div>
-      {/* )} */}
+      )}
     </>
   );
 };

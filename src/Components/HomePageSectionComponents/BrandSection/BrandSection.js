@@ -4,7 +4,7 @@ import "./BrandSection.css";
 import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
-import { baseUrl } from "../../../BaseUrl/BaseUrl";
+import { bannerBaseUrl, baseUrl } from "../../../BaseUrl/BaseUrl";
 import { Link } from "react-router-dom";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import defaultImg from "../../../Assets/Images/noImg-default.png";
@@ -16,6 +16,8 @@ const BrandSection = () => {
   const {banners} = useSelector((state) => state?.banners);
 
   console.log(banners.sliders);
+  const homeBannerOneImg = banners?.sliders?.find(item=>item?.type==="home_banner_one");
+  console.log(homeBannerOneImg);
 
 
   useEffect(() => {
@@ -42,7 +44,7 @@ const BrandSection = () => {
     <div className="brand_section">
       <div className="brand_section_container">
         <div className="brand_section_ad_banner ">
-          <img src={adBanner} alt="" />
+          <img src={`${bannerBaseUrl}/${homeBannerOneImg?.value}`} alt="" />
         </div>
         <br />
 
