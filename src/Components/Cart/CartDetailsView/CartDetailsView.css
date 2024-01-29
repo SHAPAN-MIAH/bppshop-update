@@ -80,8 +80,8 @@
 }
 .quantity-set {
   width: 90px;
-  height: 26px;
-  border: 0.5px solid gainsboro;
+  /* height: 26px; */
+  /* border: 0.5px solid gainsboro; */
   border-radius: 3px;
   overflow: hidden;
   display: flex;
@@ -95,7 +95,7 @@
   cursor: pointer;
   background: gainsboro;
   color: #ff8800;
-  padding: 0px 0px;
+  padding: 0px 0px !important;
   margin-top: 2px !important;
   /* color: rgb(0, 0, 0); */
   font-size: 24px;
@@ -103,9 +103,11 @@
 }
 .cartMinusBtn {
   color: #d80909;
+  background: none;
 }
 .cartPlusBtn {
   color: #08a802;
+  background: none;
 }
 
 .cartItemDeleteBtn{
