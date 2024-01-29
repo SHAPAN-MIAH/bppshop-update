@@ -22,10 +22,12 @@ import AddToCartResponseReducer from "./Reducers/AddToCartResponseReducers";
 import ItemQtyUpdateResReducer from "./Reducers/ItemQtyUpdateResReducer";
 import RemoveItemResReducer from "./Reducers/RemoveItemResReducer";
 import { loadAllShippingAddressReducers } from "./Reducers/LoadAllShippingAddressReducers";
+import BannerReducers from "./Reducers/BannerReducers";
 
 
 const rootReducer = combineReducers({
   allCategories: CategoryReducers,
+  banners: BannerReducers,
   searchProducts:searchProductReducer,
   cartItemBeforeLogin: CartItemReducer,
   cart: CartReducers,
