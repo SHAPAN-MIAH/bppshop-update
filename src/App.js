@@ -71,6 +71,7 @@ import DealOfTheDay from "./Pages/DealOfTheDay/DealOfTheDay";
 import DealsOfTheDayProductDetails from "./Pages/DealOfTheDay/DealsOfTheDayProductDetails";
 import HotDeals from "./Pages/HotDeals/HotDeals";
 import HotDealsProductDetails from "./Pages/HotDeals/HotDealsProductDetails";
+import { getBanners } from "./Redux/Actions/BannerGetAction";
 
 
 function App() {
@@ -79,6 +80,7 @@ function App() {
 
   useEffect(() => {
     store.dispatch(getCategories())
+    store.dispatch(getBanners())
     
     if(token){
       store.dispatch(loadUser());
