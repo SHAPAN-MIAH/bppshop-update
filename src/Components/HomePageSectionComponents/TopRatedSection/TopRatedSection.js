@@ -3,16 +3,20 @@ import img from "../../../Assets/Images/bppshop_banner/topRated (1).jpg";
 import img2 from "../../../Assets/Images/bppshop_banner/discountProduct (2).jpg";
 // import "./DealOfTheDay.css";
 import axios from "axios";
-import { baseUrl } from "../../../BaseUrl/BaseUrl";
+import { bannerBaseUrl, baseUrl } from "../../../BaseUrl/BaseUrl";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import AllProductsCard from "../../Cards/AllProductCard/AllProductsCard";
 import Slider from "react-slick";
 import { Link } from "react-router-dom";
 import TopRatedProductCard from "../../Cards/TopRatedProductCard/TopRatedProductCard";
+import { useSelector } from "react-redux";
 
 const TopRatedSection = () => {
   const [dealOfDayProduct, setDealOfDayProduct] = useState([]);
   const [loading, setLoading] = useState(true);
+  const topRatedBannerImg = useSelector((state)=>state?.banners?.banners?.sliders?.find(
+    (item) => item?.type === "top_rated"
+  ))
 
   useEffect(() => {
     axios
@@ -170,7 +174,7 @@ const TopRatedSection = () => {
             <div className="deal_of_the_day_content_container">
               <Link to="/top-rated">
                 <div className="deal_of_the_day_banner">
-                  <img src={img} alt="" />
+                  <img  src={`${bannerBaseUrl}/${topRatedBannerImg?.value}`} alt="" />
                 </div>
               </Link>
               <div className="deal_of_the_day_product_content">
