@@ -1,18 +1,26 @@
-.timer_container{
+.timer_container {
   display: flex;
   justify-content: space-around;
   gap: 10px;
   margin-right: 50px;
+  padding-top: 2px;
 }
-.timer_container h5{
-  font-weight: 700;
-  font-size: 20px;
+.timer_container h5 {
+  font-weight: 600;
+  font-size: 18px;
 }
-.timer_container_content{
+.timer_container_content {
+  width: 330px;
+  height: 35px;
   display: flex;
   justify-content: space-around;
-  gap: 10px;
-  font-size: 17px;
+  gap: 5px;
+  font-size: 16px;
   font-weight: 600;
   color: #ff8800;
+}
+.timer_day,
+.timer_hours,
+.timer_minutes,
+.timer_seconds {
 }

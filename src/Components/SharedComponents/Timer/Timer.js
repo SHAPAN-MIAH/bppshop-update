@@ -45,10 +45,10 @@ const Timer = ({ endTime, startTime, setTimeoutMsgVisible }) => {
     <div className="timer_container">
       <h5>Ending in </h5>
       <div className="timer_container_content">
-        <div className="timer_day">{timeRemaining.days} days</div> :
-        <div className="timer_hours">{timeRemaining.hours} hours</div> :
-        <div className="timer_minutes">{timeRemaining.minutes} minutes</div>
-        <div className="timer_seconds">{timeRemaining.seconds} seconds</div>
+        <div className="timer_day"><span>{timeRemaining.days} days</span></div> :
+        <div className="timer_hours"><span>{timeRemaining.hours} hours</span></div> :
+        <div className="timer_minutes"><span>{timeRemaining.minutes} minutes</span></div> :
+        <div className="timer_seconds"><span>{timeRemaining.seconds} seconds</span></div>
       </div>
     </div>
   );
