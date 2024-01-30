@@ -15,8 +15,12 @@ import { useSelector } from "react-redux";
 const BestSellingSection = () => {
   const [dealOfDayProduct, setDealOfDayProduct] = useState([]);
   const [loading, setLoading] = useState(true);
-  const bestSellingBannerImg = useSelector((state)=>state?.banners?.banners?.sliders?.find(item=>item?.type==="best_selling"));
-console.log(bestSellingBannerImg);
+  const bestSellingBannerImg = useSelector((state) =>
+    state?.banners?.banners?.sliders?.find(
+      (item) => item?.type === "best_selling"
+    )
+  );
+  // console.log(bestSellingBannerImg);
   useEffect(() => {
     axios
       .get(`${baseUrl}/products/best-sellings?limit=${16}&offset=${1}`)
@@ -171,9 +175,14 @@ console.log(bestSellingBannerImg);
             </div>
           ) : (
             <div className="deal_of_the_day_content_container">
-              <div className="deal_of_the_day_banner">
-                <img src={`${bannerBaseUrl}/${bestSellingBannerImg?.value}`} alt="" />
-              </div>
+              <Link to="./best-selling">
+                <div className="deal_of_the_day_banner">
+                  <img
+                    src={`${bannerBaseUrl}/${bestSellingBannerImg?.value}`}
+                    alt=""
+                  />
+                </div>
+              </Link>
               <div className="deal_of_the_day_product_content">
                 <div className="deal_of_the_day_product_content_header">
                   <h4>Best Selling Product</h4>
@@ -189,7 +198,10 @@ console.log(bestSellingBannerImg);
                 <Slider {...settings}>
                   {dealOfDayProduct?.map((product) => (
                     <div className="p-1">
-                      <BestSellingProductCard key={product?.id} product={product} />
+                      <BestSellingProductCard
+                        key={product?.id}
+                        product={product}
+                      />
                     </div>
                   ))}
                 </Slider>

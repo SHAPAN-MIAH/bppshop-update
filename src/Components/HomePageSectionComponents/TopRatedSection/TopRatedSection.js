@@ -10,7 +10,7 @@ import Slider from "react-slick";
 import { Link } from "react-router-dom";
 import TopRatedProductCard from "../../Cards/TopRatedProductCard/TopRatedProductCard";
 
-const DiscountProductSection = () => {
+const TopRatedSection = () => {
   const [dealOfDayProduct, setDealOfDayProduct] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -168,9 +168,11 @@ const DiscountProductSection = () => {
             </div>
           ) : (
             <div className="deal_of_the_day_content_container">
-              <div className="deal_of_the_day_banner">
-                <img src={img} alt="" />
-              </div>
+              <Link to="/top-rated">
+                <div className="deal_of_the_day_banner">
+                  <img src={img} alt="" />
+                </div>
+              </Link>
               <div className="deal_of_the_day_product_content">
                 <div className="deal_of_the_day_product_content_header">
                   <h4> Top Rated</h4>
@@ -202,4 +204,4 @@ const DiscountProductSection = () => {
   );
 };
 
-export default DiscountProductSection;
+export default TopRatedSection;

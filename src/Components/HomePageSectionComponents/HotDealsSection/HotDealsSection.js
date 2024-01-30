@@ -12,7 +12,6 @@ const HotDealsSection = () => {
   const [hotDeals, SetHotDeals] = useState([]);
   const [loading, setLoading] = useState(true);
   const [timeoutMsgVisible, setTimeoutMsgVisible] = useState(false);
-  
 
   useEffect(() => {
     axios
@@ -22,7 +21,6 @@ const HotDealsSection = () => {
         SetHotDeals(response?.data);
       });
   }, []);
-
 
   const settings = {
     infinite: true,
@@ -103,13 +101,15 @@ const HotDealsSection = () => {
 
   // const startTime = "2024-01-20T24:00:00.000000Z";
   // const endTime = "2024-01-24T18:00:00.000000Z";
+
   const now = moment();
   const end = moment(hotDeals?.hot_deals?.end_date);
-
   const duration = moment.duration(end.diff(now));
+
   console.log(duration._data.seconds);
   console.log(hotDeals?.hot_deals?.end_date);
   console.log(timeoutMsgVisible);
+
   return (
     <>
       {!timeoutMsgVisible && (
@@ -182,20 +182,25 @@ const HotDealsSection = () => {
               </div>
             ) : (
               <div className="deal_of_the_day_content_container">
-                <div className="deal_of_the_day_banner">
-                  {
-                    <img
-                      className="img1"
-                      src={`https://backend.bppshop.com.bd/storage/deal/${hotDeals?.hot_deals?.banner}`}
-                      alt=""
-                    />
-                  }
-                </div>
+                <Link to="/hot-deals">
+                  <div className="deal_of_the_day_banner">
+                    {
+                      <img
+                        className="img1"
+                        src={`https://backend.bppshop.com.bd/storage/deal/${hotDeals?.hot_deals?.banner}`}
+                        alt=""
+                      />
+                    }
+                  </div>
+                </Link>
                 <div className="deal_of_the_day_product_content">
                   <div className="deal_of_the_day_product_content_header">
                     <h4>Hot Deals</h4>
                     <div className="d-flex">
-                      <Timer endTime={end} setTimeoutMsgVisible={setTimeoutMsgVisible} />
+                      <Timer
+                        endTime={end}
+                        setTimeoutMsgVisible={setTimeoutMsgVisible}
+                      />
                       <Link to="/hot-deals">
                         <button
                           className="deal_of_the_day_product_view_more_btn"

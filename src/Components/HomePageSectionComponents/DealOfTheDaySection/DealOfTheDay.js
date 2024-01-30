@@ -166,31 +166,36 @@ const DealOfTheDay = () => {
             </div>
           ) : (
             <div className="deal_of_the_day_content_container">
-              <div className="deal_of_the_day_banner">
-                {
-                  <img
-                    className="img1"
-                    src={`https://backend.bppshop.com.bd/storage/banner/${dealOfDayProduct.banner}`}
-                    alt=""
-                  />
-                }
-              </div>
+              <Link to="/deals-of-the-day">
+                <div className="deal_of_the_day_banner">
+                  {
+                    <img
+                      className="img1"
+                      src={`https://backend.bppshop.com.bd/storage/banner/${dealOfDayProduct.banner}`}
+                      alt=""
+                    />
+                  }
+                </div>
+              </Link>
               <div className="deal_of_the_day_product_content">
                 <div className="deal_of_the_day_product_content_header">
                   <h4>Deals Of the Day</h4>
                   <Link to="/deals-of-the-day">
-                  <button
-                    className="deal_of_the_day_product_view_more_btn"
-                    type=""
-                  >
-                    View More
-                  </button>
+                    <button
+                      className="deal_of_the_day_product_view_more_btn"
+                      type=""
+                    >
+                      View More
+                    </button>
                   </Link>
                 </div>
                 <Slider {...settings}>
                   {dealOfDayProduct?.products?.map((product) => (
                     <div className="p-1">
-                      <DealOfTheDayProductCard key={product?.id} product={product} />
+                      <DealOfTheDayProductCard
+                        key={product?.id}
+                        product={product}
+                      />
                     </div>
                   ))}
                 </Slider>

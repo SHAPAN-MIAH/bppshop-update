@@ -13,12 +13,13 @@ import { useSelector } from "react-redux";
 const BrandSection = () => {
   const [brands, setBrands] = useState([]);
   const [loading, setLoading] = useState(true);
-  const {banners} = useSelector((state) => state?.banners);
+  const { banners } = useSelector((state) => state?.banners);
 
   console.log(banners.sliders);
-  const homeBannerOneImg = banners?.sliders?.find(item=>item?.type==="home_banner_one");
+  const homeBannerOneImg = banners?.sliders?.find(
+    (item) => item?.type === "home_banner_one"
+  );
   console.log(homeBannerOneImg);
-
 
   useEffect(() => {
     fetchData();
@@ -43,17 +44,19 @@ const BrandSection = () => {
   return (
     <div className="brand_section">
       <div className="brand_section_container">
-        <div className="brand_section_ad_banner ">
-          <img src={`${bannerBaseUrl}/${homeBannerOneImg?.value}`} alt="" />
-        </div>
+        <Link to="/brands">
+          <div className="brand_section_ad_banner ">
+            <img src={`${bannerBaseUrl}/${homeBannerOneImg?.value}`} alt="" />
+          </div>
+        </Link>
         <br />
 
         <div className="brand_section_content_container_header">
           <h3>Brands</h3>
           <Link to="/brands">
-          <button className="brand_section_content_view_more_btn" type="">
-            View More
-          </button>
+            <button className="brand_section_content_view_more_btn" type="">
+              View More
+            </button>
           </Link>
         </div>
         <div className="brand_section_content_container mt-2">

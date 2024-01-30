@@ -171,10 +171,12 @@ const TopRatedSection = () => {
             ) : (
               <div className="row">
                 <div className="col-md-3">
+                <Link to="/discount-products">
                   <div className="new_arrival_banner">
                     <img className="img1" src={discountBanner} alt="" />
                     <img className="img2" src={discountBanner2} alt="" />
                   </div>
+                  </Link>
                 </div>
                 <div className="col-md-9">
                   <div>

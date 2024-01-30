@@ -13,8 +13,11 @@ import { useSelector } from "react-redux";
 const NewArrivalSection = () => {
   const [newArrivalProduct, setNewArrivalProduct] = useState([]);
   const [loading, setLoading] = useState(true);
-  const newArrivalBannerImg = useSelector((state)=>state?.banners?.banners?.sliders?.find(item=>item?.type==="new_arrival"));
-
+  const newArrivalBannerImg = useSelector((state) =>
+    state?.banners?.banners?.sliders?.find(
+      (item) => item?.type === "new_arrival"
+    )
+  );
 
   useEffect(() => {
     axios
@@ -171,10 +174,16 @@ const NewArrivalSection = () => {
             ) : (
               <div className="row">
                 <div className="col-md-3">
-                  <div className="new_arrival_banner">
-                    <img className="img1" src={`${bannerBaseUrl}/${newArrivalBannerImg?.value}`} alt="" />
-                    <img className="img2" src={newArrivalBanner2} alt="" />
-                  </div>
+                  <Link to="/new-arrival">
+                    <div className="new_arrival_banner">
+                      <img
+                        className="img1"
+                        src={`${bannerBaseUrl}/${newArrivalBannerImg?.value}`}
+                        alt=""
+                      />
+                      <img className="img2" src={newArrivalBanner2} alt="" />
+                    </div>
+                  </Link>
                 </div>
                 <div className="col-md-9">
                   <div>
