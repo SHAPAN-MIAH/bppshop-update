@@ -6,10 +6,11 @@ import { useSelector } from "react-redux";
 import { bannerBaseUrl } from "../../../BaseUrl/BaseUrl";
 
 const OfferBrandingSection = () => {
-  const OfferBrandingBannerImgThree = useSelector((state)=>state?.banners?.banners?.sliders?.find(
+  const OfferBrandingBannerImgThree = useSelector((state)=>state?.banners?.banners?.banners?.find(
     (item) => item?.type === "home_banner_three"
   ))
-  const OfferBrandingBannerImgFour = useSelector((state)=>state?.banners?.banners?.sliders?.find(
+  
+  const OfferBrandingBannerImgFour = useSelector((state)=>state?.banners?.banners?.banners?.find(
     (item) => item?.type === "home_banner_four"
   ))
   return (

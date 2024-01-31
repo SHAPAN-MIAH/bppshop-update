@@ -14,7 +14,7 @@ import { useSelector } from "react-redux";
 const TopRatedSection = () => {
   const [dealOfDayProduct, setDealOfDayProduct] = useState([]);
   const [loading, setLoading] = useState(true);
-  const topRatedBannerImg = useSelector((state)=>state?.banners?.banners?.sliders?.find(
+  const topRatedBannerImg = useSelector((state)=>state?.banners?.banners?.banners?.find(
     (item) => item?.type === "top_rated"
   ))
 

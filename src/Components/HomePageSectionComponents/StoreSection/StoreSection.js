@@ -16,9 +16,8 @@ const StoreSection = () => {
   const [loading, setLoading] = useState(true);
   const {banners} = useSelector((state) => state?.banners);
 
-  console.log(banners.sliders);
-  const storBannerOneImg = banners?.sliders?.find(item=>item?.type==="home_banner_two");
-  console.log(storBannerOneImg);
+  const storBannerOneImg = banners?.banners?.find(item=>item?.type==="home_banner_two");
+
 
   useEffect(() => {
     fetchData();
