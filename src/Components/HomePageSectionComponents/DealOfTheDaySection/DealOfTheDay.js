@@ -179,7 +179,7 @@ const DealOfTheDay = () => {
               </Link>
               <div className="deal_of_the_day_product_content">
                 <div className="deal_of_the_day_product_content_header">
-                  <h4>Deals Of the Day</h4>
+                  <h1>Deals Of the Day</h1>
                   <Link to="/deals-of-the-day">
                     <button
                       className="deal_of_the_day_product_view_more_btn"

@@ -13,7 +13,7 @@ const AppBrandingSection = () => {
         </div>
         <div className="app_branding_content">
           <div>
-            <h1>Download Our Mobile App</h1>
+            <h2>Download Our Mobile App</h2>
             <p>10000+ people use this app for their daily needs</p>
           </div>
         </div>

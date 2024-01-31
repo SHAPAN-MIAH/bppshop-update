@@ -75,9 +75,29 @@ const Nav = () => {
     };
   }
 
+  const CartDetailsCloseHandler = () => {
+    const cartDetailsViewContainer = document.querySelector(
+      ".cartDetailsView-container"
+    );
+
+    const cartDetailsViewSectionOverlay = document.querySelector(
+      ".cartDetailsView_section_overlay"
+    );
+    const suggestedItemContainer = document.querySelector(
+      ".suggested_item_container"
+    );
+
+    cartDetailsViewSectionOverlay.style.display = "none";
+    suggestedItemContainer.style.display = "none";
+    cartDetailsViewContainer.classList.toggle(
+      "cartDetailsView-container-toggle"
+    );
+  };
+
   const [modalIsOpen, setIsOpen] = React.useState(false);
   function openModal() {
     setIsOpen(true);
+    CartDetailsCloseHandler()
   }
   function closeModal() {
     setIsOpen(false);
@@ -189,7 +209,7 @@ const Nav = () => {
 
         navigate("/");
 
-        window.location.reload();
+        // window.location.reload();
 
         // toaster
         toast.success(`Logout Successfull`, {

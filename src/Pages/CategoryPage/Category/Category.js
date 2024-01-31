@@ -9,7 +9,7 @@ const Category = ({ allCategory, loading }) => {
     <>
       <MetaData title="Bppshop Categories" />
       <div className="categoryView-section">
-        <h4>Categories</h4>
+        <h1>Categories</h1>
         
         <div className="categoryView-container">
           <div className="category_content">

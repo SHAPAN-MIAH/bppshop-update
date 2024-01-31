@@ -188,7 +188,7 @@ const NewArrivalSection = () => {
                 <div className="col-md-9">
                   <div>
                     <div className="new_arrival_section_product_content_header">
-                      <h4>New Arrival</h4>
+                      <h1>New Arrival</h1>
                       <Link to="/new-arrival">
                         <button
                           className="new_arrival_section_product_view_more_btn"

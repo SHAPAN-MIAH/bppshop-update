@@ -171,15 +171,15 @@ const TopRatedSection = () => {
               </div>
             </div>
           ) : (
-            <div className="deal_of_the_day_content_container">
+            <div className="top_rated_product_container deal_of_the_day_content_container">
               <Link to="/top-rated">
-                <div className="deal_of_the_day_banner">
+                <div className="top_rated_banner deal_of_the_day_banner">
                   <img  src={`${bannerBaseUrl}/${topRatedBannerImg?.value}`} alt="" />
                 </div>
               </Link>
-              <div className="deal_of_the_day_product_content">
-                <div className="deal_of_the_day_product_content_header">
-                  <h4> Top Rated</h4>
+              <div className="top_rated_product_content deal_of_the_day_product_content">
+                <div className="top_rated_product_content_header deal_of_the_day_product_content_header">
+                  <h1> Top Rated</h1>
                   <Link to="/top-rated">
                     <button
                       className="deal_of_the_day_product_view_more_btn"

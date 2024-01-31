@@ -53,7 +53,7 @@ const Login = () => {
   return (
     <>
       <MetaData title="Login - BPPShop" />
-      <div className="row justify-content-center">
+      {/* <div className="row justify-content-center">
         <div className="col-md-6">
           <div className="login_card">
             <div className="card-body">
@@ -129,7 +129,7 @@ const Login = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 };

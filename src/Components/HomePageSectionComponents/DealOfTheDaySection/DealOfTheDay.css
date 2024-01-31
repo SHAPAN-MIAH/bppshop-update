@@ -37,6 +37,9 @@
   border-bottom: 2px solid gainsboro;
   margin: 0px 0px 5px 0px;
 }
+.deal_of_the_day_product_content_header h1{
+  font-size: 1.5rem;
+}
 .deal_of_the_day_product_view_more_btn {
   border: none;
   background: none;

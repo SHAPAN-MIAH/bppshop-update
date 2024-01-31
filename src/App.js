@@ -157,8 +157,8 @@ function App() {
             <Route path="add-new-address" element={<AddNewAddress/>}></Route>
           </Route>
 
-          <Route path="/login" element={<Login />}></Route>
-          <Route path="/signup" element={<SignUp />}></Route>
+          {/* <Route path="/login" element={<Login />}></Route>
+          <Route path="/signup" element={<SignUp />}></Route> */}
           <Route path="/recover-password" element={<ForgetPassWord />}></Route>
           <Route path="/404" element={<PageNotFound />} />
           <Route path="*" element={<navigate to="/404" replace />} />
