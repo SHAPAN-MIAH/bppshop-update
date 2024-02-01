@@ -12,7 +12,7 @@ import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import DiscountProductCard from "../../Cards/DiscountProductCard/DiscountProductCard";
 import DiscountSectionProductCard from "./DiscountSectionProductCard";
 
-const TopRatedSection = () => {
+const DiscountProductSection = () => {
   const [newArrivalProduct, setNewArrivalProduct] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -217,4 +217,4 @@ const TopRatedSection = () => {
   );
 };
 
-export default TopRatedSection;
+export default DiscountProductSection;
