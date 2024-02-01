@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { baseUrl } from "../../../BaseUrl/BaseUrl";
+import { bannerBaseUrl, baseUrl } from "../../../BaseUrl/BaseUrl";
 import "../NewArrivalSection/NewArrivalSection.css";
 import Slider from "react-slick";
 import discountBanner from "../../../Assets/Images/bppshop_banner/discountProduct (1).jpg";
@@ -11,11 +11,17 @@ import NewArrivalSectionProductCard from "../NewArrivalSection/NewArrivalSection
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import DiscountProductCard from "../../Cards/DiscountProductCard/DiscountProductCard";
 import DiscountSectionProductCard from "./DiscountSectionProductCard";
+import { useSelector } from "react-redux";
 
 const DiscountProductSection = () => {
   const [newArrivalProduct, setNewArrivalProduct] = useState([]);
   const [loading, setLoading] = useState(true);
-
+  const discountSectionBannerImg = useSelector((state)=>state?.banners?.banners?.banners?.find(
+    (item) => item?.type === "discount_product"
+  ))
+  const discountSectionBannerPhoneImg = useSelector((state)=>state?.banners?.banners?.banners?.find(
+    (item) => item?.type === "discount_product_mobile_res"
+  ))
   useEffect(() => {
     axios
       .get(`${baseUrl}/products/discounted-product?limit=${16}&offset=${1}`)
@@ -81,7 +87,6 @@ const DiscountProductSection = () => {
       />
     );
   }
-
   function SamplePrevArrow(props) {
     const { className, style, onClick } = props;
     return (
@@ -100,7 +105,6 @@ const DiscountProductSection = () => {
       />
     );
   }
-
   return (
     <>
       <div className="new_arrival_section">
@@ -173,8 +177,8 @@ const DiscountProductSection = () => {
                 <div className="col-md-3">
                 <Link to="/discount-products">
                   <div className="new_arrival_banner">
-                    <img className="img1" src={discountBanner} alt="" />
-                    <img className="img2" src={discountBanner2} alt="" />
+                    <img className="img1" src={`${bannerBaseUrl}/${discountSectionBannerImg?.value}`} alt="" />
+                    <img className="img2" src={`${bannerBaseUrl}/${discountSectionBannerPhoneImg?.value}`} alt="" />
                   </div>
                   </Link>
                 </div>

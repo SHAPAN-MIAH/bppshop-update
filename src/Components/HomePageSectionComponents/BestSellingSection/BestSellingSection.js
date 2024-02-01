@@ -16,7 +16,7 @@ const BestSellingSection = () => {
   const [dealOfDayProduct, setDealOfDayProduct] = useState([]);
   const [loading, setLoading] = useState(true);
   const bestSellingBannerImg = useSelector((state) =>
-    state?.banners?.banners?.sliders?.find(
+    state?.banners?.banners?.banners?.find(
       (item) => item?.type === "best_selling"
     )
   );

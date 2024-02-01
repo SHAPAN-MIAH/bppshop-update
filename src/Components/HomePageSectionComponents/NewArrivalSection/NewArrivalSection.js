@@ -14,8 +14,13 @@ const NewArrivalSection = () => {
   const [newArrivalProduct, setNewArrivalProduct] = useState([]);
   const [loading, setLoading] = useState(true);
   const newArrivalBannerImg = useSelector((state) =>
-    state?.banners?.banners?.sliders?.find(
+    state?.banners?.banners?.banners?.find(
       (item) => item?.type === "new_arrival"
+    )
+  );
+  const newArrivalBannerPhoneImg = useSelector((state) =>
+    state?.banners?.banners?.banners?.find(
+      (item) => item?.type === "new_arrival_mobile_res"
     )
   );
 
@@ -181,7 +186,7 @@ const NewArrivalSection = () => {
                         src={`${bannerBaseUrl}/${newArrivalBannerImg?.value}`}
                         alt=""
                       />
-                      <img className="img2" src={newArrivalBanner2} alt="" />
+                      <img className="img2"  src={`${bannerBaseUrl}/${newArrivalBannerPhoneImg?.value}`} alt="" />
                     </div>
                   </Link>
                 </div>

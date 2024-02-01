@@ -107,8 +107,8 @@ const HotDealsSection = () => {
   const duration = moment.duration(end.diff(now));
 
   console.log(duration._data.seconds);
-  console.log(hotDeals?.hot_deals?.end_date);
-  console.log(timeoutMsgVisible);
+  // console.log(hotDeals?.hot_deals?.end_date);
+  // console.log(timeoutMsgVisible);
 
   return (
     <>

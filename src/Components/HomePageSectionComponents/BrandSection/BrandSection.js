@@ -16,7 +16,7 @@ const BrandSection = () => {
   const { banners } = useSelector((state) => state?.banners);
 
   // console.log(banners.sliders);
-  const homeBannerOneImg = banners?.sliders?.find(
+  const homeBannerOneImg = banners?.banners?.find(
     (item) => item?.type === "home_banner_one"
   );
   // console.log(homeBannerOneImg);
