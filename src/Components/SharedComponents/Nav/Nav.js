@@ -324,6 +324,7 @@ const Nav = () => {
                   type="button"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
+
                 >
                   {/* {user.image ? (
                     <img
@@ -365,7 +366,7 @@ const Nav = () => {
                     </div>
                     <hr />
                     <Link to="/profile">
-                      <li className="dropdown-item mt-1">View Profile</li>
+                      <li className="dropdown-item mt-1" >View Profile</li>
                     </Link>
 
                     <li

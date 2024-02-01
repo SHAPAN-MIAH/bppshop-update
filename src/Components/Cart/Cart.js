@@ -1,6 +1,8 @@
 import React from "react";
 import "./Cart.css";
 import { useSelector } from "react-redux";
+import { CiShoppingCart } from "react-icons/ci";
+import ResponsiveSidebar from "../SharedComponents/Sidebar/ResponsiveSidebar";
 
 const Cart = () => {
   const cartItems = useSelector((state) => {
@@ -24,13 +26,24 @@ const Cart = () => {
     );
   };
 
+
+
+
+
   return (
     <>
       <div className="cart">
-        <button className="start-shopping-btn ">Start Shopping</button>
+        {/* <button className="start-shopping-btn">Categories</button> */}
+       
+        <label
+          htmlFor="openSidebarMenu"
+          className="start-shopping-btn sidebarIconToggle"
+        >
+          Categories
+        </label>
         <div onClick={CartDetailsViewHandler}>
-          {/* <div className="cartIcon"> */}
-            <i className="bi bi-cart3"></i>
+          <div className="cartIcon">
+            <CiShoppingCart />
 
             <span className="itemsForFullScreen">
               {cartItems?.[0]?.data?.length ? cartItems?.[0]?.data?.length : 0}{" "}
@@ -40,7 +53,7 @@ const Cart = () => {
               {" "}
               {cartItems?.[0]?.data?.length ? cartItems?.[0]?.data?.length : 0}
             </span>
-          {/* </div> */}
+          </div>
 
           <div className="cartTotalPrice">
             <small>

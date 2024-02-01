@@ -40,33 +40,6 @@ const ResponsiveSidebar = () => {
     return activeSubSubMenu === subsubcategory;
   };
 
-  // const sidebarOpenHandler = () => {
-  //   const sidebarMenu = document.querySelector("#sidebarMenu");
-  //   const openSidebarIconToggle = document.querySelector(
-  //     ".openSidebarIconToggle"
-  //   );
-  //   const closeSidebarIconToggle = document.querySelector(
-  //     ".closeSidebarIconToggle"
-  //   );
-
-  //   sidebarMenu.style.transform = "translateX(0px)";
-  //   closeSidebarIconToggle.style.display = "block";
-  //   openSidebarIconToggle.style.display = "none";
-  // };
-
-  // const sidebarCloseHandler = () => {
-  //   const sidebarMenu = document.querySelector("#sidebarMenu");
-  //   const openSidebarIconToggle = document.querySelector(
-  //     ".openSidebarIconToggle"
-  //   );
-  //   const closeSidebarIconToggle = document.querySelector(
-  //     ".closeSidebarIconToggle"
-  //   );
-
-  //   sidebarMenu.style.transform = "translateX(-300px)";
-  //   closeSidebarIconToggle.style.display = "none";
-  //   openSidebarIconToggle.style.display = "block";
-  // };
 
   const activeViewHandler = () => {
     setActiveSubSubMenu("");
@@ -79,7 +52,7 @@ const ResponsiveSidebar = () => {
       <div className="responsive_sidebar_section">
         <input type="checkbox" name="" id="openSidebarMenu" />
         <label htmlFor="openSidebarMenu" className="sidebarIconToggle">
-          <i className="bi bi-list"></i>
+          {/* <i className="bi bi-list"></i> */}
         </label>
         <div id="responsiveSidebarMenu">
           <ul className="responsive_menu">

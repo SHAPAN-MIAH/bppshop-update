@@ -60,7 +60,7 @@ const HeaderShowcaseSection = () => {
 
   const [sliderBanners, setSliderBanners] = useState([]);
 
-  console.log(sliderBanners);
+  // console.log(sliderBanners);
 
   useEffect(() => {
     axios.get(`${baseUrl}/banners?type=sliders_for_web`).then((response) => {
