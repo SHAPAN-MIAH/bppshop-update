@@ -35,9 +35,10 @@ import Modal from "react-modal";
 import LoginModal from "../../../Pages/User/Login/LoginModal";
 import SignUpModal from "../../../Pages/User/SignUp/SignUpModal";
 import ResponsiveSidebar from "../Sidebar/ResponsiveSidebar";
-import partnerIcon from "../../../Assets/Images/PngItem_786610.png";
+import partnerIcon from "../../../Assets/Images/PartnerPortal.png";
 // import { LuUser2 } from "react-icons/lu";
 import { LuHeartHandshake, LuUser, LuUsers } from "react-icons/lu";
+import { FaRegHandshake } from "react-icons/fa";
 import { CiLogin } from "react-icons/ci";
 import { SiGnuprivacyguard } from "react-icons/si";
 import { MdOutlineHandshake } from "react-icons/md";
@@ -97,7 +98,7 @@ const Nav = () => {
   const [modalIsOpen, setIsOpen] = React.useState(false);
   function openModal() {
     setIsOpen(true);
-    CartDetailsCloseHandler()
+    CartDetailsCloseHandler();
   }
   function closeModal() {
     setIsOpen(false);
@@ -292,7 +293,7 @@ const Nav = () => {
                 </div>
               )}
             </div>
-            <div className="d-flex align-items-center">
+            <div className="d-flex align-items-center mt-1">
               <div className="partner_zone">
                 <div
                   className="partner_zone_dropdown_btn"
@@ -300,14 +301,13 @@ const Nav = () => {
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  <span>
+                  <span className="partner_icon1">
                     Partner Zone <i className="bi bi-chevron-down"></i>
                   </span>
-
+                  <span className="partner_icon2">
+                    <LuHeartHandshake />
+                  </span>
                   {/* <img width={30} src={partnerIcon} alt="" /> */}
-
-                  {/* <LuUsers /> */}
-                  {/* <LuHeartHandshake /> */}
                 </div>
                 <div className="dropdown-menu partner_zone_dropdown">
                   <a href="https://backend.bppshop.com.bd/shop/apply">
@@ -324,17 +324,8 @@ const Nav = () => {
                   type="button"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
-
                 >
-                  {/* {user.image ? (
-                    <img
-                      src={`https://backend.bppshop.com.bd/storage/${user.image}`}
-                      alt="profile"
-                    />
-                  ) : ( */}
-                  {/* <img src={defaultAvatar} alt="profile" /> */}
                   <LuUser />
-                  {/* )}  */}
                 </div>
                 {token ? (
                   <div className="dropdown-menu profile_dropdown">
@@ -366,7 +357,7 @@ const Nav = () => {
                     </div>
                     <hr />
                     <Link to="/profile">
-                      <li className="dropdown-item mt-1" >View Profile</li>
+                      <li className="dropdown-item mt-1">View Profile</li>
                     </Link>
 
                     <li
