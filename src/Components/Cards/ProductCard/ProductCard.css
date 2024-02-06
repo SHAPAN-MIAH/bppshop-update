@@ -285,6 +285,8 @@
     display: block;
     cursor: pointer;
   }
+
+  
 }
 
 @media screen and (max-width: 730px) {
