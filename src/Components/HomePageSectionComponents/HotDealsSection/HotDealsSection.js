@@ -141,7 +141,7 @@ const HotDealsSection = () => {
                       count={1}
                     />
                   </div>
-                  <div className="d-flex justify-content-between">
+                  <div className="deals_product_skeleton">
                     <Skeleton
                       height="280px"
                       width="200px"
