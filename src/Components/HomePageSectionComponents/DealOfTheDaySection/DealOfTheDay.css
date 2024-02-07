@@ -82,11 +82,11 @@
     grid-gap: 15px;
     overflow: hidden;
   }
-  .deals_product_skeleton{
+  /* .deals_product_skeleton{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 10px;
-  }
+  } */
   /* d-flex justify-content-between */
   /* .deal_of_the_day_banner{
     width: 100%;

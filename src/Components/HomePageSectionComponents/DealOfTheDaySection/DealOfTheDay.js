@@ -12,6 +12,13 @@ const DealOfTheDay = () => {
   const [dealOfDayProduct, setDealOfDayProduct] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const [screenSize, setScreenSize] = useState({ width: window.innerWidth });
+  const handleResize = () => {
+    setScreenSize({ width: window.innerWidth });
+  };
+
+  console.log(screenSize);
+  
   useEffect(() => {
     axios
       .get(`${baseUrl}/dealsoftheday/deal-of-the-day?limit=${16}&offset=${1}`)
@@ -19,6 +26,16 @@ const DealOfTheDay = () => {
         response && setLoading(false);
         setDealOfDayProduct(response?.data);
       });
+  }, []);
+
+  useEffect(() => {
+    // Add event listener to update screen size on resize
+    window.addEventListener("resize", handleResize);
+
+    // Clean up the event listener on component unmount
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   const settings = {
@@ -104,12 +121,16 @@ const DealOfTheDay = () => {
         <SkeletonTheme baseColor="rgb(220, 220, 220)" highlightColor="#e3e3e3">
           {loading ? (
             <div className=" d-flex">
-              <Skeleton
-                height="335px"
-                width="250px"
-                borderRadius="10px"
-                count={1}
-              />
+              {screenSize.width > 768 ? (
+                <Skeleton
+                  height="335px"
+                  width="250px"
+                  borderRadius="10px"
+                  count={1}
+                />
+              ) : (
+                ""
+              )}
               <div style={{ marginLeft: "22px" }}>
                 <div className="d-flex justify-content-between">
                   <Skeleton
@@ -125,43 +146,44 @@ const DealOfTheDay = () => {
                     count={1}
                   />
                 </div>
-                <div className="deals_product_skeleton">
+                 <div className="deals_product_skeleton d-flex justify-content-between">
                   <Skeleton
                     height="280px"
-                    width="200px"
+                    width={screenSize.width > 768 ? `200px` : "250px"}
                     style={{ marginTop: "15px" }}
                     borderRadius="10px"
                     count={1}
                   />
                   <Skeleton
                     height="280px"
-                    width="200px"
+                    width={screenSize.width > 768 ? `200px` : "250px"}
                     style={{ marginTop: "15px", marginLeft: "12px" }}
                     borderRadius="10px"
                     count={1}
                   />
                   <Skeleton
                     height="280px"
-                    width="200px"
+                    width={screenSize.width > 768 ? `200px` : "250px"  }
                     style={{ marginTop: "15px", marginLeft: "12px" }}
                     borderRadius="10px"
                     count={1}
                   />
                   <Skeleton
                     height="280px"
-                    width="200px"
+                    width={screenSize.width > 576 ? `200px` : "0px"}
                     style={{ marginTop: "15px", marginLeft: "12px" }}
                     borderRadius="10px"
                     count={1}
                   />
                   <Skeleton
                     height="280px"
-                    width="200px"
+                    width={screenSize.width > 576 ? `200px` : "0px"}
                     style={{ marginTop: "15px", marginLeft: "12px" }}
                     borderRadius="10px"
                     count={1}
                   />
-                </div>
+                </div> 
+               
               </div>
             </div>
           ) : (

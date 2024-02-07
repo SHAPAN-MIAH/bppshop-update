@@ -267,7 +267,7 @@ const DealOfTheDayProductCard = ({ product, setImg }) => {
               <div className="product-card-body-content">
                 {/* <small>{name.toString().substring(0, 23)}...</small> */}
                 {
-                  screenSize.width >650? <small>{name.toString().substring(0, 23)}...</small>:  <small>{name.toString().substring(0, 10)}...</small>
+                  screenSize.width >768? <small>{name.toString().substring(0, 23)}...</small>:  <small>{name.toString().substring(0, 10)}...</small>
                   
                 }
                
