@@ -74,7 +74,10 @@ const DealOfTheDayProductCard = ({ product, setImg }) => {
     reviews_count,
     rating,
   } = product;
-
+  const [screenSize, setScreenSize] = useState({ width: window.innerWidth});
+  const handleResize = () => {
+    setScreenSize({ width: window.innerWidth });
+  };
   const newChoiceOption = product?.choice_options?.find((option) => option);
   const [quantity, setQuantity] = useState(1);
 
@@ -102,7 +105,15 @@ const DealOfTheDayProductCard = ({ product, setImg }) => {
       // }
     }
   }, [isAuthenticated, modalLogin]);
+  useEffect(() => {
+    // Add event listener to update screen size on resize
+    window.addEventListener('resize', handleResize);
 
+    // Clean up the event listener on component unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
   // add to cart after login response......
   // const addToCartAfterLoginRes = () => {
   //   const choice_options = cartItemBeforeLogin[0]?.product?.choice_options;
@@ -235,6 +246,7 @@ const DealOfTheDayProductCard = ({ product, setImg }) => {
   const imgReset = () => {
     setImg("");
   };
+  console.log(screenSize.width);
   return (
     <>
       <div className="product_card_content" onClick={imgReset}>
@@ -253,7 +265,12 @@ const DealOfTheDayProductCard = ({ product, setImg }) => {
                 )}
               </div>
               <div className="product-card-body-content">
-                <small>{name.toString().substring(0, 23)}...</small>
+                {/* <small>{name.toString().substring(0, 23)}...</small> */}
+                {
+                  screenSize.width >650? <small>{name.toString().substring(0, 23)}...</small>:  <small>{name.toString().substring(0, 10)}...</small>
+                  
+                }
+               
                 <br />
                 <div className="product-card-body-content-unit-price">
                   <small>
