@@ -47,7 +47,9 @@
     grid-gap: 0px;
     overflow: hidden;
   }
-  
+  .slick-current{
+    object-fit: cover;
+  }
   .header_showcase_section_container > *:nth-child(2) {
     grid-column: span 4;
   }
