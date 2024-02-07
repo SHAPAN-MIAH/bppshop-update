@@ -114,7 +114,7 @@ const HotDealsSection = () => {
     <>
       {!timeoutMsgVisible && (
         <div className="deal_of_the_day_container">
-          <SkeletonTheme
+          {/* <SkeletonTheme
             baseColor="rgb(220, 220, 220)"
             highlightColor="#e3e3e3"
           >
@@ -180,7 +180,7 @@ const HotDealsSection = () => {
                   </div>
                 </div>
               </div>
-            ) : (
+            ) : ( */}
               <div className="deal_of_the_day_content_container">
                 <Link to="/hot-deals">
                   <div className="deal_of_the_day_banner">
@@ -223,8 +223,8 @@ const HotDealsSection = () => {
                   </Slider>
                 </div>
               </div>
-            )}
-          </SkeletonTheme>
+            {/* )} */}
+          {/* </SkeletonTheme> */}
         </div>
       )}
     </>

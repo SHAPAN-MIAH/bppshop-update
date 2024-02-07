@@ -4,8 +4,19 @@ import Slider from "react-slick";
 import "./HeaderShowcaseSection.css";
 import axios from "axios";
 import { baseUrl } from "../../../BaseUrl/BaseUrl";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
 const HeaderShowcaseSection = () => {
+  const [sliderBanners, setSliderBanners] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    axios.get(`${baseUrl}/banners?type=sliders_for_web`).then((response) => {
+      setLoading(false);
+      setSliderBanners(response?.data?.sliders);
+    });
+  }, []);
+
   const settings = {
     dots: true,
     infinite: true,
@@ -58,16 +69,6 @@ const HeaderShowcaseSection = () => {
     );
   }
 
-  const [sliderBanners, setSliderBanners] = useState([]);
-
-  // console.log(sliderBanners);
-
-  useEffect(() => {
-    axios.get(`${baseUrl}/banners?type=sliders_for_web`).then((response) => {
-      setSliderBanners(response?.data?.sliders);
-    });
-  }, []);
-
   return (
     <>
       <div className="header_showcase_section">
@@ -76,14 +77,23 @@ const HeaderShowcaseSection = () => {
             <Sidebar />
           </div>
           <div className="header_showcase_section_banner">
-            <Slider {...settings} className="slider">
-              {sliderBanners && sliderBanners?.map((banner) => (
-                <img
-                  src={`https://backend.bppshop.com.bd/storage/slider/${banner}`}
-                  alt="slider"
-                />
-              ))}
-            </Slider>
+            <SkeletonTheme baseColor="#DDDDDD" highlightColor="#e3e3e3">
+              {loading ? (
+                <>
+                  <Skeleton height="400px" borderRadius="10px" count={1} />
+                </>
+              ) : (
+                <Slider {...settings} className="slider">
+                  {sliderBanners &&
+                    sliderBanners?.map((banner) => (
+                      <img
+                        src={`https://backend.bppshop.com.bd/storage/slider/${banner}`}
+                        alt="slider"
+                      />
+                    ))}
+                </Slider>
+              )}
+            </SkeletonTheme>
           </div>
         </div>
       </div>
