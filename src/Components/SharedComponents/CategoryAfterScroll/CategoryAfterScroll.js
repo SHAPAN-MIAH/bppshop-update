@@ -1,7 +1,7 @@
 import React from "react";
 import "./CategoryAfterScroll.css";
 import Sidebar from "../Sidebar/Sidebar";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const CategoryAfterScroll = () => {
   window.onscroll = function () {
@@ -65,24 +65,57 @@ const CategoryAfterScroll = () => {
             </div>
           </div>
           <ul className="after_scroll_category_nav">
-            <Link to="/new-arrival">
+            {/* <Link to="/new-arrival">
               <li>New Arrival Product</li>
-            </Link>
-            <Link to="/best-selling">
+            </Link> */}
+            <NavLink
+              to="/new-arrival"
+              className={({ isActive, isPending }) =>
+                isPending ? "pending" : isActive ? "active" : ""
+              }
+            >
+              <li>New Arrival Product</li>
+            </NavLink>
+            <NavLink
+              to="/best-selling"
+              className={({ isActive, isPending }) =>
+                isPending ? "pending" : isActive ? "active" : ""
+              }
+            >
               <li>Best Selling Product</li>
-            </Link>
-            <Link to="/discount-products">
+            </NavLink>
+            <NavLink
+              to="/discount-products"
+              className={({ isActive, isPending }) =>
+                isPending ? "pending" : isActive ? "active" : ""
+              }
+            >
               <li>Discount Product</li>
-            </Link>
-            <Link to="/top-rated">
+            </NavLink>
+            <NavLink
+              to="/top-rated"
+              className={({ isActive, isPending }) =>
+                isPending ? "pending" : isActive ? "active" : ""
+              }
+            >
               <li>Top Rated Product</li>
-            </Link>
-            <Link to="/brands">
+            </NavLink>
+            <NavLink
+              to="/brands"
+              className={({ isActive, isPending }) =>
+                isPending ? "pending" : isActive ? "active" : ""
+              }
+            >
               <li>Brands</li>
-            </Link>
-            <Link to="/sellers-store">
+            </NavLink>
+            <NavLink
+              to="/sellers-store"
+              className={({ isActive, isPending }) =>
+                isPending ? "pending" : isActive ? "active" : ""
+              }
+            >
               <li>Store</li>
-            </Link>
+            </NavLink>
           </ul>
         </div>
       </div>
