@@ -22,7 +22,7 @@
 }
 .productImg_container {
   width: 100%;
-  height: 200px;
+  height: auto;
 }
 .product-card-body img {
   width: 100%;

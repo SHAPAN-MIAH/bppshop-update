@@ -47,6 +47,10 @@ const AllProductsCard = ({ product, setImg }) => {
     };
   }
 
+  const [screenSize, setScreenSize] = useState({ width: window.innerWidth});
+  const handleResize = () => {
+    setScreenSize({ width: window.innerWidth });
+  };
   const [modalIsOpen, setIsOpen] = React.useState(false);
   function openModal() {
     setIsOpen(true);
@@ -99,6 +103,16 @@ const AllProductsCard = ({ product, setImg }) => {
       }
     }
   }, [isAuthenticated, modalLogin]);
+
+  useEffect(() => {
+    // Add event listener to update screen size on resize
+    window.addEventListener('resize', handleResize);
+
+    // Clean up the event listener on component unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   // add to cart after login response......
   const addToCartAfterLoginRes = () => {
@@ -236,7 +250,11 @@ const AllProductsCard = ({ product, setImg }) => {
                 )}
               </div>
               <div className="product-card-body-content">
-                <small>{name.toString().substring(0, 23)}...</small>
+                {/* <small>{name.toString().substring(0, 23)}...</small> */}
+
+                {
+                  screenSize.width >650? <small>{name.toString().substring(0, 23)}...</small>:  <small>{name.toString().substring(0, 10)}...</small>
+                }
                 <br />
                 <div className="product-card-body-content-unit-price">
                   <small>
