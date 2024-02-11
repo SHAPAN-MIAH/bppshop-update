@@ -46,6 +46,8 @@ const NewArrivalProductCard = ({ product, setImg }) => {
       },
     };
   }
+  
+
   const [modalIsOpen, setIsOpen] = React.useState(false);
   function openModal() {
     setIsOpen(true);
@@ -98,6 +100,7 @@ const NewArrivalProductCard = ({ product, setImg }) => {
       // }
     }
   }, [isAuthenticated, modalLogin]);
+  
 
   // add to cart after login response......
   // const addToCartAfterLoginRes = () => {
@@ -260,6 +263,7 @@ const NewArrivalProductCard = ({ product, setImg }) => {
               <div className="product-card-body-content">
                 
                 <small>{name.toString().substring(0, 23)}...</small>
+               
                 <br />
                 <div className="product-card-body-content-unit-price">
                 <small>
