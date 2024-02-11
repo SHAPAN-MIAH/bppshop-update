@@ -74,7 +74,9 @@
 .after_scroll_category_nav li:hover {
   color: #ff8800;
 }
-
+.active li{
+  color: #ff8800;
+}
 @media screen and (max-width: 1200px) {
   .category_after_scroll_section_container {
     width: 1140px;
