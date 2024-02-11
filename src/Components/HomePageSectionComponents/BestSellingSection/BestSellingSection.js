@@ -13,7 +13,7 @@ import { useSelector } from "react-redux";
 // import BestSellingProductCard from "../../../Pages/BestSelling/BestSellingProductCard";
 
 const BestSellingSection = () => {
-  const [dealOfDayProduct, setDealOfDayProduct] = useState([]);
+  const [bestSellingProduct, setBestSellingProduct] = useState([]);
   const [loading, setLoading] = useState(true);
   const bestSellingBannerImg = useSelector((state) =>
     state?.banners?.banners?.banners?.find(
@@ -26,7 +26,7 @@ const BestSellingSection = () => {
       .get(`${baseUrl}/products/best-sellings?limit=${16}&offset=${1}`)
       .then((response) => {
         response && setLoading(false);
-        setDealOfDayProduct(response.data.products);
+        setBestSellingProduct(response.data.products);
       });
   }, []);
 
@@ -196,7 +196,7 @@ const BestSellingSection = () => {
                   </Link>
                 </div>
                 <Slider {...settings}>
-                  {dealOfDayProduct?.map((product) => (
+                  {bestSellingProduct?.map((product) => (
                     <div className="p-1">
                       <BestSellingProductCard
                         key={product?.id}

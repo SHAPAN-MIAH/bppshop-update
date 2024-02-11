@@ -246,7 +246,7 @@ const DealOfTheDayProductCard = ({ product, setImg }) => {
   const imgReset = () => {
     setImg("");
   };
-  console.log(screenSize.width);
+  // console.log(screenSize.width);
   return (
     <>
       <div className="product_card_content" onClick={imgReset}>

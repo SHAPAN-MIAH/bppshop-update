@@ -17,7 +17,7 @@ const DealOfTheDay = () => {
     setScreenSize({ width: window.innerWidth });
   };
 
-  console.log(screenSize);
+  // console.log(screenSize);
   
   useEffect(() => {
     axios
