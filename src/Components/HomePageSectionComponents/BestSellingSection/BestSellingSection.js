@@ -185,7 +185,7 @@ const BestSellingSection = () => {
               </Link>
               <div className="deal_of_the_day_product_content">
                 <div className="deal_of_the_day_product_content_header">
-                  <h4>Best Selling Product</h4>
+                  <h1>Best Selling Product</h1>
                   <Link to="./best-selling">
                     <button
                       className="deal_of_the_day_product_view_more_btn"

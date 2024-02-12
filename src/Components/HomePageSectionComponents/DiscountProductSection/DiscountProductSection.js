@@ -185,7 +185,7 @@ const DiscountProductSection = () => {
                 <div className="col-md-9">
                   <div>
                     <div className="new_arrival_section_product_content_header">
-                      <h4>Discount Product</h4>
+                      <h1>Discount Product</h1>
                       <Link to="/discount-products">
                         <button
                           className="new_arrival_section_product_view_more_btn"

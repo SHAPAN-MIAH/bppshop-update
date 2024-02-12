@@ -100,7 +100,7 @@ const HotDealsSection = () => {
   }
 
   // const startTime = "2024-01-20T24:00:00.000000Z";
-  // const endTime = "2024-01-24T18:00:00.000000Z";
+  // const end = "2024-02-24T20:00:00.000000Z";
 
   const now = moment();
   const end = moment(hotDeals?.hot_deals?.end_date);
