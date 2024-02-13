@@ -232,6 +232,9 @@
 }
 
 @media screen and (max-width: 768px) {
+  .productImg_container{
+    height: auto;
+  }
   .product-card-body {
     height: auto;
     padding: 5px;

@@ -110,6 +110,14 @@ const NewArrivalSection = () => {
     );
   }
 
+
+  //onclick place order go to top of the page
+  const nextPageScrollOnTop = () => {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  };
+
+  
   return (
     <>
       <div className="new_arrival_section">
@@ -181,7 +189,7 @@ const NewArrivalSection = () => {
               <div className="row">
                 <div className="col-md-3">
                   <Link to="/new-arrival">
-                    <div className="new_arrival_banner">
+                    <div className="new_arrival_banner" onClick={nextPageScrollOnTop}>
                       <img
                         className="img1"
                         src={`${bannerBaseUrl}/${newArrivalBannerImg?.value}`}
@@ -199,6 +207,7 @@ const NewArrivalSection = () => {
                         <button
                           className="new_arrival_section_product_view_more_btn"
                           type=""
+                          onClick={nextPageScrollOnTop}
                         >
                           View More
                         </button>

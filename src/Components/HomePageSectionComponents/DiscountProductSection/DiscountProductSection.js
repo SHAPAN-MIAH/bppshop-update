@@ -16,12 +16,16 @@ import { useSelector } from "react-redux";
 const DiscountProductSection = () => {
   const [newArrivalProduct, setNewArrivalProduct] = useState([]);
   const [loading, setLoading] = useState(true);
-  const discountSectionBannerImg = useSelector((state)=>state?.banners?.banners?.banners?.find(
-    (item) => item?.type === "discount_product"
-  ))
-  const discountSectionBannerPhoneImg = useSelector((state)=>state?.banners?.banners?.banners?.find(
-    (item) => item?.type === "discount_product_mobile_res"
-  ))
+  const discountSectionBannerImg = useSelector((state) =>
+    state?.banners?.banners?.banners?.find(
+      (item) => item?.type === "discount_product"
+    )
+  );
+  const discountSectionBannerPhoneImg = useSelector((state) =>
+    state?.banners?.banners?.banners?.find(
+      (item) => item?.type === "discount_product_mobile_res"
+    )
+  );
   useEffect(() => {
     axios
       .get(`${baseUrl}/products/discounted-product?limit=${16}&offset=${1}`)
@@ -105,6 +109,14 @@ const DiscountProductSection = () => {
       />
     );
   }
+
+  //onclick place order go to top of the page
+  const nextPageScrollOnTop = () => {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  };
+
+
   return (
     <>
       <div className="new_arrival_section">
@@ -175,21 +187,30 @@ const DiscountProductSection = () => {
             ) : (
               <div className="row">
                 <div className="col-md-3">
-                <Link to="/discount-products">
-                  <div className="new_arrival_banner">
-                    <img className="img1" src={`${bannerBaseUrl}/${discountSectionBannerImg?.value}`} alt="" />
-                    <img className="img2" src={`${bannerBaseUrl}/${discountSectionBannerPhoneImg?.value}`} alt="" />
-                  </div>
+                  <Link to="/discount-products">
+                    <div className="new_arrival_banner" onClick={nextPageScrollOnTop}>
+                      <img
+                        className="img1"
+                        src={`${bannerBaseUrl}/${discountSectionBannerImg?.value}`}
+                        alt=""
+                      />
+                      <img
+                        className="img2"
+                        src={`${bannerBaseUrl}/${discountSectionBannerPhoneImg?.value}`}
+                        alt=""
+                      />
+                    </div>
                   </Link>
                 </div>
                 <div className="col-md-9">
                   <div>
                     <div className="new_arrival_section_product_content_header">
-                      <h4>Discount Product</h4>
+                      <h1>Discount Product</h1>
                       <Link to="/discount-products">
                         <button
                           className="new_arrival_section_product_view_more_btn"
                           type=""
+                          onClick={nextPageScrollOnTop}
                         >
                           View More
                         </button>

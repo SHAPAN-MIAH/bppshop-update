@@ -107,6 +107,15 @@ const BestSellingSection = () => {
     );
   }
 
+
+  //onclick place order go to top of the page
+  const nextPageScrollOnTop = () => {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  };
+
+  
+
   return (
     <>
       <div className="deal_of_the_day_container">
@@ -176,7 +185,7 @@ const BestSellingSection = () => {
           ) : (
             <div className="deal_of_the_day_content_container">
               <Link to="./best-selling">
-                <div className="deal_of_the_day_banner">
+                <div className="deal_of_the_day_banner" onClick={nextPageScrollOnTop}>
                   <img
                     src={`${bannerBaseUrl}/${bestSellingBannerImg?.value}`}
                     alt=""
@@ -185,11 +194,12 @@ const BestSellingSection = () => {
               </Link>
               <div className="deal_of_the_day_product_content">
                 <div className="deal_of_the_day_product_content_header">
-                  <h4>Best Selling Product</h4>
+                  <h1>Best Selling Product</h1>
                   <Link to="./best-selling">
                     <button
                       className="deal_of_the_day_product_view_more_btn"
                       type=""
+                      onClick={nextPageScrollOnTop}
                     >
                       View More
                     </button>
