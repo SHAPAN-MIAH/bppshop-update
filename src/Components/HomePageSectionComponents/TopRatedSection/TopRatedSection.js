@@ -20,7 +20,7 @@ const TopRatedSection = () => {
 
   useEffect(() => {
     axios
-      .get(`${baseUrl}/products/top-rated?limit=${30}&offset=${1}`)
+      .get(`${baseUrl}/products/top-rated?limit=${16}&offset=${1}`)
       .then((response) => {
         response && setLoading(false);
         setDealOfDayProduct(response.data.products);
@@ -104,6 +104,13 @@ const TopRatedSection = () => {
     );
   }
 
+   //onclick place order go to top of the page
+   const nextPageScrollOnTop = () => {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  };
+
+
   return (
     <>
       <div className="deal_of_the_day_container">
@@ -173,7 +180,7 @@ const TopRatedSection = () => {
           ) : (
             <div className="top_rated_product_container deal_of_the_day_content_container">
               <Link to="/top-rated">
-                <div className="top_rated_banner deal_of_the_day_banner">
+                <div className="top_rated_banner deal_of_the_day_banner" onClick={nextPageScrollOnTop}>
                   <img  src={`${bannerBaseUrl}/${topRatedBannerImg?.value}`} alt="" />
                 </div>
               </Link>
@@ -184,6 +191,7 @@ const TopRatedSection = () => {
                     <button
                       className="deal_of_the_day_product_view_more_btn"
                       type=""
+                      onClick={nextPageScrollOnTop}
                     >
                       View More
                     </button>
