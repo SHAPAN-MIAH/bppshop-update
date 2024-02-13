@@ -101,6 +101,14 @@ const HotDealsSection = () => {
     );
   }
 
+  //onclick place order go to top of the page
+  const nextPageScrollOnTop = () => {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  };
+
+  
+
   return (
     <>
       {hotDeals?.hot_deals?.end_date && (
@@ -175,7 +183,7 @@ const HotDealsSection = () => {
           {
             <div className="deal_of_the_day_content_container">
               <Link to="/hot-deals">
-                <div className="deal_of_the_day_banner">
+                <div className="deal_of_the_day_banner" onClick={nextPageScrollOnTop}>
                   {
                     <img
                       className="img1"
@@ -198,6 +206,7 @@ const HotDealsSection = () => {
                       <button
                         className="deal_of_the_day_product_view_more_btn"
                         type=""
+                        onClick={nextPageScrollOnTop}
                       >
                         View More
                       </button>
