@@ -6,16 +6,24 @@ const Timer = ({ endDate, startDate }) => {
   const [timeRemaining, setTimeRemaining] = useState(calculateTimeRemaining());
 
   useEffect(() => {
+
     const timerInterval = setInterval(() => {
       setTimeRemaining(calculateTimeRemaining());
-
-      clearInterval(timerInterval);
+      if (
+        timeRemaining.days <= 0 &&
+        timeRemaining.hours <= 0 &&
+        timeRemaining.minutes <= 0 &&
+        timeRemaining.seconds <= 0
+      ) {
+        clearInterval(timerInterval);
+     
+      }
     }, 1000);
     return () => clearInterval(timerInterval);
   }, [startDate, endDate]);
-
   function calculateTimeRemaining() {
     const now = moment();
+    const start = moment(startDate);
     const end = moment(endDate);
     const diff = end.diff(now);
     const duration = moment.duration(diff);
@@ -31,6 +39,7 @@ const Timer = ({ endDate, startDate }) => {
       seconds,
     };
   }
+
   return (
     <div className="timer_container">
       <h5>Ending in </h5>
