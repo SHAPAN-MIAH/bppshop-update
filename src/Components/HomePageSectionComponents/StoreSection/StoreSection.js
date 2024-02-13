@@ -39,10 +39,16 @@ const StoreSection = () => {
     localStorage.setItem("sellerName", sellerName);
   };
 
+  //onclick place order go to top of the page
+  const nextPageScrollOnTop = () => {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  };
+
   return (
     <div className="store_section ">
       <div className="brand_section_container">
-        <div className="brand_section_ad_banner">
+        <div className="brand_section_ad_banner" onClick={nextPageScrollOnTop}>
           <img src={`${bannerBaseUrl}/${storBannerOneImg?.value}`}  alt="" />
         </div>
         <br />
@@ -50,7 +56,7 @@ const StoreSection = () => {
         <div className="brand_section_content_container_header">
           <h3>Store</h3>
           <Link to="/sellers-store">
-            <button className="brand_section_content_view_more_btn" type="">
+            <button className="brand_section_content_view_more_btn" type="" onClick={nextPageScrollOnTop}>
               View More
             </button>
           </Link>
@@ -82,7 +88,7 @@ const StoreSection = () => {
                     SellerNameSave(sellerStore?.name);
                   }}
                 >
-                  <div className="seller_store_section_content">
+                  <div className="seller_store_section_content" onClick={nextPageScrollOnTop}>
                     {sellerStore?.banner == "def.png" ? (
                       <img src={coverImg} alt="" />
                     ) : (

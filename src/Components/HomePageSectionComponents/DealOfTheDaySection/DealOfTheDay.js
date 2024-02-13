@@ -18,7 +18,7 @@ const DealOfTheDay = () => {
   };
 
   // console.log(screenSize);
-  
+
   useEffect(() => {
     axios
       .get(`${baseUrl}/dealsoftheday/deal-of-the-day?limit=${16}&offset=${1}`)
@@ -115,6 +115,12 @@ const DealOfTheDay = () => {
     );
   }
 
+  //onclick place order go to top of the page
+  const nextPageScrollOnTop = () => {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  };
+
   return (
     <>
       <div className="deal_of_the_day_container">
@@ -146,7 +152,7 @@ const DealOfTheDay = () => {
                     count={1}
                   />
                 </div>
-                 <div className="deals_product_skeleton d-flex justify-content-between">
+                <div className="deals_product_skeleton d-flex justify-content-between">
                   <Skeleton
                     height="280px"
                     width={screenSize.width > 768 ? `200px` : "250px"}
@@ -163,7 +169,7 @@ const DealOfTheDay = () => {
                   />
                   <Skeleton
                     height="280px"
-                    width={screenSize.width > 768 ? `200px` : "250px"  }
+                    width={screenSize.width > 768 ? `200px` : "250px"}
                     style={{ marginTop: "15px", marginLeft: "12px" }}
                     borderRadius="10px"
                     count={1}
@@ -182,14 +188,13 @@ const DealOfTheDay = () => {
                     borderRadius="10px"
                     count={1}
                   />
-                </div> 
-               
+                </div>
               </div>
             </div>
           ) : (
             <div className="deal_of_the_day_content_container">
               <Link to="/deals-of-the-day">
-                <div className="deal_of_the_day_banner">
+                <div className="deal_of_the_day_banner" onClick={nextPageScrollOnTop}>
                   {
                     <img
                       className="img1"
@@ -206,6 +211,7 @@ const DealOfTheDay = () => {
                     <button
                       className="deal_of_the_day_product_view_more_btn"
                       type=""
+                      onClick={nextPageScrollOnTop}
                     >
                       View More
                     </button>
