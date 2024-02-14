@@ -16,7 +16,7 @@ const HotDealsSection = () => {
 
   useEffect(() => {
     axios
-      .get(`${baseUrl}/flash-deals/products?limit=${6}&offset=${1}`)
+      .get(`${baseUrl}/flash-deals/products?limit=${7}&offset=${1}`)
       .then((response) => {
         setLoading(false);
         SetHotDeals(response?.data);
@@ -26,7 +26,7 @@ const HotDealsSection = () => {
   }, []);
   const settings = {
     infinite: true,
-    slidesToShow: 5,
+    slidesToShow: 6,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3000,
@@ -181,8 +181,8 @@ const HotDealsSection = () => {
               </div>
             ) : ( */}
           {
-            <div className="deal_of_the_day_content_container">
-              <Link to="/hot-deals">
+            <div className="hot_deal_content_container">
+              {/* <Link to="/hot-deals">
                 <div className="deal_of_the_day_banner" onClick={nextPageScrollOnTop}>
                   {
                     <img
@@ -192,8 +192,8 @@ const HotDealsSection = () => {
                     />
                   }
                 </div>
-              </Link>
-              <div className="deal_of_the_day_product_content">
+              </Link> */}
+              <div className="hot_deal_product_content">
                 <div className="deal_of_the_day_product_content_header">
                   <h4>Hot Deals</h4>
                   <div className="d-flex">

@@ -35,6 +35,15 @@ const CategoryAfterScroll = () => {
     document.querySelector(".categoryCloseHandler").style.display = "none";
   };
 
+
+   //onclick place order go to top of the page
+   const nextPageScrollOnTop = () => {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  };
+
+
+
   return (
     <>
       <div className="category_after_scroll_section">
@@ -73,6 +82,7 @@ const CategoryAfterScroll = () => {
               className={({ isActive, isPending }) =>
                 isPending ? "pending" : isActive ? "active" : ""
               }
+              onClick={nextPageScrollOnTop}
             >
               <li>New Arrival Product</li>
             </NavLink>
@@ -81,6 +91,7 @@ const CategoryAfterScroll = () => {
               className={({ isActive, isPending }) =>
                 isPending ? "pending" : isActive ? "active" : ""
               }
+              onClick={nextPageScrollOnTop}
             >
               <li>Best Selling Product</li>
             </NavLink>
@@ -89,6 +100,7 @@ const CategoryAfterScroll = () => {
               className={({ isActive, isPending }) =>
                 isPending ? "pending" : isActive ? "active" : ""
               }
+              onClick={nextPageScrollOnTop}
             >
               <li>Discount Product</li>
             </NavLink>
@@ -97,6 +109,7 @@ const CategoryAfterScroll = () => {
               className={({ isActive, isPending }) =>
                 isPending ? "pending" : isActive ? "active" : ""
               }
+              onClick={nextPageScrollOnTop}
             >
               <li>Top Rated Product</li>
             </NavLink>
@@ -105,6 +118,7 @@ const CategoryAfterScroll = () => {
               className={({ isActive, isPending }) =>
                 isPending ? "pending" : isActive ? "active" : ""
               }
+              onClick={nextPageScrollOnTop}
             >
               <li>Brands</li>
             </NavLink>
@@ -113,6 +127,7 @@ const CategoryAfterScroll = () => {
               className={({ isActive, isPending }) =>
                 isPending ? "pending" : isActive ? "active" : ""
               }
+              onClick={nextPageScrollOnTop}
             >
               <li>Store</li>
             </NavLink>
