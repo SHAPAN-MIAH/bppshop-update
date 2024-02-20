@@ -15,6 +15,7 @@ import AppBrandingSection from "../../Components/HomePageSectionComponents/AppBr
 import AllProductSection from "../../Components/HomePageSectionComponents/AllProductSection/AllProductSection";
 import NewArrivalSection from "../../Components/HomePageSectionComponents/NewArrivalSection/NewArrivalSection";
 import HotDealsSection from "../../Components/HomePageSectionComponents/HotDealsSection/HotDealsSection";
+import LowestPriceProduct from "../../Components/HomePageSectionComponents/LowestPriceProduct/LowestPriceProduct";
 
 const Home = () => {
   const allCategories = useSelector(
@@ -38,8 +39,8 @@ const Home = () => {
         <OfferBrandingSection />
         <BestSellingSection />
         <AppBrandingSection />
+        <LowestPriceProduct/>
         <AllProductSection />
-        {/* <LowestPriceProduct/> */}
       </div>
     </>
   );

@@ -1,11 +1,7 @@
 import React, { useEffect, useState } from "react";
-import img from "../../../Assets/Images/bppshop_banner/topRated (1).jpg";
-import img2 from "../../../Assets/Images/bppshop_banner/discountProduct (2).jpg";
-// import "./DealOfTheDay.css";
 import axios from "axios";
 import { bannerBaseUrl, baseUrl } from "../../../BaseUrl/BaseUrl";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
-import AllProductsCard from "../../Cards/AllProductCard/AllProductsCard";
 import Slider from "react-slick";
 import { Link } from "react-router-dom";
 import TopRatedProductCard from "../../Cards/TopRatedProductCard/TopRatedProductCard";

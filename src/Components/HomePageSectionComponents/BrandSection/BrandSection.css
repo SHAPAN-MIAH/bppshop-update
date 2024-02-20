@@ -1,6 +1,10 @@
 .brand_section{
   width: 100%;
 }
+.brand_section_ad_banner{
+  border-radius: 10px;
+  overflow: hidden;
+}
 .brand_section_ad_banner img{
   width: 100%;
 }

@@ -24,3 +24,22 @@
 .timer_minutes,
 .timer_seconds {
 }
+
+
+@media screen and (max-width: 768px) {
+  .timer_container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-right: 50px;
+    padding-top: 2px;
+  }
+  .timer_container h5 {
+    font-size: 15px;
+  }
+  .timer_container_content {
+    width: auto;
+    font-size: 14px;
+    text-align: center;
+  }
+}

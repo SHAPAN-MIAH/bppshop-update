@@ -1,0 +1,15 @@
+.hot_deal_product_content_header{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.timer_view_more_container{
+  display: flex;
+  margin-left: auto;
+}
+@media screen and (max-width: 768px) {
+  .hot_deal_product_content_header{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

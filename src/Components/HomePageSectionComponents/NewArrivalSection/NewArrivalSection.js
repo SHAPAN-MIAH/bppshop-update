@@ -4,8 +4,6 @@ import { bannerBaseUrl, baseUrl } from "../../../BaseUrl/BaseUrl";
 import NewArrivalSectionProductCard from "./NewArrivalSectionProductCard";
 import "./NewArrivalSection.css";
 import Slider from "react-slick";
-import newArrivalBanner from "../../../Assets/Images/bppshop_banner/newArrival (1).jpg";
-import newArrivalBanner2 from "../../../Assets/Images/bppshop_banner/newArrival (2).jpg";
 import { Link } from "react-router-dom";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import { useSelector } from "react-redux";

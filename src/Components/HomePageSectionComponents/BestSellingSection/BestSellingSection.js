@@ -1,16 +1,11 @@
 import React, { useEffect, useState } from "react";
-import img from "../../../Assets/Images/bppshop_banner/bestSelling (1).jpg";
-import img2 from "../../../Assets/Images/bppshop_banner/bestSelling (2).jpg";
-// import "./DealOfTheDay.css";
 import axios from "axios";
 import { bannerBaseUrl, baseUrl } from "../../../BaseUrl/BaseUrl";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
-import AllProductsCard from "../../Cards/AllProductCard/AllProductsCard";
 import Slider from "react-slick";
 import { Link } from "react-router-dom";
 import BestSellingProductCard from "../../Cards/BestSellingProductCard/BestSellingProductCard";
 import { useSelector } from "react-redux";
-// import BestSellingProductCard from "../../../Pages/BestSelling/BestSellingProductCard";
 
 const BestSellingSection = () => {
   const [bestSellingProduct, setBestSellingProduct] = useState([]);
@@ -20,7 +15,7 @@ const BestSellingSection = () => {
       (item) => item?.type === "best_selling"
     )
   );
-  // console.log(bestSellingBannerImg);
+  
   useEffect(() => {
     axios
       .get(`${baseUrl}/products/best-sellings?limit=${16}&offset=${1}`)

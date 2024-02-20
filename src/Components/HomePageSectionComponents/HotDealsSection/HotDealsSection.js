@@ -7,6 +7,7 @@ import Slider from "react-slick";
 import HotDealsProductCard from "../../Cards/HotDealsProductCard/HotDealsProductCard";
 import Timer from "../../SharedComponents/Timer/Timer";
 import moment from "moment";
+import './HotDealsSection.css'
 
 const HotDealsSection = () => {
   const [hotDeals, SetHotDeals] = useState([]);
@@ -113,6 +114,7 @@ const HotDealsSection = () => {
     <>
       {hotDeals?.hot_deals?.end_date && (
         <div className="deal_of_the_day_container">
+
           {/* <SkeletonTheme
             baseColor="rgb(220, 220, 220)"
             highlightColor="#e3e3e3"
@@ -194,9 +196,9 @@ const HotDealsSection = () => {
                 </div>
               </Link> */}
               <div className="hot_deal_product_content">
-                <div className="deal_of_the_day_product_content_header">
+                <div className="hot_deal_product_content_header ">
                   <h4>Hot Deals</h4>
-                  <div className="d-flex">
+                  <div className="timer_view_more_container">
                     <Timer
                       startDate={startDate}
                       setLoading={setLoading}
