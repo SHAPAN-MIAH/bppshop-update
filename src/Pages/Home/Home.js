@@ -37,9 +37,9 @@ const Home = () => {
         <StoreSection />
         <DiscountProductSection />
         <OfferBrandingSection />
-        <BestSellingSection />
-        <AppBrandingSection />
+        {/* <BestSellingSection /> */}
         <LowestPriceProduct/>
+        <AppBrandingSection />
         <AllProductSection />
       </div>
     </>

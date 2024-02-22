@@ -92,7 +92,7 @@ const LowestPriceProduct = () => {
 
   return (
     <>
-      <div className="lowest_price_product_container mb-5">
+      <div className="lowest_price_product_container mt-5 mb-5">
         <SkeletonTheme baseColor="rgb(220, 220, 220)" highlightColor="#e3e3e3">
           {loading ? (
             <div className=" d-flex">
